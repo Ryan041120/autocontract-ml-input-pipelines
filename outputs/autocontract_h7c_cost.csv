@@ -1,0 +1,3 @@
+manual_estimator,adapter_setup_seconds,manual_seconds_per_operator,adapter_marginal_seconds_per_operator,break_even_operators,projected_reduction_at_50,break_even_gate_le_20,reduction_gate_ge_70pct
+mean,178.2380669,13.3221434,0.103564,13.483904851379114,0.7246445089308977,True,True
+median,178.2380669,11.6256325,0.103564,15.469276796957075,0.6844623001802267,True,False

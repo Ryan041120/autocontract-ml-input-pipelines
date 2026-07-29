@@ -1,0 +1,41 @@
+{
+  "schema": {
+    "state_path_kinds": [
+      "attribute",
+      "subscript",
+      "container_mutation",
+      "delegated_mutation"
+    ],
+    "callable_origins": [
+      "module_bound",
+      "public_input",
+      "public_input_derived",
+      "child_operator",
+      "external_dynamic",
+      "unknown"
+    ],
+    "mode_relations": [
+      "required",
+      "ensured"
+    ],
+    "guard_kinds": [
+      "refresh_before_use",
+      "conditional_restore",
+      "intrinsic",
+      "unknown"
+    ]
+  },
+  "rules": [
+    "method calls that advance a stored RNG are delegated_mutation, not container mutation",
+    "callable provenance propagates from public constructor parameters through local assignments and super().__init__",
+    "module-bound callables may be analyzed further; public-input and public-input-derived callables fail closed",
+    "mode obligations use stable framework-qualified names rather than the framework_specific placeholder",
+    "required modes must be supplied by the rewrite context; ensured modes are discharged by the operator itself",
+    "cache, control, unknown state, child delegation, and external effects remain fail closed"
+  ],
+  "calibration_corpora": [
+    "TorchIO",
+    "audiomentations",
+    "imgaug"
+  ]
+}

@@ -1,0 +1,18 @@
+[submodule ".research/semantics_safe_reconfiguration/h7c_corpus/torchio_repo"]
+	path = .research/semantics_safe_reconfiguration/h7c_corpus/torchio_repo
+	url = https://github.com/TorchIO-project/torchio.git
+[submodule ".research/semantics_safe_reconfiguration/h7d_corpus/torchgeo_repo"]
+	path = .research/semantics_safe_reconfiguration/h7d_corpus/torchgeo_repo
+	url = https://github.com/torchgeo/torchgeo.git
+[submodule ".research/semantics_safe_reconfiguration/h7e_corpus/audiomentations_repo"]
+	path = .research/semantics_safe_reconfiguration/h7e_corpus/audiomentations_repo
+	url = https://github.com/iver56/audiomentations.git
+[submodule ".research/semantics_safe_reconfiguration/h7f_corpus/imgaug_repo"]
+	path = .research/semantics_safe_reconfiguration/h7f_corpus/imgaug_repo
+	url = https://github.com/aleju/imgaug.git
+[submodule ".research/semantics_safe_reconfiguration/h7g_corpus/albumentations_repo"]
+	path = .research/semantics_safe_reconfiguration/h7g_corpus/albumentations_repo
+	url = https://github.com/albumentations-team/albumentations.git
+[submodule ".research/semantics_safe_reconfiguration/h7h_corpus/kornia_repo"]
+	path = .research/semantics_safe_reconfiguration/h7h_corpus/kornia_repo
+	url = https://github.com/kornia/kornia.git

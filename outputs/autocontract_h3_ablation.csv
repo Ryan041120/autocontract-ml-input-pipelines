@@ -1,0 +1,5 @@
+mode,effect_cells_total,effect_cells_resolved,effect_cell_coverage,effect_cell_accuracy_on_resolved,effect_cells_correct,tp,fp,fn,tn,safe_recall,unsafe_precision,registered_operator_signatures,unresolved_hybrid_operators,manual_signatures_hybrid,annotation_reduction_hybrid,h3_gate_pass
+registry,180,36,0.2,1.0,36,6,0,9,22,0.4,1.0,6,1,7,0.7666666666666666,not_applicable
+static,180,119,0.6611111111111111,0.9915966386554622,118,15,0,0,22,1.0,1.0,6,1,7,0.7666666666666666,not_applicable
+runtime,180,180,1.0,0.9888888888888889,178,15,1,0,21,1.0,0.9545454545454546,6,1,7,0.7666666666666666,not_applicable
+hybrid,180,179,0.9944444444444445,1.0,179,15,0,0,22,1.0,1.0,6,1,7,0.7666666666666666,True

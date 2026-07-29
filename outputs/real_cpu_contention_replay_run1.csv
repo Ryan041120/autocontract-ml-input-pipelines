@@ -1,0 +1,3 @@
+policy,normal_workers,contention_workers,normal_batch_ms,contention_batch_ms,two_phase_mean_batch_ms
+fixed_normal_optimum,4,4,8.635599999999855,27.18494166666711,17.910270833333485
+phase_aware_oracle,4,6,8.635599999999855,20.262524999998515,14.449062499999185

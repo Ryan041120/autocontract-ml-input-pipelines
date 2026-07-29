@@ -1,0 +1,49 @@
+dossier: ML input pipeline safe online reoptimization
+generated: "2026-07-26"
+run_type: "manual adversarial gap-to-topic screening with local negative experiment"
+downstream_consumer: research-design-helper
+recall:
+  tool: manual web search; research-hub unavailable
+  query_phrasings: 12
+  unique_papers: 41
+  tool_confidence: medium
+  dossier_confidence: medium
+  screen:
+    gate: manual title/abstract/full-section relevance gate
+    retrieved: 41
+    kept: 11
+    screened_out: 30
+    tier: cold-start
+    note: "Counts are from a manual title/URL dedup log, not a database API export."
+  note: "No full-recall academic database export; DART full text still requires advisor/library access."
+pipeline:
+  - manual adversarial web search and URL/title dedup
+  - manual literature triage to literature_matrix.md
+  - DOI/arXiv-validated entries to topic_dossier.bib
+  - gap-to-topic three-gate assessment
+gaps:
+  - id: G1
+    name: "Uncertainty- and reconfiguration-cost-aware safe online plan adaptation for ML input pipelines"
+    statement: "Safely decide whether and how to reoptimize placement, parallelism, cache and ordering after runtime drift, with explicit uncertainty, failed-probe cost, rollback budget and degradation limits."
+    type: A
+    open: partially-occupied
+    open_confidence: medium
+    dead_end_status: partially-attempted
+    dead_end_evidence: >-
+      DART (Sun et al., 2026, DOI 10.1016/j.future.2025.108303) already performs state-aware rate-limited online co-scheduling, while MegaScale-Data (Zhao et al., 2026, DOI 10.1145/3767295.3803568) performs dynamic source scaling and analyzes rescaling cost; neither has yet been verified to cover confidence-bounded whole-plan probing and rollback.
+    contribution_type: borderline
+    borderline_reason: B1
+    feasibility: feasible-with-effort
+    verdict: conditional-go
+    verdict_reason: >-
+      Generic dynamic worker tuning is occupied; proceed only if full-text checks and real-workload pilots show an unoccupied safe whole-plan reoptimization problem and a controller that bounds failed-probe harm.
+    linked_claim: null
+open_questions:
+  - id: Q1
+    text: "Does DART provide an explicit safety or regret bound for bad online configuration probes, beyond state estimation and rate limiting?"
+  - id: Q2
+    text: "Can whole-plan reoptimization outperform a DART-like worker/batch controller after charging shutdown, startup, warm-up and rollback costs?"
+  - id: Q3
+    text: "Does the observed 38.46-second reconfiguration penalty persist on Linux and real CV/ASR pipelines, or is it a Windows PyTorch artifact?"
+  - id: Q4
+    text: "Can a staged or shadow probe preserve sample order, randomness and exactly-once semantics while bounding end-to-end degradation to 2 percent?"

@@ -1,0 +1,54 @@
+{
+  "protocol": "AutoContract H6 EffectV2 blind oracle",
+  "created_before_analyzer_run": true,
+  "units": [
+    {
+      "source_id": "monai_compose", "kind": "class", "name": "Compose", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"parametric","execution_writes":"parametric","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"numpy","rng_delegated":"True","target_signature":"parametric","target_coupled":"True","input_cardinality":"one","output_cardinality":"one","sample_identity":"preserve"}
+    },
+    {
+      "source_id": "monai_compose", "kind": "class", "name": "OneOf", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"parametric","execution_writes":"parametric","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"numpy","rng_delegated":"True","target_signature":"parametric","target_coupled":"True","input_cardinality":"one","output_cardinality":"one","sample_identity":"preserve"}
+    },
+    {
+      "source_id": "monai_compose", "kind": "class", "name": "RandomOrder", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"parametric","execution_writes":"parametric","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"numpy","rng_delegated":"True","target_signature":"parametric","target_coupled":"True","input_cardinality":"one","output_cardinality":"one","sample_identity":"preserve"}
+    },
+    {
+      "source_id": "monai_compose", "kind": "class", "name": "SomeOf", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"parametric","execution_writes":"parametric","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"numpy","rng_delegated":"True","target_signature":"parametric","target_coupled":"True","input_cardinality":"one","output_cardinality":"one","sample_identity":"preserve"}
+    },
+    {
+      "source_id": "mmdet_transforms", "kind": "class", "name": "RandomFlip", "unsafe_for_unary_optimizer": false,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"image+instances+semantic","execution_writes":"image+instances+semantic","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"none","rng_delegated":"True","target_signature":"fixed","target_coupled":"True","input_cardinality":"one","output_cardinality":"one","sample_identity":"preserve"}
+    },
+    {
+      "source_id": "mmdet_transforms", "kind": "class", "name": "RandomCrop", "unsafe_for_unary_optimizer": false,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"image+instances+labels+semantic","execution_writes":"image+instances+labels+semantic","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"numpy","rng_delegated":"False","target_signature":"fixed","target_coupled":"True","input_cardinality":"one","output_cardinality":"one","sample_identity":"preserve"}
+    },
+    {
+      "source_id": "mmdet_transforms", "kind": "class", "name": "Mosaic", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"image+instances+labels","execution_writes":"image+instances+labels","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"python","rng_delegated":"False","target_signature":"fixed","target_coupled":"True","input_cardinality":"many","output_cardinality":"one","sample_identity":"combine"}
+    },
+    {
+      "source_id": "mmdet_transforms", "kind": "class", "name": "MixUp", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"image+instances+labels","execution_writes":"image+instances+labels","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"python","rng_delegated":"False","target_signature":"fixed","target_coupled":"True","input_cardinality":"many","output_cardinality":"one","sample_identity":"combine"}
+    },
+    {
+      "source_id": "mmdet_transforms", "kind": "class", "name": "CopyPaste", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"image+instances+labels+semantic","execution_writes":"image+instances+labels+semantic","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"numpy+python","rng_delegated":"False","target_signature":"fixed","target_coupled":"True","input_cardinality":"many","output_cardinality":"one","sample_identity":"combine"}
+    },
+    {
+      "source_id": "mmdet_transforms", "kind": "class", "name": "CachedMosaic", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"image+instances+labels+semantic","execution_writes":"image+instances+labels+semantic","execution_external_reads":"none","execution_external_writes":"none","rng_direct_sources":"python","rng_delegated":"False","target_signature":"fixed","target_coupled":"True","input_cardinality":"many","output_cardinality":"one","sample_identity":"combine"}
+    },
+    {
+      "source_id": "dali_pipeline", "kind": "class", "name": "Pipeline", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"True","construction_rng_sources":"none","execution_reads":"parametric","execution_writes":"parametric","execution_external_reads":"backend","execution_external_writes":"backend","rng_direct_sources":"none","rng_delegated":"True","target_signature":"parametric","target_coupled":"False","input_cardinality":"many","output_cardinality":"many","sample_identity":"preserve"}
+    },
+    {
+      "source_id": "dali_pipeline", "kind": "function", "name": "pipeline_def", "unsafe_for_unary_optimizer": true,
+      "truth": {"construction_external_reads":"none","construction_external_writes":"none","construction_state_writes":"False","construction_rng_sources":"none","execution_reads":"parametric","execution_writes":"parametric","execution_external_reads":"backend","execution_external_writes":"backend","rng_direct_sources":"none","rng_delegated":"True","target_signature":"parametric","target_coupled":"False","input_cardinality":"many","output_cardinality":"many","sample_identity":"preserve"}
+    }
+  ]
+}

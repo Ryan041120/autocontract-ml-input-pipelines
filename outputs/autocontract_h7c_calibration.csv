@@ -1,0 +1,9 @@
+mode,unit,expected_decision,actual_decision,decision_correct,expected_reason,reason_match,analysis_status,analysis_reasons,validator_reasons,evidence
+generic,Compose,reject,reject,True,unresolved_child_effect,False,unknown,unresolved_external_base:Transform,analysis_unknown;unresolved_external_base:Transform,v2_execution_nodes=1
+torchio_adapter,Compose,reject,reject,True,unresolved_child_effect,True,unknown,unresolved_child_effect,analysis_unknown;unresolved_child_effect,entrypoint:Transform.__call__->apply_transform
+generic,OneOf,reject,reject,True,unresolved_child_effect,False,unknown,unresolved_external_base:RandomTransform,analysis_unknown;unresolved_external_base:RandomTransform,v2_execution_nodes=1
+torchio_adapter,OneOf,reject,reject,True,unresolved_child_effect,True,unknown,unresolved_child_effect,analysis_unknown;unresolved_child_effect,entrypoint:Transform.__call__->apply_transform
+generic,RandomFlip,admit,reject,False,none,False,unknown,unresolved_external_base:RandomTransform+SpatialTransform,analysis_unknown;unresolved_external_base:RandomTransform+SpatialTransform,v2_execution_nodes=2
+torchio_adapter,RandomFlip,admit,admit,True,none,True,resolved,none,none,entrypoint:Transform.__call__->apply_transform;record_scope:typed-subrecord:spatial;rng:torch
+generic,RandomNoise,admit,reject,False,none,False,unknown,unresolved_external_base:IntensityTransform+RandomTransform,analysis_unknown;unresolved_external_base:IntensityTransform+RandomTransform,v2_execution_nodes=2
+torchio_adapter,RandomNoise,admit,admit,True,none,True,resolved,none,none,entrypoint:Transform.__call__->apply_transform;record_scope:typed-subrecord:intensity;rng:torch

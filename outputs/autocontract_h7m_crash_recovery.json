@@ -1,0 +1,31 @@
+{
+  "tests": {
+    "process_exited_after_claim_before_commit": true,
+    "coordinator_recovery_and_replacement_commit": true,
+    "stale_generation_commit_rejected": true,
+    "process_exited_after_commit_before_ack": true,
+    "lost_ack_retry_is_idempotent": true,
+    "lost_ack_conflicting_digest_rejected": true
+  },
+  "before_commit_exit_code": 17,
+  "before_commit_state": {
+    "state": "leased",
+    "generation": 1,
+    "lease_id": "113270f32cf96f4c9050884b300d0961",
+    "worker_id": "dead-before",
+    "output_sha256": null
+  },
+  "stale_commit_detail": "stale_or_invalid_lease",
+  "after_commit_exit_code": 23,
+  "after_commit_state": {
+    "state": "committed",
+    "generation": 1,
+    "lease_id": "9a6d3394500e97336351ca614f357bb8",
+    "worker_id": "dead-after",
+    "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "conflict_detail": "committed_batch_conflict",
+  "passed": 6,
+  "total": 6,
+  "all_passed": true
+}

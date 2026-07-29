@@ -1,0 +1,2 @@
+units,decisions_correct,reason_categories_correct,super_resolution_complete,lambda_public_input_detected,adapter_freeze_ready
+7,7,7,7,True,True

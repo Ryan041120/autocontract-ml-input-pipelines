@@ -1,0 +1,22 @@
+# AutoContract H7J sealed atomic Kornia replay
+
+Correctness/security tests: 12/12.
+Concurrent calls: 100/100; errors: 0.
+Direct replay+copy median: 12.622 ms; sealed atomic median: 16.883 ms; overhead: 33.8%.
+
+| Test | Pass | Detail |
+|---|---|---|
+| auto_leaf_proofs | True | d5cb174801f94a4312fc7a552ad961a4b02c3f3502254848bc96ea38a74ba52d |
+| atomic_output_trace | True | b796d0f61c7f394ce951a87907558f250fbd789d4f36974fbf2fbb1882414b2e |
+| receipt_pre_post_binding | True | 4d01d4dc8eeaa7cabb51ddc3802e6e2be312938695db6cef155a109c713ba3be |
+| receipt_child_proof_binding | True | a7f5ad65d508ddc3d0783ecdd5503eaf264e2c5f783fd69aaa513e6feda9793c |
+| serial_original_mutation_isolated | True | b796d0f61c7f394ce951a87907558f250fbd789d4f36974fbf2fbb1882414b2e |
+| target_exposed_params_do_not_poison_next_call | True | b796d0f61c7f394ce951a87907558f250fbd789d4f36974fbf2fbb1882414b2e |
+| wrong_sample_zero_operator_calls | True | sample_lineage_mismatch |
+| missing_child_proof_zero_operator_calls | True | unsupported_child_effect:RandomAffine_1 |
+| operator_mutation_output_not_released | True | operator_mutated_working_record |
+| atomic_gradient_trace | True | direct=4dec1eb57ddea1b96ca1707bb00fbdac7f179af7aface26cb3705bf9a988a864,atomic=4dec1eb57ddea1b96ca1707bb00fbdac7f179af7aface26cb3705bf9a988a864 |
+| concurrent_original_mutation_isolated | True | calls=100/100,errors=[] |
+| concurrent_replay_rng_unchanged | True | 80e6d3daadf1881a7a25b5c7c9187865a6dc778c64523f264ec6c2b8f520e3b6 |
+
+The executor protects against mutation of the original record and stale exposed target state. It is not a sandbox against reflection or monkey patching of the sealed object itself.

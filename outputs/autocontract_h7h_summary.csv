@@ -1,0 +1,2 @@
+protocol,units,binding_integrity,decisions_correct,known_unsafe_false_accepts,supported_safe_recall,coarse_reason_accuracy,classified_coverage,phase_contrast_accuracy,h7h_blind_gate_pass,adapter_sha256,protocol_sha256
+H7H-kornia-EffectV7-mode-phase-one-shot-v1,9,1.0,9,0,1.0,1.0,1.0,1.0,True,53fc8a5edc862f064a836419b78336b6b417420c9fbab5bc5bc63c7c8f63ee0f,479617ae72ae7895aea8b3d93a3cf99035b927638100e593122f2fb4a9a3977b

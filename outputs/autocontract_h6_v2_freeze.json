@@ -1,0 +1,46 @@
+{
+  "protocol": "AutoContract H6 EffectV2 calibration freeze",
+  "date": "2026-07-28",
+  "effect_fields": [
+    "construction_external_reads",
+    "construction_external_writes",
+    "construction_state_writes",
+    "construction_rng_sources",
+    "execution_reads",
+    "execution_writes",
+    "execution_external_reads",
+    "execution_external_writes",
+    "rng_direct_sources",
+    "rng_delegated",
+    "target_signature",
+    "target_coupled",
+    "input_cardinality",
+    "output_cardinality",
+    "sample_identity"
+  ],
+  "calibration_units": 20,
+  "calibration_accuracy": 1.0,
+  "critical_false_negatives": 0,
+  "blind_thresholds": {
+    "effect_cell_accuracy": 0.95,
+    "critical_false_negatives": 0,
+    "known_unsafe_false_accepts": 0
+  },
+  "analyzer_sha256": "f61827919715ff11119b352dc473c4481c41b44ac8b0880f3b28c7a719535061",
+  "calibration_oracle_sha256": "68c71dc4d623f16b70acb5c5e9d105f554611c969bd0c1ab0876b6c542e4074c",
+  "sealed_repositories": [
+    {
+      "repo": "Project-MONAI/MONAI",
+      "commit_sha": "3ee058bdd16dd4a566d23d3f84687c3c35268a36"
+    },
+    {
+      "repo": "open-mmlab/mmdetection",
+      "commit_sha": "cfd5d3a985b0249de009b67d04f37263e11cdf3d"
+    },
+    {
+      "repo": "NVIDIA/DALI",
+      "commit_sha": "1a8328edbc8db6786d764e309d519a3926171d19"
+    }
+  ],
+  "sealed_sources_opened": false
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "autocontract.replay-lineage.v1",
+  "framework": "kornia",
+  "framework_version": "0.8.3",
+  "repository_commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930",
+  "record_phase": "sample_apply",
+  "replay_phase": "replay_apply",
+  "sample_id": "epoch0/sample17",
+  "operator_graph_sha256": "409aa56fae6a25d02c679c72e4305b7bfb0987ecfab1f9f6d924c6f43e6a6397",
+  "input_schema_sha256": "62642917f9245fd5a92ba8ce9d08d214bdc9e349259fc2629bff876e72f7d2d1",
+  "params_sha256": "b5d927228782430495385ed6084a68c382f8e391c0954f4542e35352d561e321",
+  "child_sequence": [
+    "RandomHorizontalFlip_0",
+    "RandomAffine_1",
+    "ColorJiggle_2"
+  ],
+  "certificate_sha256": "3a10103be1ab61ba5e52b694f2fb0ba549f27862cc579451325d136bd5442a84"
+}

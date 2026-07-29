@@ -1,0 +1,79 @@
+{
+  "protocol": "H7G-albumentations-EffectV6-one-shot-v1",
+  "date": "2026-07-29",
+  "research_question": "Can EffectV6 distinguish stored-parameter replay from seeded RNG sequences, recover safe module-bound transforms, and fail closed on child and public-input callable delegation in Albumentations?",
+  "repository": {
+    "url": "https://github.com/albumentations-team/albumentations",
+    "tag": "2.0.8",
+    "checkout_commit": "4d2cf04b6635663275a747333754410ef255e54c",
+    "scope_note": "Archived MIT Albumentations only; no claim about AlbumentationsX"
+  },
+  "active_context": {
+    "named_mode": "albumentations.replay",
+    "meaning": "BasicTransform is restored with stored params, replay_mode=True, and applied_in_replay from a compatible replay record",
+    "excluded_context": "Compose(seed) sequence reproducibility without a per-sample replay record",
+    "record_scope": "one keyword-record input/output; compatible image/target schema",
+    "workers": "worker-count or lifetime changes are excluded"
+  },
+  "contamination_control": {
+    "calibration_symbols_are_disjoint": true,
+    "formal_symbol_locations_may_be_resolved_without_method-body effect analysis": true,
+    "formal_effect_analysis_runs_once_after_freeze": true
+  },
+  "sealed_units": [
+    {
+      "public_symbol": "albumentations.augmentations.geometric.flip.VerticalFlip",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.pixel.transforms.RandomGamma",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.blur.transforms.GaussianBlur",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.geometric.transforms.Affine",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.crops.transforms.CenterCrop",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "albumentations.core.composition.OneOf",
+      "expected": "reject",
+      "coarse_reason": "child"
+    },
+    {
+      "public_symbol": "albumentations.core.composition.Sequential",
+      "expected": "reject",
+      "coarse_reason": "child"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching",
+      "expected": "reject",
+      "coarse_reason": "user_callable"
+    }
+  ],
+  "thresholds": {
+    "binding_integrity": 1.0,
+    "known_unsafe_false_accepts": 0,
+    "supported_safe_recall": 0.8,
+    "coarse_reason_accuracy": 0.875,
+    "classified_coverage": 1.0
+  },
+  "primary_outcome": "H7G blind gate",
+  "secondary_outcomes": [
+    "delegated RNG mutation coverage",
+    "module-bound versus public-input callable origin",
+    "named replay-mode obligations",
+    "super-resolution completeness"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "start_method": "spawn",
+  "workers": 4,
+  "distinct_results": [
+    {
+      "consumer": "distinct/3",
+      "success": true,
+      "token": "f8485acd5e0e89be40fdb918457129b742b843f526aba95fe7740481e53334ee",
+      "reasons": []
+    },
+    {
+      "consumer": "distinct/2",
+      "success": true,
+      "token": "5b6953e085be0000c4025642dbf234b79f89c8245a353c3105369f99baa04ab0",
+      "reasons": []
+    },
+    {
+      "consumer": "distinct/0",
+      "success": true,
+      "token": "8405c8bc53afb98fa656c72a26b9f8794ba23526a02b3144270b3cc68d52a539",
+      "reasons": []
+    },
+    {
+      "consumer": "distinct/1",
+      "success": true,
+      "token": "467bf0e6ac1f47615eb5a2165a3a7da618c1e388bdf0b83c9b78ec982a85e069",
+      "reasons": []
+    }
+  ],
+  "duplicate_results": [
+    {
+      "consumer": "duplicate/2",
+      "success": true,
+      "token": "3401a9cf266b0b8971ff301672de1eeaeb7589ced801302aa56acb87f12e1b1d",
+      "reasons": []
+    },
+    {
+      "consumer": "duplicate/3",
+      "success": false,
+      "token": "",
+      "reasons": [
+        "token_consumed"
+      ]
+    },
+    {
+      "consumer": "duplicate/0",
+      "success": false,
+      "token": "",
+      "reasons": [
+        "token_consumed"
+      ]
+    },
+    {
+      "consumer": "duplicate/1",
+      "success": false,
+      "token": "",
+      "reasons": [
+        "token_consumed"
+      ]
+    }
+  ],
+  "tests": {
+    "distinct_tokens_all_consumed_across_spawn_workers": true,
+    "duplicate_token_exactly_one_spawn_winner": true,
+    "private_key_not_sent_to_workers": true,
+    "all_distinct_registry_states_consumed": true,
+    "duplicate_registry_state_consumed": true
+  },
+  "passed": 5,
+  "total": 5,
+  "all_passed": true
+}

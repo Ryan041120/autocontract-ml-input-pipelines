@@ -1,0 +1,2 @@
+protocol,units,binding_integrity,decisions_correct,known_unsafe_false_accepts,supported_safe_recall,coarse_reason_accuracy,classified_coverage,h7f_blind_gate_pass,adapter_sha256,protocol_sha256
+H7F-imgaug-EffectV5-one-shot-v1,8,1.0,7,0,0.8,0.875,1.0,True,938fbe85fbf1f11ef0a1dde2f6951646689c932be71e6f1a47ed2f5b6ed79646,92caafdccc291100d51d8bfbcdfb6abbae7990f9500825317d09e41930cb63db

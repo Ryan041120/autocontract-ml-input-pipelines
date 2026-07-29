@@ -1,0 +1,14 @@
+{
+  "tests": {
+    "batch_and_all_inclusion_proofs_valid": true,
+    "tampered_leaf_rejected": true,
+    "tampered_proof_rejected": true,
+    "commit_and_ack_retry_idempotent": true,
+    "conflicting_ack_retry_rejected": true,
+    "recovery_fences_stale_worker": true,
+    "four_way_claim_exactly_one_winner": true
+  },
+  "passed": 7,
+  "total": 7,
+  "all_passed": true
+}

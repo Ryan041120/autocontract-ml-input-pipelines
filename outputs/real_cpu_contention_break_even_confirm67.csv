@@ -1,0 +1,2 @@
+normal_best_workers,contention_best_workers,fixed_contention_batch_ms,adaptive_contention_batch_ms,per_batch_saving_ms,reconfiguration_startup_ms,break_even_batches,break_even_samples,fixed_time_to_break_even_s
+7,7,22.298189999999707,22.298189999999707,0.0,23409.594699999994,inf,inf,inf

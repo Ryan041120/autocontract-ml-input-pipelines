@@ -1,0 +1,35 @@
+{
+  "adapter": "albumentations-v6",
+  "rules": [
+    "BasicTransform.__call__ plus root-most get_params/apply hooks form transform execution",
+    "BaseCompose.__call__ plus calls over self.transforms denote child delegation",
+    "kwargs are a framework-defined whole-record scope and unhandled keys are preserved",
+    "self.py_random and self.random_generator method calls are delegated RNG mutation",
+    "BasicTransform replay_mode bypasses sampling and applies stored self.params",
+    "Compose(seed) is reproducible sequence state, not per-sample replay proof",
+    "constructor Callable parameters propagated into invoked attrs/containers are public-input callables",
+    "direct calls to package top-level functions are module-bound callables",
+    "other execution cache/control state and external effects remain fail closed"
+  ],
+  "active_named_mode": "albumentations.replay",
+  "calibration_symbols": [
+    "albumentations.augmentations.geometric.flip.HorizontalFlip",
+    "albumentations.augmentations.other.lambda_transform.Lambda",
+    "albumentations.augmentations.pixel.transforms.Normalize",
+    "albumentations.augmentations.pixel.transforms.RandomBrightnessContrast",
+    "albumentations.core.composition.Compose",
+    "albumentations.core.composition.ReplayCompose",
+    "albumentations.core.transforms_interface.NoOp"
+  ],
+  "formal_symbols": [
+    "albumentations.augmentations.blur.transforms.GaussianBlur",
+    "albumentations.augmentations.crops.transforms.CenterCrop",
+    "albumentations.augmentations.geometric.flip.VerticalFlip",
+    "albumentations.augmentations.geometric.transforms.Affine",
+    "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching",
+    "albumentations.augmentations.pixel.transforms.RandomGamma",
+    "albumentations.core.composition.OneOf",
+    "albumentations.core.composition.Sequential"
+  ],
+  "sets_disjoint": true
+}

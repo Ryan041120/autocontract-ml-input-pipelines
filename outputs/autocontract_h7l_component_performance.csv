@@ -1,0 +1,13 @@
+profile,operation,median_ms,mean_ms,iterations
+B1x3x32x32,issue_sign_and_register,3.90895,4.37224,30
+B1x3x32x32,verify_signature_and_claims,0.32389999999999997,0.34363,30
+B1x3x32x32,registry_consume,3.54935,3.6940033333333333,30
+B1x3x32x32,seal_input_and_digest,0.0363,0.04528,30
+B4x3x64x64,issue_sign_and_register,3.9800500000000003,4.51184,30
+B4x3x64x64,verify_signature_and_claims,0.3569,0.3737666666666667,30
+B4x3x64x64,registry_consume,3.47735,3.718976666666667,30
+B4x3x64x64,seal_input_and_digest,0.21855000000000002,0.25148333333333334,30
+B8x3x128x128,issue_sign_and_register,4.0831,5.00612,30
+B8x3x128x128,verify_signature_and_claims,0.37434999999999996,0.4711066666666667,30
+B8x3x128x128,registry_consume,3.74855,3.94798,30
+B8x3x128x128,seal_input_and_digest,2.32455,2.3590866666666668,30

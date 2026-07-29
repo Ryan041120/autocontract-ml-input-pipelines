@@ -1,0 +1,18 @@
+{
+  "workers": 2,
+  "epochs": 4,
+  "cache_build_time_s": 11.5056856,
+  "profile_predicted_break_even_epochs": 10.407605672876137,
+  "cold_horizon_accept_cache": false,
+  "cold_measured_optimal_is_cache": false,
+  "cold_decision_correct": true,
+  "warm_horizon_accept_cache": true,
+  "warm_measured_optimal_is_cache": true,
+  "warm_decision_correct": true,
+  "warm_training_speedup": 1.3811248461927133,
+  "batch_trace_equal": true,
+  "loss_trace_equal": true,
+  "max_loss_difference": 0.0,
+  "final_model_equal": true,
+  "h5b_pass": true
+}

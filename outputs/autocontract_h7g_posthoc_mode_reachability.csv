@@ -1,0 +1,3 @@
+mode,reachable_methods,read_fn_origin,read_fn_reachable,counterfactual_decision
+replay,__call__;apply;apply_with_params,user_input,False,admit
+record,__call__;_get_reference_image;apply;apply_with_params;get_params;get_params_dependent_on_data;should_apply;update_transform_params,user_input,True,reject

@@ -1,0 +1,41 @@
+{
+  "schema": {
+    "state_path_kinds": [
+      "attribute",
+      "subscript",
+      "container_mutation"
+    ],
+    "state_roles": [
+      "call_local",
+      "replayable",
+      "cache",
+      "persistent_control",
+      "unknown"
+    ],
+    "required_modes": [
+      "parameters_unfrozen",
+      "framework_specific",
+      "unknown"
+    ],
+    "super_resolution": [
+      "complete",
+      "partial",
+      "unknown"
+    ]
+  },
+  "rules": [
+    "state writes include self attributes, self-container subscripts, and container mutators",
+    "self.parameters guarded by are_parameters_frozen is replayable state",
+    "replayable state is admissible only when refresh-before-use and the required mode hold",
+    "other indexed runtime state is cache/control state and remains fail-closed",
+    "super() execution hooks must resolve across the package class graph",
+    "mode guards are contract obligations, not undocumented evaluator assumptions"
+  ],
+  "calibration_corpora": [
+    "TorchIO",
+    "audiomentations"
+  ],
+  "active_calibration_modes": [
+    "parameters_unfrozen"
+  ]
+}

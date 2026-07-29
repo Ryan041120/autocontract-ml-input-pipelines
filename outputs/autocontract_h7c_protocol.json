@@ -1,0 +1,53 @@
+{
+  "protocol": "AutoContract H7C independent-framework adapter cost and transfer pilot",
+  "registered_at": "2026-07-28T22:39:45.9779201+08:00",
+  "source_blobs_opened": false,
+  "repository": {
+    "repo": "TorchIO-project/torchio",
+    "release": "v1.0.2",
+    "tag_object_sha": "dbaa5d4e701908d3590e3ea1915c28a21d504f76",
+    "commit_sha": "3ee81f2991300c3c982aa31575d40d3838593063"
+  },
+  "generic_baseline": {
+    "policy": "No TorchIO adapter; every unresolved external base, RNG lifecycle, record scope, or delegated transform must produce Unknown(reason) and reject.",
+    "thresholds": {"known_unsafe_false_accepts": 0, "reason_coverage": 1.0}
+  },
+  "adapter_calibration": {
+    "common_files": [
+      "src/torchio/transforms/transform.py",
+      "src/torchio/transforms/augmentation/random_transform.py",
+      "src/torchio/transforms/spatial_transform.py",
+      "src/torchio/transforms/intensity_transform.py"
+    ],
+    "units": [
+      {"name":"Compose","path":"src/torchio/transforms/augmentation/composition.py","expected":"reject","reason":"unresolved_child_effect"},
+      {"name":"OneOf","path":"src/torchio/transforms/augmentation/composition.py","expected":"reject","reason":"unresolved_child_effect"},
+      {"name":"RandomFlip","path":"src/torchio/transforms/augmentation/spatial/random_flip.py","expected":"admit","reason":"none"},
+      {"name":"RandomNoise","path":"src/torchio/transforms/augmentation/intensity/random_noise.py","expected":"admit","reason":"none"}
+    ]
+  },
+  "sealed_operator_holdout": [
+    {"name":"RandomAffine","path":"src/torchio/transforms/augmentation/spatial/random_affine.py","expected":"admit","reason":"none"},
+    {"name":"RandomBlur","path":"src/torchio/transforms/augmentation/intensity/random_blur.py","expected":"admit","reason":"none"},
+    {"name":"RandomGamma","path":"src/torchio/transforms/augmentation/intensity/random_gamma.py","expected":"admit","reason":"none"},
+    {"name":"RandomMotion","path":"src/torchio/transforms/augmentation/intensity/random_motion.py","expected":"admit","reason":"none"},
+    {"name":"RandomSwap","path":"src/torchio/transforms/augmentation/intensity/random_swap.py","expected":"admit","reason":"none"},
+    {"name":"Lambda","path":"src/torchio/transforms/lambda_transform.py","expected":"reject","reason":"unresolved_user_callable"},
+    {"name":"MonaiAdapter","path":"src/torchio/transforms/monai_adapter.py","expected":"reject","reason":"external_framework_delegation"}
+  ],
+  "adapter_holdout_thresholds": {
+    "known_unsafe_false_accepts": 0,
+    "safe_recall": 0.70,
+    "reason_category_accuracy": 0.90
+  },
+  "cost_metrics": {
+    "adapter_setup_minutes": "wall-clock from first calibration blob open to adapter freeze",
+    "manual_operator_minutes": "per holdout unit from first blob open to oracle record saved",
+    "adapter_review_minutes": "per holdout unit from analyzer output to accept/reject review saved",
+    "break_even_formula": "adapter_setup / (manual_per_operator - adapter_review_per_operator)",
+    "pilot_gate_break_even_operators": 20,
+    "pilot_gate_projected_reduction_at_50_operators": 0.70,
+    "validity_note": "Single AI-researcher wall-clock proxy; a human multi-rater timing study remains required for a publication claim."
+  },
+  "interpretation_rule": "Only calibration files may be opened before adapter freeze. Holdout files are opened one at a time for oracle timing after the adapter is frozen; analyzer failures are not repaired on this holdout."
+}

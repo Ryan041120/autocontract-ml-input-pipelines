@@ -1,0 +1,17 @@
+{
+  "framework": "audiomentations",
+  "release": "v0.43.1",
+  "commit_sha": "19609e6d6624ef9e4933412ccda78fb6221f77e1",
+  "source_basis": "public documentation plus sealed symbol-origin metadata; operator bodies not inspected by adapter author",
+  "rules": [
+    "Base waveform __call__ plus apply/randomize_parameters are execution hooks",
+    "samples and sample_rate form a fixed two-field input scope and samples is the output field",
+    "Python/NumPy random calls are direct RNG effects",
+    "stored-callable invocation is unresolved user-callable delegation",
+    "iteration and invocation over self.transforms is unresolved child-operator delegation",
+    "file-path/audio-loader tokens denote a filesystem-backed external operand",
+    "writes to self attributes during execution remain EffectV4 execution-state writes"
+  ],
+  "forbidden_operator_name_rules": true,
+  "default_context": "parameters unfrozen"
+}

@@ -1,0 +1,16 @@
+left,right,distribution_safe_truth,distribution_validator_accept,mmd_statistic,p_value,evidence
+identity,resize,True,True,0.0,1.0,rbf_mmd_permutation
+normalize,center_crop,True,True,0.0,1.0,rbf_mmd_permutation
+normalize,random_hflip,True,True,0.0,1.0,rbf_mmd_permutation
+normalize,random_vflip,True,True,1.5412918508150852e-06,0.59,rbf_mmd_permutation
+normalize,random_crop,True,True,0.015367453788517893,0.37,rbf_mmd_permutation
+grayscale3,random_hflip,True,True,0.0,1.0,rbf_mmd_permutation
+gaussian_blur,random_hflip,True,True,0.0,1.0,rbf_mmd_permutation
+resize,center_crop,False,False,1.264241117657115,0.005,rbf_mmd_permutation
+random_crop,resize,False,False,0.5389945544949222,0.005,rbf_mmd_permutation
+random_crop,center_crop,False,False,0.4482026723062206,0.005,rbf_mmd_permutation
+random_hflip,random_vflip,True,True,0.0,1.0,rbf_mmd_permutation
+color_jitter,random_hflip,True,True,0.02213192257229335,0.14,rbf_mmd_permutation
+color_jitter,normalize,False,False,0.6003547059689017,0.005,rbf_mmd_permutation
+random_erasing,normalize,False,False,0.5998085898980318,0.005,rbf_mmd_permutation
+to_uint8,normalize,False,False,nan,0.0,exception:TypeError:Input tensor should be a float tensor. Got torch.uint8.

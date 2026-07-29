@@ -1,0 +1,23 @@
+{
+  "protocol": "AutoContract H7B sealed release-version holdout oracle",
+  "created_before_source_fetch": true,
+  "label_scope": "validator admission safety, not exact EffectV3 cell equality",
+  "units": [
+    {"source_id":"monai_compose_h7b","kind":"class","name":"Compose","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"parametric_target_signature"},
+    {"source_id":"monai_compose_h7b","kind":"class","name":"OneOf","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"parametric_target_signature"},
+    {"source_id":"monai_compose_h7b","kind":"class","name":"RandomOrder","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"parametric_target_signature"},
+    {"source_id":"monai_compose_h7b","kind":"class","name":"SomeOf","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"parametric_target_signature"},
+
+    {"source_id":"mmdet_transforms_h7b","kind":"class","name":"RandomFlip","unsafe_for_unary_optimizer":false,"expected_decision":"admit","expected_reason_category":"none"},
+    {"source_id":"mmdet_transforms_h7b","kind":"class","name":"RandomCrop","unsafe_for_unary_optimizer":false,"expected_decision":"admit","expected_reason_category":"none"},
+    {"source_id":"mmdet_transforms_h7b","kind":"class","name":"RandomShift","unsafe_for_unary_optimizer":false,"expected_decision":"admit","expected_reason_category":"none"},
+    {"source_id":"mmdet_transforms_h7b","kind":"class","name":"Mosaic","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"unsupported_cardinality"},
+    {"source_id":"mmdet_transforms_h7b","kind":"class","name":"MixUp","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"unsupported_cardinality"},
+    {"source_id":"mmdet_transforms_h7b","kind":"class","name":"CopyPaste","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"unsupported_cardinality"},
+    {"source_id":"mmdet_transforms_h7b","kind":"class","name":"CachedMosaic","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"execution_state_write"},
+    {"source_id":"mmdet_transforms_h7b","kind":"class","name":"CachedMixUp","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"execution_state_write"},
+
+    {"source_id":"dali_pipeline_h7b","kind":"class","name":"Pipeline","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"analysis_unknown"},
+    {"source_id":"dali_pipeline_h7b","kind":"function","name":"pipeline_def","unsafe_for_unary_optimizer":true,"expected_decision":"reject","expected_reason_category":"analysis_unknown"}
+  ]
+}

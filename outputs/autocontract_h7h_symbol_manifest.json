@@ -1,0 +1,81 @@
+{
+  "repository_commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930",
+  "package": "kornia",
+  "bindings": [
+    {
+      "public_symbol": "kornia.augmentation._2d.geometric.vertical_flip.RandomVerticalFlip",
+      "status": "resolved",
+      "public_module": "kornia.augmentation._2d.geometric.vertical_flip",
+      "defining_module": "kornia.augmentation._2d.geometric.vertical_flip",
+      "defining_name": "RandomVerticalFlip",
+      "source_path": "kornia/augmentation/_2d/geometric/vertical_flip.py",
+      "source_line": 26,
+      "source_sha256": "18877045fdf37cf2e3d3c49a6d96f44ef36dd8fd31fa8fd65a2ffad2e1c73c77",
+      "binding_sha256": "4f6eb751c1a08d92152c788bc5fbb278980e7a0dd022f7d6fab9abd4b5dc483f",
+      "export_chain": [
+        "kornia.augmentation._2d.geometric.vertical_flip.RandomVerticalFlip"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.motion_blur.RandomMotionBlur",
+      "status": "resolved",
+      "public_module": "kornia.augmentation._2d.intensity.motion_blur",
+      "defining_module": "kornia.augmentation._2d.intensity.motion_blur",
+      "defining_name": "RandomMotionBlur",
+      "source_path": "kornia/augmentation/_2d/intensity/motion_blur.py",
+      "source_line": 28,
+      "source_sha256": "b3cc159af7d13f427b8ade78ce5bbc394994c33fc0ca477634706d4d1249fa7c",
+      "binding_sha256": "5b4e533ac431527b17e54720bd45aeda938d9aec519e121978c3c3ffc67db27b",
+      "export_chain": [
+        "kornia.augmentation._2d.intensity.motion_blur.RandomMotionBlur"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.posterize.RandomPosterize",
+      "status": "resolved",
+      "public_module": "kornia.augmentation._2d.intensity.posterize",
+      "defining_module": "kornia.augmentation._2d.intensity.posterize",
+      "defining_name": "RandomPosterize",
+      "source_path": "kornia/augmentation/_2d/intensity/posterize.py",
+      "source_line": 27,
+      "source_sha256": "f4d6ccb854112b9d6e9ac2bd48c1673a5842eab69042fdd892e9b6ee19cdaa4e",
+      "binding_sha256": "b7f6871260f4a02e3796574f6a3fbac426c2839485719de8098d539d888ae7ef",
+      "export_chain": [
+        "kornia.augmentation._2d.intensity.posterize.RandomPosterize"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.solarize.RandomSolarize",
+      "status": "resolved",
+      "public_module": "kornia.augmentation._2d.intensity.solarize",
+      "defining_module": "kornia.augmentation._2d.intensity.solarize",
+      "defining_name": "RandomSolarize",
+      "source_path": "kornia/augmentation/_2d/intensity/solarize.py",
+      "source_line": 27,
+      "source_sha256": "03aada54d6af11172a4f2bd99756e5a97fbd1fba8d11e1a08fc922ac29b1065c",
+      "binding_sha256": "310ae7de3d37d252ec3356a2e2ad14f54cd4c3776a3522fda32845cb7c513cbc",
+      "export_chain": [
+        "kornia.augmentation._2d.intensity.solarize.RandomSolarize"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "kornia.augmentation.container.augment.AugmentationSequential",
+      "status": "resolved",
+      "public_module": "kornia.augmentation.container.augment",
+      "defining_module": "kornia.augmentation.container.augment",
+      "defining_name": "AugmentationSequential",
+      "source_path": "kornia/augmentation/container/augment.py",
+      "source_line": 51,
+      "source_sha256": "9b1f824245650c7de0ed1d0c4eb7f47a300db855ef28e314103e6167220cbc6f",
+      "binding_sha256": "2c129d813ffd424aa3d1f934b08a644e3c5047ce8c2542bb3b4dd2927783910e",
+      "export_chain": [
+        "kornia.augmentation.container.augment.AugmentationSequential"
+      ],
+      "reason": null
+    }
+  ]
+}

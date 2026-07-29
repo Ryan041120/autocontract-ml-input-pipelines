@@ -1,0 +1,36 @@
+{
+  "adapter": "imgaug-v5",
+  "rules": [
+    "Augmenter.augment_batch_ and the selected _augment_* override form the execution path",
+    "the Batch object is one whole-record input and output",
+    "random_state consumption denotes delegated replayable RNG state",
+    "_maybe_deterministic_ctx restores RNG state when deterministic mode is active",
+    "non-self augment_batch_ invocation denotes child-operator delegation",
+    "constructor-supplied self callables invoked during execution denote user delegation",
+    "constructor-supplied destination/path objects invoked during execution denote external effects",
+    "direct execution writes to other self state remain cache/control/unknown and fail closed"
+  ],
+  "active_mode": "imgaug_deterministic",
+  "effect_v5_mode_token": "framework_specific",
+  "calibration_symbols": [
+    "imgaug.augmenters.meta.Identity",
+    "imgaug.augmenters.flip.Fliplr",
+    "imgaug.augmenters.arithmetic.Add",
+    "imgaug.augmenters.blur.GaussianBlur",
+    "imgaug.augmenters.meta.Sequential",
+    "imgaug.augmenters.meta.Sometimes",
+    "imgaug.augmenters.meta.Lambda",
+    "imgaug.augmenters.debug.SaveDebugImageEveryNBatches"
+  ],
+  "formal_symbols": [
+    "imgaug.augmenters.arithmetic.Multiply",
+    "imgaug.augmenters.blur.AverageBlur",
+    "imgaug.augmenters.geometric.Affine",
+    "imgaug.augmenters.size.CropToFixedSize",
+    "imgaug.augmenters.contrast.LinearContrast",
+    "imgaug.augmenters.meta.SomeOf",
+    "imgaug.augmenters.meta.WithChannels",
+    "imgaug.augmenters.meta.AssertLambda"
+  ],
+  "sets_disjoint": true
+}

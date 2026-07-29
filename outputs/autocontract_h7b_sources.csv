@@ -1,0 +1,4 @@
+source_id,repo,release,commit_sha,path,bytes,sha256
+monai_compose_h7b,Project-MONAI/MONAI,1.6.0,eccefc57550b111ed781d82249dfe77872a0e918,monai/transforms/compose.py,40409,f7c34f7029db1df1e7a00d40f6636db73b16f77e4ea26df903944879ee4ad647
+mmdet_transforms_h7b,open-mmlab/mmdetection,v3.3.0,44ebd17b145c2372c4b700bfb9cb20dbd28ab64a,mmdet/datasets/transforms/transforms.py,148684,ee346a579cc839a45a9d3c54be19237a25342f4dae4a02bb315172b390c85b94
+dali_pipeline_h7b,NVIDIA/DALI,v1.53.0,55113c6cd54624aeebd7e3c0d93b4c4a68a34034,dali/python/nvidia/dali/pipeline.py,108064,bdf76a498861efe6f1e78c0b0c18d084d4e4449500fe6d0608af7ade7ad6c70f

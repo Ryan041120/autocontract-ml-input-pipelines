@@ -1,0 +1,63 @@
+dossier: "Semantics-Aware and Reconfiguration-Safe Optimization for ML Input Pipelines"
+generated: "2026-07-26"
+run_type: "manual adversarial gap re-test with full-text checks"
+downstream_consumer: research-design-helper
+recall:
+  tool: "manual web search; research-hub unavailable"
+  query_phrasings: 12
+  unique_papers: 48
+  tool_confidence: medium
+  dossier_confidence: medium
+  screen:
+    gate: "manual title/abstract/full-text relevance screening"
+    retrieved: 48
+    kept: 16
+    screened_out: 32
+    tier: cold-start
+    note: "retrieved is a conservative lower bound because the search UI did not expose a stable batch export"
+  note: "No exhaustive database export or complete cited-by graph was available."
+pipeline:
+  - "manual adversarial search and relevance screening"
+  - "literature matrix from 16 on-topic direct/analogue works"
+  - "BibTeX from resolvable DOI/arXiv identifiers"
+  - "three-gate gap assessment"
+gaps:
+  - id: G1
+    name: "Automatic semantic-contract inference for ML input transformations"
+    statement: "Infer dependency, randomness, statefulness, and permissible-reordering constraints for ML input transformations without requiring complete manual annotations."
+    type: A
+    open: partially-occupied
+    open_confidence: medium
+    dead_end_status: partially-attempted
+    dead_end_evidence: >-
+      cedar (Zhao et al., 2025, DOI 10.14778/3705829.3705861) requires users to specify dependencies and randomness and explicitly leaves their inference to future work; Hueske et al. (2012, DOI 10.14778/2350229.2350244) already demonstrates static inference for general dataflow UDFs.
+    contribution_type: borderline
+    borderline_reason: B1
+    feasibility: feasible-with-effort
+    verdict: conditional-go
+    verdict_reason: >-
+      The ML-specific automatic inference gap appears partly open, but a weaker general-UDF solution and user-annotated ML solutions already exist.
+    linked_claim: null
+  - id: G2
+    name: "Transactional and benefit-gated input-plan reconfiguration"
+    statement: "Switch whole ML input plans only when estimated net benefit exceeds transition cost, while preserving sample, RNG, in-flight, and cache state."
+    type: A
+    open: partially-occupied
+    open_confidence: medium
+    dead_end_status: partially-attempted
+    dead_end_evidence: >-
+      DART and MegaScale-Data already perform online adaptation; cedar already supports UUID deduplication, precise checkpoints, and runtime Pipe mutation; the Streaming Batch Model supports elastic lineage-based recovery; BatchWeave provides transactional global batches and end-to-end exactly-once recovery.
+    contribution_type: borderline
+    borderline_reason: B1
+    feasibility: feasible-with-effort
+    verdict: no-go-as-standalone
+    verdict_reason: >-
+      Transactional or exactly-once reconfiguration is too occupied to stand alone. Retain it only as a second-stage mechanism if the system re-optimizes the entire logical plan under an automatically inferred ML-specific semantic contract.
+    linked_claim: null
+open_questions:
+  - id: Q1
+    text: "Has any cedar/Pecan follow-up automatically inferred randomness and dependency constraints for Python or ML transformations?"
+  - id: Q2
+    text: "What semantic contract is defensible: bitwise equivalence, distributional equivalence, or preservation of the training visitation process?"
+  - id: Q3
+    text: "Can a single-node prototype demonstrate whole-plan switching without relying on Windows-specific DataLoader restart costs?"

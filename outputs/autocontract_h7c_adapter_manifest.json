@@ -1,0 +1,19 @@
+{
+  "framework": "torchio",
+  "release": "v1.0.2",
+  "commit_sha": "3ee81f2991300c3c982aa31575d40d3838593063",
+  "rules": [
+    "Transform.__call__ dispatches to subclass apply_transform",
+    "RandomTransform and Transform probability gates consume Torch RNG",
+    "Subject is one logical sample and Transform preserves subject lineage",
+    "SpatialTransform targets a coupled subject.spatial_images group",
+    "IntensityTransform targets a subject.intensity_images group",
+    "child containers, user callables, and external-framework wrappers remain Unknown"
+  ],
+  "calibration_units": [
+    "Compose",
+    "OneOf",
+    "RandomFlip",
+    "RandomNoise"
+  ]
+}

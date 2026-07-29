@@ -1,0 +1,19 @@
+{
+  "protocol": "AutoContract H7C TorchIO adapter freeze before holdout blobs",
+  "adapter_setup_started_at": "2026-07-28T22:44:28.6357746+08:00",
+  "adapter_frozen_at": "2026-07-28T22:47:26.8738415+08:00",
+  "adapter_setup_seconds": 178.2380669,
+  "adapter_setup_minutes": 2.9706344483,
+  "holdout_blobs_opened": false,
+  "analyzer_sha256": "45513c13259d597c2ac513832ce7caf113b18118838cfb9fed7253d8357059c5",
+  "adapter_manifest_sha256": "a3de1646b48b3f348ff7aa1f1585012f142d5fa34d7855d414dbea637265c05f",
+  "protocol_sha256": "5c28d0025ee464ad2558b127893773ce3cb5458e4e034210ebe3f072b5690f26",
+  "calibration_result": {
+    "units": 4,
+    "generic_safe_recall": 0.0,
+    "adapter_decisions_correct": 4,
+    "adapter_rules": 6
+  },
+  "cost_validity": "Single AI-researcher wall-clock engineering proxy. Tool latency, prior systems knowledge, and lack of independent raters prevent interpreting it as human annotation time.",
+  "holdout_rule": "Open and oracle-label each registered holdout file after this freeze; do not modify the analyzer or adapter manifest based on holdout results."
+}

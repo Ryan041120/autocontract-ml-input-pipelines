@@ -1,0 +1,7 @@
+profile,receipt_level,registration_ms
+B1x3x32x32,minimal,8.3367
+B1x3x32x32,audit,8.2259
+B4x3x64x64,minimal,10.1944
+B4x3x64x64,audit,11.6131
+B8x3x128x128,minimal,8.1809
+B8x3x128x128,audit,6.8165

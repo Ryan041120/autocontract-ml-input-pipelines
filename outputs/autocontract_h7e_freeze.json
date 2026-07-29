@@ -1,0 +1,15 @@
+{
+  "protocol": "AutoContract H7E audiomentations EffectV4 freeze",
+  "frozen_at": "2026-07-28T23:51:26.0951191+08:00",
+  "operator_bodies_exposed_to_adapter_author": false,
+  "repository_commit": "19609e6d6624ef9e4933412ccda78fb6221f77e1",
+  "effect_v4_sha256": "0cb61b213e9d567e57d975e78a02e9dce6e59b4e1acad663cb90e90cbdd0e1ba",
+  "symbol_sealer_sha256": "221d874ef10387157484ad2f480a79e72859d7d2725cab91887940ffe1333f2a",
+  "adapter_sha256": "051ad6dbdaed41e034e0115b9494bdd7ee5c996b39d13bc8ec40e975e3569358",
+  "adapter_manifest_sha256": "a9b4aa01b66b5cfcaf87cd96b48598d21ec1ee183a23a31f7afd87bc77944a43",
+  "protocol_sha256": "00783039c19392bc94fb27268a977edcb7b3b857570ce7bc7534b3785cbbb3d9",
+  "symbol_manifest_sha256": "e67c9283314143d11eeda22efbea4c6e97a89d9dfb752489eeb6278b6869f911",
+  "portable_symbol_manifest_digest": "dddf71eb188383b517cacd02b071b9f8f7f24226f83085f3a6c2a1edaac19c46",
+  "sealed_units": 7,
+  "rule": "No EffectV4, symbol sealer, audiomentations adapter, manifest, protocol, or sample edits after this freeze. One formal evaluator run only."
+}

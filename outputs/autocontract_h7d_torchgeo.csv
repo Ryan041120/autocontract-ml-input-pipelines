@@ -1,0 +1,6 @@
+unit,expected_decision,actual_decision,decision_correct,expected_reason,reason_match,status,record_scope,delegation_kind,validator_reasons,evidence
+RandomGrayscale,admit,admit,True,none,True,resolved,fixed_fields,none,none,entrypoint:Kornia.forward->hooks;record_scope:fixed_fields:tensor;cardinality:one->one
+AppendNormalizedDifferenceIndex,admit,admit,True,none,True,resolved,fixed_fields,none,none,entrypoint:Kornia.forward->hooks;record_scope:fixed_fields:tensor;cardinality:one->one
+AppendTriBandNormalizedDifferenceIndex,admit,admit,True,none,True,resolved,fixed_fields,none,none,entrypoint:Kornia.forward->hooks;record_scope:fixed_fields:tensor;cardinality:one->one
+Rearrange,admit,reject,False,none,False,unknown,unknown,none,sealed_source_unit_missing:Rearrange,none
+SatSlideMix,reject,reject,True,unsupported_cardinality,True,resolved,fixed_fields,none,unsupported_cardinality:one->many,entrypoint:Kornia.forward->hooks;record_scope:fixed_fields:tensor;cardinality:one->many

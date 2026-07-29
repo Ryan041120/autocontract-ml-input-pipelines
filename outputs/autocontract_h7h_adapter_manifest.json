@@ -1,0 +1,28 @@
+{
+  "adapter": "kornia-v7",
+  "rules": [
+    "nn.Module dispatch enters the most-derived forward method",
+    "params=None selects sample_apply and reaches forward_parameters",
+    "a supplied compatible params record selects replay_apply and prunes forward_parameters",
+    "self/super calls are closed through Kornia augmentation base classes",
+    "forward_parameters/generate_parameters on the active path denote delegated sampling RNG",
+    "ImageSequential/AugmentationSequential delegate to child modules and fail closed without child contracts",
+    "self._params is a replay artifact; writing the supplied record is not fresh sampling",
+    "unknown reachable dispatch and dynamic callables remain fail closed"
+  ],
+  "calibration_symbols": [
+    "kornia.augmentation._2d.geometric.affine.RandomAffine",
+    "kornia.augmentation._2d.geometric.horizontal_flip.RandomHorizontalFlip",
+    "kornia.augmentation._2d.intensity.color_jiggle.ColorJiggle",
+    "kornia.augmentation._2d.intensity.gaussian_blur.RandomGaussianBlur",
+    "kornia.augmentation.container.image.ImageSequential"
+  ],
+  "formal_symbols": [
+    "kornia.augmentation._2d.geometric.vertical_flip.RandomVerticalFlip",
+    "kornia.augmentation._2d.intensity.motion_blur.RandomMotionBlur",
+    "kornia.augmentation._2d.intensity.posterize.RandomPosterize",
+    "kornia.augmentation._2d.intensity.solarize.RandomSolarize",
+    "kornia.augmentation.container.augment.AugmentationSequential"
+  ],
+  "sets_disjoint": true
+}

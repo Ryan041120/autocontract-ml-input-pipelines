@@ -1,0 +1,45 @@
+{
+  "protocol": "AutoContract H7B pre-source release-version holdout freeze",
+  "date": "2026-07-28",
+  "source_files_opened": false,
+  "analyzer_sha256": "29084054dd86c215de7e8767ff23dcf23f32ae75604dbf1aa64084f9893fdcb5",
+  "adapter_manifest_sha256": "2b00443dfc9454417558d1d58c2021e90706df9aa3f96e680413d25f2d78418a",
+  "oracle_sha256": "7a0440b205ea4d167ee42ab07fd7a12176e734d82cbe5cf69f1e94e7e9260a32",
+  "thresholds": {
+    "known_unsafe_false_accepts": 0,
+    "supported_safe_recall": 0.70,
+    "unsupported_reason_coverage": 1.0,
+    "reason_category_accuracy": 0.90
+  },
+  "sealed_sources": [
+    {
+      "source_id": "monai_compose_h7b",
+      "repo": "Project-MONAI/MONAI",
+      "release": "1.6.0",
+      "commit_sha": "eccefc57550b111ed781d82249dfe77872a0e918",
+      "path": "monai/transforms/compose.py"
+    },
+    {
+      "source_id": "mmdet_transforms_h7b",
+      "repo": "open-mmlab/mmdetection",
+      "release": "v3.3.0",
+      "commit_sha": "44ebd17b145c2372c4b700bfb9cb20dbd28ab64a",
+      "path": "mmdet/datasets/transforms/transforms.py"
+    },
+    {
+      "source_id": "dali_pipeline_h7b",
+      "repo": "NVIDIA/DALI",
+      "release": "v1.53.0",
+      "commit_sha": "55113c6cd54624aeebd7e3c0d93b4c4a68a34034",
+      "path": "dali/python/nvidia/dali/pipeline.py"
+    }
+  ],
+  "sample": {
+    "units": 14,
+    "supported_units": 12,
+    "supported_safe_units": 3,
+    "unsupported_units": 2,
+    "new_operator_units_relative_to_h7a": ["RandomShift", "CachedMixUp"]
+  },
+  "interpretation_rule": "No analyzer or adapter edits are allowed after source fetch. Any failure remains a holdout failure; fixes require a new calibration corpus and a separately sealed H7C."
+}

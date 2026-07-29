@@ -1,0 +1,87 @@
+{
+  "protocol": "AutoContract H7E zero-operator-body audiomentations EffectV4 holdout",
+  "registered_at": "2026-07-28T23:47:58.1111928+08:00",
+  "amended_at": "2026-07-28T23:51:26.0951191+08:00",
+  "amendment": "Before adapter freeze or operator-body inspection, replace resolved coverage with classified coverage because correct fail-closed child/user-callable outcomes are intentionally not fully resolved.",
+  "operator_bodies_exposed_to_adapter_author": false,
+  "repository": {
+    "repo": "iver56/audiomentations",
+    "release": "v0.43.1",
+    "commit_sha": "19609e6d6624ef9e4933412ccda78fb6221f77e1"
+  },
+  "selection_rationale": {
+    "new_domain": "CPU NumPy audio waveform augmentation",
+    "prior_corpus_overlap": "none",
+    "public_api": "documented top-level transforms and composition classes",
+    "stressors": [
+      "random parameters are retained and can be frozen for replay",
+      "composition delegates to child transforms",
+      "Lambda invokes an arbitrary user callable",
+      "AddBackgroundNoise consumes file-backed external operands and an optional callable"
+    ]
+  },
+  "evaluation_context": {
+    "parameter_mode": "default/unfrozen",
+    "decision_meaning": "admit means the operator effect is complete enough to enter downstream rewrite checking; it does not mean arbitrary operators commute",
+    "fail_closed": true
+  },
+  "framework_facts_from_public_docs": [
+    "waveform transforms accept a NumPy samples array and sample_rate and return a waveform array",
+    "ordinary transforms expose probability p and retain their chosen parameters",
+    "freeze_parameters reuses retained parameters on later inputs until unfreeze_parameters",
+    "Compose executes a sequence of child transforms and may shuffle it",
+    "OneOf randomly chooses a child transform",
+    "Lambda executes a user-provided callable",
+    "AddBackgroundNoise reads user-selected audio files and may invoke noise_transform"
+  ],
+  "sealed_units": [
+    {
+      "public_symbol": "audiomentations.Normalize",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "audiomentations.PolarityInversion",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "audiomentations.AddGaussianNoise",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "audiomentations.Clip",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "audiomentations.Lambda",
+      "expected": "reject",
+      "coarse_reason": "unresolved_user_callable"
+    },
+    {
+      "public_symbol": "audiomentations.Compose",
+      "expected": "reject",
+      "coarse_reason": "unresolved_child_effect"
+    },
+    {
+      "public_symbol": "audiomentations.AddBackgroundNoise",
+      "expected": "reject",
+      "coarse_reason": "execution_external_effect"
+    }
+  ],
+  "thresholds": {
+    "binding_integrity": 1.0,
+    "known_unsafe_false_accepts": 0,
+    "supported_safe_recall": 0.75,
+    "coarse_reason_accuracy": 0.9,
+    "classified_coverage": 0.85
+  },
+  "non_gating_diagnostics": [
+    "fine_grained_reason_subtype",
+    "parameter_replay_state_role",
+    "output_extent_or_layout_effect"
+  ],
+  "interpretation_rule": "Binding integrity is checked before semantic evaluation. Classified coverage counts either a complete admitted effect or a specific fail-closed safety category; generic unknown remains unclassified. The EffectV4 analyzer, audiomentations adapter, protocol, symbol manifest, and thresholds must be frozen before operator bodies are exposed to the adapter author. No repair or rerun on the same holdout is permitted."
+}

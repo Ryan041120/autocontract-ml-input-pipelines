@@ -1,0 +1,2 @@
+pool_size,workers,calls,elapsed_ms,calls_per_second,registration_ms
+4,4,100,1934.1449,51.70243449702243,21.9888

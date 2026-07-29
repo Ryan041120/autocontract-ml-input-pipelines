@@ -1,0 +1,19 @@
+{
+  "protocol": "H7C per-operator source-review timing after adapter freeze",
+  "review_type": "single AI-researcher source-confirmation proxy",
+  "units": [
+    {"name":"RandomAffine","opened_at":"2026-07-28T22:48:39.4306361+08:00","confirmed_at":"2026-07-28T22:48:51.0562686+08:00","seconds":11.6256325,"confirmed_decision":"admit","confirmed_reason":"none"},
+    {"name":"RandomBlur","opened_at":"2026-07-28T22:49:04.7768247+08:00","confirmed_at":"2026-07-28T22:49:26.1905754+08:00","seconds":21.4137507,"confirmed_decision":"admit","confirmed_reason":"none"},
+    {"name":"RandomGamma","opened_at":"2026-07-28T22:49:35.7099867+08:00","confirmed_at":"2026-07-28T22:49:46.9638468+08:00","seconds":11.2538601,"confirmed_decision":"admit","confirmed_reason":"none"},
+    {"name":"RandomMotion","opened_at":"2026-07-28T22:49:57.6589501+08:00","confirmed_at":"2026-07-28T22:50:08.6597320+08:00","seconds":11.0007819,"confirmed_decision":"admit","confirmed_reason":"none"},
+    {"name":"RandomSwap","opened_at":"2026-07-28T22:50:15.0463819+08:00","confirmed_at":"2026-07-28T22:50:28.5021720+08:00","seconds":13.4557901,"confirmed_decision":"admit","confirmed_reason":"none"},
+    {"name":"Lambda","opened_at":"2026-07-28T22:50:40.8123121+08:00","confirmed_at":"2026-07-28T22:50:54.7325039+08:00","seconds":13.9201918,"confirmed_decision":"reject","confirmed_reason":"unresolved_user_callable"},
+    {"name":"MonaiAdapter","opened_at":"2026-07-28T22:51:03.8995058+08:00","confirmed_at":"2026-07-28T22:51:14.4845025+08:00","seconds":10.5849967,"confirmed_decision":"reject","confirmed_reason":"external_framework_delegation"}
+  ],
+  "aggregate": {
+    "total_seconds": 93.2550038,
+    "mean_seconds": 13.3221434,
+    "median_seconds": 11.6256325
+  },
+  "validity_note": "Labels were preregistered from public framework documentation and then source-confirmed. Times measure confirmation, not full independent EffectV3 annotation, so they are an optimistic manual-cost denominator."
+}

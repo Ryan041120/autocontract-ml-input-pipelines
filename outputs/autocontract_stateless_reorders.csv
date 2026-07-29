@@ -1,0 +1,4 @@
+pair,trials,allclose_pass_rate,maximum_absolute_error
+fixed_gaussian_blur<->random_hflip,96,1.0,2.980232238769531e-07
+random_hflip<->random_vflip,96,1.0,0.0
+color_jitter<->random_hflip,96,1.0,7.152557373046875e-07

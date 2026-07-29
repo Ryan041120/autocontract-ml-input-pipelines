@@ -1,0 +1,101 @@
+{
+  "protocol": "H7H-kornia-EffectV7-mode-phase-one-shot-v1",
+  "date": "2026-07-29",
+  "research_question": "Can EffectV7 distinguish Kornia parameter sampling from parameter replay by pruning the params-is-None branch, while failing closed on unresolved child delegation?",
+  "repository": {
+    "url": "https://github.com/kornia/kornia",
+    "tag": "v0.8.3",
+    "checkout_commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930"
+  },
+  "active_contexts": {
+    "kornia.params_provided": "forward receives a complete, compatible parameter record produced for the same operator and input schema",
+    "kornia.params_absent": "forward receives params=None and may sample a fresh parameter record",
+    "record_scope": "one tensor record with unchanged shape/schema assumptions; worker-count and lifetime changes excluded"
+  },
+  "contamination_control": {
+    "calibration_symbols_are_disjoint": true,
+    "common_base_files_may_be_used_for_adapter_calibration": true,
+    "formal_symbol_locations_may_be_resolved_without_method_body_effect_analysis": true,
+    "formal_method_body_effect_analysis_runs_once_after_freeze": true
+  },
+  "sealed_units": [
+    {
+      "public_symbol": "kornia.augmentation._2d.geometric.vertical_flip.RandomVerticalFlip",
+      "configuration": "kornia.params_provided",
+      "phase": "replay_apply",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.geometric.vertical_flip.RandomVerticalFlip",
+      "configuration": "kornia.params_absent",
+      "phase": "sample_apply",
+      "expected": "reject",
+      "coarse_reason": "sampling_rng"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.posterize.RandomPosterize",
+      "configuration": "kornia.params_provided",
+      "phase": "replay_apply",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.posterize.RandomPosterize",
+      "configuration": "kornia.params_absent",
+      "phase": "sample_apply",
+      "expected": "reject",
+      "coarse_reason": "sampling_rng"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.solarize.RandomSolarize",
+      "configuration": "kornia.params_provided",
+      "phase": "replay_apply",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.solarize.RandomSolarize",
+      "configuration": "kornia.params_absent",
+      "phase": "sample_apply",
+      "expected": "reject",
+      "coarse_reason": "sampling_rng"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.motion_blur.RandomMotionBlur",
+      "configuration": "kornia.params_provided",
+      "phase": "replay_apply",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.motion_blur.RandomMotionBlur",
+      "configuration": "kornia.params_absent",
+      "phase": "sample_apply",
+      "expected": "reject",
+      "coarse_reason": "sampling_rng"
+    },
+    {
+      "public_symbol": "kornia.augmentation.container.augment.AugmentationSequential",
+      "configuration": "kornia.params_provided",
+      "phase": "replay_apply",
+      "expected": "reject",
+      "coarse_reason": "child"
+    }
+  ],
+  "thresholds": {
+    "binding_integrity": 1.0,
+    "known_unsafe_false_accepts": 0,
+    "supported_safe_recall": 0.75,
+    "coarse_reason_accuracy": 0.8888888888888888,
+    "classified_coverage": 1.0,
+    "phase_contrast_accuracy": 1.0
+  },
+  "primary_outcome": "H7H blind gate",
+  "secondary_outcomes": [
+    "params-is-None branch pruning",
+    "helper call-graph closure",
+    "sample/replay phase contrast",
+    "child delegation coverage"
+  ]
+}

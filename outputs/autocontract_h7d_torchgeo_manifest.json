@@ -1,0 +1,13 @@
+{
+  "framework": "TorchGeo",
+  "release": "v0.9.0",
+  "commit_sha": "120b8b1d477e8911ed052ec84a197dd545254e63",
+  "source_basis": "public API and transform documentation only; repository blobs unopened",
+  "rules": [
+    "Kornia augmentation bases provide forward-to-hook execution semantics",
+    "apply_transform/generate_parameters/compute_transformation form the execution hooks",
+    "built-in TorchGeo transforms operate on a fixed Tensor record scope",
+    "Kornia random parameter generation is a resolved Torch RNG delegation",
+    "repeat_interleave or gamma-expanded batch shapes denote one-to-many output cardinality"
+  ]
+}

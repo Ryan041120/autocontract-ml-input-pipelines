@@ -1,0 +1,4 @@
+public_symbol,invoked_callable_attrs,origins,user_callable_after_provenance,counterfactual_decision
+imgaug.augmenters.contrast.LinearContrast,func,module_symbol,False,admit
+imgaug.augmenters.meta.Lambda,func_bounding_boxes;func_heatmaps;func_images;func_keypoints;func_line_strings;func_polygons;func_segmentation_maps,user_input,True,reject
+imgaug.augmenters.meta.AssertLambda,func_bounding_boxes;func_heatmaps;func_images;func_keypoints;func_line_strings;func_polygons;func_segmentation_maps,user_derived,True,reject

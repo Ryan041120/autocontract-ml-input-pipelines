@@ -1,0 +1,126 @@
+{
+  "repository_commit": "4d2cf04b6635663275a747333754410ef255e54c",
+  "package": "albumentations",
+  "bindings": [
+    {
+      "public_symbol": "albumentations.augmentations.geometric.flip.VerticalFlip",
+      "status": "resolved",
+      "public_module": "albumentations.augmentations.geometric.flip",
+      "defining_module": "albumentations.augmentations.geometric.flip",
+      "defining_name": "VerticalFlip",
+      "source_path": "albumentations/augmentations/geometric/flip.py",
+      "source_line": 52,
+      "source_sha256": "280bee6ae7392865a70bcda1548fb9a6cdd23a17896153a82df2e11ca4354197",
+      "binding_sha256": "350d52023a079ae70af403f06d66fcf300ab4090d74e32daf3f5cfacdf2b8c66",
+      "export_chain": [
+        "albumentations.augmentations.geometric.flip.VerticalFlip"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "albumentations.augmentations.pixel.transforms.RandomGamma",
+      "status": "resolved",
+      "public_module": "albumentations.augmentations.pixel.transforms",
+      "defining_module": "albumentations.augmentations.pixel.transforms",
+      "defining_name": "RandomGamma",
+      "source_path": "albumentations/augmentations/pixel/transforms.py",
+      "source_line": 3095,
+      "source_sha256": "94d5c9f23d553297e2f7339e011b2f2c73d78e6feaea2064e0d0ce1bc1fa5c43",
+      "binding_sha256": "234570f76e888ef25cdd3f9720349fb350e0f794dd90ae0e0c19dffebcc5c64d",
+      "export_chain": [
+        "albumentations.augmentations.pixel.transforms.RandomGamma"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "albumentations.augmentations.blur.transforms.GaussianBlur",
+      "status": "resolved",
+      "public_module": "albumentations.augmentations.blur.transforms",
+      "defining_module": "albumentations.augmentations.blur.transforms",
+      "defining_name": "GaussianBlur",
+      "source_path": "albumentations/augmentations/blur/transforms.py",
+      "source_line": 616,
+      "source_sha256": "0cb67d4c0e8b35516e1e1df90681eda01c70f7a122587974b4b3823966f1db84",
+      "binding_sha256": "bcd4c4c32a72eb8e0c6fa4da58deebd37d750538b588e0228f463f3cf2d9727d",
+      "export_chain": [
+        "albumentations.augmentations.blur.transforms.GaussianBlur"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "albumentations.augmentations.geometric.transforms.Affine",
+      "status": "resolved",
+      "public_module": "albumentations.augmentations.geometric.transforms",
+      "defining_module": "albumentations.augmentations.geometric.transforms",
+      "defining_name": "Affine",
+      "source_path": "albumentations/augmentations/geometric/transforms.py",
+      "source_line": 445,
+      "source_sha256": "ef1825f3a040da638fe87b2eb250f8600a04a8554522d7bae88ba036b08abc6d",
+      "binding_sha256": "9d1f205390f63eef5efbe76c981e02c68768ca7eb87565c74d8fd7d573cf6f60",
+      "export_chain": [
+        "albumentations.augmentations.geometric.transforms.Affine"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "albumentations.augmentations.crops.transforms.CenterCrop",
+      "status": "resolved",
+      "public_module": "albumentations.augmentations.crops.transforms",
+      "defining_module": "albumentations.augmentations.crops.transforms",
+      "defining_name": "CenterCrop",
+      "source_path": "albumentations/augmentations/crops/transforms.py",
+      "source_line": 862,
+      "source_sha256": "fd578d7dd9b65a9e8b5fee22980187f43ffd93f6971dc16ba087e21708333561",
+      "binding_sha256": "15f694d7318d8789c6144931485d32c0565d822f4230dc08548bf9c9d08c0cf4",
+      "export_chain": [
+        "albumentations.augmentations.crops.transforms.CenterCrop"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "albumentations.core.composition.OneOf",
+      "status": "resolved",
+      "public_module": "albumentations.core.composition",
+      "defining_module": "albumentations.core.composition",
+      "defining_name": "OneOf",
+      "source_path": "albumentations/core/composition.py",
+      "source_line": 973,
+      "source_sha256": "712db25e2b3d3fab4f774fc989f45b5de27f1f2b02a4291cae2f6e4f005f7853",
+      "binding_sha256": "8c4b6376a94a8876e7c8bf1e35e596a56646cdfbfa17af475ca5ec235ab33ace",
+      "export_chain": [
+        "albumentations.core.composition.OneOf"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "albumentations.core.composition.Sequential",
+      "status": "resolved",
+      "public_module": "albumentations.core.composition",
+      "defining_module": "albumentations.core.composition",
+      "defining_name": "Sequential",
+      "source_path": "albumentations/core/composition.py",
+      "source_line": 1424,
+      "source_sha256": "712db25e2b3d3fab4f774fc989f45b5de27f1f2b02a4291cae2f6e4f005f7853",
+      "binding_sha256": "f1207aae3dfab5d12d2d8a8f00e3c2443de6aacd85b449eaf2bfab320f6d1464",
+      "export_chain": [
+        "albumentations.core.composition.Sequential"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching",
+      "status": "resolved",
+      "public_module": "albumentations.augmentations.mixing.domain_adaptation",
+      "defining_module": "albumentations.augmentations.mixing.domain_adaptation",
+      "defining_name": "HistogramMatching",
+      "source_path": "albumentations/augmentations/mixing/domain_adaptation.py",
+      "source_line": 255,
+      "source_sha256": "a239f578602a61308a876bae6ad21d4c0127a9601871549c95cc741e62a6645e",
+      "binding_sha256": "2171042d6f221e88693757a8642937fe0723bda1d155ad2dfc3e380bf58dddab",
+      "export_chain": [
+        "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching"
+      ],
+      "reason": null
+    }
+  ]
+}

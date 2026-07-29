@@ -1,0 +1,12 @@
+unit,expected_decision,actual_decision,decision_correct,expected_reason,reason_match,status,record_scope,delegation_kind,validator_reasons
+Compose,reject,reject,True,unresolved_child_effect,True,unknown,typed_subrecord,child_operator,unresolved_child_effect
+OneOf,reject,reject,True,unresolved_child_effect,True,unknown,typed_subrecord,child_operator,unresolved_child_effect
+RandomFlip,admit,admit,True,none,True,resolved,typed_subrecord,none,none
+RandomNoise,admit,admit,True,none,True,resolved,typed_subrecord,none,none
+RandomAffine,admit,admit,True,none,True,resolved,typed_subrecord,none,none
+RandomBlur,admit,admit,True,none,True,resolved,typed_subrecord,none,none
+RandomGamma,admit,admit,True,none,True,resolved,typed_subrecord,none,none
+RandomMotion,admit,admit,True,none,True,resolved,typed_subrecord,none,none
+RandomSwap,admit,admit,True,none,True,resolved,typed_subrecord,none,none
+Lambda,reject,reject,True,unresolved_user_callable,True,unknown,typed_subrecord,user_callable,unresolved_user_callable
+MonaiAdapter,reject,reject,True,external_framework_delegation,True,unknown,typed_subrecord,framework_bridge,external_framework_delegation

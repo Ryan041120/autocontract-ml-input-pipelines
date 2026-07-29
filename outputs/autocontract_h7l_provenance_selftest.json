@@ -1,0 +1,14 @@
+{
+  "tests": {
+    "signed_roundtrip": true,
+    "duplicate_rejected": true,
+    "claim_mismatch_rejected_before_consume": true,
+    "checksum_recompute_cannot_forge_signature": true,
+    "revoked_rejected": true,
+    "wrong_key_rejected": true,
+    "four_way_race_exactly_one_success": true
+  },
+  "passed": 7,
+  "total": 7,
+  "all_passed": true
+}

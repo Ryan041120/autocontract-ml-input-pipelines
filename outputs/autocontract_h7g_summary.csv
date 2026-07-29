@@ -1,0 +1,2 @@
+protocol,units,binding_integrity,decisions_correct,known_unsafe_false_accepts,supported_safe_recall,coarse_reason_accuracy,classified_coverage,h7g_blind_gate_pass,adapter_sha256,protocol_sha256
+H7G-albumentations-EffectV6-one-shot-v1,8,1.0,7,1,1.0,0.875,1.0,False,5a39faeb05c070be1bd3af487ab1013b6c6a08f77abc5bd7e4e6f0228ee21276,554d9ee11a6a97373bbfd8f9a613e46a0cec6f10a90bdd91ea466921b7929132

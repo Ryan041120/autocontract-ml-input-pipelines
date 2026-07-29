@@ -1,0 +1,2 @@
+units,effect_fields,effect_cells,effect_cells_correct,calibration_accuracy,critical_false_negatives,freeze_ready,analyzer_sha256
+20,15,300,300,1.0,0,True,f61827919715ff11119b352dc473c4481c41b44ac8b0880f3b28c7a719535061

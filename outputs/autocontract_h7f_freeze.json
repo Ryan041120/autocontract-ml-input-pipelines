@@ -1,0 +1,10 @@
+{
+  "repository_commit": "14b85e2209de0107c250e4d9dd6507dec1eae826",
+  "effect_v5_sha256": "bf241f852a4a04490b521b4e1d2b512e50c003e7009216cb849c6c4946ddac1f",
+  "symbol_sealer_sha256": "221d874ef10387157484ad2f480a79e72859d7d2725cab91887940ffe1333f2a",
+  "adapter_sha256": "938fbe85fbf1f11ef0a1dde2f6951646689c932be71e6f1a47ed2f5b6ed79646",
+  "adapter_manifest_sha256": "1d4f065be126a8b3b85aed85de5b90b02bb11e648e1fde99102c10a16397b37e",
+  "protocol_sha256": "92caafdccc291100d51d8bfbcdfb6abbae7990f9500825317d09e41930cb63db",
+  "symbol_manifest_sha256": "e3c8ae5cf9da6af8eff2ebf74cf1b9a20689f90e8926affd9bc284b633da0c3c",
+  "calibration_summary_sha256": "2b02f4d054c520c94a9cb2f8b823bc23b4944f3dae9155ea05346a092269d6cc"
+}

@@ -1,0 +1,7 @@
+repo,stars,default_branch,pushed_at,commit_sha,role
+pytorch/vision,17844,main,2026-07-28T08:18:04Z,10f68dbd78b9aa5cab9328f3b2e99cfb0b608122,in_domain_debug_and_holdout
+huggingface/pytorch-image-models,37023,main,2026-07-27T21:10:58Z,e98c05a5a15e81188ec62dd5380b8f5c3251075a,complex_classification_holdout
+ultralytics/ultralytics,59970,main,2026-07-28T09:46:01Z,c3576e753264563eddeb1a3df0ce9565c3eb6b4c,multisample_multitarget_holdout
+facebookresearch/detectron2,34634,main,2026-07-24T22:21:57Z,b4a4a3bd136852dae5fb1de37978dee412653e31,multitarget_io_holdout
+albumentations-team/albumentations,15321,main,2025-06-25T23:21:43Z,66212d77a44927a29d6a0e81621d3c27afbd929c,library_level_second_holdout
+kornia/kornia,11289,main,2026-07-27T19:58:06Z,90242aadfedcd66e8afc90a31142c730d776ba24,library_level_second_holdout

@@ -1,0 +1,3 @@
+scenario,pre_validation,post_mutation_validation,output_matches_recorded,interpretation
+validate_then_mutate_then_apply_shared_record,admit,reject,False,TOCTOU counterexample: prior admit is stale at use
+validate_snapshot_then_mutate_original_then_apply_snapshot,admit,not_needed_for_snapshot,True,immutable snapshot preserves validated bytes

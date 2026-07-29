@@ -1,0 +1,39 @@
+{
+  "schema": {
+    "record_scope": [
+      "whole_record",
+      "typed_subrecord",
+      "fixed_fields",
+      "unknown"
+    ],
+    "delegation_kind": [
+      "none",
+      "child_operator",
+      "user_callable",
+      "framework_bridge",
+      "backend_graph"
+    ]
+  },
+  "rules": [
+    "whole-record and typed-subrecord scopes are closed rewrite domains",
+    "dynamic fields without a framework record summary remain unknown scope",
+    "iteration over stored transforms denotes child-operator delegation",
+    "stored arbitrary callable invocation denotes user-callable delegation",
+    "framework loader plus wrapped transform invocation denotes framework bridge",
+    "backend graph construction denotes backend-graph delegation"
+  ],
+  "calibration_framework": "TorchIO",
+  "calibration_units": [
+    "Compose",
+    "OneOf",
+    "RandomFlip",
+    "RandomNoise",
+    "RandomAffine",
+    "RandomBlur",
+    "RandomGamma",
+    "RandomMotion",
+    "RandomSwap",
+    "Lambda",
+    "MonaiAdapter"
+  ]
+}

@@ -1,0 +1,4 @@
+operation,iterations,median_ms,mean_ms
+sample_apply,20,8.888649999999998,8.77428
+replay_apply,20,8.0028,7.907115
+certificate_validate,20,0.5680000000000001,0.629275

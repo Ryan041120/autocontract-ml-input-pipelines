@@ -1,0 +1,29 @@
+{
+  "schema": {
+    "key": [
+      "configuration",
+      "phase",
+      "reachable_path"
+    ],
+    "phases": [
+      "construction",
+      "sample_apply",
+      "replay_apply"
+    ]
+  },
+  "rules": [
+    "effects are attached to (configuration, phase, reachable path), not to a class globally",
+    "self and super helper calls are closed transitively from the framework entrypoint",
+    "known mode predicates and params-is-None predicates prune unreachable branches",
+    "sampling/RNG, callable, state, and delegation effects are collected only from reachable nodes",
+    "provided compatible parameter records discharge sampling but not unresolved child effects",
+    "unknown conditions and dynamic dispatch are over-approximated and fail closed when safety-relevant",
+    "the oracle labels operations as (public symbol, configuration, phase)"
+  ],
+  "calibration_corpora": [
+    "TorchIO",
+    "audiomentations",
+    "imgaug",
+    "completed H7G posthoc contrast"
+  ]
+}

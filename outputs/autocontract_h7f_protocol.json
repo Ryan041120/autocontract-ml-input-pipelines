@@ -1,0 +1,77 @@
+{
+  "protocol": "H7F-imgaug-EffectV5-one-shot-v1",
+  "date": "2026-07-29",
+  "research_question": "Can EffectV5 preserve one-sample semantics for independently implemented imgaug operators when replayable RNG state is protected by deterministic mode, while failing closed on child and user-callable delegation?",
+  "repository": {
+    "url": "https://github.com/aleju/imgaug",
+    "tag": "0.4.0",
+    "annotated_tag_object": "279d48a440f7de03f6a58c14ab4102d2996648ae",
+    "checkout_commit": "14b85e2209de0107c250e4d9dd6507dec1eae826"
+  },
+  "active_context": {
+    "framework_mode": "imgaug_deterministic",
+    "effect_v5_mode_token": "framework_specific",
+    "scope": "single Batch input/output; background multiprocessing excluded",
+    "claim_boundary": "admission is conditional on per-call RNG restoration supplied by deterministic mode"
+  },
+  "contamination_control": {
+    "calibration_symbols_are_disjoint": true,
+    "symbol_sealing_may_parse_module_metadata_but_does_not_run_effect_analysis": true,
+    "formal_effect_analysis_runs_once_after_freeze": true
+  },
+  "sealed_units": [
+    {
+      "public_symbol": "imgaug.augmenters.arithmetic.Multiply",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.blur.AverageBlur",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.geometric.Affine",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.size.CropToFixedSize",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.contrast.LinearContrast",
+      "expected": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.meta.SomeOf",
+      "expected": "reject",
+      "coarse_reason": "child"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.meta.WithChannels",
+      "expected": "reject",
+      "coarse_reason": "child"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.meta.AssertLambda",
+      "expected": "reject",
+      "coarse_reason": "user_callable"
+    }
+  ],
+  "thresholds": {
+    "binding_integrity": 1.0,
+    "known_unsafe_false_accepts": 0,
+    "supported_safe_recall": 0.8,
+    "coarse_reason_accuracy": 0.875,
+    "classified_coverage": 1.0
+  },
+  "primary_outcome": "H7F blind gate",
+  "secondary_outcomes": [
+    "state-role classification",
+    "mode obligation extraction",
+    "super-resolution completeness"
+  ]
+}

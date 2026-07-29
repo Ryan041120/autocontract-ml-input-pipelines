@@ -1,0 +1,35 @@
+# Local agent/application state
+.agents/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Build/package artifacts
+build/
+dist/
+*.egg-info/
+
+# Runtime databases and temporary state
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.tmp
+*.bak
+
+# Credentials and machine-local configuration
+.env
+.env.*
+*.pem
+*.key
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,4 @@
+repo,stars,default_branch,pushed_at,commit_sha,status
+Project-MONAI/MONAI,8509,dev,2026-07-27T01:10:14Z,3ee058bdd16dd4a566d23d3f84687c3c35268a36,sealed_do_not_inspect_until_v2_frozen
+open-mmlab/mmdetection,32849,main,2024-08-21T02:01:07Z,cfd5d3a985b0249de009b67d04f37263e11cdf3d,sealed_do_not_inspect_until_v2_frozen
+NVIDIA/DALI,5730,main,2026-07-23T15:14:04Z,1a8328edbc8db6786d764e309d519a3926171d19,sealed_do_not_inspect_until_v2_frozen

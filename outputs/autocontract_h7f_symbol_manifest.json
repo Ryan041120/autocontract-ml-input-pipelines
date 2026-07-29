@@ -1,0 +1,126 @@
+{
+  "repository_commit": "14b85e2209de0107c250e4d9dd6507dec1eae826",
+  "package": "imgaug",
+  "bindings": [
+    {
+      "public_symbol": "imgaug.augmenters.arithmetic.Multiply",
+      "status": "resolved",
+      "public_module": "imgaug.augmenters.arithmetic",
+      "defining_module": "imgaug.augmenters.arithmetic",
+      "defining_name": "Multiply",
+      "source_path": "imgaug/augmenters/arithmetic.py",
+      "source_line": 2088,
+      "source_sha256": "d13644167323a9feed654711b44aa33be6c2530b47b8f516a58701597b6f3444",
+      "binding_sha256": "1c30c9716abfad5e486fd50474ea18e475e6b35bba35097da770316f768387a0",
+      "export_chain": [
+        "imgaug.augmenters.arithmetic.Multiply"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "imgaug.augmenters.blur.AverageBlur",
+      "status": "resolved",
+      "public_module": "imgaug.augmenters.blur",
+      "defining_module": "imgaug.augmenters.blur",
+      "defining_name": "AverageBlur",
+      "source_path": "imgaug/augmenters/blur.py",
+      "source_line": 476,
+      "source_sha256": "cf1eb6e9c123fa3cdf0cd56224532d53addeb7ccb09b62b4c65900c783827e8d",
+      "binding_sha256": "dca529fcde27c01f9a48fb17355f9be6d7eae0ece2d5f6607012706d0d37bd1f",
+      "export_chain": [
+        "imgaug.augmenters.blur.AverageBlur"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "imgaug.augmenters.geometric.Affine",
+      "status": "resolved",
+      "public_module": "imgaug.augmenters.geometric",
+      "defining_module": "imgaug.augmenters.geometric",
+      "defining_name": "Affine",
+      "source_path": "imgaug/augmenters/geometric.py",
+      "source_line": 702,
+      "source_sha256": "1bd8f632fb1016908a080fd637f43b5f96483be6743579d677b35add5233546e",
+      "binding_sha256": "9cf7dfa7e0317bed338920186fbe500757d51419ca0d4b37e8370538a395c3d3",
+      "export_chain": [
+        "imgaug.augmenters.geometric.Affine"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "imgaug.augmenters.size.CropToFixedSize",
+      "status": "resolved",
+      "public_module": "imgaug.augmenters.size",
+      "defining_module": "imgaug.augmenters.size",
+      "defining_name": "CropToFixedSize",
+      "source_path": "imgaug/augmenters/size.py",
+      "source_line": 2983,
+      "source_sha256": "1801a0b452e2c59f690da61b593cde6d7bb6dd98dc675ea36fdb5582f0422981",
+      "binding_sha256": "d2327573f8ec7594447b9d02ade0b25cdaab35366f52ce3a1b9eb18bbe9d485b",
+      "export_chain": [
+        "imgaug.augmenters.size.CropToFixedSize"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "imgaug.augmenters.contrast.LinearContrast",
+      "status": "resolved",
+      "public_module": "imgaug.augmenters.contrast",
+      "defining_module": "imgaug.augmenters.contrast",
+      "defining_name": "LinearContrast",
+      "source_path": "imgaug/augmenters/contrast.py",
+      "source_line": 691,
+      "source_sha256": "3c16c3f8903c099d0cb456215740de2d13c73e6ca04ba190cb76742bd7dfd331",
+      "binding_sha256": "2bc9c970b36d195d9d4b8779d62b0348a8518d0b67d15c54e9c3e201bd6e4d91",
+      "export_chain": [
+        "imgaug.augmenters.contrast.LinearContrast"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "imgaug.augmenters.meta.SomeOf",
+      "status": "resolved",
+      "public_module": "imgaug.augmenters.meta",
+      "defining_module": "imgaug.augmenters.meta",
+      "defining_name": "SomeOf",
+      "source_path": "imgaug/augmenters/meta.py",
+      "source_line": 3169,
+      "source_sha256": "2a4aa033609fb5cf4b28eea6b7f212c69d5565c51e2b22b2f3e11a0cd3571f80",
+      "binding_sha256": "e8745a185c06f3306f28cc1388b7dee4d4e9b20347a622d7e9506bada92810e4",
+      "export_chain": [
+        "imgaug.augmenters.meta.SomeOf"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "imgaug.augmenters.meta.WithChannels",
+      "status": "resolved",
+      "public_module": "imgaug.augmenters.meta",
+      "defining_module": "imgaug.augmenters.meta",
+      "defining_name": "WithChannels",
+      "source_path": "imgaug/augmenters/meta.py",
+      "source_line": 3678,
+      "source_sha256": "2a4aa033609fb5cf4b28eea6b7f212c69d5565c51e2b22b2f3e11a0cd3571f80",
+      "binding_sha256": "4600830348c45e0d57de9cd97fb490a489850d6d8794236c9873f3b30d63eea3",
+      "export_chain": [
+        "imgaug.augmenters.meta.WithChannels"
+      ],
+      "reason": null
+    },
+    {
+      "public_symbol": "imgaug.augmenters.meta.AssertLambda",
+      "status": "resolved",
+      "public_module": "imgaug.augmenters.meta",
+      "defining_module": "imgaug.augmenters.meta",
+      "defining_name": "AssertLambda",
+      "source_path": "imgaug/augmenters/meta.py",
+      "source_line": 4370,
+      "source_sha256": "2a4aa033609fb5cf4b28eea6b7f212c69d5565c51e2b22b2f3e11a0cd3571f80",
+      "binding_sha256": "808efe4cb8d045329be405e6692fb2515ef07d463097e146251c946ad37f1f7a",
+      "export_chain": [
+        "imgaug.augmenters.meta.AssertLambda"
+      ],
+      "reason": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+operator,truth_randomness,inferred_randomness,randomness_correct,truth_consumes_rng,inferred_consumes_rng,rng_consumption_correct,truth_changes_shape,inferred_changes_shape,shape_correct,truth_changes_dtype,inferred_changes_dtype,dtype_correct,replayable,successful_probes,failed_probes
+identity,deterministic,deterministic,True,False,False,True,False,False,True,False,False,True,True,16,0
+normalize,deterministic,deterministic,True,False,False,True,False,False,True,False,False,True,True,16,0
+center_crop,deterministic,deterministic,True,False,False,True,True,True,True,False,False,True,True,16,0
+resize,deterministic,deterministic,True,False,False,True,True,True,True,False,False,True,True,16,0
+grayscale3,deterministic,deterministic,True,False,False,True,False,False,True,False,False,True,True,16,0
+gaussian_blur,deterministic,deterministic,True,True,True,True,False,False,True,False,False,True,True,16,0
+random_hflip,stateless_random,stateless_random,True,True,True,True,False,False,True,False,False,True,True,16,0
+random_vflip,stateless_random,stateless_random,True,True,True,True,False,False,True,False,False,True,True,16,0
+random_crop,stateless_random,stateless_random,True,True,True,True,True,True,True,False,False,True,True,16,0
+color_jitter,stateless_random,stateless_random,True,True,True,True,False,False,True,False,False,True,True,16,0
+random_erasing,stateless_random,stateless_random,True,True,True,True,False,False,True,False,False,True,True,16,0
+to_uint8,deterministic,deterministic,True,False,False,True,False,False,True,True,True,True,True,16,0
+stateful_udf,stateful,stateful,True,False,False,True,False,False,True,False,False,True,False,16,0

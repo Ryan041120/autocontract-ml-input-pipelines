@@ -1,0 +1,14 @@
+{
+  "tests": {
+    "valid": true,
+    "wrong_sample": true,
+    "wrong_shape": true,
+    "mutated_params": true,
+    "changed_operator": true,
+    "wrong_version": true,
+    "tampered_certificate": true
+  },
+  "passed": 7,
+  "total": 7,
+  "all_passed": true
+}

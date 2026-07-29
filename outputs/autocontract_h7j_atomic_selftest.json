@@ -1,0 +1,11 @@
+{
+  "tests": {
+    "valid_apply": true,
+    "receipt_binds_output": true,
+    "precondition_zero_call": true,
+    "operator_mutation_no_output": true
+  },
+  "passed": 4,
+  "total": 4,
+  "all_passed": true
+}

@@ -1,0 +1,3 @@
+split,units,effect_cells,effect_cells_correct,effect_cell_accuracy,coupled_units,coupling_false_negatives,many_to_one_units,cardinality_false_negatives
+debug,3,18,18,1.0,0,0,0,0
+holdout,17,102,73,0.7156862745098039,0,0,5,0

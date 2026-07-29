@@ -1,0 +1,28 @@
+{
+  "protocol": "H7A post-blind mechanism calibration",
+  "adapters": [
+    {
+      "name": "monai",
+      "source_id": "monai_*",
+      "rules": [
+        "Randomizable.self.R is NumPy RNG",
+        "__call__ is the execution entrypoint",
+        "transform containers carry parametric target/delegation effects",
+        "container calls preserve one-sample lineage"
+      ]
+    },
+    {
+      "name": "mmdetection",
+      "source_id": "mmdet_*",
+      "rules": [
+        "transform is the execution entrypoint",
+        "BaseTransform/MMCV transform bases have resolved call semantics",
+        "results record keys map to canonical target groups",
+        "random/np.random calls map to Python/NumPy RNG",
+        "mix_results denotes many-to-one combined lineage",
+        "results_cache mutations are execution-state writes"
+      ]
+    }
+  ],
+  "cost_note": "Rules are structural framework facts, not per-operator labels. Effect-cell-equivalent reduction is descriptive and not yet a valid annotation-time comparison."
+}

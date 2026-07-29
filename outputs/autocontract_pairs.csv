@@ -1,0 +1,17 @@
+left,right,trace_safe_truth,trace_validator_accept,trials_run,evidence,operator_keyed_trace_safe_truth,operator_keyed_validator_accept,operator_keyed_trials_run,operator_keyed_evidence,rationale
+identity,resize,True,True,24,no_counterexample_found,True,True,24,no_counterexample_found,identity commutes
+normalize,center_crop,True,True,24,no_counterexample_found,True,True,24,no_counterexample_found,pointwise affine transform commutes with a pure crop
+normalize,random_hflip,True,True,24,no_counterexample_found,True,True,24,no_counterexample_found,normalization is spatially equivariant and consumes no RNG
+normalize,random_vflip,True,True,24,no_counterexample_found,True,True,24,no_counterexample_found,normalization is spatially equivariant and consumes no RNG
+normalize,random_crop,True,True,24,no_counterexample_found,True,True,24,no_counterexample_found,normalization is pointwise and does not alter crop coordinates
+grayscale3,random_hflip,True,True,24,no_counterexample_found,True,True,24,no_counterexample_found,channel projection is spatially equivariant
+gaussian_blur,random_hflip,False,False,1,max_abs_delta=0.92500013,True,True,24,no_counterexample_found,fixed-sigma blur advances global RNG even though its output is deterministic
+resize,center_crop,False,False,1,"shape:(3, 23, 25)!=(3, 29, 31)",False,False,1,"shape:(3, 23, 25)!=(3, 29, 31)",different final geometry and field of view
+random_crop,resize,False,False,1,"shape:(3, 29, 31)!=(3, 23, 25)",False,False,1,"shape:(3, 29, 31)!=(3, 23, 25)",different final geometry and sampled field of view
+random_crop,center_crop,False,False,1,max_abs_delta=0.22060001,False,False,1,max_abs_delta=0.27810001,crop coordinates and final geometry differ
+random_hflip,random_vflip,False,False,1,max_abs_delta=0.98000002,True,True,24,no_counterexample_found,shared RNG assigns draws to different operators; ideal distribution remains equal
+color_jitter,random_hflip,False,False,1,max_abs_delta=0.94210953,True,True,24,no_counterexample_found,shared RNG trace changes although independent ideal effects commute
+color_jitter,normalize,False,False,1,max_abs_delta=1.8,False,False,1,max_abs_delta=1.6904017,jitter clipping/range semantics do not commute with normalization
+random_erasing,normalize,False,False,2,max_abs_delta=1.8,False,False,1,max_abs_delta=1.8,erase value is interpreted before versus after normalization
+to_uint8,normalize,False,False,1,exception:TypeError:Input tensor should be a float tensor. Got torch.uint8.,False,False,1,exception:TypeError:Input tensor should be a float tensor. Got torch.uint8.,normalization requires floating input and has range preconditions
+stateful_udf,normalize,False,False,1,max_abs_delta=1.76,False,False,1,max_abs_delta=1.76,hidden state makes retries and reordering unsafe by default

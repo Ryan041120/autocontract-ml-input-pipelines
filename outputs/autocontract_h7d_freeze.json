@@ -1,0 +1,23 @@
+{
+  "protocol": "AutoContract H7D EffectV4 and zero-source TorchGeo freeze",
+  "date": "2026-07-28",
+  "source_blobs_opened": false,
+  "effect_v4_sha256": "0cb61b213e9d567e57d975e78a02e9dce6e59b4e1acad663cb90e90cbdd0e1ba",
+  "effect_v4_manifest_sha256": "3f996c7df684c143517f03f5783d2be82f597d453ed1fcc4c58b24fa7ff65163",
+  "torchgeo_adapter_sha256": "9ba5c423239288aba1932519790e34215fd61d018e7322439e5a9d1ae5fb2c14",
+  "torchgeo_manifest_sha256": "727a5c6aa768a00544d2e6d771f6db15e1dd54807ec80ce4ebff2886f4f21853",
+  "protocol_sha256": "fca220c04e4b3d3216f302a6697b878d0fbfd80d6ac189ccefec02b63418b25f",
+  "effect_v4_calibration": {
+    "framework": "TorchIO",
+    "units": 11,
+    "decisions_correct": 11,
+    "reason_categories_correct": 11
+  },
+  "sealed_holdout": {
+    "framework": "TorchGeo",
+    "release": "v0.9.0",
+    "commit_sha": "120b8b1d477e8911ed052ec84a197dd545254e63",
+    "units": 5
+  },
+  "rule": "No EffectV4 or TorchGeo adapter edits after repository blobs are checked out."
+}

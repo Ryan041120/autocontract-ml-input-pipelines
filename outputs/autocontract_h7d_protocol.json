@@ -1,0 +1,30 @@
+{
+  "protocol": "AutoContract H7D zero-source TorchGeo EffectV4 holdout",
+  "registered_at": "2026-07-28T23:01:22.0291736+08:00",
+  "source_blobs_opened": false,
+  "repository": {
+    "repo": "torchgeo/torchgeo",
+    "release": "v0.9.0",
+    "commit_sha": "120b8b1d477e8911ed052ec84a197dd545254e63"
+  },
+  "framework_facts_from_public_docs": [
+    "built-in transforms subclass Kornia intensity/geometric augmentation bases",
+    "Kornia forward dispatches to apply_transform and parameter hooks",
+    "built-in transform input/output domain is Tensor or tensor batch",
+    "batch repeat/expansion changes output cardinality and must be rejected"
+  ],
+  "sealed_units": [
+    {"name":"RandomGrayscale","path":"torchgeo/transforms/color.py","expected":"admit","reason":"none"},
+    {"name":"AppendNormalizedDifferenceIndex","path":"torchgeo/transforms/indices.py","expected":"admit","reason":"none"},
+    {"name":"AppendTriBandNormalizedDifferenceIndex","path":"torchgeo/transforms/indices.py","expected":"admit","reason":"none"},
+    {"name":"Rearrange","path":"torchgeo/transforms/spatial.py","expected":"admit","reason":"none"},
+    {"name":"SatSlideMix","path":"torchgeo/transforms/spatial.py","expected":"reject","reason":"unsupported_cardinality"}
+  ],
+  "thresholds": {
+    "known_unsafe_false_accepts": 0,
+    "safe_recall": 0.75,
+    "reason_category_accuracy": 0.90,
+    "resolved_coverage": 0.80
+  },
+  "interpretation_rule": "The EffectV4 and TorchGeo adapter files are frozen before any repository source blob is checked out. No adapter repair or rerun is permitted on this holdout."
+}

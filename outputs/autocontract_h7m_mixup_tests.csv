@@ -1,0 +1,9 @@
+test,passed,detail
+frozen_effectv7_mixup_leaf_proof,True,cceaed2ef5cbfef8a703ce30b81ef86add11f57d82e83c2d4083bfdc119f3aa7
+mixup_replay_output_trace,True,22086cf453998e000b7eaa45f7d441f9d985d3623929eda99414089c84c010c4
+mixup_replay_rng_unchanged,True,80bb6f5310ad212883a81811406cdd9ca9e007951804d4d0cc6090dd931cddf9
+ordered_subjects_match_parameter_pairs,True,"pairs=[1, 0, 3, 2],subjects=['0', '1', '1', '0', '2', '3', '3', '2']"
+mixup_gradient_trace,True,"direct=cd52ba893aec2f6f3cd8c2e0350ac442f805a692530dcc815c1069bf7d43b84c,bound=cd52ba893aec2f6f3cd8c2e0350ac442f805a692530dcc815c1069bf7d43b84c"
+wrong_partner_mapping_zero_operator_calls,True,leaf_claim_mismatch
+input_batch_reorder_zero_operator_calls,True,leaf_claim_mismatch
+external_pair_record_mutation_isolated,True,9518e5117cdc997744179593cec68319f48173998811d580baa20dda4d024d8e

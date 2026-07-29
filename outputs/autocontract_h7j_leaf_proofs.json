@@ -1,0 +1,98 @@
+{
+  "proofs": [
+    {
+      "public_symbol": "kornia.augmentation._2d.geometric.horizontal_flip.RandomHorizontalFlip",
+      "module_path": "RandomHorizontalFlip_0",
+      "configuration": "kornia.params_provided",
+      "phase": "replay_apply",
+      "decision": "admit",
+      "reasons": [],
+      "reachable_methods": [
+        "_BasicAugmentationBase.forward",
+        "_BasicAugmentationBase.__unpack_input__",
+        "AugmentationBase2D.transform_tensor",
+        "_BasicAugmentationBase._process_kwargs_to_params_and_flags",
+        "RigidAffineAugmentationBase2D.apply_func",
+        "_BasicAugmentationBase.transform_output_tensor",
+        "RigidAffineAugmentationBase2D.generate_transformation_matrix",
+        "_AugmentationBase.transform_inputs",
+        "RigidAffineAugmentationBase2D.identity_matrix",
+        "RandomHorizontalFlip.compute_transformation",
+        "AugmentationBase2D.validate_tensor",
+        "RandomHorizontalFlip.apply_transform",
+        "_AugmentationBase.apply_non_transform"
+      ],
+      "binding_sha256": "e03758fcd9a61ff14158b37a6ed86a0faa5c22a71c835c2784ab6c7bec82f6e3",
+      "source_sha256": "dc95b9a8dbe306ba6be1624d1fcd5c819df66525836ec852293b481a6b13f5be",
+      "repository_commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930",
+      "effect_v7_sha256": "3aa49f7d40e1b4f09d61ed42364a338a0892f25f2b0f1006749159ac82e84b84",
+      "adapter_sha256": "53fc8a5edc862f064a836419b78336b6b417420c9fbab5bc5bc63c7c8f63ee0f",
+      "proof_sha256": "9aebe31eccc0e26c5fd23895b6e4cdfc8a3dff375386937045f6b7505c5180e7"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.geometric.affine.RandomAffine",
+      "module_path": "RandomAffine_1",
+      "configuration": "kornia.params_provided",
+      "phase": "replay_apply",
+      "decision": "admit",
+      "reasons": [],
+      "reachable_methods": [
+        "_BasicAugmentationBase.forward",
+        "_BasicAugmentationBase.__unpack_input__",
+        "AugmentationBase2D.transform_tensor",
+        "_BasicAugmentationBase._process_kwargs_to_params_and_flags",
+        "RigidAffineAugmentationBase2D.apply_func",
+        "_BasicAugmentationBase.transform_output_tensor",
+        "RigidAffineAugmentationBase2D.generate_transformation_matrix",
+        "_AugmentationBase.transform_inputs",
+        "RigidAffineAugmentationBase2D.identity_matrix",
+        "RandomAffine.compute_transformation",
+        "AugmentationBase2D.validate_tensor",
+        "RandomAffine.apply_transform",
+        "_AugmentationBase.apply_non_transform"
+      ],
+      "binding_sha256": "1523efbe10f9fda70e914990680578072c6ef712295143414346e0fa16828797",
+      "source_sha256": "d61df7439c7e5cc2b244c815bbbde24ce837efafaa1335e1206caf7380d13f91",
+      "repository_commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930",
+      "effect_v7_sha256": "3aa49f7d40e1b4f09d61ed42364a338a0892f25f2b0f1006749159ac82e84b84",
+      "adapter_sha256": "53fc8a5edc862f064a836419b78336b6b417420c9fbab5bc5bc63c7c8f63ee0f",
+      "proof_sha256": "586292cf10bbc2798e99c481602935ab3d37dd0bef786df7fc19ab9c2aa24216"
+    },
+    {
+      "public_symbol": "kornia.augmentation._2d.intensity.color_jiggle.ColorJiggle",
+      "module_path": "ColorJiggle_2",
+      "configuration": "kornia.params_provided",
+      "phase": "replay_apply",
+      "decision": "admit",
+      "reasons": [],
+      "reachable_methods": [
+        "_BasicAugmentationBase.forward",
+        "_BasicAugmentationBase.__unpack_input__",
+        "AugmentationBase2D.transform_tensor",
+        "_BasicAugmentationBase._process_kwargs_to_params_and_flags",
+        "RigidAffineAugmentationBase2D.apply_func",
+        "_BasicAugmentationBase.transform_output_tensor",
+        "RigidAffineAugmentationBase2D.generate_transformation_matrix",
+        "_AugmentationBase.transform_inputs",
+        "RigidAffineAugmentationBase2D.identity_matrix",
+        "IntensityAugmentationBase2D.compute_transformation",
+        "AugmentationBase2D.validate_tensor",
+        "ColorJiggle.apply_transform",
+        "IntensityAugmentationBase2D.apply_non_transform"
+      ],
+      "binding_sha256": "b63d00d03c5efc39e81f7a2c5e3faa812136457ed364d6711d95b650ac105656",
+      "source_sha256": "bc62a1528d60f71eb73f468c3c0cc9353a7537c63e8d200bb97a72b84f506dd2",
+      "repository_commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930",
+      "effect_v7_sha256": "3aa49f7d40e1b4f09d61ed42364a338a0892f25f2b0f1006749159ac82e84b84",
+      "adapter_sha256": "53fc8a5edc862f064a836419b78336b6b417420c9fbab5bc5bc63c7c8f63ee0f",
+      "proof_sha256": "c398f438236aea356f2e69fdfc52f7008fb13f22c5615eb7f0efa6beb77a05d8"
+    }
+  ],
+  "policy": {
+    "kornia.augmentation._2d.geometric.horizontal_flip.RandomHorizontalFlip": "admit",
+    "kornia.augmentation._2d.geometric.affine.RandomAffine": "admit",
+    "kornia.augmentation._2d.intensity.color_jiggle.ColorJiggle": "admit"
+  },
+  "proofs_valid": true,
+  "all_admitted": true
+}

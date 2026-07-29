@@ -1,0 +1,3 @@
+policy,median_runtime_s,runtime_q1_s,runtime_q3_s,samples_per_s,runtime_ratio_vs_native_suffix,mean_unique_outputs_per_sample
+native:random_suffix,0.519690200000003,0.49822130000000087,0.5529484000000018,554.1763150430744,1.0,6
+stateless:random_suffix,0.4600346000000002,0.44532980000000144,0.4682396000000004,626.0398674360579,0.8852093035427597,6

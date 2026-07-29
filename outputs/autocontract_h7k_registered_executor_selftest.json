@@ -1,0 +1,12 @@
+{
+  "tests": {
+    "minimal_apply": true,
+    "audit_output_digest": true,
+    "dynamic_reject_zero_call": true,
+    "changed_target_registration_reject": true,
+    "operator_mutation_reject": true
+  },
+  "passed": 5,
+  "total": 5,
+  "all_passed": true
+}

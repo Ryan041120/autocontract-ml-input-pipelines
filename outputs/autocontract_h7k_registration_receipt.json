@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "registration_sha256": "2c04b16face5496a23ceab8cf0eabe6dda34ca040508e29469951faac6affad3",
+  "certificate_sha256": "5decb31cefce82801ab8cd297ddb4e37e37070e177eaf1c14586c44e1e005568",
+  "leaf_proof_set_sha256": "d5cb174801f94a4312fc7a552ad961a4b02c3f3502254848bc96ea38a74ba52d",
+  "target_graph_sha256": [
+    "409aa56fae6a25d02c679c72e4305b7bfb0987ecfab1f9f6d924c6f43e6a6397",
+    "409aa56fae6a25d02c679c72e4305b7bfb0987ecfab1f9f6d924c6f43e6a6397",
+    "409aa56fae6a25d02c679c72e4305b7bfb0987ecfab1f9f6d924c6f43e6a6397",
+    "409aa56fae6a25d02c679c72e4305b7bfb0987ecfab1f9f6d924c6f43e6a6397"
+  ],
+  "child_contract_sha256": [
+    "084ca32a75b9ed74cc5f40f8da74dfcd82890a9ed63144dce5b05b6984112cf7",
+    "084ca32a75b9ed74cc5f40f8da74dfcd82890a9ed63144dce5b05b6984112cf7",
+    "084ca32a75b9ed74cc5f40f8da74dfcd82890a9ed63144dce5b05b6984112cf7",
+    "084ca32a75b9ed74cc5f40f8da74dfcd82890a9ed63144dce5b05b6984112cf7"
+  ],
+  "pool_size": 4,
+  "receipt_level": "minimal",
+  "registration_ms": 21.9888,
+  "reasons": []
+}
