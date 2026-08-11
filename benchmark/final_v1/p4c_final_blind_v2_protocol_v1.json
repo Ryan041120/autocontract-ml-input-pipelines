@@ -1,0 +1,39 @@
+{
+  "schema_version": "autocontract.p4c-final-blind-v2-protocol.v1",
+  "status": "preregistered_before_v2_admin_execution",
+  "date": "2026-07-30",
+  "inherits": {
+    "path": "benchmark/final_v1/p4c_final_blind_v2_protocol.json",
+    "sha256": "21496c5d498fd6d492710b3ce3e0f633af336c0962fd86fb10dceb614ec688db",
+    "unchanged": "All leakage, source-binding, operation-context, sealing, independence and one-shot requirements remain unchanged."
+  },
+  "v0_design_result": {
+    "status": "no_go_before_admin_implementation",
+    "problem": "The draft used a generic capability field/metric for cache-prefix, parameter replay and adjacent reorder, but the frozen ReplayCapabilityV1 schema only defines parameter-replay mechanisms.",
+    "risk": "Non-replay rewrites would be forced into mechanism=none and could be falsely reported Unsupported, or ReplayCapabilityV1 would silently be overclaimed as a generic rewrite-capability system.",
+    "admin_or_selftest_results_observed": false
+  },
+  "only_scope_corrections": [
+    "Rename public contract_plan.capability to contract_plan.replay_capability.",
+    "Rename analyzer bundle capability system to replay_capability system.",
+    "Rename capability_resolution_min to replay_capability_resolution_min and compute it only over registered_parameter_replay units.",
+    "Only registered_parameter_replay units may use rng_state_restoration or stored_parameter_record and must have a private expected replay-capability status.",
+    "candidate kinds none, cache_prefix and adjacent_swap require replay mechanism none and private expected replay-capability status not_applicable.",
+    "Final safe-admit recall for non-replay rewrites continues to use their frozen semantic/source/verification obligations; v1 makes no generic runtime-capability claim for them."
+  ],
+  "frozen_metric_gates_v1": {
+    "known_unsafe_false_accepts_max": 0,
+    "semantic_safe_recall_min": 0.8,
+    "semantic_reason_accuracy_min": 0.9,
+    "semantic_resolution_min": 0.9,
+    "replay_capability_resolution_min": 0.9,
+    "source_resolution_min": 0.9,
+    "final_safe_admit_recall_min": 0.8,
+    "oracle_benefit_coverage_min": 0.9
+  },
+  "additional_falsification_rules": [
+    "Do not include cache-prefix or adjacent-reorder units in the ReplayCapability resolution denominator.",
+    "Do not claim final-v2 has a generic rewrite-capability receipt; it has ReplayCapabilityV1 plus rewrite-specific verification plans.",
+    "A future generic RewriteCapability requires a separate protocol and evidence for cache/reorder mechanisms."
+  ]
+}

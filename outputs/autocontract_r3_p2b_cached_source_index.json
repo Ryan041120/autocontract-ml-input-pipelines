@@ -1,0 +1,273 @@
+{
+  "schema_version": "autocontract.r3-p2b-cached-source-index.v0",
+  "artifact_role": "posthoc_cached_source_binding_calibration_not_blind_evidence",
+  "protocol_sha256": "12449c5735794285f5b8d2bc4312c8509da52183419fe6532f127ed1adc41242",
+  "environment": {
+    "python": "3.12.4",
+    "torch": "2.4.0",
+    "kornia": "0.8.3",
+    "repository_head": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930",
+    "device": "cpu"
+  },
+  "costs": {
+    "registration_ms": 363.0622,
+    "deployment_revalidation_ms": 481.8217,
+    "sentinel_creation_ms": 0.938,
+    "sentinel_only_hot_median_ms_200": 0.669,
+    "lineage_v1_hot_median_ms_100": 1.43925,
+    "cold_reindex_median_ms_5": 407.3574,
+    "portable_index_bytes": 130493,
+    "sentinel_entries": 27
+  },
+  "summaries": [
+    {
+      "policy": "cached_digest_only",
+      "benign_preservation": 1.0,
+      "required_rejection_recall": 0.0,
+      "unknown_accuracy": 0.0,
+      "false_accepts": 4,
+      "median_ms": 2.04945
+    },
+    {
+      "policy": "hot_callable_sentinel",
+      "benign_preservation": 1.0,
+      "required_rejection_recall": 1.0,
+      "unknown_accuracy": 1.0,
+      "false_accepts": 0,
+      "median_ms": 2.5909500000000003
+    },
+    {
+      "policy": "cold_reindex",
+      "benign_preservation": 1.0,
+      "required_rejection_recall": 1.0,
+      "unknown_accuracy": 1.0,
+      "false_accepts": 0,
+      "median_ms": 401.0769
+    }
+  ],
+  "predictions": [
+    {
+      "policy": "cached_digest_only",
+      "case_id": "stable_equivalent_instance",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 1.682
+    },
+    {
+      "policy": "hot_callable_sentinel",
+      "case_id": "stable_equivalent_instance",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 2.3646
+    },
+    {
+      "policy": "cold_reindex",
+      "case_id": "stable_equivalent_instance",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 351.6592
+    },
+    {
+      "policy": "cached_digest_only",
+      "case_id": "stable_after_runtime_state",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 1.8726
+    },
+    {
+      "policy": "hot_callable_sentinel",
+      "case_id": "stable_after_runtime_state",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 2.5817
+    },
+    {
+      "policy": "cold_reindex",
+      "case_id": "stable_after_runtime_state",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 377.3338
+    },
+    {
+      "policy": "cached_digest_only",
+      "case_id": "class_callable_replacement_after_deploy",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 2.5966
+    },
+    {
+      "policy": "hot_callable_sentinel",
+      "case_id": "class_callable_replacement_after_deploy",
+      "decision": "reject",
+      "reasons": [
+        "hot_callable_sentinel_mismatch"
+      ],
+      "elapsed_ms": 2.9424
+    },
+    {
+      "policy": "cold_reindex",
+      "case_id": "class_callable_replacement_after_deploy",
+      "decision": "reject",
+      "reasons": [
+        "portable_source_index_mismatch"
+      ],
+      "elapsed_ms": 416.389
+    },
+    {
+      "policy": "cached_digest_only",
+      "case_id": "same_function_code_replacement_after_deploy",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 2.2263
+    },
+    {
+      "policy": "hot_callable_sentinel",
+      "case_id": "same_function_code_replacement_after_deploy",
+      "decision": "reject",
+      "reasons": [
+        "hot_callable_sentinel_mismatch"
+      ],
+      "elapsed_ms": 2.0054
+    },
+    {
+      "policy": "cold_reindex",
+      "case_id": "same_function_code_replacement_after_deploy",
+      "decision": "reject",
+      "reasons": [
+        "portable_source_index_mismatch"
+      ],
+      "elapsed_ms": 395.4796
+    },
+    {
+      "policy": "cached_digest_only",
+      "case_id": "instance_forward_override_after_deploy",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 2.2744
+    },
+    {
+      "policy": "hot_callable_sentinel",
+      "case_id": "instance_forward_override_after_deploy",
+      "decision": "reject",
+      "reasons": [
+        "hot_callable_sentinel_mismatch"
+      ],
+      "elapsed_ms": 3.0618
+    },
+    {
+      "policy": "cold_reindex",
+      "case_id": "instance_forward_override_after_deploy",
+      "decision": "reject",
+      "reasons": [
+        "portable_source_index_mismatch"
+      ],
+      "elapsed_ms": 422.984
+    },
+    {
+      "policy": "cached_digest_only",
+      "case_id": "native_callable_override_after_deploy",
+      "decision": "admit",
+      "reasons": [],
+      "elapsed_ms": 1.4158
+    },
+    {
+      "policy": "hot_callable_sentinel",
+      "case_id": "native_callable_override_after_deploy",
+      "decision": "unknown",
+      "reasons": [
+        "unsupported_runtime_callable_or_dependency"
+      ],
+      "elapsed_ms": 2.6002
+    },
+    {
+      "policy": "cold_reindex",
+      "case_id": "native_callable_override_after_deploy",
+      "decision": "unknown",
+      "reasons": [
+        "unsupported_cold_source_index"
+      ],
+      "elapsed_ms": 406.6742
+    }
+  ],
+  "source_fixture_results": [
+    {
+      "case_id": "comment_and_format_only",
+      "expected": "same",
+      "actual": "same",
+      "passed": true,
+      "detail": "canonical AST"
+    },
+    {
+      "case_id": "docstring_only",
+      "expected": "same",
+      "actual": "same",
+      "passed": true,
+      "detail": "docstrings stripped"
+    },
+    {
+      "case_id": "executable_ast_change",
+      "expected": "different",
+      "actual": "different",
+      "passed": true,
+      "detail": "return expression changed"
+    },
+    {
+      "case_id": "default_argument_change",
+      "expected": "different",
+      "actual": "different",
+      "passed": true,
+      "detail": "hot dependency digest"
+    },
+    {
+      "case_id": "closure_cell_change",
+      "expected": "different",
+      "actual": "different",
+      "passed": true,
+      "detail": "closure cell value"
+    },
+    {
+      "case_id": "referenced_global_change",
+      "expected": "different",
+      "actual": "different",
+      "passed": true,
+      "detail": "referenced module global"
+    },
+    {
+      "case_id": "decorator_wrapper_change",
+      "expected": "different",
+      "actual": "different",
+      "passed": true,
+      "detail": "outer and wrapped layers recorded"
+    },
+    {
+      "case_id": "origin_path_shadow",
+      "expected": "different",
+      "actual": "different",
+      "passed": true,
+      "detail": "same code, distinct resolved origin"
+    },
+    {
+      "case_id": "uninspectable_native_callable",
+      "expected": "unknown",
+      "actual": "unknown",
+      "passed": true,
+      "detail": "native callable fails closed"
+    }
+  ],
+  "checks": {
+    "protocol_hash_recorded": true,
+    "registration_and_deployment_supported": true,
+    "deployment_reproduces_registered_index": true,
+    "hot_preserves_benign_controls": true,
+    "hot_rejects_supported_mutations": true,
+    "hot_native_override_is_unknown": true,
+    "cold_reference_matches_oracle": true,
+    "cached_digest_only_falsified": true,
+    "all_source_fixtures_pass": true,
+    "hot_latency_gate": true,
+    "hot_path_has_no_cold_index_operations": true
+  },
+  "passed": 11,
+  "total": 11,
+  "status": "pass"
+}

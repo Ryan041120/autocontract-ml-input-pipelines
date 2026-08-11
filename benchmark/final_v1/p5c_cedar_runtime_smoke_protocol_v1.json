@@ -1,0 +1,19 @@
+{
+  "schema_version": "autocontract.p5c-cedar-runtime-smoke-protocol.v1",
+  "status": "platform_eol_correction_before_rerun",
+  "date": "2026-07-30",
+  "inherits": {
+    "path": "benchmark/final_v1/p5c_cedar_runtime_smoke_protocol.json",
+    "sha256": "c6de4ca1444916057ae55fa0cc54347e7b3b3e0aa7a18785c276243d99890ffc",
+    "unchanged": "The upstream commit, source hashes, frozen inputs, runtime versions, fixture, API/data-path checks, failure history, and non-claims remain unchanged."
+  },
+  "observed_attempt": {
+    "path": "outputs/autocontract_p5c_cedar_runtime_smoke_attempt0_eol_fail.json",
+    "sha256": "1f6bb53c44530ab9906650d2b881ecd862023125e6d26f84b4eba82b93fabe69",
+    "result": "13/14 FAIL",
+    "sole_failure": "The Windows worktree uses core.autocrlf=true, so imported .py files have CRLF bytes while the bound Git blobs have LF bytes."
+  },
+  "only_correction": "Verify the exact LF bytes from the commit's Git objects, require a clean worktree, and separately require each imported worktree file to equal its Git blob after CRLF-to-LF normalization.",
+  "pass_rule": "All 15 checks pass and the result is bound to this v1 protocol.",
+  "claim_boundary": "Runtime public-API and optimizer-disabled data-path compatibility only. No cedar optimizer, plan, safety, or performance claim."
+}

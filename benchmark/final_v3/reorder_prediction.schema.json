@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autocontract.local/schemas/v1/reorder_prediction.schema.json",
+  "title": "AutoContract premise/native-aware sealed reorder prediction v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "benchmark_id", "public_manifest_sha256", "producer_bundle_sha256", "created_at", "status", "pairs", "burden"],
+  "properties": {
+    "schema_version": {"const": "autocontract.reorder-final-prediction.v1"}, "artifact_type": {"const": "reorder_prediction"},
+    "benchmark_id": {"type": "string"}, "public_manifest_sha256": {"$ref": "#/$defs/sha256"}, "producer_bundle_sha256": {"$ref": "#/$defs/sha256"},
+    "created_at": {"type": "string", "minLength": 1}, "status": {"const": "sealed"},
+    "pairs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/pair"}}, "burden": {"$ref": "#/$defs/burden"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "domain_assurance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "premise_profile_sha256", "guard_artifact_sha256", "checked_invocations", "violations", "overhead_ns_per_invocation"],
+      "properties": {
+        "mode": {"enum": ["registration", "batch_boundary", "per_sample", "external_attestation"]}, "premise_profile_sha256": {"$ref": "#/$defs/sha256"},
+        "guard_artifact_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]}, "checked_invocations": {"type": "integer", "minimum": 0},
+        "violations": {"type": "integer", "minimum": 0}, "overhead_ns_per_invocation": {"oneOf": [{"type": "null"}, {"type": "number", "minimum": 0}]}
+      }
+    },
+    "native_decision": {
+      "type": "object", "additionalProperties": false, "required": ["left_class", "right_class", "runtime_identity_sha256", "policy"],
+      "properties": {
+        "left_class": {"enum": ["pure_python", "known_versioned_native", "opaque_native", "external_attested_native"]},
+        "right_class": {"enum": ["pure_python", "known_versioned_native", "opaque_native", "external_attested_native"]},
+        "runtime_identity_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "policy": {"enum": ["local_proof", "versioned_relation", "external_attestation", "force_unknown"]}
+      }
+    },
+    "pair": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pair_id", "status", "assurance_level", "reason", "receipt_sha256", "observational_relation_id", "domain_assurance", "native_decision", "generation_ms", "adapter_minutes"],
+      "properties": {
+        "pair_id": {"type": "string"}, "status": {"enum": ["supported", "unknown", "unsupported"]},
+        "assurance_level": {"enum": ["locally_replayed_restricted_ast", "locally_replayed_versioned_relation_algebra", "trusted_revocable_external_proof", "none"]},
+        "reason": {"type": "string", "minLength": 3}, "receipt_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "observational_relation_id": {"type": "string", "minLength": 5}, "domain_assurance": {"$ref": "#/$defs/domain_assurance"}, "native_decision": {"$ref": "#/$defs/native_decision"},
+        "generation_ms": {"type": "number", "minimum": 0}, "adapter_minutes": {"type": "number", "minimum": 0}
+      }
+    },
+    "burden": {
+      "type": "object", "additionalProperties": false,
+      "required": ["total_adapter_minutes", "source_inspection_minutes", "guard_implementation_minutes", "semantic_rule_sloc", "all_pairs_timed"],
+      "properties": {
+        "total_adapter_minutes": {"type": "number", "minimum": 0}, "source_inspection_minutes": {"type": "number", "minimum": 0},
+        "guard_implementation_minutes": {"type": "number", "minimum": 0}, "semantic_rule_sloc": {"type": "integer", "minimum": 0}, "all_pairs_timed": {"const": true}
+      }
+    }
+  }
+}

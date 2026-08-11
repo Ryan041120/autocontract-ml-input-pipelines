@@ -1,0 +1,813 @@
+{
+  "schema_version": "autocontract.p5l-torchvision-relation-algebra-result.v0",
+  "status": "pass",
+  "passed": 11,
+  "total": 11,
+  "protocol_sha256": "3843573119c59f87b3075541344145d3bb763f2d62578c330a07b7aed4e8c5d6",
+  "schema_sha256": "abb1c1f5853ab0df0bd9aa93507a2a7880f1d260fd6ab098ebaae1c4b39c7387",
+  "module_sha256": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35",
+  "runner_sha256": "c300c9dc93edd1dfb6eaf96e9970c3c8cfb27b07fe33f4cf110929895f9a1a2b",
+  "upstream_commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+  "p5k_pairs": 28,
+  "p5k_unknown_pairs": 14,
+  "verified_supported_pairs": 10,
+  "verified_unknown_coverage": 0.7142857142857143,
+  "overall_strict_coverage": 0.35714285714285715,
+  "counterexample_conflicts": 0,
+  "coverage": [
+    {
+      "pair_id": "tv00_identity_resize",
+      "left": "identity",
+      "right": "resize",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "identity_composition_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv01_normalize_center_crop",
+      "left": "normalize",
+      "right": "center_crop",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "pointwise_channel_map_spatial_index_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv02_normalize_random_hflip",
+      "left": "normalize",
+      "right": "random_hflip",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "pointwise_channel_map_spatial_index_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv03_normalize_random_vflip",
+      "left": "normalize",
+      "right": "random_vflip",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "pointwise_channel_map_spatial_index_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv04_normalize_random_crop",
+      "left": "normalize",
+      "right": "random_crop",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "pointwise_channel_map_spatial_index_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv05_grayscale3_random_hflip",
+      "left": "grayscale3",
+      "right": "random_hflip",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "pointwise_channel_map_spatial_index_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv06_gaussian_blur_random_hflip",
+      "left": "gaussian_blur",
+      "right": "random_hflip",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._misc.GaussianBlur"
+    },
+    {
+      "pair_id": "tv07_resize_center_crop",
+      "left": "resize",
+      "right": "center_crop",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "no_supported_relation_lemma"
+    },
+    {
+      "pair_id": "tv08_random_crop_resize",
+      "left": "random_crop",
+      "right": "resize",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "no_supported_relation_lemma"
+    },
+    {
+      "pair_id": "tv09_random_crop_center_crop",
+      "left": "random_crop",
+      "right": "center_crop",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "no_supported_relation_lemma"
+    },
+    {
+      "pair_id": "tv10_random_hflip_random_vflip",
+      "left": "random_hflip",
+      "right": "random_vflip",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "no_supported_relation_lemma"
+    },
+    {
+      "pair_id": "tv11_color_jitter_random_hflip",
+      "left": "color_jitter",
+      "right": "random_hflip",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._color.ColorJitter"
+    },
+    {
+      "pair_id": "tv12_color_jitter_normalize",
+      "left": "color_jitter",
+      "right": "normalize",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._color.ColorJitter"
+    },
+    {
+      "pair_id": "tv13_random_erasing_normalize",
+      "left": "random_erasing",
+      "right": "normalize",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._augment.RandomErasing"
+    },
+    {
+      "pair_id": "tv14_to_uint8_normalize",
+      "left": "to_uint8",
+      "right": "normalize",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._misc.ToDtype"
+    },
+    {
+      "pair_id": "tv15_stateful_udf_normalize",
+      "left": "stateful_udf",
+      "right": "normalize",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "source_index_v1_empty_required_slots"
+    },
+    {
+      "pair_id": "tv16_identity_normalize",
+      "left": "identity",
+      "right": "normalize",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "identity_composition_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv17_identity_random_crop",
+      "left": "identity",
+      "right": "random_crop",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "identity_composition_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv18_normalize_resize",
+      "left": "normalize",
+      "right": "resize",
+      "p5k_counterexample": false,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "no_supported_relation_lemma"
+    },
+    {
+      "pair_id": "tv19_grayscale3_center_crop",
+      "left": "grayscale3",
+      "right": "center_crop",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "pointwise_channel_map_spatial_index_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv20_grayscale3_random_vflip",
+      "left": "grayscale3",
+      "right": "random_vflip",
+      "p5k_counterexample": false,
+      "v2_status": "supported",
+      "lemma": "pointwise_channel_map_spatial_index_v0",
+      "reason": null
+    },
+    {
+      "pair_id": "tv21_center_crop_random_hflip",
+      "left": "center_crop",
+      "right": "random_hflip",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "no_supported_relation_lemma"
+    },
+    {
+      "pair_id": "tv22_resize_random_hflip",
+      "left": "resize",
+      "right": "random_hflip",
+      "p5k_counterexample": false,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "no_supported_relation_lemma"
+    },
+    {
+      "pair_id": "tv23_center_crop_random_vflip",
+      "left": "center_crop",
+      "right": "random_vflip",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "no_supported_relation_lemma"
+    },
+    {
+      "pair_id": "tv24_gaussian_blur_normalize",
+      "left": "gaussian_blur",
+      "right": "normalize",
+      "p5k_counterexample": false,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._misc.GaussianBlur"
+    },
+    {
+      "pair_id": "tv25_gaussian_blur_center_crop",
+      "left": "gaussian_blur",
+      "right": "center_crop",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._misc.GaussianBlur"
+    },
+    {
+      "pair_id": "tv26_random_erasing_random_hflip",
+      "left": "random_erasing",
+      "right": "random_hflip",
+      "p5k_counterexample": true,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._augment.RandomErasing"
+    },
+    {
+      "pair_id": "tv27_to_uint8_resize",
+      "left": "to_uint8",
+      "right": "resize",
+      "p5k_counterexample": false,
+      "v2_status": "unknown",
+      "lemma": null,
+      "reason": "unsupported_operator_type:torchvision.transforms.v2._misc.ToDtype"
+    }
+  ],
+  "attacks": [
+    {
+      "name": "lemma_artifact_rehashed",
+      "passed": true,
+      "audit": [
+        {
+          "pair": [
+            "center_crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "proof_artifact_replay_mismatch",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "verifier_version",
+      "passed": true,
+      "audit": [
+        {
+          "pair": [
+            "center_crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "verifier_identity_mismatch",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "verifier_closure",
+      "passed": true,
+      "audit": [
+        {
+          "pair": [
+            "center_crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "verifier_closure_mismatch",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "source_binding_drift",
+      "passed": true,
+      "audit": [
+        {
+          "pair": [
+            "center_crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "right_binding_mismatch",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "input_domain_drift",
+      "passed": true,
+      "audit": [
+        {
+          "pair": [
+            "center_crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "input_domain_or_schema_mismatch",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "operator_config_drift",
+      "passed": true,
+      "audit": [
+        {
+          "pair": [
+            "center_crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "proof_artifact_replay_mismatch",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "duplicate_receipt",
+      "passed": true,
+      "audit": [
+        {
+          "pair": [
+            "center_crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "duplicate_or_ambiguous_receipts",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "name": "revoked_verifier",
+      "passed": true,
+      "audit": [
+        {
+          "pair": [
+            "center_crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "verifier_revoked",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "cedar": {
+    "baseline": {
+      "candidate_count": 1,
+      "path": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "fix": [
+        true,
+        true,
+        true
+      ],
+      "output_digests": [
+        "616e53ab969ebb6fe959d9f4ea4c44ee8a91aec69ce0e8b1ec3e3d71711b3df8",
+        "37cbb93f9390ca054bdd37d35bad2d6bcfce12e9b218490c18d54de1ebc3f5ae",
+        "3135def076e7df5513423b96815ffc9af891248ab7c6aa17704355efc1f27d61",
+        "199582543ad28b7a087c35905550247accebba18880393ea10ac0acd7a4ed79e",
+        "2d73ace9d749d8b0f706c1260e3655ba9c183df9260428bdb0ed61a9dfbe3d38"
+      ],
+      "output_shapes": [
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ]
+      ]
+    },
+    "optimized": {
+      "candidate_count": 6,
+      "path": [
+        3,
+        0,
+        1,
+        2
+      ],
+      "fix": [
+        false,
+        false,
+        false
+      ],
+      "output_digests": [
+        "616e53ab969ebb6fe959d9f4ea4c44ee8a91aec69ce0e8b1ec3e3d71711b3df8",
+        "37cbb93f9390ca054bdd37d35bad2d6bcfce12e9b218490c18d54de1ebc3f5ae",
+        "3135def076e7df5513423b96815ffc9af891248ab7c6aa17704355efc1f27d61",
+        "199582543ad28b7a087c35905550247accebba18880393ea10ac0acd7a4ed79e",
+        "2d73ace9d749d8b0f706c1260e3655ba9c183df9260428bdb0ed61a9dfbe3d38"
+      ],
+      "output_shapes": [
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ]
+      ]
+    },
+    "max_abs_delta": 0.0
+  },
+  "checks": [
+    {
+      "name": "p5k_and_v1_predecessors_are_frozen",
+      "passed": true,
+      "observed": {
+        "outputs/autocontract_p5k_torchvision_real_pairs.json": "9e52a568d69fa13fcc1de292e24f27cebbdafa2f2fe69e4c36ca2e5ee449a386",
+        "benchmark/final_v1/p5k_torchvision_pair_manifest.json": "4941024fa07930a5533b37d3df42d637e9e9baef214f34e013af4744283b7a54",
+        "benchmark/final_v1/p5k_torchvision_real_pair_protocol.json": "9114bd671f9aba7ca4c07c6438a5aea9c424bea0841148036ef707dea47564a2",
+        "experiments/autocontract_p5k_torchvision_real_pairs.py": "ba0cbf707c1ec06f620c9a3edd017bd2ec604df7834fe784f3c06a838ff87b58",
+        "experiments/autocontract_reorder_capability_v1.py": "fdce8818dab5c763b08fa197aaa9c1d046991a8d1f4eaf348201a63d2d10fe44"
+      }
+    },
+    {
+      "name": "cedar_checkout_is_fixed_and_clean",
+      "passed": true,
+      "observed": {
+        "head": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+        "status": "clean"
+      }
+    },
+    {
+      "name": "runtime_and_tree_match_protocol",
+      "passed": true,
+      "observed": {
+        "python": "3.11.9",
+        "torch": "2.0.1+cpu",
+        "torchvision": "0.15.2+cpu",
+        "torchvision_v2_python_files": 24,
+        "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1"
+      }
+    },
+    {
+      "name": "exactly_ten_p5k_unknown_pairs_gain_verified_coverage",
+      "passed": true,
+      "observed": [
+        "tv00_identity_resize",
+        "tv01_normalize_center_crop",
+        "tv02_normalize_random_hflip",
+        "tv03_normalize_random_vflip",
+        "tv04_normalize_random_crop",
+        "tv05_grayscale3_random_hflip",
+        "tv16_identity_normalize",
+        "tv17_identity_random_crop",
+        "tv19_grayscale3_center_crop",
+        "tv20_grayscale3_random_vflip"
+      ]
+    },
+    {
+      "name": "no_observed_counterexample_pair_is_supported",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "four_excluded_no_counterexample_pairs_remain_unknown",
+      "passed": true,
+      "observed": [
+        "tv18_normalize_resize",
+        "tv22_resize_random_hflip",
+        "tv24_gaussian_blur_normalize",
+        "tv27_to_uint8_resize"
+      ]
+    },
+    {
+      "name": "all_emitted_receipts_validate_against_v2_schema",
+      "passed": true
+    },
+    {
+      "name": "all_binding_artifact_duplicate_and_revocation_attacks_fail_closed",
+      "passed": true,
+      "observed": [
+        {
+          "name": "lemma_artifact_rehashed",
+          "passed": true,
+          "audit": [
+            {
+              "pair": [
+                "center_crop",
+                "normalize"
+              ],
+              "decision": "reject",
+              "reason": "proof_artifact_replay_mismatch",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "verifier_version",
+          "passed": true,
+          "audit": [
+            {
+              "pair": [
+                "center_crop",
+                "normalize"
+              ],
+              "decision": "reject",
+              "reason": "verifier_identity_mismatch",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "verifier_closure",
+          "passed": true,
+          "audit": [
+            {
+              "pair": [
+                "center_crop",
+                "normalize"
+              ],
+              "decision": "reject",
+              "reason": "verifier_closure_mismatch",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "source_binding_drift",
+          "passed": true,
+          "audit": [
+            {
+              "pair": [
+                "center_crop",
+                "normalize"
+              ],
+              "decision": "reject",
+              "reason": "right_binding_mismatch",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "input_domain_drift",
+          "passed": true,
+          "audit": [
+            {
+              "pair": [
+                "center_crop",
+                "normalize"
+              ],
+              "decision": "reject",
+              "reason": "input_domain_or_schema_mismatch",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "operator_config_drift",
+          "passed": true,
+          "audit": [
+            {
+              "pair": [
+                "center_crop",
+                "normalize"
+              ],
+              "decision": "reject",
+              "reason": "proof_artifact_replay_mismatch",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "duplicate_receipt",
+          "passed": true,
+          "audit": [
+            {
+              "pair": [
+                "center_crop",
+                "normalize"
+              ],
+              "decision": "reject",
+              "reason": "duplicate_or_ambiguous_receipts",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "name": "revoked_verifier",
+          "passed": true,
+          "audit": [
+            {
+              "pair": [
+                "center_crop",
+                "normalize"
+              ],
+              "decision": "reject",
+              "reason": "verifier_revoked",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "real_relation_receipts_restore_six_cedar_candidates",
+      "passed": true,
+      "observed": {
+        "baseline": {
+          "candidate_count": 1,
+          "path": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "fix": [
+            true,
+            true,
+            true
+          ],
+          "output_digests": [
+            "616e53ab969ebb6fe959d9f4ea4c44ee8a91aec69ce0e8b1ec3e3d71711b3df8",
+            "37cbb93f9390ca054bdd37d35bad2d6bcfce12e9b218490c18d54de1ebc3f5ae",
+            "3135def076e7df5513423b96815ffc9af891248ab7c6aa17704355efc1f27d61",
+            "199582543ad28b7a087c35905550247accebba18880393ea10ac0acd7a4ed79e",
+            "2d73ace9d749d8b0f706c1260e3655ba9c183df9260428bdb0ed61a9dfbe3d38"
+          ],
+          "output_shapes": [
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ]
+          ]
+        },
+        "optimized": {
+          "candidate_count": 6,
+          "path": [
+            3,
+            0,
+            1,
+            2
+          ],
+          "fix": [
+            false,
+            false,
+            false
+          ],
+          "output_digests": [
+            "616e53ab969ebb6fe959d9f4ea4c44ee8a91aec69ce0e8b1ec3e3d71711b3df8",
+            "37cbb93f9390ca054bdd37d35bad2d6bcfce12e9b218490c18d54de1ebc3f5ae",
+            "3135def076e7df5513423b96815ffc9af891248ab7c6aa17704355efc1f27d61",
+            "199582543ad28b7a087c35905550247accebba18880393ea10ac0acd7a4ed79e",
+            "2d73ace9d749d8b0f706c1260e3655ba9c183df9260428bdb0ed61a9dfbe3d38"
+          ],
+          "output_shapes": [
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "real_reordered_plan_preserves_output",
+      "passed": true,
+      "observed": {
+        "max_abs_delta": 0.0,
+        "baseline_digests": [
+          "616e53ab969ebb6fe959d9f4ea4c44ee8a91aec69ce0e8b1ec3e3d71711b3df8",
+          "37cbb93f9390ca054bdd37d35bad2d6bcfce12e9b218490c18d54de1ebc3f5ae",
+          "3135def076e7df5513423b96815ffc9af891248ab7c6aa17704355efc1f27d61",
+          "199582543ad28b7a087c35905550247accebba18880393ea10ac0acd7a4ed79e",
+          "2d73ace9d749d8b0f706c1260e3655ba9c183df9260428bdb0ed61a9dfbe3d38"
+        ],
+        "optimized_digests": [
+          "616e53ab969ebb6fe959d9f4ea4c44ee8a91aec69ce0e8b1ec3e3d71711b3df8",
+          "37cbb93f9390ca054bdd37d35bad2d6bcfce12e9b218490c18d54de1ebc3f5ae",
+          "3135def076e7df5513423b96815ffc9af891248ab7c6aa17704355efc1f27d61",
+          "199582543ad28b7a087c35905550247accebba18880393ea10ac0acd7a4ed79e",
+          "2d73ace9d749d8b0f706c1260e3655ba9c183df9260428bdb0ed61a9dfbe3d38"
+        ]
+      }
+    },
+    {
+      "name": "output_contains_no_optimizer_decision_fields",
+      "passed": true
+    }
+  ],
+  "claim_boundary": "Known contaminated torchvision mechanism calibration, not an independent commutativity oracle, formal proof of torchvision, or cross-version guarantee."
+}

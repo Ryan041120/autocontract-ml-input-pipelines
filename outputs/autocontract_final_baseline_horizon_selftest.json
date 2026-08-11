@@ -1,0 +1,172 @@
+{
+  "schema_version": "autocontract.final-baseline-horizon-selftest.v0",
+  "artifact_role": "synthetic_internal_calibration_not_benchmark_evidence",
+  "base_seed": 20260730,
+  "capabilities": {
+    "numpy_rng": true,
+    "torch_rng": true
+  },
+  "probe_spec": {
+    "probe_id": "autocontract.dynamic-stateful.v0",
+    "seed": 20260730,
+    "same_context_repeats": 2,
+    "cross_context_epochs": [
+      0,
+      1
+    ],
+    "environment_key": "AUTOCONTRACT_FINAL_PROBE_GAIN",
+    "environment_values": [
+      "1",
+      "2"
+    ],
+    "max_operator_calls": 7
+  },
+  "probe_spec_sha256": "352d9f2886cae0823e40af67577051e529124f93d3792503eb48b129d8aab8a6",
+  "dynamic_probe_results": {
+    "pure": {
+      "unit_id": "pure",
+      "output_only_conflict": false,
+      "stateful_conflict": false,
+      "observed_effects": [],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": false,
+      "rng_state_changed": false,
+      "object_state_changed": false,
+      "environment_output_changed": false,
+      "operator_calls": 7,
+      "probe_spec_sha256": "352d9f2886cae0823e40af67577051e529124f93d3792503eb48b129d8aab8a6"
+    },
+    "hidden_rng": {
+      "unit_id": "hidden_rng",
+      "output_only_conflict": false,
+      "stateful_conflict": true,
+      "observed_effects": [
+        "rng_state_changed"
+      ],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": false,
+      "rng_state_changed": true,
+      "object_state_changed": false,
+      "environment_output_changed": false,
+      "operator_calls": 7,
+      "probe_spec_sha256": "352d9f2886cae0823e40af67577051e529124f93d3792503eb48b129d8aab8a6"
+    },
+    "hidden_state": {
+      "unit_id": "hidden_state",
+      "output_only_conflict": false,
+      "stateful_conflict": true,
+      "observed_effects": [
+        "object_state_changed"
+      ],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": false,
+      "rng_state_changed": false,
+      "object_state_changed": true,
+      "environment_output_changed": false,
+      "operator_calls": 7,
+      "probe_spec_sha256": "352d9f2886cae0823e40af67577051e529124f93d3792503eb48b129d8aab8a6"
+    },
+    "environment": {
+      "unit_id": "environment",
+      "output_only_conflict": false,
+      "stateful_conflict": true,
+      "observed_effects": [
+        "environment_output_changed"
+      ],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": false,
+      "rng_state_changed": false,
+      "object_state_changed": false,
+      "environment_output_changed": true,
+      "operator_calls": 7,
+      "probe_spec_sha256": "352d9f2886cae0823e40af67577051e529124f93d3792503eb48b129d8aab8a6"
+    },
+    "epoch_sensitive": {
+      "unit_id": "epoch_sensitive",
+      "output_only_conflict": false,
+      "stateful_conflict": true,
+      "observed_effects": [
+        "cross_context_output_changed"
+      ],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": true,
+      "rng_state_changed": false,
+      "object_state_changed": false,
+      "environment_output_changed": false,
+      "operator_calls": 7,
+      "probe_spec_sha256": "352d9f2886cae0823e40af67577051e529124f93d3792503eb48b129d8aab8a6"
+    }
+  },
+  "horizon_results": {
+    "stable_select": {
+      "horizon_source": "workload_manifest",
+      "cost_unit": "epoch",
+      "horizon_low": 2,
+      "horizon_planned": 4,
+      "horizon_high": 6,
+      "net_benefit_low_ms": 1.0,
+      "net_benefit_planned_ms": 7.0,
+      "net_benefit_high_ms": 13.0,
+      "select_low": true,
+      "select_planned": true,
+      "select_high": true,
+      "decision_stability": "stable_select",
+      "workload_manifest_sha256": "d6ab8bb17022e00ec1363cab632acb73eb774d4ae7327f0c413af5b178dd8ca3",
+      "cost_profile_sha256": "1cab4a0e428ef8d1137c496907fb5c9170f056046bb4bf851ba3903ccd03033a"
+    },
+    "horizon_unstable": {
+      "horizon_source": "workload_manifest",
+      "cost_unit": "epoch",
+      "horizon_low": 1,
+      "horizon_planned": 4,
+      "horizon_high": 10,
+      "net_benefit_low_ms": -4.0,
+      "net_benefit_planned_ms": -1.0,
+      "net_benefit_high_ms": 5.0,
+      "select_low": false,
+      "select_planned": false,
+      "select_high": true,
+      "decision_stability": "horizon_unstable",
+      "workload_manifest_sha256": "39fb92c0c20cf937daa7864ec405be72aea60c75797dd3190064038fbdc2e56f",
+      "cost_profile_sha256": "4991d100276d502448e3c366967a5a839493f3a0c720fcf8c38aa541f8ffc1e8"
+    },
+    "worker_variant": {
+      "horizon_source": "workload_manifest",
+      "cost_unit": "epoch",
+      "horizon_low": 2,
+      "horizon_planned": 4,
+      "horizon_high": 6,
+      "net_benefit_low_ms": 1.0,
+      "net_benefit_planned_ms": 7.0,
+      "net_benefit_high_ms": 13.0,
+      "select_low": true,
+      "select_planned": true,
+      "select_high": true,
+      "decision_stability": "stable_select",
+      "workload_manifest_sha256": "72a4ccc40de7b044073a763cc8a42136727547435f8d946fea1a34aa1dcc3e8a",
+      "cost_profile_sha256": "1cab4a0e428ef8d1137c496907fb5c9170f056046bb4bf851ba3903ccd03033a"
+    }
+  },
+  "checks": {
+    "pure_has_no_stateful_conflict": true,
+    "hidden_rng_missed_by_output_only": true,
+    "hidden_rng_found_by_stateful": true,
+    "hidden_state_missed_by_output_only": true,
+    "hidden_state_found_by_stateful": true,
+    "environment_drift_found": true,
+    "epoch_drift_found": true,
+    "fixed_probe_budget_respected": true,
+    "manifest_horizon_stable_select": true,
+    "manifest_horizon_uncertainty_exposed": true,
+    "workers_do_not_multiply_logical_horizon": true,
+    "invalid_horizon_manifest_rejected": true
+  },
+  "passed": 12,
+  "total": 12,
+  "status": "pass"
+}

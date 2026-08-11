@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/autocontract/oracle-commitment-v1.schema.json",
+  "title": "AutoContract private-oracle commitment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "benchmark_id",
+    "public_manifest_sha256",
+    "oracle_commitment_sha256",
+    "unit_count"
+  ],
+  "properties": {
+    "schema_version": {"const": "autocontract.oracle-commitment.v1"},
+    "artifact_type": {"const": "private_oracle_commitment"},
+    "benchmark_id": {"type": "string"},
+    "public_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "oracle_commitment_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "unit_count": {"type": "integer", "minimum": 1}
+  }
+}

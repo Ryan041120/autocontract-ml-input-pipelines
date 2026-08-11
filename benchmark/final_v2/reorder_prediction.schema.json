@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autocontract.local/schemas/reorder_prediction.schema.json",
+  "title": "AutoContract sealed reorder prediction v0",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "benchmark_id", "public_manifest_sha256", "producer_bundle_sha256", "created_at", "status", "pairs", "burden"],
+  "properties": {
+    "schema_version": {"const": "autocontract.reorder-final-prediction.v0"}, "artifact_type": {"const": "reorder_prediction"},
+    "benchmark_id": {"type": "string"}, "public_manifest_sha256": {"$ref": "#/$defs/sha256"}, "producer_bundle_sha256": {"$ref": "#/$defs/sha256"},
+    "created_at": {"type": "string", "minLength": 1}, "status": {"const": "sealed"},
+    "pairs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/pair"}},
+    "burden": {
+      "type": "object", "additionalProperties": false, "required": ["total_adapter_minutes", "all_pairs_timed"],
+      "properties": {"total_adapter_minutes": {"type": "number", "minimum": 0}, "all_pairs_timed": {"const": true}}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "pair": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pair_id", "status", "assurance_level", "reason", "receipt_sha256", "generation_ms", "adapter_minutes"],
+      "properties": {
+        "pair_id": {"type": "string"}, "status": {"enum": ["supported", "unknown", "unsupported"]},
+        "assurance_level": {"enum": ["locally_replayed_restricted_ast", "locally_replayed_versioned_relation_algebra", "trusted_revocable_external_proof", "none"]},
+        "reason": {"type": "string", "minLength": 3}, "receipt_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "generation_ms": {"type": "number", "minimum": 0}, "adapter_minutes": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

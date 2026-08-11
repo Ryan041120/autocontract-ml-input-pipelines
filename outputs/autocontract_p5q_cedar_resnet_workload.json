@@ -1,0 +1,1131 @@
+{
+  "schema_version": "autocontract.p5q-cedar-resnet-workload-result.v0",
+  "status": "pass",
+  "passed": 19,
+  "total": 19,
+  "protocol_sha256": "b2f9d132b801ac5f0aa5a56e8ae5032217a01f4a77373bc87887bdeae62b2563",
+  "runner_sha256": "b76ecb71dd7ca8935a3e62977d188967a9cb39a23ecaa80797b15ee63b1c5fed",
+  "runtime": {
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "torchvision_v2_python_files": 24,
+    "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1",
+    "cedar_commit": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+    "torch_threads": 1
+  },
+  "workload": {
+    "samples": 24,
+    "batch_size": 8,
+    "preprocess_repetitions": 3,
+    "training_repetitions": 3,
+    "execution_seed": 918273,
+    "training_seed": 424242,
+    "model": "resnet18",
+    "synthetic_inputs": true,
+    "contaminated_operators": true,
+    "scientific_evidence": false
+  },
+  "receipts": {
+    "count": 3,
+    "verified": [
+      [
+        true,
+        "locally_replayed_relation_supported"
+      ],
+      [
+        true,
+        "locally_replayed_relation_supported"
+      ],
+      [
+        true,
+        "locally_replayed_relation_supported"
+      ]
+    ]
+  },
+  "native_boundary": {
+    "normalize": {
+      "class": "known_versioned_native",
+      "identity_sha256": "09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9",
+      "binding_scope": "torchvision Python dispatch plus pinned torch/torchvision build identity; native kernel bytes and hardware state are not fully attested",
+      "strict_policy": "allow_versioned_relation_only",
+      "source_index_status": "supported",
+      "source_index_sha256": "42c3194d2ff39882974b15ec52e9116f01dddcb3019f407bd2f4eb1b73999621"
+    },
+    "random_crop": {
+      "class": "known_versioned_native",
+      "identity_sha256": "09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9",
+      "binding_scope": "torchvision Python dispatch plus pinned torch/torchvision build identity; native kernel bytes and hardware state are not fully attested",
+      "strict_policy": "allow_versioned_relation_only",
+      "source_index_status": "supported",
+      "source_index_sha256": "e319d20fb042f2a60b1105938d1da7726410ac9985f24192fed721f113ce455b"
+    },
+    "identity": {
+      "class": "known_versioned_native",
+      "identity_sha256": "09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9",
+      "binding_scope": "torchvision Python dispatch plus pinned torch/torchvision build identity; native kernel bytes and hardware state are not fully attested",
+      "strict_policy": "allow_versioned_relation_only",
+      "source_index_status": "supported",
+      "source_index_sha256": "987722839e4621a9c0bf1e2c4d9aea760bc0531f75eb56d235be3b018293939d"
+    }
+  },
+  "arms": {
+    "fail_closed_baseline": {
+      "candidate_count": 1,
+      "path": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "fix": [
+        true,
+        true,
+        true
+      ],
+      "outcome": "output",
+      "exception": null,
+      "output_digests": [
+        "8eb60b0bee8de6e14854f9c1a534c48881b72c9cc53d3777cacca08d77205fda",
+        "92682b05d00faf0e0de830e3447232fe447297284c34717f7473191984de0727",
+        "ade5192f4448449135138b745675f22f3569d1da60057f6d446cb374513b6f0d",
+        "85e416e1655fe8af72a116fca96587a9bd26964cac5b5d6d4746a8a6e842d173",
+        "2e90cc6e8b8a73feefd0dbfd94fb1551405b98a563c3e5cfe6ed3bc2a9576097",
+        "ea6a44035780d46af0ff21cd29530f05f233e5459d12bf581802bad049cb6555",
+        "94662f303ea1b5344eb6097bce6d46696eaa75dc9b95120b57dc52029ade9f22",
+        "00814b5d40147458004a0c1a654d5786f346c56527d7c0f279fbc3a1ec72247f",
+        "8fdd6f3a2406e0c3eb50353fe191ec7a285f25875c54393f2c80c842191a8891",
+        "70afb011adbfd20ca9f46d17410cec0fbad50e3e99241fb56f63a69b2c0af471",
+        "cf03cfe11cd0b859d541c92d942c5d35c65a19c69070cb142e3e8b3c1d03488e",
+        "6eff147e722580339d0c8ef26d0e778b9b96a1cfbd12b2c20b9cb9cb2444ff13",
+        "9a41ef790eb57e53a3225d0c7deb7650a5836313c326ab796bca27e7c05d7d5c",
+        "4591e7e21509b3af1db43f73e98d3eda6632e51d6e96cdf3d2f0b2aebe884dd5",
+        "cc3f8d2ab1efcdd74fc97c3901417d06e8373da3bc0bbc7cbc8ed00d9b2b922d",
+        "1b30bca7db44c78165207d6cf7cd371a6b47d266d186850fc81c0d9a8b45756f",
+        "0c752dc5a0e99dd1c74a1c8d78bb1c3cc609fd18d6c619a7afd108064785d594",
+        "41e4f12bca89a58648ad2ba0d96e2a801c4cda8b47db26e3a082c14333d90975",
+        "eb91e1cc68ba22c800270b34993f161bcc676da751118b0ebbdabb52b4c9c017",
+        "9184e899daf713aa2e51a7dfa2bc766f64964753bc3d12d3e16db7b8803a42ae",
+        "62cb6eb9df1264d79114f8f1302596f29c0f955f035f9fd980077394f98f627a",
+        "fde226db9ec3a46818c90604cb6bd883e469e5857d2e1ea4852c892270a1c73b",
+        "201c7c5f398afb2882df616d34fbbc9db19ec40aaed1579e487d41844c7b378b",
+        "dd0f6a500629a71231b402be2cc6a19807b7293307c515f7a6990d88b9a3f56b"
+      ],
+      "output_shapes": [
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ]
+      ],
+      "rng": {
+        "python": "64720c5acca2d22d68c4384f6bbe0ae194b4ed86c66655bc500da2440c92f4e8",
+        "numpy": "85a6829a4337e8f18e73c1e912007f7effb75699a457d01d6be209ff8aca6fd6",
+        "torch": "7b01d3b58ad723febe78d552f071afca3c02b0a6d10b8cfa538e25b9785a07f5"
+      },
+      "repetitions": 3,
+      "repeat_stable": true,
+      "warmup": {
+        "planning_ms": 0.0,
+        "execution_ms": 5.4697,
+        "output_stable": true
+      },
+      "planning_ms": {
+        "values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "median": 0.0,
+        "p95": 0.0
+      },
+      "execution_ms": {
+        "values": [
+          4.6356,
+          6.2143,
+          8.2446
+        ],
+        "median": 6.2143,
+        "p95": 8.2446
+      },
+      "samples_per_second_median": 3862.0600872181903
+    },
+    "receipt_guarded_cedar": {
+      "candidate_count": 6,
+      "path": [
+        3,
+        0,
+        1,
+        2
+      ],
+      "fix": [
+        false,
+        false,
+        false
+      ],
+      "outcome": "output",
+      "exception": null,
+      "output_digests": [
+        "8eb60b0bee8de6e14854f9c1a534c48881b72c9cc53d3777cacca08d77205fda",
+        "92682b05d00faf0e0de830e3447232fe447297284c34717f7473191984de0727",
+        "ade5192f4448449135138b745675f22f3569d1da60057f6d446cb374513b6f0d",
+        "85e416e1655fe8af72a116fca96587a9bd26964cac5b5d6d4746a8a6e842d173",
+        "2e90cc6e8b8a73feefd0dbfd94fb1551405b98a563c3e5cfe6ed3bc2a9576097",
+        "ea6a44035780d46af0ff21cd29530f05f233e5459d12bf581802bad049cb6555",
+        "94662f303ea1b5344eb6097bce6d46696eaa75dc9b95120b57dc52029ade9f22",
+        "00814b5d40147458004a0c1a654d5786f346c56527d7c0f279fbc3a1ec72247f",
+        "8fdd6f3a2406e0c3eb50353fe191ec7a285f25875c54393f2c80c842191a8891",
+        "70afb011adbfd20ca9f46d17410cec0fbad50e3e99241fb56f63a69b2c0af471",
+        "cf03cfe11cd0b859d541c92d942c5d35c65a19c69070cb142e3e8b3c1d03488e",
+        "6eff147e722580339d0c8ef26d0e778b9b96a1cfbd12b2c20b9cb9cb2444ff13",
+        "9a41ef790eb57e53a3225d0c7deb7650a5836313c326ab796bca27e7c05d7d5c",
+        "4591e7e21509b3af1db43f73e98d3eda6632e51d6e96cdf3d2f0b2aebe884dd5",
+        "cc3f8d2ab1efcdd74fc97c3901417d06e8373da3bc0bbc7cbc8ed00d9b2b922d",
+        "1b30bca7db44c78165207d6cf7cd371a6b47d266d186850fc81c0d9a8b45756f",
+        "0c752dc5a0e99dd1c74a1c8d78bb1c3cc609fd18d6c619a7afd108064785d594",
+        "41e4f12bca89a58648ad2ba0d96e2a801c4cda8b47db26e3a082c14333d90975",
+        "eb91e1cc68ba22c800270b34993f161bcc676da751118b0ebbdabb52b4c9c017",
+        "9184e899daf713aa2e51a7dfa2bc766f64964753bc3d12d3e16db7b8803a42ae",
+        "62cb6eb9df1264d79114f8f1302596f29c0f955f035f9fd980077394f98f627a",
+        "fde226db9ec3a46818c90604cb6bd883e469e5857d2e1ea4852c892270a1c73b",
+        "201c7c5f398afb2882df616d34fbbc9db19ec40aaed1579e487d41844c7b378b",
+        "dd0f6a500629a71231b402be2cc6a19807b7293307c515f7a6990d88b9a3f56b"
+      ],
+      "output_shapes": [
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ],
+        [
+          3,
+          23,
+          25
+        ]
+      ],
+      "rng": {
+        "python": "64720c5acca2d22d68c4384f6bbe0ae194b4ed86c66655bc500da2440c92f4e8",
+        "numpy": "85a6829a4337e8f18e73c1e912007f7effb75699a457d01d6be209ff8aca6fd6",
+        "torch": "7b01d3b58ad723febe78d552f071afca3c02b0a6d10b8cfa538e25b9785a07f5"
+      },
+      "repetitions": 3,
+      "repeat_stable": true,
+      "warmup": {
+        "planning_ms": 6.2,
+        "execution_ms": 14.8655,
+        "output_stable": true
+      },
+      "planning_ms": {
+        "values": [
+          4.2401,
+          4.4735,
+          5.578
+        ],
+        "median": 4.4735,
+        "p95": 5.578
+      },
+      "execution_ms": {
+        "values": [
+          5.4259,
+          6.5693,
+          7.2844
+        ],
+        "median": 6.5693,
+        "p95": 7.2844
+      },
+      "samples_per_second_median": 3653.357283119967
+    }
+  },
+  "semantic_equivalence": {
+    "preprocess_exact": true,
+    "rng_exact": true,
+    "loss_exact": true,
+    "logits_exact": true,
+    "gradient_exact": true,
+    "model_state_exact": true
+  },
+  "performance": {
+    "fail_closed_baseline": {
+      "planning_ms": {
+        "values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "median": 0.0,
+        "p95": 0.0
+      },
+      "preprocessing_ms": {
+        "values": [
+          4.6356,
+          6.2143,
+          8.2446
+        ],
+        "median": 6.2143,
+        "p95": 8.2446
+      },
+      "preprocessing_samples_per_second": 3862.0600872181903,
+      "training": {
+        "loss_hex": [
+          "0x1.3101300000000p+1",
+          "0x1.0519fa0000000p+1",
+          "0x1.5508320000000p+1"
+        ],
+        "logits_sha256": "81552bd4f64e9472a3ae62951aab99af245fd3ba533d0ab5c794682a3d606fb1",
+        "gradient_sha256": "f5ee1a4858fa13538cb9c1c8c8be148236b8c0920d19eebbf23dfed9178b4c0b",
+        "model_state_sha256": "6c169d973af8c5b28631a87a7782e02ea99a88b1ff8a1a029a4c71fbd0cb9a91",
+        "repeat_stable": true,
+        "repetitions": 3,
+        "training_ms": {
+          "values": [
+            629.717,
+            732.6474,
+            776.9824
+          ],
+          "median": 732.6474,
+          "p95": 776.9824
+        },
+        "samples_per_second_median": 32.75791328816563
+      },
+      "warm_end_to_end_ms": 738.8616999999999,
+      "cold_end_to_end_ms": 738.8616999999999
+    },
+    "receipt_guarded_cedar": {
+      "planning_ms": {
+        "values": [
+          4.2401,
+          4.4735,
+          5.578
+        ],
+        "median": 4.4735,
+        "p95": 5.578
+      },
+      "preprocessing_ms": {
+        "values": [
+          5.4259,
+          6.5693,
+          7.2844
+        ],
+        "median": 6.5693,
+        "p95": 7.2844
+      },
+      "preprocessing_samples_per_second": 3653.357283119967,
+      "training": {
+        "loss_hex": [
+          "0x1.3101300000000p+1",
+          "0x1.0519fa0000000p+1",
+          "0x1.5508320000000p+1"
+        ],
+        "logits_sha256": "81552bd4f64e9472a3ae62951aab99af245fd3ba533d0ab5c794682a3d606fb1",
+        "gradient_sha256": "f5ee1a4858fa13538cb9c1c8c8be148236b8c0920d19eebbf23dfed9178b4c0b",
+        "model_state_sha256": "6c169d973af8c5b28631a87a7782e02ea99a88b1ff8a1a029a4c71fbd0cb9a91",
+        "repeat_stable": true,
+        "repetitions": 3,
+        "training_ms": {
+          "values": [
+            667.4448,
+            707.1636,
+            740.4134
+          ],
+          "median": 707.1636,
+          "p95": 740.4134
+        },
+        "samples_per_second_median": 33.93839841304049
+      },
+      "warm_end_to_end_ms": 713.7329,
+      "cold_end_to_end_ms": 718.2063999999999
+    },
+    "ratios": {
+      "preprocessing_runtime_guarded_over_baseline": 1.0571263054567692,
+      "warm_end_to_end_guarded_over_baseline": 0.96598984627299,
+      "cold_end_to_end_guarded_over_baseline": 0.9720444299657162
+    },
+    "interpretation": "descriptive_contaminated_cpu_calibration_no_minimum_speedup_gate"
+  },
+  "checks": [
+    {
+      "name": "frozen inputs exact",
+      "passed": true,
+      "observed": {
+        "experiments/autocontract_p5p_reorder_final_v3_handoff.py": "70f86f168da5b6d0c6bbee76af8901ea1be0d04362bc86ae3764926622d6447e",
+        "benchmark/final_v3/p5p_reorder_final_v3_handoff_protocol.json": "2683d3ec6b3e97387d21e4fa72cfe27d048a8afedf7cee3f5880d7ba8e0c547a",
+        "outputs/autocontract_p5p_reorder_final_v3_handoff_selftest.json": "a100a54395fc1281a817003603c6cd3d4c01770e7413b1ac828a9372e0e8a4a8",
+        "experiments/autocontract_p5m_relation_boundary_falsification.py": "42ac1f44c01e027467d87216f76e78fb89a0cdc610cf544130687ca7c71e52ec",
+        "outputs/autocontract_p5m_relation_boundary_falsification.json": "f244a33287d66902ff569d6fe94c2f7489120c1d0974f6468036954823edbec8",
+        "experiments/autocontract_reorder_capability_v2.py": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35",
+        "experiments/autocontract_p5o_domain_native_assurance.py": "dbbcea79e10386184a4f5322f535c25cdacb35d8e92d0504ca89e6f53e1497f8"
+      }
+    },
+    {
+      "name": "cedar checkout fixed and clean",
+      "passed": true,
+      "observed": {
+        "head": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+        "status": "clean"
+      }
+    },
+    {
+      "name": "framework runtime and source tree pinned",
+      "passed": true,
+      "observed": {
+        "python": "3.11.9",
+        "torch": "2.0.1+cpu",
+        "torchvision": "0.15.2+cpu",
+        "torchvision_v2_python_files": 24,
+        "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1"
+      }
+    },
+    {
+      "name": "all three V2 receipts locally replay",
+      "passed": true,
+      "observed": [
+        [
+          true,
+          "locally_replayed_relation_supported"
+        ],
+        [
+          true,
+          "locally_replayed_relation_supported"
+        ],
+        [
+          true,
+          "locally_replayed_relation_supported"
+        ]
+      ]
+    },
+    {
+      "name": "compiler remains constraint-only",
+      "passed": true
+    },
+    {
+      "name": "per-sample runtime premises hold",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "torchvision operations are explicitly version-bound native",
+      "passed": true,
+      "observed": {
+        "normalize": {
+          "class": "known_versioned_native",
+          "identity_sha256": "09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9",
+          "binding_scope": "torchvision Python dispatch plus pinned torch/torchvision build identity; native kernel bytes and hardware state are not fully attested",
+          "strict_policy": "allow_versioned_relation_only",
+          "source_index_status": "supported",
+          "source_index_sha256": "42c3194d2ff39882974b15ec52e9116f01dddcb3019f407bd2f4eb1b73999621"
+        },
+        "random_crop": {
+          "class": "known_versioned_native",
+          "identity_sha256": "09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9",
+          "binding_scope": "torchvision Python dispatch plus pinned torch/torchvision build identity; native kernel bytes and hardware state are not fully attested",
+          "strict_policy": "allow_versioned_relation_only",
+          "source_index_status": "supported",
+          "source_index_sha256": "e319d20fb042f2a60b1105938d1da7726410ac9985f24192fed721f113ce455b"
+        },
+        "identity": {
+          "class": "known_versioned_native",
+          "identity_sha256": "09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9",
+          "binding_scope": "torchvision Python dispatch plus pinned torch/torchvision build identity; native kernel bytes and hardware state are not fully attested",
+          "strict_policy": "allow_versioned_relation_only",
+          "source_index_status": "supported",
+          "source_index_sha256": "987722839e4621a9c0bf1e2c4d9aea760bc0531f75eb56d235be3b018293939d"
+        }
+      }
+    },
+    {
+      "name": "receipts restore six candidates and change selected path",
+      "passed": true,
+      "observed": {
+        "baseline": {
+          "candidate_count": 1,
+          "path": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "fix": [
+            true,
+            true,
+            true
+          ],
+          "outcome": "output",
+          "exception": null,
+          "output_digests": [
+            "8eb60b0bee8de6e14854f9c1a534c48881b72c9cc53d3777cacca08d77205fda",
+            "92682b05d00faf0e0de830e3447232fe447297284c34717f7473191984de0727",
+            "ade5192f4448449135138b745675f22f3569d1da60057f6d446cb374513b6f0d",
+            "85e416e1655fe8af72a116fca96587a9bd26964cac5b5d6d4746a8a6e842d173",
+            "2e90cc6e8b8a73feefd0dbfd94fb1551405b98a563c3e5cfe6ed3bc2a9576097",
+            "ea6a44035780d46af0ff21cd29530f05f233e5459d12bf581802bad049cb6555",
+            "94662f303ea1b5344eb6097bce6d46696eaa75dc9b95120b57dc52029ade9f22",
+            "00814b5d40147458004a0c1a654d5786f346c56527d7c0f279fbc3a1ec72247f",
+            "8fdd6f3a2406e0c3eb50353fe191ec7a285f25875c54393f2c80c842191a8891",
+            "70afb011adbfd20ca9f46d17410cec0fbad50e3e99241fb56f63a69b2c0af471",
+            "cf03cfe11cd0b859d541c92d942c5d35c65a19c69070cb142e3e8b3c1d03488e",
+            "6eff147e722580339d0c8ef26d0e778b9b96a1cfbd12b2c20b9cb9cb2444ff13",
+            "9a41ef790eb57e53a3225d0c7deb7650a5836313c326ab796bca27e7c05d7d5c",
+            "4591e7e21509b3af1db43f73e98d3eda6632e51d6e96cdf3d2f0b2aebe884dd5",
+            "cc3f8d2ab1efcdd74fc97c3901417d06e8373da3bc0bbc7cbc8ed00d9b2b922d",
+            "1b30bca7db44c78165207d6cf7cd371a6b47d266d186850fc81c0d9a8b45756f",
+            "0c752dc5a0e99dd1c74a1c8d78bb1c3cc609fd18d6c619a7afd108064785d594",
+            "41e4f12bca89a58648ad2ba0d96e2a801c4cda8b47db26e3a082c14333d90975",
+            "eb91e1cc68ba22c800270b34993f161bcc676da751118b0ebbdabb52b4c9c017",
+            "9184e899daf713aa2e51a7dfa2bc766f64964753bc3d12d3e16db7b8803a42ae",
+            "62cb6eb9df1264d79114f8f1302596f29c0f955f035f9fd980077394f98f627a",
+            "fde226db9ec3a46818c90604cb6bd883e469e5857d2e1ea4852c892270a1c73b",
+            "201c7c5f398afb2882df616d34fbbc9db19ec40aaed1579e487d41844c7b378b",
+            "dd0f6a500629a71231b402be2cc6a19807b7293307c515f7a6990d88b9a3f56b"
+          ],
+          "output_shapes": [
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ]
+          ],
+          "rng": {
+            "python": "64720c5acca2d22d68c4384f6bbe0ae194b4ed86c66655bc500da2440c92f4e8",
+            "numpy": "85a6829a4337e8f18e73c1e912007f7effb75699a457d01d6be209ff8aca6fd6",
+            "torch": "7b01d3b58ad723febe78d552f071afca3c02b0a6d10b8cfa538e25b9785a07f5"
+          },
+          "repetitions": 3,
+          "repeat_stable": true,
+          "warmup": {
+            "planning_ms": 0.0,
+            "execution_ms": 5.4697,
+            "output_stable": true
+          },
+          "planning_ms": {
+            "values": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "median": 0.0,
+            "p95": 0.0
+          },
+          "execution_ms": {
+            "values": [
+              4.6356,
+              6.2143,
+              8.2446
+            ],
+            "median": 6.2143,
+            "p95": 8.2446
+          },
+          "samples_per_second_median": 3862.0600872181903
+        },
+        "optimized": {
+          "candidate_count": 6,
+          "path": [
+            3,
+            0,
+            1,
+            2
+          ],
+          "fix": [
+            false,
+            false,
+            false
+          ],
+          "outcome": "output",
+          "exception": null,
+          "output_digests": [
+            "8eb60b0bee8de6e14854f9c1a534c48881b72c9cc53d3777cacca08d77205fda",
+            "92682b05d00faf0e0de830e3447232fe447297284c34717f7473191984de0727",
+            "ade5192f4448449135138b745675f22f3569d1da60057f6d446cb374513b6f0d",
+            "85e416e1655fe8af72a116fca96587a9bd26964cac5b5d6d4746a8a6e842d173",
+            "2e90cc6e8b8a73feefd0dbfd94fb1551405b98a563c3e5cfe6ed3bc2a9576097",
+            "ea6a44035780d46af0ff21cd29530f05f233e5459d12bf581802bad049cb6555",
+            "94662f303ea1b5344eb6097bce6d46696eaa75dc9b95120b57dc52029ade9f22",
+            "00814b5d40147458004a0c1a654d5786f346c56527d7c0f279fbc3a1ec72247f",
+            "8fdd6f3a2406e0c3eb50353fe191ec7a285f25875c54393f2c80c842191a8891",
+            "70afb011adbfd20ca9f46d17410cec0fbad50e3e99241fb56f63a69b2c0af471",
+            "cf03cfe11cd0b859d541c92d942c5d35c65a19c69070cb142e3e8b3c1d03488e",
+            "6eff147e722580339d0c8ef26d0e778b9b96a1cfbd12b2c20b9cb9cb2444ff13",
+            "9a41ef790eb57e53a3225d0c7deb7650a5836313c326ab796bca27e7c05d7d5c",
+            "4591e7e21509b3af1db43f73e98d3eda6632e51d6e96cdf3d2f0b2aebe884dd5",
+            "cc3f8d2ab1efcdd74fc97c3901417d06e8373da3bc0bbc7cbc8ed00d9b2b922d",
+            "1b30bca7db44c78165207d6cf7cd371a6b47d266d186850fc81c0d9a8b45756f",
+            "0c752dc5a0e99dd1c74a1c8d78bb1c3cc609fd18d6c619a7afd108064785d594",
+            "41e4f12bca89a58648ad2ba0d96e2a801c4cda8b47db26e3a082c14333d90975",
+            "eb91e1cc68ba22c800270b34993f161bcc676da751118b0ebbdabb52b4c9c017",
+            "9184e899daf713aa2e51a7dfa2bc766f64964753bc3d12d3e16db7b8803a42ae",
+            "62cb6eb9df1264d79114f8f1302596f29c0f955f035f9fd980077394f98f627a",
+            "fde226db9ec3a46818c90604cb6bd883e469e5857d2e1ea4852c892270a1c73b",
+            "201c7c5f398afb2882df616d34fbbc9db19ec40aaed1579e487d41844c7b378b",
+            "dd0f6a500629a71231b402be2cc6a19807b7293307c515f7a6990d88b9a3f56b"
+          ],
+          "output_shapes": [
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ],
+            [
+              3,
+              23,
+              25
+            ]
+          ],
+          "rng": {
+            "python": "64720c5acca2d22d68c4384f6bbe0ae194b4ed86c66655bc500da2440c92f4e8",
+            "numpy": "85a6829a4337e8f18e73c1e912007f7effb75699a457d01d6be209ff8aca6fd6",
+            "torch": "7b01d3b58ad723febe78d552f071afca3c02b0a6d10b8cfa538e25b9785a07f5"
+          },
+          "repetitions": 3,
+          "repeat_stable": true,
+          "warmup": {
+            "planning_ms": 6.2,
+            "execution_ms": 14.8655,
+            "output_stable": true
+          },
+          "planning_ms": {
+            "values": [
+              4.2401,
+              4.4735,
+              5.578
+            ],
+            "median": 4.4735,
+            "p95": 5.578
+          },
+          "execution_ms": {
+            "values": [
+              5.4259,
+              6.5693,
+              7.2844
+            ],
+            "median": 6.5693,
+            "p95": 7.2844
+          },
+          "samples_per_second_median": 3653.357283119967
+        }
+      }
+    },
+    {
+      "name": "each arm is repeat-stable",
+      "passed": true
+    },
+    {
+      "name": "preprocessing outputs and definedness exact",
+      "passed": true
+    },
+    {
+      "name": "preprocessing RNG post-state exact",
+      "passed": true,
+      "observed": {
+        "baseline": {
+          "python": "64720c5acca2d22d68c4384f6bbe0ae194b4ed86c66655bc500da2440c92f4e8",
+          "numpy": "85a6829a4337e8f18e73c1e912007f7effb75699a457d01d6be209ff8aca6fd6",
+          "torch": "7b01d3b58ad723febe78d552f071afca3c02b0a6d10b8cfa538e25b9785a07f5"
+        },
+        "optimized": {
+          "python": "64720c5acca2d22d68c4384f6bbe0ae194b4ed86c66655bc500da2440c92f4e8",
+          "numpy": "85a6829a4337e8f18e73c1e912007f7effb75699a457d01d6be209ff8aca6fd6",
+          "torch": "7b01d3b58ad723febe78d552f071afca3c02b0a6d10b8cfa538e25b9785a07f5"
+        }
+      }
+    },
+    {
+      "name": "ResNet18 loss sequence exact",
+      "passed": true,
+      "observed": {
+        "baseline": [
+          "0x1.3101300000000p+1",
+          "0x1.0519fa0000000p+1",
+          "0x1.5508320000000p+1"
+        ],
+        "optimized": [
+          "0x1.3101300000000p+1",
+          "0x1.0519fa0000000p+1",
+          "0x1.5508320000000p+1"
+        ]
+      }
+    },
+    {
+      "name": "ResNet18 logits exact",
+      "passed": true
+    },
+    {
+      "name": "ResNet18 gradients exact",
+      "passed": true
+    },
+    {
+      "name": "ResNet18 final model state exact",
+      "passed": true
+    },
+    {
+      "name": "paired training repetitions are internally stable",
+      "passed": true
+    },
+    {
+      "name": "performance endpoints finite and positive",
+      "passed": true,
+      "observed": {
+        "preprocessing_runtime_guarded_over_baseline": 1.0571263054567692,
+        "warm_end_to_end_guarded_over_baseline": 0.96598984627299,
+        "cold_end_to_end_guarded_over_baseline": 0.9720444299657162
+      }
+    },
+    {
+      "name": "performance direction is descriptive not a pass gate",
+      "passed": true
+    },
+    {
+      "name": "workload remains contaminated and non-independent",
+      "passed": true
+    }
+  ],
+  "claim_boundary": "Real cedar optimizer and ResNet18 execution on synthetic contaminated inputs. This calibrates workload measurement and semantic propagation only; it is not an independent dataset, final pair evaluation, or general training-speed claim."
+}

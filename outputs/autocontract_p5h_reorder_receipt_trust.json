@@ -1,0 +1,263 @@
+{
+  "schema_version": "autocontract.p5h-reorder-receipt-trust-result.v0",
+  "reproduction_status": "pass",
+  "system_verdict": "fail_unverified_receipt_trust_boundary",
+  "passed": 8,
+  "total": 8,
+  "protocol_sha256": "71bfaaf7b5ad3d86a79a7621a1bf44fdf551de9ed55742fdccda58472af5b238",
+  "runner_sha256": "aadeabd20a497a9a636b743f8d46dc91902dd29bceadd9fcf22cdffaa9f423b7",
+  "checks": [
+    {
+      "name": "upstream_checkout_matches_commit",
+      "passed": true,
+      "observed": "f062305fcdab196e871c5d09b4c82ab788b4da79"
+    },
+    {
+      "name": "frozen_inputs_unchanged",
+      "passed": true,
+      "observed": {
+        "outputs/autocontract_p5f_reorder_unsoundness.json": "83076a5667e219c334e10402ddad8b1ef813a3ab6264ed5f5a67e175cca16eff",
+        "outputs/autocontract_p5g_reorder_capability.json": "0922f625d24880719aa4d1e148b5288297bea0759d41eff6be81114685c6d060",
+        "experiments/autocontract_reorder_capability_v0.py": "77da9d207f62a3e732f5242aebf76bcdae43acebf16baa02cbb3f9879d93a5ae"
+      }
+    },
+    {
+      "name": "forged_receipts_are_syntactically_valid",
+      "passed": true,
+      "observed": [
+        {
+          "schema_version": "autocontract.reorder-capability.v0",
+          "operation_context_sha256": "8f789104ad78919fbcb61aa8ed660ae3db39eddbb400d555bc5d71fccc490111",
+          "input_schema_sha256": "68d604cff2f8567b6e24faa9a0ba1416968e813eb5f9d04195ddd002f3ea73e0",
+          "left": {
+            "operator_id": "crop",
+            "contract_sha256": "3a9c87ba128aaa767964e91683079f06a601368daae389cd15ade8e723b6c18e",
+            "source_index_sha256": "3774bce8bdb418722cf0830e56c4380cc833e8636357b6fe632ceb6121e9300e"
+          },
+          "right": {
+            "operator_id": "decode",
+            "contract_sha256": "206788c071a6b4e759d963d6fce340feeac7d4193f42d4661adcb98200a6913b",
+            "source_index_sha256": "cbb9d566186943a504d0d8de0ff291eb4bcbc753fd36505065470d3f8e395565"
+          },
+          "relation": "commutes",
+          "status": "supported",
+          "proof_method": "differential",
+          "proof_sha256": "ef791033dd89066c32ff9940a460f9dbab3fd8c42f2790c08623336cf770448a",
+          "proof_scope": "Exact bound pair and operation context only."
+        },
+        {
+          "schema_version": "autocontract.reorder-capability.v0",
+          "operation_context_sha256": "8f789104ad78919fbcb61aa8ed660ae3db39eddbb400d555bc5d71fccc490111",
+          "input_schema_sha256": "68d604cff2f8567b6e24faa9a0ba1416968e813eb5f9d04195ddd002f3ea73e0",
+          "left": {
+            "operator_id": "decode",
+            "contract_sha256": "206788c071a6b4e759d963d6fce340feeac7d4193f42d4661adcb98200a6913b",
+            "source_index_sha256": "cbb9d566186943a504d0d8de0ff291eb4bcbc753fd36505065470d3f8e395565"
+          },
+          "right": {
+            "operator_id": "normalize",
+            "contract_sha256": "ed96fb7d08cdc467f76d93f0fd73dc98828243562cd9bd15912f75222510b95f",
+            "source_index_sha256": "7b4f2b99db0b474876cf98b3c2a2399e4252baf0b40f05fdeb8e6c288778e125"
+          },
+          "relation": "commutes",
+          "status": "supported",
+          "proof_method": "differential",
+          "proof_sha256": "6af5bc028e911fcd519f7270897eac2a269eee35fd8d850d664482dbee94e833",
+          "proof_scope": "Exact bound pair and operation context only."
+        },
+        {
+          "schema_version": "autocontract.reorder-capability.v0",
+          "operation_context_sha256": "8f789104ad78919fbcb61aa8ed660ae3db39eddbb400d555bc5d71fccc490111",
+          "input_schema_sha256": "68d604cff2f8567b6e24faa9a0ba1416968e813eb5f9d04195ddd002f3ea73e0",
+          "left": {
+            "operator_id": "crop",
+            "contract_sha256": "3a9c87ba128aaa767964e91683079f06a601368daae389cd15ade8e723b6c18e",
+            "source_index_sha256": "3774bce8bdb418722cf0830e56c4380cc833e8636357b6fe632ceb6121e9300e"
+          },
+          "right": {
+            "operator_id": "normalize",
+            "contract_sha256": "ed96fb7d08cdc467f76d93f0fd73dc98828243562cd9bd15912f75222510b95f",
+            "source_index_sha256": "7b4f2b99db0b474876cf98b3c2a2399e4252baf0b40f05fdeb8e6c288778e125"
+          },
+          "relation": "commutes",
+          "status": "supported",
+          "proof_method": "differential",
+          "proof_sha256": "0544f15e9436fd76a6ce640984ce59c5f34f7609c5b7e32dd4d4e37d5057b8f9",
+          "proof_scope": "Exact bound pair and operation context only."
+        }
+      ]
+    },
+    {
+      "name": "v0_admits_forged_complete_region",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-composition.v0",
+        "regions": [
+          {
+            "operator_ids": [
+              "decode",
+              "crop",
+              "normalize"
+            ],
+            "admitted": true,
+            "reason": "pairwise_complete_supported"
+          }
+        ],
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "admit",
+            "reason": "supported_exact_binding",
+            "count": 1
+          },
+          {
+            "pair": [
+              "decode",
+              "normalize"
+            ],
+            "decision": "admit",
+            "reason": "supported_exact_binding",
+            "count": 1
+          },
+          {
+            "pair": [
+              "crop",
+              "normalize"
+            ],
+            "decision": "admit",
+            "reason": "supported_exact_binding",
+            "count": 1
+          }
+        ],
+        "supported_pairs": [
+          [
+            "crop",
+            "decode"
+          ],
+          [
+            "crop",
+            "normalize"
+          ],
+          [
+            "decode",
+            "normalize"
+          ]
+        ],
+        "policy": "fail_closed_pairwise_complete_contiguous_regions"
+      }
+    },
+    {
+      "name": "fail_closed_baseline_matches",
+      "passed": true,
+      "observed": {
+        "candidate_count": 1,
+        "path": [
+          3,
+          2,
+          1,
+          0
+        ],
+        "output": [
+          -1,
+          1,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "name": "forged_receipts_restore_six_candidates",
+      "passed": true,
+      "observed": {
+        "candidate_count": 6,
+        "path": [
+          3,
+          0,
+          1,
+          2
+        ],
+        "output": [
+          -5,
+          -3,
+          -1,
+          1,
+          3
+        ]
+      }
+    },
+    {
+      "name": "forged_receipts_enable_reordered_plan",
+      "passed": true,
+      "observed": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "forged_receipts_change_output",
+      "passed": true,
+      "observed": {
+        "baseline": [
+          -1,
+          1,
+          3,
+          5,
+          7
+        ],
+        "attack": [
+          -5,
+          -3,
+          -1,
+          1,
+          3
+        ]
+      }
+    }
+  ],
+  "baseline": {
+    "candidate_count": 1,
+    "path": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "output": [
+      -1,
+      1,
+      3,
+      5,
+      7
+    ]
+  },
+  "attack": {
+    "candidate_count": 6,
+    "path": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "output": [
+      -5,
+      -3,
+      -1,
+      1,
+      3
+    ]
+  },
+  "required_v1": [
+    "explicit assurance level and verifier identity/version/source digest",
+    "proof artifact digest plus locally replayable verification or trusted signature/allowlist",
+    "strict mode rejects manual/differential assertions that cannot establish the declared scope",
+    "source-to-proof-IR binding and operation/input-domain assumptions",
+    "revocation and verifier-version invalidation"
+  ],
+  "note": "P5G remains a composition mechanism under a trusted-receipt assumption; V0 is not a proof verifier and must not accept arbitrary caller assertions."
+}

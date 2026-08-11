@@ -1,0 +1,9 @@
+semantic,capability,source,expected,actual,reason,passed
+reject,supported,supported,reject,reject,semantic_reject,True
+unknown,supported,supported,unknown,unknown,semantic_unknown,True
+admit,unsupported,supported,unsupported,unsupported,framework_replay_capability_unsupported,True
+admit,unknown,supported,unknown,unknown,capability_unknown,True
+admit,supported,unknown,unknown,unknown,source_binding_unknown,True
+admit,supported,supported,admit,admit,all_contract_layers_satisfied,True
+admit,supported_target_dependent_unbound,supported,unsupported,unsupported,target_dependent_operand_not_lineage_bound,True
+reject,unsupported,unknown,reject,reject,semantic_reject,True

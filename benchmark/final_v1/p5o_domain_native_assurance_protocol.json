@@ -1,0 +1,47 @@
+{
+  "schema_version": "autocontract.p5o-domain-native-assurance-protocol.v0",
+  "status": "predeclared_dry_run_only",
+  "date": "2026-08-01",
+  "question": "Can AutoContract minimize the actual input premises used by ReorderCapabilityV2, compare registration/batch/per-sample enforcement without value scanning, classify native boundaries fail-closed, and amend the independent-final schema without inspecting future final pairs or labels?",
+  "frozen_predecessors": {
+    "experiments/autocontract_reorder_capability_v2.py": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35",
+    "experiments/autocontract_r3_source_index_v1.py": "7e6251c0388fce23c115919258ac43fb9d620ea38f8902082fe6da7cfbb5238c",
+    "benchmark/final_v2/reorder_public_manifest.schema.json": "6cf298ebb99d1a42ec4ddcecabb2a5e5aa363601e1999cc00ef034334e0c5039",
+    "benchmark/final_v2/reorder_private_oracle.schema.json": "4e3a5e85742ae8d64655477f0543875348ef0f6886a025df30812d09d87518d0",
+    "benchmark/final_v2/reorder_prediction.schema.json": "a2cf76aae5a7c7069a1f58dcf2709de9c7289abda45eed467833e512ef338789",
+    "outputs/autocontract_p5m_relation_boundary_falsification.json": "f244a33287d66902ff569d6fe94c2f7489120c1d0974f6468036954823edbec8",
+    "outputs/autocontract_p5n_reorder_final_handoff_selftest.json": "e48438d1ad1802781b184b6120eec97d6656e22940f9d919b5bf0c774754202f"
+  },
+  "premise_hypothesis": {
+    "algebraic_or_totality": ["type", "layout", "channels", "dtype", "device", "height_min", "width_min"],
+    "declaration_only_for_current_lemmas": ["value_min", "value_max", "height_max", "width_max", "allow_nonfinite"],
+    "rule": "A declaration-only field remains receipt-bound for backward compatibility but is not scanned at runtime unless a future lemma explicitly consumes it."
+  },
+  "assurance_modes": {
+    "registration": "Validate the declared premise profile once; this cannot detect runtime sample substitution.",
+    "batch_boundary": "Validate the first representative sample or a uniform batch tensor at each batch boundary; this can miss later ragged-list violations.",
+    "per_sample": "Validate every sample structural premise; this is the strongest prototype and its overhead is reported descriptively."
+  },
+  "native_policy": {
+    "pure_python": "Local proof may proceed when the complete required callable closure is inspectable.",
+    "known_versioned_native": "Local relation proof additionally requires a pinned runtime identity and an explicit native-boundary limitation.",
+    "opaque_native": "Local strict Supported is forbidden and must remain Unknown unless a trusted external attestation is supplied.",
+    "external_attested_native": "A separately revocable external proof producer may authorize the boundary; P5O does not implement that producer."
+  },
+  "dry_run": {
+    "pairs": 8,
+    "source": "synthetic or previously contaminated development fixtures only",
+    "scientific_evidence": false,
+    "purpose": "Exercise schema, human handoff fields, guard detection, burden accounting, and stratified reporting without tuning on a future final corpus."
+  },
+  "hypotheses": {
+    "h1_premises": "The two current V2 lemmas do not consume value bounds, maximum spatial bounds, or a finite-value premise.",
+    "h2_detection": "Per-sample structural guards detect every injected structural violation; registration alone cannot, and a representative batch sentinel may miss later ragged-list violations.",
+    "h3_native": "Known torchvision operators are reported as version-bound native rather than pure Python, and an uninspectable builtin is opaque/force-Unknown.",
+    "h4_protocol": "The final-v3 public/private/prediction templates validate and an eight-pair contaminated dry-run reports RNG/family/definedness strata without being accepted as final evidence.",
+    "h5_fail_closed": "A Supported prediction over an opaque native boundary, a runtime premise violation, or a non-exact observational relation without an external proof is rejected."
+  },
+  "pass_rule": "All frozen hashes are exact, all defined checks pass, every structural violation is caught by per-sample mode, opaque native Supported is rejected, and the dry-run remains explicitly non-scientific.",
+  "no_go_rule": "Any change to a frozen predecessor, any unsafe admission across an opaque native boundary or violated runtime premise, or any use of dry-run scores as independent evidence blocks final handoff.",
+  "claim_boundary": "P5O is a premise/native-boundary and protocol dry-run. It does not establish independent coverage, full native-kernel soundness, or end-to-end training benefit."
+}

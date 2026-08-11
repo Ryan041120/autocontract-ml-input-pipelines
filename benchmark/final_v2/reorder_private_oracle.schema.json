@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autocontract.local/schemas/reorder_private_oracle.schema.json",
+  "title": "AutoContract reorder-final private oracle v0",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "benchmark_id", "public_manifest_sha256", "commitment_salt_hex", "annotators", "units", "adjudication"],
+  "properties": {
+    "schema_version": {"const": "autocontract.reorder-final-oracle.v0"}, "artifact_type": {"const": "reorder_private_oracle"},
+    "benchmark_id": {"type": "string"}, "public_manifest_sha256": {"$ref": "#/$defs/sha256"}, "commitment_salt_hex": {"$ref": "#/$defs/sha256"},
+    "annotators": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/annotator"}},
+    "units": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/unit"}},
+    "adjudication": {"$ref": "#/$defs/adjudication"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "label": {"enum": ["commutes", "noncommutes", "unknown"]},
+    "annotator": {
+      "type": "object", "additionalProperties": false, "required": ["annotator_id", "role", "independent_of_analyzer", "conflict_disclosure"],
+      "properties": {"annotator_id": {"type": "string", "minLength": 3}, "role": {"enum": ["primary", "reviewer", "adjudicator"]}, "independent_of_analyzer": {"const": true}, "conflict_disclosure": {"type": "string", "minLength": 3}}
+    },
+    "witness": {
+      "type": "object", "additionalProperties": false,
+      "required": ["seed", "input_sha256", "original_outcome_sha256", "swapped_outcome_sha256", "reproduction_command_sha256"],
+      "properties": {"seed": {"type": "integer"}, "input_sha256": {"$ref": "#/$defs/sha256"}, "original_outcome_sha256": {"$ref": "#/$defs/sha256"}, "swapped_outcome_sha256": {"$ref": "#/$defs/sha256"}, "reproduction_command_sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "unit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pair_id", "primary_label", "reviewer_label", "adjudicated_label", "confidence", "proof_kind", "rationale", "premises", "evidence_anchors", "counterexample", "reviewed_by"],
+      "properties": {
+        "pair_id": {"type": "string"}, "primary_label": {"$ref": "#/$defs/label"}, "reviewer_label": {"$ref": "#/$defs/label"}, "adjudicated_label": {"$ref": "#/$defs/label"},
+        "confidence": {"enum": ["high", "medium", "low"]}, "proof_kind": {"enum": ["formal", "manual_source_proof", "counterexample", "unresolved"]},
+        "rationale": {"type": "string", "minLength": 20}, "premises": {"type": "array", "items": {"type": "string", "minLength": 3}},
+        "evidence_anchors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 3}},
+        "counterexample": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/witness"}]},
+        "reviewed_by": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 3}}
+      }
+    },
+    "adjudication": {
+      "type": "object", "additionalProperties": false, "required": ["status", "disagreement_count", "record_sha256"],
+      "properties": {"status": {"const": "complete"}, "disagreement_count": {"type": "integer", "minimum": 0}, "record_sha256": {"$ref": "#/$defs/sha256"}}
+    }
+  }
+}

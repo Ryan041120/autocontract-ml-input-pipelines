@@ -1,0 +1,24 @@
+{
+  "protocol": "AutoContract H8A EffectV7-to-optimizer integration pilot",
+  "claim_boundary": "mechanism/runtime integration; not a new blind holdout",
+  "candidate_semantics": "H7J atomic replay to H7K registered replay under supplied compatible params",
+  "contract_sha256": "c838d8468d22bf0700eb38681262d31a65de65e5ad794788403df83366a5f476",
+  "profile_rows_sha256": "46778eac1b447775610072d8570d28c7c7394797a0a25ceacddddbff0bc8beca",
+  "checks": {
+    "h7h_freeze_verified": true,
+    "leaf_proof_set_valid": true,
+    "three_leaf_analyses_bound": true,
+    "replay_context_all_admitted": true,
+    "sample_context_all_rejected": true,
+    "sample_rejection_mentions_sampling_or_proof_context": true,
+    "composite_contract_admitted": true,
+    "composite_contract_digest_bound": true,
+    "tampered_leaf_proof_rejected": true,
+    "three_real_profiles_loaded": true,
+    "profile_savings_positive": true,
+    "one_call_horizon_rejected_by_cost": true,
+    "ten_call_horizon_selected": true,
+    "semantic_reject_cannot_be_bypassed_by_large_benefit": true
+  },
+  "all_checks_pass": true
+}

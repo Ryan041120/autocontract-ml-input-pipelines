@@ -1,6 +1,8 @@
 # AutoContract 当前实验总结
 
-更新日期：2026-07-29
+> **P5S 更新（2026-08-07）**：DIV2K warm-cache CPU 端到端确认的语义/冻结/审计门均通过，但预注册 30-pair bootstrap ratio CI 上界为 0.952507，未低于 0.95；因此为机制成功、benefit claim No-Go。两次早期 Fold A 实现失败在可评价输出前即失效，修复、control-selftest 与重新冻结后才执行正式 A/B。详见 [P5S 复盘](p5s_div2k_e2e_postmortem.zh-CN.md)。
+
+更新日期：2026-08-07
 
 ## 1. 一句话结论
 
@@ -412,3 +414,181 @@ Kornia `RandomMixUpV2` 的 posthoc mechanism extension 8/8：冻结 EffectV7 生
 摊销微基准中，H7M/H7L consumer ratio 随 N=1/4/16/64 为 1.911×/0.488×/0.138×/0.053×；N=1 明确 no-go，N≥4 进入收益区。Merkle proof 令 bytes/sample 从 N1 的 1297 增至 N64 的 1317，而 H7L 约为 1021–1023，性能收益以更多 metadata 换取。真实 Kornia batch=4 中 H7K/H7L/H7M 中位分别为 31.216/48.321/41.070 ms，H7M/H7L=0.835×，10/10 round 更快；最低 tensor buffering 为 192 KiB input + 192 KiB output。
 
 H7M 只保证 batch authorization/registry commit 与 stale-worker fencing，不保证 optimizer step exactly-once。下一步 H7N 应把 DataLoader position/worker RNG、batch ID、model state 和 optimizer state 纳入 checkpoint-coupled effect journal，并通过 crash injection 验证恢复后 digest 与无故障执行等价。详细复盘见 `.research/semantics_safe_reconfiguration/h7m_batch_lease_postmortem.zh-CN.md`。
+
+## 26. R3 novelty falsification 与 contract invalidation
+
+R3-P1 在已知 H7H 的 9 个 Kornia 单元上加入合理强的 source-guided greybox baseline。黑盒 dynamic 在 25/100/500 ms 三档均为 TP=4、FP=1；一条预声明的 MRO/container heuristic 即把 greybox 提升到 TP=4、FP=0，与冻结 EffectV7 持平。因此该范围内的 analyzer detection-accuracy headline 为 no-go，论文主线收缩为 contract-carrying reconfiguration safety。详见 `.research/semantics_safe_reconfiguration/r3_p1_kornia_greybox_postmortem.zh-CN.md`。
+
+R3-P2 随后在 13 个真实 Kornia replay drift cases 上比较 dynamic reprobe、output snapshot、lineage v1 与 measured-source v2 candidate。required-invalidation recall 分别为 9.1%、45.5%、90.9%、100%，benign preservation 均为 100%。v1 唯一 false accept 是 same-commit callable replacement，证明现有 certificate 并未测量正在执行的源码；此前 source-bound 强表述必须撤回。候选 v2 用实际 checkout HEAD 和 resolved callable canonical-AST digest 拦截该攻击，但最终复跑 cold validation 中位约 252.8 ms，下一步需注册时缓存并测试 dirty worktree/import shadow/native callable。详见 `.research/semantics_safe_reconfiguration/r3_p2_kornia_invalidation_postmortem.zh-CN.md`。
+
+## 27. R3-P2b cached measured-source index
+
+P2b 将 portable source index 放到 registration/deployment boundary，并建立 process-local hot callable sentinel。真实 Kornia 6-case 比较中，cached digest only 保留 2/2 benign，但对 3 类 supported post-deployment mutation 的拒绝率为 0%，并错误接纳 native override；hot sentinel 保留 2/2 benign、拒绝 3/3 mutations、native override 返回 Unknown，与 cold reindex 一致。sentinel-only hot check 中位 0.669 ms，lineage-v1 1.439 ms，组合 per-case 中位 2.591 ms，而 cold reindex 中位 407.357 ms。
+
+开发中发现 indiscriminate indexing 会因 replay 不可达的 native `randperm` 把 pipeline 判 Unknown，因此最终 source index 明确继承 EffectV7 的 phase/reachability slice。9/9 source fixtures 验证 formatting/docstring preservation，以及 AST/default/closure/global/wrapper/origin drift 与 native Unknown。当前 portable index 为 130,493 bytes、27 entries；17 个 unique definitions，content-addressed 去重预计可减少约 32.6%。下一主线是 R3-P3 跨框架 transfer，而非继续扩大 exactly-once runtime。详见 `.research/semantics_safe_reconfiguration/r3_p2b_cached_source_index_postmortem.zh-CN.md`。
+
+## 28. R3-P3a context-compatible cross-framework transfer
+
+P3a 先审计旧 H7 operation compatibility：TorchIO H7C 的 7 个 formal units 是 legacy `sample_apply`，没有冻结 replay evidence，因而全部退出 replay accuracy denominator；imgaug deterministic/RNG-state restoration 与 Albumentations stored-parameter replay 保留为两个 eligible replay families。冻结 EffectV7 在 16 个已知 formal units 上 zero-change 得到 TP=11、FP=0、FN=0、TN=5，safe recall/reason accuracy 均为 100%，新增 analyzer/adapter rule=0。
+
+首次 runner 因把 `BasicTransform.__call__` 与裸 AST 名 `__call__` 直接比较，只得到 5/11 static slices，正式记录为 10/11 FAIL；修复 owner-qualified identifier resolution 后为 11/11 slices、63 methods、11,029 bytes。但这些只是 partial AST artifacts。主环境中 imgaug 缺 cv2、Albumentations 缺 pydantic+cv2，full runtime measured-index readiness 为 0/2。下一步 P3b 是隔离 dependency-locked runtime，不能用静态成功替代运行时证据。详见 `.research/semantics_safe_reconfiguration/r3_p3a_cross_framework_context_postmortem.zh-CN.md`。
+
+## 29. R3-P3b isolated cross-framework runtime
+
+P3b 在外部 Python 3.9.19 隔离环境中固定 35 个 resolved packages，并从原始 vendored commits 直接导入 imgaug 0.4.0 与 Albumentations 2.0.8。环境 bootstrap 10/10；正式协议整体 6/8 gates、FAIL。11/11 known admits 均能构造，imgaug 5/5、Albumentations 5/6 完成 exact replay，所有 caller Python/NumPy global RNG 均无漂移。
+
+唯一 replay failure 是 `HistogramMatching`：EffectV7 正确裁掉了 replay apply 中不可达的 `read_fn`，但公开 `ReplayCompose` 在 record serialization 阶段明确抛出 `NotImplementedError`。这证明 reachable-effect safety 仍需与 recordability、serialization/restoration 和 target-dependent replay capability 合成；条件化 effect Admit 不能直接变成可部署 rewrite Admit。
+
+SourceIndexV0 的 11/11 indexes 与 hot sentinels 都返回 Supported；22 个 Python delegating-wrapper attacks 全部 Reject，11 个 native overrides 全部 Unknown，0 Admit，33/33 恢复 baseline。可是 portable digest 只在同进程 11/11 稳定，跨进程仅 3/11：`repr(code.co_consts)` 泄漏 nested code object 地址，并让 frozenset 顺序受 hash randomization 影响。因此 portable/source-bound 强主张继续暂停。下一步 P3c 必须递归 canonicalize constants 并达到 11/11 跨进程稳定；之后再把 framework capability obligation 加入 EffectV8 candidate。详见 `.research/semantics_safe_reconfiguration/r3_p3b_cross_framework_runtime_postmortem.zh-CN.md`。
+
+## 30. R3-P3c canonical SourceIndexV1
+
+P3c protocol v0 因 P3b runner SHA 手抄漏一个 `f` 在候选执行前 FAIL；v1 仅修正该 hash 并继承全部门槛。SourceIndexV1 用递归 typed representation 替换 `repr(code.co_consts)`，覆盖 nested code、tuple/frozenset、float/complex/bytes 等，并在未知常量上返回 Unknown 而非使用不稳定 repr。
+
+预注册结果 7/7 gates、PASS：11/11 bundles 保持 Supported、无 entry drop；parent 与 `PYTHONHASHSEED=1/2` 两个 fresh processes 中 11/11 digest 一致，相比 V0 的 3/11 修复跨进程稳定性。portable reindex attacks 为 22 Reject、11 Unknown、0 Admit，33/33 恢复 baseline；9/9 source/constant fixtures 通过。代价是 aggregate serialized bytes 1.064×，per-unit cold median 的中位数由 125.297 增至 130.512 ms（约 1.042×）。
+
+因此可恢复“固定 runtime、受支持 Python callable slice 的跨进程 deployment artifact”窄主张；仍不覆盖跨 Python/ABI 版本、native internals、并发 TOCTOU 或自动 slot discovery。P3b 的 `HistogramMatching` replay capability failure 不受 P3c 影响。下一步 P3d/EffectV8 candidate 只合成 recordability、serialization/restoration、target-dependency compatibility 与 SourceIndexV1 deployment binding。详见 `.research/semantics_safe_reconfiguration/r3_p3c_canonical_source_index_postmortem.zh-CN.md`。
+
+## 31. R3-P3d ReplayCapabilityV1
+
+P3d 明确不创建 EffectV8：EffectV7 的 `(configuration, phase, reachable path)` 语义判定保持冻结，新增独立 ReplayCapabilityV1，与 SourceIndexV1 共同合成 final eligibility。预注册 7/7 gates、PASS；8/8 composition truth-table cases 通过。
+
+11 个 known admits 的 EffectV7 semantic status 均保持 Admit，SourceIndexV1 均为 Supported 且跨三进程稳定。capability 为 10 Supported、1 Unsupported；final 为 10 Admit、1 Unsupported。唯一 Unsupported 是 `HistogramMatching`：`hm_metadata` 已被 lineage-bound，但 Albumentations 公开 replay record serialization 明确抛 `NotImplementedError`，reason 为 `framework_public_replay_serialization_not_supported`。它没有被错误改标为 semantic unsafe，也没有从条件化 Admit 直接升级为 deployment Admit。
+
+10 个 final Admits 均通过 exact replay、caller RNG 无漂移和 input/metadata digest binding。capability probe 中位 4.793 ms、receipt 中位 826 bytes，但这是 calibration 成本，不是热路径 benchmark。R3-P3 内部机制闭环至此结束；下一主线应冻结 schema、统计 adapter burden 并进入独立 final corpus/oracle，而不是继续在 known units 上加规则。详见 `.research/semantics_safe_reconfiguration/r3_p3d_replay_capability_postmortem.zh-CN.md`。
+
+## 32. P4A adapter burden：轻量化主张失败
+
+P4A 对污染登记表中的 10 个框架完成追溯，8 个有 adapter、DALI unsupported、torchvision 仅为开发示例。8 个 adapter 合计 1,286 semantic SLOC、87 binding-glue SLOC、53 条规则、50 个 formal units；只有 4/8 满足预注册轻量诊断，低于 75% gate，因此结果 5/6、FAIL。所有框架都缺 prospective onboarding time，“减少人工标注/接入时间”当前不受支持。详见 `.research/semantics_safe_reconfiguration/p4a_adapter_burden_postmortem.zh-CN.md`。
+
+## 33. P4B ReplayCapabilityV1 公共 schema
+
+P4B 冻结标准库-only JSON schema 和验证模块，14/14 self-test PASS。它严格区分 RNG-state restoration 与 stored-parameter record，验证机制必需 checks、lineage、target binding 和 source/config/input digests；8/8 composition truth table 通过。该 PASS 证明协议可交接，不是新框架 capability 证据。详见 `.research/semantics_safe_reconfiguration/p4b_replay_capability_schema_postmortem.zh-CN.md`。
+
+## 34. P4C final-blind v2 行政就绪
+
+P4C 在实现前否决了把 ReplayCapability 泛化到 cache/reorder 的草案，最终只把 replay metric 用于 `registered_parameter_replay`，非 replay rewrite 使用自己的 verification obligations。管理器首次自测 19/20 FAIL 被保留；唯一问题是把公开 private-oracle schema 文件名误认成私有实例路径。协议增补后复跑 20/20 PASS，覆盖标签泄漏、scope mismatch、source fail-closed、commit tamper 和完整 artifact freeze。
+
+当前 verdict 是“基础设施 GO、真实 final 执行 NO-GO”：尚无独立真实语料、私有 oracle、novel-framework final adapters 或最终 benefit 数据。详见 `.research/semantics_safe_reconfiguration/p4c_final_blind_v2_readiness.zh-CN.md`。
+
+## 35. P5A optimizer constraint compiler
+
+P4 文献压力测试新增 HyCache（ATC 2025）作为最强 cache 近邻，并再次确认 cedar/Cachew/Pecan 已占据 cost、placement、reorder 与 cache planning；AutoContract 的合理集成角色是生成它们依赖人工提供的 randomness/dependency/online-only/cache-boundary constraints。
+
+P5A 因此实现 constraint-only compiler。attempt 0 名义 12/12 PASS，但 posthoc 发现随机祖先后的纯 normalize 被错误标为可单点缓存，故保留为 invalid；修正为 prefix-compositional ancestor-effect closure 后 15/15 行为测试通过。attempt 1 又因绑定旧 protocol hash 被行政判无效；最终 protocol v2 绑定正确并 15/15 PASS。输出覆盖 cedar random/fix/depends-on、HyCache online-only/cache boundary、Cachew autocache boundary，且不含 cost/placement/tier/ILP 决策。
+
+该结果仅为 synthetic interface conformance，尚未导入或运行三个后端。详见 `.research/semantics_safe_reconfiguration/p5a_constraint_compiler_postmortem.zh-CN.md`。
+
+## 36. P5B cedar 固定提交 API conformance
+
+P5B 将 P5A mapping 绑定到 cedar commit `f062305fcdab196e871c5d09b4c82ab788b4da79`。attempt 0 虽名义 12/12，但 recipe 未实际调用 fix/depends_on，属于 vacuous PASS；v1 强制公共方法集合精确为 `{fix, depends_on}` 后最终 12/12 PASS。`tag/is_random` 只用构造参数，`fix/depends_on` 只用公开 fluent API，contract/source digests 留在 sidecar。该阶段仍是 source/API 证据。详见 `.research/semantics_safe_reconfiguration/p5b_cedar_api_conformance_postmortem.zh-CN.md`。
+
+## 37. P5C cedar runtime 与数据路径
+
+在独立 Python 3.11.9 环境固定 PyTorch 2.0.1、TensorFlow 2.14.0、Ray 2.7.0、NumPy 1.26.0 等依赖；环境约 2.38 GiB，显示接入并不轻。attempt 0 因 Windows CRLF 与 Git LF blob 的 raw SHA 差异为 13/14 FAIL；改为验证 Git blob、clean worktree 与 EOL-normalized equality。attempt 1 又暴露差量 protocol loader 未合并 base fixture。v2 最终 15/15 PASS：真实导入 cedar、构造三个 Mapper、验证 random/fix/depends 状态，并在 optimizer 关闭时输出 `[-1,1,3,5,7]`。
+
+## 38. P5D cache optimizer 实际消费 randomness
+
+P5D 在 cedar 官方 cache profile 上通过 17/17。AutoContract 将 crop 标为 random 时，真实 optimizer 把 cache 插在 decode 后、crop 前；只移除这一 hint，cache 即移动到 later-random 前。该结果将 P5A 的 `is_random` 从 JSON shape 提升为真实 plan consumption，但没有执行 cache、测吞吐或产生独立泛化证据。
+
+## 39. P5E reorder optimizer 实际消费 fix/depends_on
+
+P5E 17/17 PASS。P5A 为 semantic Unknown op 生成 `fix` 后，cedar reorder candidates 从 6 降为 1；为 normalize 生成对 decode 的 dependency 后，候选从 6 降为 3，且所选 plan 保持 decode 在 normalize 前。这只证明 backend 机械消费 constraint，不证明 AutoContract 发出的约束充分。
+
+## 40. P5F pure-is-not-commutative 反例
+
+P5F 用三个 deterministic、无状态、one-to-one 但不交换的函数 `x+1 -> 2x -> x-3` 攻击 P5A。旧策略未发出 fix/dependency，cedar 将路径从 `[3,2,1,0]` 重排为 `[3,0,1,2]`；真实输出从 `[-1,1,3,5,7]` 变为 `[-5,-3,-1,1,3]`。counterexample reproduction 11/11 PASS，系统 verdict 为 **FAIL: unsafe reorder authorization**。
+
+因此撤销“effect purity 足以授权 adjacent reorder”的主张。P5D 的 cache randomness 结果与 P5E 的 API consumption 结果仍保留；错误位于把 cache/effect obligation 泛化成 reorder capability。cedar 本身公开要求用户提供 reordering constraints，不应把该失败归因于 cedar。
+
+## 41. P5G ReorderCapabilityV0
+
+P5G 新增独立 pairwise receipt，不修改 EffectV7。receipt 绑定 operation context、input schema、两侧 operator/contract/SourceIndex digest、`commutes` relation 和 proof。默认全 fix；只有连续区域内每个无序算子对都有且只有一个 exact-bound Supported receipt，且没有旧 P5A barrier，才允许 cedar 在区域内任意排列。
+
+P5G 20/20 PASS：P5F 非交换反例无 receipt 时只剩 1 个 plan，顺序与输出恢复；三个 pairwise-commuting 加常数函数在三张完整 receipt 下恢复 6 个候选，cedar 重排但输出一致。缺 pair、source drift、Unsupported、重复 receipt 和旧 barrier 均 fail closed；显式 dependency 保留。
+
+这完成的是 synthetic mechanism repair，不是自动 commutativity inference 或 final evidence。下一主线是构建真实算子对的 source-bound commutativity corpus/oracle，比较 manual/static/differential proof coverage；若没有 receipt，reorder 必须默认零收益全 fix。详见 `.research/semantics_safe_reconfiguration/p5c_p5g_cedar_integration_and_reorder_postmortem.zh-CN.md`。
+
+## 42. P5H ReorderCapability receipt 信任边界
+
+P5H 对 P5G 继续做 adversarial audit：为 P5F 的三个非交换函数伪造三张格式正确、source/context binding 正确、status=Supported 但没有可验证 proof artifact 的 receipt。V0 validator 和 composer 接纳这些声明，重新开放 6 个候选；cedar 再次选择 `[3,0,1,2]`，输出再次从 `[-1,1,3,5,7]` 变为 `[-5,-3,-1,1,3]`。
+
+攻击 8/8 复现，系统 verdict 为 **FAIL: unverified receipt trust boundary**。这不否定 capability transport/composition 在“可信 issuer”前提下的作用，但否定“ReorderCapabilityV0 自己验证 commutativity”或“可接收任意 caller receipt”的说法。
+
+因此当前严格模式必须把所有未经过本地可重放 verifier 或受信签发/allowlist 的 receipt 当作 Unknown，并保持全 fix。V1 需要加入 assurance level、verifier identity/version/source digest、proof artifact、source-to-proof-IR binding、revocation/version invalidation；bounded differential assertion 不能单独升级为严格 Supported。P5G 的 20/20 现在应表述为 trusted-receipt composition calibration，而不是完整安全闭环。
+
+## 43. P5I ReorderCapabilityV1 本地证明重放
+
+P5I 实现 restricted-static V1：仅接受单参数、单 return 的 Python 整数仿射 AST 子集，用精确有理数 IR 重算 `g(f(x))` 与 `f(g(x))`。严格编译器绑定 operation/input/contract、SourceIndexV1 callable 摘要、verifier closure/version、固定 domain/scope、proof artifact 与 canonical digest；手写/V0/有限差分声明不能进入 strict Supported。verifier closure 同时绑定 V1、SourceIndexV1/V0 源码，支持按 closure digest 撤销。
+
+固定 cedar 上 23/23 PASS：P5H 伪造全部拒绝；非交换链保持 1 个计划与 `[-1,1,3,5,7]`；三个平移算子 3/3 pair 本地证明后恢复 6 个计划，cedar 换序但输出仍为 `[6,7,8,9,10]`。proof/artifact/verifier/source/revocation/duplicate/unsupported-expression 攻击均 fail closed，实际 receipt 通过公开 schema。
+
+## 44. P5J 变异审计与证据单调性
+
+attempt 0 为 5/6 FAIL：55/55 receipt mutations 均被拒绝，但 V0 贪心局部分区在 19 个 evidence-subset 关系中出现 1 个非单调反例。该问题不放过未证明重排，但增加证据会切换而非扩展已开放的二算子区域。
+
+V1 因此改为 full-base-segment policy：旧 barrier 之间的 maximal segment 只有获得全部无序 pair proof 才整体开放，不选择重叠局部 clique。保留 attempt 0 产物后，attempt 1 为 6/6 PASS：55/55 变异 fail closed、callable replacement 被 SourceIndexV1 拒绝、subset monotonicity 19/19，且 8 个子集中仅完整 3/3 cover 开放三算子区域。详见 `.research/semantics_safe_reconfiguration/p5i_p5j_reorder_capability_v1_postmortem.zh-CN.md`。
+
+当前主线从“修复 receipt trust”进入“真实 pair coverage”。V1 仍只是受限机制校准；下一项新证据必须来自 20–40 个真实 operator pairs、独立 pair oracle、producer coverage 对比和 one-shot backend execution，而不是继续扩 synthetic affine fixture。
+
+## 45. P5K torchvision 真实 pair coverage
+
+P5K 将早期已污染的 torchvision feasibility 语料重新定义为 calibration，而非 oracle，并扩为 28 个 pair。运行时固定 Python 3.11.9、PyTorch 2.0.1+cpu、torchvision 0.15.2+cpu；torchvision v2 的 24 个 Python 文件 tree digest 为 `e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1`。结果 11/11 PASS。
+
+global sequential RNG 下 14/28 找到反例，14/28 仅为 Unknown/no-counterexample；operator-keyed RNG 下分别为 11/28 与 17/28。三对 pair 因 RNG assignment context 改变证据，证明 receipt 必须绑定 RNG semantics。有限差分阴性结果全部保持 Unknown，strict Supported 为 **0/28**。P5I/P5J 因此只完成 trust architecture，不代表真实 proof coverage 已建立。
+
+旧 `ToDtype(..., scale=True)` 在当前固定版本构造失败，版本漂移被保留后才建立 current-version statement。12 个 torchvision operators 均有 non-empty SourceIndexV1；`StatefulOffset` 暴露 generic index 的空 entries 仍返回 Supported，P5K consumer 以 non-empty invariant 将其降为 Unknown，历史 index 不回写。
+
+下一轮 P5L 不应允许任意 `Call` AST，而应实现 source/version/config-bound relation algebra：identity；pointwise channel affine/linear；spatial index map/selection。resize/interpolation、blur boundary 与 dtype rounding 暂保持 Unknown。详见 `.research/semantics_safe_reconfiguration/p5k_torchvision_real_pair_coverage_postmortem.zh-CN.md`。
+
+## 46. P5L torchvision source-bound relation algebra
+
+P5L 实现 ReorderCapabilityV2 的最小关系代数，没有把任意 library `Call` 放入 AST 白名单。两个本地可重放 lemma 只覆盖 identity composition，以及 pointwise channel map 与 spatial index map/无 padding selection；证明绑定固定 Python/torch/torchvision 版本、24 文件源码树、operator type/config、必需源码槽、SourceIndexV1、input domain、RNG context 和 verifier closure。
+
+预注册 runner 11/11 PASS。P5K 的 14 个 global-RNG Unknown 中 10 个升级为 strict Supported，verified coverage 10/14=71.43%，全 corpus coverage 10/28=35.71%；14 个已知 counterexamples 中 0 个被错误签发。identity lemma 覆盖 3 对，pointwise/spatial lemma 覆盖 7 对。`normalize-resize`、`resize-random_hflip`、`gaussian_blur-normalize`、`to_uint8-resize` 因 interpolation、boundary 或 rounding proof 缺失继续保持 Unknown。
+
+lemma/verifier/source/domain/config/duplicate/revocation 共 8 类攻击全部 fail closed。固定 cedar 上 `[Identity, Normalize, CenterCrop]` 由 1 个候选恢复为 6 个，真实换序后 5 个输出 digest 完全一致、最大误差 0。该结果跨过 30% coverage 停止线，但仍是已知语料 calibration；下一轮 P5M 应先攻击 shape/channel/dtype/config 边界、随机链 RNG post-state，并测 proof/adapter burden，而不是继续增加 relation family。详见 `.research/semantics_safe_reconfiguration/p5l_torchvision_relation_algebra_postmortem.zh-CN.md`。
+
+## 47. P5M relation-lemma boundary falsification
+
+P5M 冻结全部 P5L 产物，不新增 lemma，并以域外拒绝、域内 metamorphic execution 和随机 cedar chain 三层攻击人工 semantic bridge。最终 11/11 PASS：15 个 domain/totality mutations 与 13 个 operator type/config mutations 均在 receipt 签发前拒绝；18 种 admitted configurations × 4 个空间角点 × 6 个 seed × contiguous/non-contiguous CHW 共 864 次执行全部 exact output、exception behavior 和 Python/NumPy/torch RNG post-state 一致。
+
+真实 `[Normalize, RandomCrop, Identity]` cedar chain 由 1 个候选恢复为 6 个，path 从 `[3,2,1,0]` 改为 `[3,0,1,2]`；8 个样本输出逐位相等、最大误差 0，执行后 RNG digest 全部一致。该结果补上 P5L deterministic chain 未覆盖的 random-stream obligation。
+
+负担测量显示 receipt 2,928 bytes，generation/verification median 分别约 80.526/101.798 ms；V2 module 396 SLOC，其中 semantic bridge 208 SLOC。因此不能恢复“proof adapter 轻量”主张。P5M 只把 V2 提升为 mutation-hardened known-version prototype；下一不可替代证据是 P5N independent pair selection/oracle 和 one-shot reveal，而不是继续在已知 corpus 扩规则。详见 `.research/semantics_safe_reconfiguration/p5m_relation_boundary_falsification_postmortem.zh-CN.md`。
+
+## 48. P5N reorder-final independent handoff
+
+P5N 将 final-blind v2 的 canonical hash、salted commitment、artifact freeze 和 seal-before-reveal 原则具体化为 reorder 专用子协议。Public manifest 固定 20–40 pairs、至少 3 个框架/2 个领域及 source/config/input/RNG context；private oracle 使用 Commutes/Noncommutes/Unknown 双人标签与 adjudication；sealed prediction 单独记录 Supported/Unknown/Unsupported、assurance、receipt 和 prospective burden。unsafe Supported=0、unresolved Supported=0、Commutes coverage≥30%、completion=100% 为冻结 gate。
+
+attempt 0 因泄漏扫描器把 prediction 中合法的 `receipt_sha256` 误判为答案字段而 ERROR，失败产物保留。仅拆分 public/prediction forbidden-key sets 后，24-pair、3-framework、2-domain synthetic fixture 最终 30/30 PASS。测试覆盖角色独立性、污染、标签/witness 一致性、oracle/prediction 双 commitment、private-path exclusion、post-seal tamper 和 unsafe Supported gate failure。
+
+该 PASS 只意味着 reorder-final administrative package 就绪，不是 24 个真实 pair evidence。当前主线的真实 blocker 已收敛为独立 selector、primary/reviewer/adjudicator 和 oracle custodian；内部 AI 自选自标只能称 dry-run。详见 `.research/semantics_safe_reconfiguration/p5n_reorder_final_handoff_postmortem.zh-CN.md` 与 `benchmark/final_v2/reorder_pair_selection_guide.zh-CN.md`。
+
+## 49. P5N 外部 AI 三评审共识
+
+第一轮三份回传中两份逐字节相同；本轮新增的完整评审文本与 A/B 均不同，因此当前实际为三份唯一评审。三者均判定研究问题真实、P5F/fail-closed/source-bound 架构有价值，当前已有 workshop/技术报告价值但 full paper 应 Reject；共同 P0 是独立 final 与真实 workload benefit，共同 major concerns 是 hand-written semantic bridge、adapter burden、input-domain membership、RNG context coverage 和组合型 novelty。第三份进一步指出 native/ABI/hardware boundary、definedness/exception 和非平凡 pair sampling。
+
+本项目接受这些核心批评，但不直接采用评审人临时提出的 `8 小时/operator`、`5% throughput` 等未预注册数值。Adapter burden 是 significance major risk，不是 soundness fatal；input-domain gap 将通过 lemma premise minimization 与 registration/batch/per-sample assurance 对比解决，而不是默认加入昂贵 value-range 热扫描；second backend 排在独立 safety/coverage 和真实 cedar workload 之后。
+
+P5O 改为 domain/native-assurance + low-burden dry-run：审计 lemma 真正使用的前提，分类 opaque native boundary，加入 RNG/family/definedness/statistical strata 和 human-friendly worksheet，用已污染/synthetic pair 只测试流程。随后才执行独立 P5N final。完整裁决见 `.research/semantics_safe_reconfiguration/p5n_external_ai_cross_review_response_2026-08-01.zh-CN.md`。
+
+## 50. P5O domain/native assurance 与 final-v3
+
+P5O 保持 P5L/P5M/P5N 七项 predecessor byte hash 不变，新建 final-v3 public/private/prediction schema、中文 worksheet 和 8-pair contaminated dry-run。固定 Python 3.11.9、torch 2.0.1+cpu、torchvision 0.15.2+cpu 下最终 21/21 PASS；旧 P5N 回归仍为 30/30，结果 hash 不变。
+
+Premise-use audit 发现两个 V2 lemma 的关系/totality 逻辑只读取 `height_min/width_min`；`type/layout/channels/dtype/device` 属于固定实现边界，`value_min/value_max/height_max/width_max/allow_nonfinite` 未被当前 lemma 使用。因此不加入无依据的 value/nonfinite 热扫描。5 类结构违例中 registration 检出 0/5、list 首样本 sentinel 1/5、per-sample 5/5；uniform dense NCHW batch 对 3 类共享结构违例检出 3/3。200 次微基准 median 分别约 15.4 μs/declaration、2.8 μs/list boundary、6.5 μs/dense batch、38.4 μs/16 samples；只作描述，不设 posthoc gate。
+
+Native policy 将本地可移植函数、torchvision transform 和 builtin 分别归为 `pure_python`、`known_versioned_native`、`opaque_native`。最后一类无 external attestation 必须 Unknown；torchvision 只可称 pinned runtime/version relation，不得称完整 native binary attestation。final-v3 同时显式记录 family、RNG、definedness、exception、observational relation、domain guard 和 prospective burden。8-pair score 明确 `scientific_evidence=false`。详见 `.research/semantics_safe_reconfiguration/p5o_domain_native_assurance_postmortem.zh-CN.md`。
+
+## 51. P5P final-v3 handoff chain
+
+P5P 将 final-v3 补成可执行 CLI：public/private/prediction validation、oracle commitment、public freeze、prediction seal 和 safety-first reveal。25/25 PASS；后密封篡改、answer leakage、伪 final mode、observation 缺口、opaque native/runtime violation Supported、artifact/burden/pair-order drift 全部 fail closed。family/RNG Wilson、non-identity/cross-framework 与 burden 已进入 reveal。普通行政命令不加载 torch，`requirements.txt` 补充 `jsonschema==4.26.0`。
+
+内部 fixture 仍是 8-pair contaminated dry-run，`scientific_evidence_eligible=false`。P5P 只把“工具没准备好”这个 blocker 移除，真实 selector/annotator/commitment/prediction 尚未发生。结果 SHA-256 `a100a54395fc1281a817003603c6cd3d4c01770e7413b1ac828a9372e0e8a4a8`。
+
+## 52. P5Q cedar→ResNet18 workload calibration
+
+P5Q 在固定 cedar 和已污染 P5M chain 上执行 24 个 probe images、三次 preprocessing 和交替顺序的三次 ResNet18 training。三张 V2 receipt 将 candidate 从 1 恢复到 6，cedar path 从 `[3,2,1,0]` 改成 `[3,0,1,2]`。24/24 tensors、exception/definedness、三套 RNG state、loss hex、logits、gradients 和最终 model state 全部 exact。
+
+性能没有形成正证据：预热后 preprocessing median 为 baseline 6.214 ms、guarded 6.569 ms，guarded/baseline=1.057×，约慢 5.7%；training/end-to-end 的约 3% 表面优势在完全相同模型计算下只能视为计时噪声。首轮未预热单次运行的约 22% 表面优势被严格复跑否定。P5Q 19/19 PASS 证明 workload measurement/semantic propagation 可运行，不证明 benefit；结果 SHA-256 `8b77cd9fdfbd569a26bc72fb29045b017889b742febcef7eea88599471d645b2`。详见 `.research/semantics_safe_reconfiguration/p5p_p5q_final_v3_handoff_and_cedar_resnet_postmortem.zh-CN.md`。

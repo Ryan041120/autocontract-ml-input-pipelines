@@ -1,0 +1,1208 @@
+{
+  "schema_version": "autocontract.p4a-adapter-burden-result.v0",
+  "artifact_role": "retrospective_code_rule_accounting_not_person_time",
+  "protocol_sha256": "e0827d7598bc416c9930f0630e4de93607d141ae6c870f53ee0ad51b772585b1",
+  "runner_sha256": "1a69cd0c3f494a7195d90547e35d614e06fe6c6b461ec413dfda9805d08c54c1",
+  "status": "fail",
+  "frozen_checks": {
+    "outputs/autocontract_h7_adapter_manifest.json": true,
+    "outputs/autocontract_h7c_adapter_manifest.json": true,
+    "outputs/autocontract_h7d_torchgeo_manifest.json": true,
+    "outputs/autocontract_h7e_adapter_manifest.json": true,
+    "outputs/autocontract_h7f_adapter_manifest.json": true,
+    "outputs/autocontract_h7g_adapter_manifest.json": true,
+    "outputs/autocontract_h7h_adapter_manifest.json": true,
+    "experiments/autocontract_h7_adapters.py": true,
+    "experiments/autocontract_h7c_torchio.py": true,
+    "experiments/autocontract_h7d_torchgeo.py": true,
+    "experiments/autocontract_h7e_audiomentations.py": true,
+    "experiments/autocontract_h7f_effect_v5.py": true,
+    "experiments/autocontract_h7f_imgaug.py": true,
+    "experiments/autocontract_h7g_effect_v6.py": true,
+    "experiments/autocontract_h7g_albumentations.py": true,
+    "experiments/autocontract_h7h_effect_v7.py": true,
+    "experiments/autocontract_h7h_kornia.py": true,
+    "benchmark/final_v1/contamination_registry.json": true
+  },
+  "registry_frameworks": {
+    "monai": "MONAI",
+    "mmdetection": "MMDetection",
+    "nvidiadali": "NVIDIA DALI",
+    "torchio": "TorchIO",
+    "torchgeo": "TorchGeo",
+    "audiomentations": "audiomentations",
+    "imgaug": "imgaug",
+    "albumentations": "Albumentations",
+    "kornia": "Kornia",
+    "torchvision": "torchvision"
+  },
+  "summary": {
+    "contaminated_frameworks": 10,
+    "adapters": 8,
+    "unsupported_or_example_only": 2,
+    "semantic_adapter_sloc": 1286,
+    "binding_glue_sloc": 87,
+    "declared_rules": 53,
+    "formal_units": 50,
+    "lightweight_frameworks": 4,
+    "prospective_time_frameworks": 0,
+    "human_time_displacement_claim": "unsupported_no_prospective_measurement",
+    "shared_infrastructure": {
+      "logical_sloc": 79,
+      "decision_points": 33,
+      "registered_items": 6,
+      "files": 1
+    }
+  },
+  "gates": {
+    "all_10_contaminated_frameworks_accounted": true,
+    "all_registered_items_exist_without_category_overlap": true,
+    "all_8_adapters_have_rules_and_denominator": true,
+    "at_least_75_percent_meet_lightweight_diagnostic": false,
+    "human_time_claim_correctly_unsupported": true,
+    "frozen_inputs_unchanged": true
+  },
+  "errors": [],
+  "frameworks": [
+    {
+      "framework": "MONAI",
+      "status": "adapter",
+      "formal_units": 4,
+      "calibration_units": 0,
+      "operation_decisions": 4,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": null,
+      "reason": null,
+      "declared_rules": [
+        "Randomizable.self.R is NumPy RNG",
+        "__call__ is the execution entrypoint",
+        "transform containers carry parametric target/delegation effects",
+        "container calls preserve one-sample lineage"
+      ],
+      "declared_rule_count": 4,
+      "rules_per_formal_unit": 1.0,
+      "semantic": {
+        "logical_sloc": 31,
+        "decision_points": 1,
+        "registered_items": 1,
+        "files": 1
+      },
+      "binding": {
+        "logical_sloc": 0,
+        "decision_points": 0,
+        "registered_items": 0,
+        "files": 0
+      },
+      "semantic_sloc_per_formal_unit": 7.75,
+      "lightweight_diagnostic": true,
+      "items": [
+        {
+          "file": "experiments/autocontract_h7_adapters.py",
+          "category": "semantic",
+          "name": "monai_analyze",
+          "start": 224,
+          "end": 254,
+          "logical_sloc": 31,
+          "decision_points": 1
+        }
+      ]
+    },
+    {
+      "framework": "MMDetection",
+      "status": "adapter",
+      "formal_units": 6,
+      "calibration_units": 0,
+      "operation_decisions": 6,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": null,
+      "reason": null,
+      "declared_rules": [
+        "transform is the execution entrypoint",
+        "BaseTransform/MMCV transform bases have resolved call semantics",
+        "results record keys map to canonical target groups",
+        "random/np.random calls map to Python/NumPy RNG",
+        "mix_results denotes many-to-one combined lineage",
+        "results_cache mutations are execution-state writes"
+      ],
+      "declared_rule_count": 6,
+      "rules_per_formal_unit": 1.0,
+      "semantic": {
+        "logical_sloc": 72,
+        "decision_points": 14,
+        "registered_items": 4,
+        "files": 1
+      },
+      "binding": {
+        "logical_sloc": 0,
+        "decision_points": 0,
+        "registered_items": 0,
+        "files": 0
+      },
+      "semantic_sloc_per_formal_unit": 12.0,
+      "lightweight_diagnostic": true,
+      "items": [
+        {
+          "file": "experiments/autocontract_h7_adapters.py",
+          "category": "semantic",
+          "name": "MMDET_EXTERNAL_BASES",
+          "start": 91,
+          "end": 91,
+          "logical_sloc": 1,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7_adapters.py",
+          "category": "semantic",
+          "name": "MMDET_TARGET_TOKENS",
+          "start": 92,
+          "end": 97,
+          "logical_sloc": 6,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7_adapters.py",
+          "category": "semantic",
+          "name": "mmdet_targets",
+          "start": 257,
+          "end": 265,
+          "logical_sloc": 9,
+          "decision_points": 3
+        },
+        {
+          "file": "experiments/autocontract_h7_adapters.py",
+          "category": "semantic",
+          "name": "mmdet_analyze",
+          "start": 268,
+          "end": 326,
+          "logical_sloc": 56,
+          "decision_points": 11
+        }
+      ]
+    },
+    {
+      "framework": "TorchIO",
+      "status": "adapter",
+      "formal_units": 7,
+      "calibration_units": 4,
+      "operation_decisions": 7,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": null,
+      "reason": null,
+      "declared_rules": [
+        "Transform.__call__ dispatches to subclass apply_transform",
+        "RandomTransform and Transform probability gates consume Torch RNG",
+        "Subject is one logical sample and Transform preserves subject lineage",
+        "SpatialTransform targets a coupled subject.spatial_images group",
+        "IntensityTransform targets a subject.intensity_images group",
+        "child containers, user callables, and external-framework wrappers remain Unknown"
+      ],
+      "declared_rule_count": 6,
+      "rules_per_formal_unit": 0.8571428571428571,
+      "semantic": {
+        "logical_sloc": 115,
+        "decision_points": 19,
+        "registered_items": 7,
+        "files": 1
+      },
+      "binding": {
+        "logical_sloc": 0,
+        "decision_points": 0,
+        "registered_items": 0,
+        "files": 0
+      },
+      "semantic_sloc_per_formal_unit": 16.428571428571427,
+      "lightweight_diagnostic": true,
+      "items": [
+        {
+          "file": "experiments/autocontract_h7c_torchio.py",
+          "category": "semantic",
+          "name": "TORCHIO_RULES",
+          "start": 26,
+          "end": 33,
+          "logical_sloc": 8,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7c_torchio.py",
+          "category": "semantic",
+          "name": "parse_bundle",
+          "start": 52,
+          "end": 60,
+          "logical_sloc": 9,
+          "decision_points": 1
+        },
+        {
+          "file": "experiments/autocontract_h7c_torchio.py",
+          "category": "semantic",
+          "name": "construction_nodes",
+          "start": 63,
+          "end": 69,
+          "logical_sloc": 7,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7c_torchio.py",
+          "category": "semantic",
+          "name": "has_external_framework_import",
+          "start": 72,
+          "end": 81,
+          "logical_sloc": 10,
+          "decision_points": 8
+        },
+        {
+          "file": "experiments/autocontract_h7c_torchio.py",
+          "category": "semantic",
+          "name": "has_user_callable_boundary",
+          "start": 84,
+          "end": 89,
+          "logical_sloc": 6,
+          "decision_points": 1
+        },
+        {
+          "file": "experiments/autocontract_h7c_torchio.py",
+          "category": "semantic",
+          "name": "is_child_container",
+          "start": 92,
+          "end": 97,
+          "logical_sloc": 6,
+          "decision_points": 2
+        },
+        {
+          "file": "experiments/autocontract_h7c_torchio.py",
+          "category": "semantic",
+          "name": "infer_torchio",
+          "start": 100,
+          "end": 171,
+          "logical_sloc": 69,
+          "decision_points": 7
+        }
+      ]
+    },
+    {
+      "framework": "TorchGeo",
+      "status": "adapter",
+      "formal_units": 5,
+      "calibration_units": 0,
+      "operation_decisions": 5,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": null,
+      "reason": null,
+      "declared_rules": [
+        "Kornia augmentation bases provide forward-to-hook execution semantics",
+        "apply_transform/generate_parameters/compute_transformation form the execution hooks",
+        "built-in TorchGeo transforms operate on a fixed Tensor record scope",
+        "Kornia random parameter generation is a resolved Torch RNG delegation",
+        "repeat_interleave or gamma-expanded batch shapes denote one-to-many output cardinality"
+      ],
+      "declared_rule_count": 5,
+      "rules_per_formal_unit": 1.0,
+      "semantic": {
+        "logical_sloc": 91,
+        "decision_points": 8,
+        "registered_items": 5,
+        "files": 1
+      },
+      "binding": {
+        "logical_sloc": 0,
+        "decision_points": 0,
+        "registered_items": 0,
+        "files": 0
+      },
+      "semantic_sloc_per_formal_unit": 18.2,
+      "lightweight_diagnostic": true,
+      "items": [
+        {
+          "file": "experiments/autocontract_h7d_torchgeo.py",
+          "category": "semantic",
+          "name": "KORNIA_BASES",
+          "start": 24,
+          "end": 30,
+          "logical_sloc": 7,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7d_torchgeo.py",
+          "category": "semantic",
+          "name": "TORCHGEO_RULES",
+          "start": 31,
+          "end": 37,
+          "logical_sloc": 7,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7d_torchgeo.py",
+          "category": "semantic",
+          "name": "execution_hooks",
+          "start": 52,
+          "end": 59,
+          "logical_sloc": 8,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7d_torchgeo.py",
+          "category": "semantic",
+          "name": "construction_hooks",
+          "start": 62,
+          "end": 68,
+          "logical_sloc": 7,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7d_torchgeo.py",
+          "category": "semantic",
+          "name": "infer_torchgeo",
+          "start": 71,
+          "end": 132,
+          "logical_sloc": 62,
+          "decision_points": 8
+        }
+      ]
+    },
+    {
+      "framework": "audiomentations",
+      "status": "adapter",
+      "formal_units": 7,
+      "calibration_units": 0,
+      "operation_decisions": 7,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": null,
+      "reason": null,
+      "declared_rules": [
+        "Base waveform __call__ plus apply/randomize_parameters are execution hooks",
+        "samples and sample_rate form a fixed two-field input scope and samples is the output field",
+        "Python/NumPy random calls are direct RNG effects",
+        "stored-callable invocation is unresolved user-callable delegation",
+        "iteration and invocation over self.transforms is unresolved child-operator delegation",
+        "file-path/audio-loader tokens denote a filesystem-backed external operand",
+        "writes to self attributes during execution remain EffectV4 execution-state writes"
+      ],
+      "declared_rule_count": 7,
+      "rules_per_formal_unit": 1.0,
+      "semantic": {
+        "logical_sloc": 197,
+        "decision_points": 39,
+        "registered_items": 9,
+        "files": 2
+      },
+      "binding": {
+        "logical_sloc": 26,
+        "decision_points": 2,
+        "registered_items": 4,
+        "files": 1
+      },
+      "semantic_sloc_per_formal_unit": 28.142857142857142,
+      "lightweight_diagnostic": false,
+      "items": [
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "binding",
+          "name": "HOOKS",
+          "start": 38,
+          "end": 38,
+          "logical_sloc": 1,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "binding",
+          "name": "EXTERNAL_AUDIO_TOKENS",
+          "start": 39,
+          "end": 48,
+          "logical_sloc": 10,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "binding",
+          "name": "package_classes",
+          "start": 123,
+          "end": 132,
+          "logical_sloc": 10,
+          "decision_points": 2
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "binding",
+          "name": "target_class",
+          "start": 135,
+          "end": 139,
+          "logical_sloc": 5,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "semantic",
+          "name": "ADAPTER_RULES",
+          "start": 52,
+          "end": 60,
+          "logical_sloc": 9,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "semantic",
+          "name": "construction_nodes",
+          "start": 142,
+          "end": 148,
+          "logical_sloc": 7,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "semantic",
+          "name": "execution_nodes",
+          "start": 151,
+          "end": 160,
+          "logical_sloc": 10,
+          "decision_points": 1
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "semantic",
+          "name": "assigned_callable_attrs",
+          "start": 163,
+          "end": 175,
+          "logical_sloc": 13,
+          "decision_points": 6
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "semantic",
+          "name": "invoked_self_attrs",
+          "start": 178,
+          "end": 187,
+          "logical_sloc": 10,
+          "decision_points": 6
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "semantic",
+          "name": "has_child_delegation",
+          "start": 190,
+          "end": 207,
+          "logical_sloc": 18,
+          "decision_points": 10
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "semantic",
+          "name": "has_external_audio_operand",
+          "start": 210,
+          "end": 212,
+          "logical_sloc": 3,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7e_audiomentations.py",
+          "category": "semantic",
+          "name": "analyze_unit",
+          "start": 215,
+          "end": 298,
+          "logical_sloc": 81,
+          "decision_points": 9
+        },
+        {
+          "file": "experiments/autocontract_h7f_effect_v5.py",
+          "category": "semantic",
+          "name": "infer_audiomentations_v5",
+          "start": 183,
+          "end": 229,
+          "logical_sloc": 46,
+          "decision_points": 7
+        }
+      ]
+    },
+    {
+      "framework": "imgaug",
+      "status": "adapter_plus_runtime_policy",
+      "formal_units": 8,
+      "calibration_units": 8,
+      "operation_decisions": 8,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": {
+        "components": 1,
+        "registered_slots": 3,
+        "capability_requirements": 5,
+        "origin": "manual_framework_family"
+      },
+      "reason": null,
+      "declared_rules": [
+        "Augmenter.augment_batch_ and the selected _augment_* override form the execution path",
+        "the Batch object is one whole-record input and output",
+        "random_state consumption denotes delegated replayable RNG state",
+        "_maybe_deterministic_ctx restores RNG state when deterministic mode is active",
+        "non-self augment_batch_ invocation denotes child-operator delegation",
+        "constructor-supplied self callables invoked during execution denote user delegation",
+        "constructor-supplied destination/path objects invoked during execution denote external effects",
+        "direct execution writes to other self state remain cache/control/unknown and fail closed"
+      ],
+      "declared_rule_count": 8,
+      "rules_per_formal_unit": 1.0,
+      "semantic": {
+        "logical_sloc": 315,
+        "decision_points": 80,
+        "registered_items": 17,
+        "files": 2
+      },
+      "binding": {
+        "logical_sloc": 23,
+        "decision_points": 4,
+        "registered_items": 4,
+        "files": 1
+      },
+      "semantic_sloc_per_formal_unit": 39.375,
+      "lightweight_diagnostic": false,
+      "items": [
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "binding",
+          "name": "public_binding",
+          "start": 114,
+          "end": 115,
+          "logical_sloc": 2,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "binding",
+          "name": "package_classes",
+          "start": 118,
+          "end": 125,
+          "logical_sloc": 8,
+          "decision_points": 2
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "binding",
+          "name": "target_class",
+          "start": 128,
+          "end": 136,
+          "logical_sloc": 9,
+          "decision_points": 2
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "binding",
+          "name": "class_chain",
+          "start": 139,
+          "end": 142,
+          "logical_sloc": 4,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "EXECUTION_NAMES",
+          "start": 56,
+          "end": 68,
+          "logical_sloc": 13,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "EXTERNAL_PARAM_TOKENS",
+          "start": 69,
+          "end": 69,
+          "logical_sloc": 1,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "CALLABLE_PARAM_TOKENS",
+          "start": 70,
+          "end": 70,
+          "logical_sloc": 1,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "ADAPTER_RULES",
+          "start": 74,
+          "end": 83,
+          "logical_sloc": 10,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "construction_nodes",
+          "start": 145,
+          "end": 151,
+          "logical_sloc": 7,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "execution_nodes",
+          "start": 154,
+          "end": 161,
+          "logical_sloc": 8,
+          "decision_points": 3
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "operator_execution_nodes",
+          "start": 164,
+          "end": 174,
+          "logical_sloc": 11,
+          "decision_points": 4
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "assigned_constructor_attrs",
+          "start": 177,
+          "end": 205,
+          "logical_sloc": 29,
+          "decision_points": 13
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "invoked_self_attrs",
+          "start": 208,
+          "end": 217,
+          "logical_sloc": 10,
+          "decision_points": 4
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "has_child_delegation",
+          "start": 220,
+          "end": 230,
+          "logical_sloc": 11,
+          "decision_points": 6
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "consumes_rng",
+          "start": 233,
+          "end": 238,
+          "logical_sloc": 6,
+          "decision_points": 5
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "imgaug_mode_guard",
+          "start": 241,
+          "end": 256,
+          "logical_sloc": 16,
+          "decision_points": 5
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "super_resolution_imgaug",
+          "start": 259,
+          "end": 280,
+          "logical_sloc": 22,
+          "decision_points": 11
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "classify_direct_state",
+          "start": 283,
+          "end": 295,
+          "logical_sloc": 13,
+          "decision_points": 3
+        },
+        {
+          "file": "experiments/autocontract_h7f_imgaug.py",
+          "category": "semantic",
+          "name": "analyze",
+          "start": 298,
+          "end": 403,
+          "logical_sloc": 102,
+          "decision_points": 17
+        },
+        {
+          "file": "experiments/autocontract_h7g_effect_v6.py",
+          "category": "semantic",
+          "name": "callable_bindings_imgaug",
+          "start": 114,
+          "end": 135,
+          "logical_sloc": 22,
+          "decision_points": 1
+        },
+        {
+          "file": "experiments/autocontract_h7g_effect_v6.py",
+          "category": "semantic",
+          "name": "infer_imgaug_v6",
+          "start": 138,
+          "end": 170,
+          "logical_sloc": 33,
+          "decision_points": 8
+        }
+      ]
+    },
+    {
+      "framework": "Albumentations",
+      "status": "adapter_plus_runtime_policy",
+      "formal_units": 8,
+      "calibration_units": 7,
+      "operation_decisions": 8,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": {
+        "components": 3,
+        "registered_slots": 11,
+        "capability_requirements": 6,
+        "origin": "manual_framework_family_plus_targets_as_params"
+      },
+      "reason": null,
+      "declared_rules": [
+        "BasicTransform.__call__ plus root-most get_params/apply hooks form transform execution",
+        "BaseCompose.__call__ plus calls over self.transforms denote child delegation",
+        "kwargs are a framework-defined whole-record scope and unhandled keys are preserved",
+        "self.py_random and self.random_generator method calls are delegated RNG mutation",
+        "BasicTransform replay_mode bypasses sampling and applies stored self.params",
+        "Compose(seed) is reproducible sequence state, not per-sample replay proof",
+        "constructor Callable parameters propagated into invoked attrs/containers are public-input callables",
+        "direct calls to package top-level functions are module-bound callables",
+        "other execution cache/control state and external effects remain fail closed"
+      ],
+      "declared_rule_count": 9,
+      "rules_per_formal_unit": 1.125,
+      "semantic": {
+        "logical_sloc": 415,
+        "decision_points": 107,
+        "registered_items": 18,
+        "files": 2
+      },
+      "binding": {
+        "logical_sloc": 22,
+        "decision_points": 4,
+        "registered_items": 4,
+        "files": 1
+      },
+      "semantic_sloc_per_formal_unit": 51.875,
+      "lightweight_diagnostic": false,
+      "items": [
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "binding",
+          "name": "public_binding",
+          "start": 111,
+          "end": 112,
+          "logical_sloc": 2,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "binding",
+          "name": "package_index",
+          "start": 115,
+          "end": 125,
+          "logical_sloc": 11,
+          "decision_points": 2
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "binding",
+          "name": "target_class",
+          "start": 128,
+          "end": 134,
+          "logical_sloc": 7,
+          "decision_points": 2
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "binding",
+          "name": "class_chain",
+          "start": 137,
+          "end": 138,
+          "logical_sloc": 2,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "EXECUTION_NAMES",
+          "start": 56,
+          "end": 72,
+          "logical_sloc": 17,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "RNG_ATTRS",
+          "start": 73,
+          "end": 73,
+          "logical_sloc": 1,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "ADAPTER_RULES",
+          "start": 77,
+          "end": 87,
+          "logical_sloc": 11,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "construction_nodes",
+          "start": 141,
+          "end": 147,
+          "logical_sloc": 7,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "execution_nodes",
+          "start": 150,
+          "end": 156,
+          "logical_sloc": 7,
+          "decision_points": 3
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "inherited_execution_nodes",
+          "start": 159,
+          "end": 168,
+          "logical_sloc": 10,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "is_compose",
+          "start": 171,
+          "end": 172,
+          "logical_sloc": 2,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "has_child_delegation",
+          "start": 175,
+          "end": 188,
+          "logical_sloc": 14,
+          "decision_points": 8
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "rng_accesses",
+          "start": 191,
+          "end": 201,
+          "logical_sloc": 11,
+          "decision_points": 7
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "has_replay_guard",
+          "start": 204,
+          "end": 216,
+          "logical_sloc": 13,
+          "decision_points": 4
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "callable_annotations",
+          "start": 219,
+          "end": 226,
+          "logical_sloc": 8,
+          "decision_points": 4
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "container_callable_attrs",
+          "start": 229,
+          "end": 260,
+          "logical_sloc": 32,
+          "decision_points": 15
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "direct_callable_bindings",
+          "start": 263,
+          "end": 296,
+          "logical_sloc": 34,
+          "decision_points": 11
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "h7f_invoked_attrs",
+          "start": 299,
+          "end": 308,
+          "logical_sloc": 10,
+          "decision_points": 4
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "super_resolution",
+          "start": 311,
+          "end": 332,
+          "logical_sloc": 22,
+          "decision_points": 11
+        },
+        {
+          "file": "experiments/autocontract_h7g_albumentations.py",
+          "category": "semantic",
+          "name": "analyze",
+          "start": 335,
+          "end": 458,
+          "logical_sloc": 121,
+          "decision_points": 22
+        },
+        {
+          "file": "experiments/autocontract_h7h_effect_v7.py",
+          "category": "semantic",
+          "name": "albumentations_callable_bindings",
+          "start": 280,
+          "end": 304,
+          "logical_sloc": 25,
+          "decision_points": 4
+        },
+        {
+          "file": "experiments/autocontract_h7h_effect_v7.py",
+          "category": "semantic",
+          "name": "albumentations_v7",
+          "start": 322,
+          "end": 391,
+          "logical_sloc": 70,
+          "decision_points": 14
+        }
+      ]
+    },
+    {
+      "framework": "Kornia",
+      "status": "adapter_plus_shared_runtime_policy",
+      "formal_units": 5,
+      "calibration_units": 5,
+      "operation_decisions": 9,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": {
+        "components": 1,
+        "registered_slots": 7,
+        "capability_requirements": 0,
+        "origin": "shared_default_plus_effect_reachable_slice"
+      },
+      "reason": null,
+      "declared_rules": [
+        "nn.Module dispatch enters the most-derived forward method",
+        "params=None selects sample_apply and reaches forward_parameters",
+        "a supplied compatible params record selects replay_apply and prunes forward_parameters",
+        "self/super calls are closed through Kornia augmentation base classes",
+        "forward_parameters/generate_parameters on the active path denote delegated sampling RNG",
+        "ImageSequential/AugmentationSequential delegate to child modules and fail closed without child contracts",
+        "self._params is a replay artifact; writing the supplied record is not fresh sampling",
+        "unknown reachable dispatch and dynamic callables remain fail closed"
+      ],
+      "declared_rule_count": 8,
+      "rules_per_formal_unit": 1.6,
+      "semantic": {
+        "logical_sloc": 50,
+        "decision_points": 8,
+        "registered_items": 4,
+        "files": 1
+      },
+      "binding": {
+        "logical_sloc": 16,
+        "decision_points": 6,
+        "registered_items": 3,
+        "files": 1
+      },
+      "semantic_sloc_per_formal_unit": 10.0,
+      "lightweight_diagnostic": false,
+      "items": [
+        {
+          "file": "experiments/autocontract_h7h_kornia.py",
+          "category": "binding",
+          "name": "public_binding",
+          "start": 70,
+          "end": 71,
+          "logical_sloc": 2,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7h_kornia.py",
+          "category": "binding",
+          "name": "package_classes",
+          "start": 74,
+          "end": 81,
+          "logical_sloc": 8,
+          "decision_points": 3
+        },
+        {
+          "file": "experiments/autocontract_h7h_kornia.py",
+          "category": "binding",
+          "name": "target_class",
+          "start": 84,
+          "end": 89,
+          "logical_sloc": 6,
+          "decision_points": 3
+        },
+        {
+          "file": "experiments/autocontract_h7h_kornia.py",
+          "category": "semantic",
+          "name": "ADAPTER_RULES",
+          "start": 43,
+          "end": 52,
+          "logical_sloc": 10,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7h_kornia.py",
+          "category": "semantic",
+          "name": "empty_predecessor",
+          "start": 92,
+          "end": 96,
+          "logical_sloc": 5,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7h_kornia.py",
+          "category": "semantic",
+          "name": "is_child_container",
+          "start": 99,
+          "end": 101,
+          "logical_sloc": 3,
+          "decision_points": 0
+        },
+        {
+          "file": "experiments/autocontract_h7h_kornia.py",
+          "category": "semantic",
+          "name": "analyze",
+          "start": 104,
+          "end": 135,
+          "logical_sloc": 32,
+          "decision_points": 8
+        }
+      ]
+    },
+    {
+      "framework": "NVIDIA DALI",
+      "status": "unsupported_no_adapter",
+      "formal_units": 2,
+      "calibration_units": 0,
+      "operation_decisions": 2,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": null,
+      "reason": "backend graph and factory execution semantics remained Unknown",
+      "declared_rules": [],
+      "declared_rule_count": 0,
+      "rules_per_formal_unit": null,
+      "semantic": {
+        "logical_sloc": 0,
+        "decision_points": 0,
+        "registered_items": 0,
+        "files": 0
+      },
+      "binding": {
+        "logical_sloc": 0,
+        "decision_points": 0,
+        "registered_items": 0,
+        "files": 0
+      },
+      "semantic_sloc_per_formal_unit": null,
+      "lightweight_diagnostic": null,
+      "items": []
+    },
+    {
+      "framework": "torchvision",
+      "status": "development_example_no_frozen_adapter",
+      "formal_units": 0,
+      "calibration_units": 0,
+      "operation_decisions": 0,
+      "prospective_onboarding_time": "unavailable",
+      "runtime_policy": null,
+      "reason": "used in cache/transform examples but never onboarded as a frozen H7 adapter",
+      "declared_rules": [],
+      "declared_rule_count": 0,
+      "rules_per_formal_unit": null,
+      "semantic": {
+        "logical_sloc": 0,
+        "decision_points": 0,
+        "registered_items": 0,
+        "files": 0
+      },
+      "binding": {
+        "logical_sloc": 0,
+        "decision_points": 0,
+        "registered_items": 0,
+        "files": 0
+      },
+      "semantic_sloc_per_formal_unit": null,
+      "lightweight_diagnostic": null,
+      "items": []
+    }
+  ],
+  "shared_items": [
+    {
+      "file": "experiments/autocontract_h7_adapters.py",
+      "category": "shared",
+      "name": "FrameworkAdapter",
+      "start": 59,
+      "end": 62,
+      "logical_sloc": 4,
+      "decision_points": 0
+    },
+    {
+      "file": "experiments/autocontract_h7_adapters.py",
+      "category": "shared",
+      "name": "adapter_for",
+      "start": 100,
+      "end": 106,
+      "logical_sloc": 7,
+      "decision_points": 2
+    },
+    {
+      "file": "experiments/autocontract_h7_adapters.py",
+      "category": "shared",
+      "name": "execution_nodes",
+      "start": 122,
+      "end": 147,
+      "logical_sloc": 24,
+      "decision_points": 8
+    },
+    {
+      "file": "experiments/autocontract_h7_adapters.py",
+      "category": "shared",
+      "name": "execution_state_writes",
+      "start": 150,
+      "end": 166,
+      "logical_sloc": 17,
+      "decision_points": 11
+    },
+    {
+      "file": "experiments/autocontract_h7_adapters.py",
+      "category": "shared",
+      "name": "external_bases",
+      "start": 169,
+      "end": 177,
+      "logical_sloc": 9,
+      "decision_points": 1
+    },
+    {
+      "file": "experiments/autocontract_h7_adapters.py",
+      "category": "shared",
+      "name": "validator_reasons",
+      "start": 341,
+      "end": 360,
+      "logical_sloc": 18,
+      "decision_points": 11
+    }
+  ]
+}

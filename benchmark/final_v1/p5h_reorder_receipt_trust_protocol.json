@@ -1,0 +1,28 @@
+{
+  "schema_version": "autocontract.p5h-reorder-receipt-trust-protocol.v0",
+  "status": "adversarial_trust_boundary_audit",
+  "date": "2026-07-30",
+  "question": "Can an untrusted caller forge exact-bound Supported ReorderCapabilityV0 receipts whose proof digest is syntactically valid but semantically unverified?",
+  "frozen_inputs": {
+    "outputs/autocontract_p5f_reorder_unsoundness.json": "83076a5667e219c334e10402ddad8b1ef813a3ab6264ed5f5a67e175cca16eff",
+    "outputs/autocontract_p5g_reorder_capability.json": "0922f625d24880719aa4d1e148b5288297bea0759d41eff6be81114685c6d060",
+    "experiments/autocontract_reorder_capability_v0.py": "77da9d207f62a3e732f5242aebf76bcdae43acebf16baa02cbb3f9879d93a5ae"
+  },
+  "attack": {
+    "functions": ["x+1", "2x", "x-3"],
+    "receipts": "One syntactically valid status=Supported receipt for every pair, with arbitrary proof_sha256 and no proof artifact/verifier execution.",
+    "expected_if_vulnerable": "V0 admits a three-operator region, cedar selects a reordered plan, and output differs from fail-closed baseline."
+  },
+  "interpretation": {
+    "not_a_break": "A capability transport/composition layer may explicitly trust its issuer.",
+    "claim_withdrawal": "ReorderCapabilityV0 alone verifies commutativity or safely accepts untrusted receipts.",
+    "required_v1": [
+      "explicit assurance level and verifier identity/version/source digest",
+      "proof artifact digest plus locally replayable verification or trusted signature/allowlist",
+      "strict mode rejects manual/differential assertions that cannot establish the declared scope",
+      "source-to-proof-IR binding and operation/input-domain assumptions",
+      "revocation and verifier-version invalidation"
+    ]
+  },
+  "pass_rule": "The attack is reproduced exactly and reported as a trust-boundary FAIL, not mislabeled as a successful safety result."
+}

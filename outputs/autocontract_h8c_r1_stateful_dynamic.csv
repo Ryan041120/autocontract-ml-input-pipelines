@@ -1,0 +1,4 @@
+policy,tp,fp,fn,tn,safe_recall,unsafe_false_accepts,unsafe_plan_selections
+dynamic_output_only,2,3,0,0,1.0,3,3
+dynamic_stateful,2,0,0,3,1.0,0,0
+hybrid,2,0,0,3,1.0,0,0

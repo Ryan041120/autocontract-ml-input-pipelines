@@ -1,0 +1,3 @@
+scope,candidate_id,workers,cache_state,horizon_epochs,semantic_admitted,predicted_saving_per_epoch_s,build_cost_s,predicted_net_benefit_s,selected,oracle_selected,decision_correct,raw_runtime_s,candidate_runtime_s,oracle_runtime_s,benefit_coverage,contract_sha256
+H5b_training,cache-prefix:h5b:w2:cold:h4,2,cold,4,True,1.105507449228753,11.5056856,-7.083655803084987,False,False,True,18.79369985,25.1132171,18.79369985,not_applicable,f545cdbe367fc96307b8f5e561b7bf3e2ce1b4e324974e273e1435c352c30338
+H5b_training,cache-prefix:h5b:w2:warm:h4,2,warm,4,True,1.105507449228753,0.0,4.422029796915012,True,True,True,18.79369985,13.607531499999999,13.607531499999999,1.0,f545cdbe367fc96307b8f5e561b7bf3e2ce1b4e324974e273e1435c352c30338

@@ -6,3 +6,4 @@ torch==2.4.0
 torchvision==0.19.0
 cryptography==42.0.5
 psutil>=5.9,<8
+jsonschema==4.26.0

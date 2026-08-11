@@ -1,0 +1,45 @@
+{
+  "schema_version": "autocontract.p5b-cedar-api-conformance-protocol.v0",
+  "status": "preregistered_before_auditor_implementation",
+  "date": "2026-07-30",
+  "question": "Does P5A's cedar-shaped constraint vocabulary map to public APIs in a fixed official cedar source revision without writing private fields or claiming runtime integration?",
+  "upstream": {
+    "repository": "https://github.com/stanford-mast/cedar",
+    "commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+    "default_branch_observed": "main",
+    "observed_stars": 19,
+    "observation_date": "2026-07-30",
+    "files": {
+      "cedar/pipes/map.py": {"git_blob_sha": "3ea6d339a031f5ea4073239e9c548fcce5089066", "size": 12771, "sha256": "dc99e3646996ab306071da3cab7f3fb8063486645f884c986a366277d8c572b2"},
+      "cedar/pipes/pipe.py": {"git_blob_sha": "33720d9be0bca33a22225a02b48f1aa9be0b3447", "size": 27811, "sha256": "4ecac2a92e5100f6419a7a9f5247f9a2a058fbad5f76f5cb1df5ebac26b2710c"},
+      "evaluation/pipelines/simclrv2/cedar_dataset.py": {"git_blob_sha": "45bc1dac2ba5cce9372e5d52d311c4aac8737fb6", "size": 3137, "sha256": "4ad0b875d5801475c9f5e856fb0b3e7d6755924965d29059a2ca63ceee1e7ef2"}
+    }
+  },
+  "frozen_local_inputs": {
+    "experiments/autocontract_p5a_constraint_compiler.py": "c96ed767f97ecd82d6ea7bc574d4a0211bb530464ec42c9960d9459598f5d0ab",
+    "outputs/autocontract_p5a_constraint_compiler_selftest.json": "59d75486cc547277616ad99361a01d3aa66a1e9991091329ebcb4bf4b470ee7a",
+    "benchmark/final_v1/optimizer_constraint_bundle_v0.schema.json": "640ead1cef3085daf1000d70fdb9240ea2c63a2bb1890d235a754d3696ad910b"
+  },
+  "frozen_mapping": {
+    "tag": "MapperPipe constructor keyword tag",
+    "random": "MapperPipe constructor keyword is_random; must not mutate private _is_random after construction",
+    "fix": "public fluent Pipe.fix() call",
+    "depends_on": "public fluent Pipe.depends_on(tags) call",
+    "provenance": "kept in AutoContract sidecar because cedar's public API does not accept contract/source digests"
+  },
+  "gates": [
+    "all_upstream_blobs_match_commit_bound_sha256",
+    "MapperPipe_constructor_accepts_tag_and_is_random",
+    "MapperPipe_forwards_tag_and_is_random_to_Pipe",
+    "Pipe_fix_is_public_fluent_and_sets_fix_order",
+    "Pipe_depends_on_is_public_fluent_and_sets_tags",
+    "Pipe_is_random_reads_constructor_state",
+    "official_example_uses_constructor_tags_fix_and_depends_on",
+    "recipe_uses_constructor_for_random_and_tag",
+    "recipe_uses_only_public_fix_and_depends_on_methods",
+    "recipe_keeps_contract_and_source_digests_in_sidecar",
+    "unsafe_private_field_mutation_is_absent",
+    "frozen_local_inputs_unchanged"
+  ],
+  "pass_rule": "12/12 gates. Source conformance is not runtime integration or performance evidence."
+}

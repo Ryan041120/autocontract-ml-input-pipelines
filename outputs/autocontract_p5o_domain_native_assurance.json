@@ -1,0 +1,638 @@
+{
+  "schema_version": "autocontract.p5o-domain-native-assurance-result.v0",
+  "status": "pass",
+  "passed": 21,
+  "total": 21,
+  "protocol_sha256": "611f291297b2f73b6cdfc746ace96a48335100d9103fa91758f4586855202ec8",
+  "runner_sha256": "dbbcea79e10386184a4f5322f535c25cdacb35d8e92d0504ca89e6f53e1497f8",
+  "schema_sha256": {
+    "public": "f66775f4685dca5082a3aa2f37dab3f7dad982f5eb349a87e39c4d545bfc1956",
+    "private": "ab2ff964e658dbe9197ef37888823391177625343332a138b5a24c4d4a9d2fb0",
+    "prediction": "0b7a73f4b2bac683309fa92fd1e8e2ccf3d73376dae343cf70e45b1f212ca9fd"
+  },
+  "premise_audit": {
+    "lemma_logic_domain_fields": [
+      "height_min",
+      "width_min"
+    ],
+    "required_runtime_premises": [
+      "type",
+      "layout",
+      "channels",
+      "dtype",
+      "device",
+      "height_min",
+      "width_min"
+    ],
+    "implementation_boundary_fields": [
+      "type",
+      "layout",
+      "channels",
+      "dtype",
+      "device"
+    ],
+    "totality_fields": [
+      "height_min",
+      "width_min"
+    ],
+    "declaration_only_fields": [
+      "value_min",
+      "value_max",
+      "height_max",
+      "width_max",
+      "allow_nonfinite"
+    ],
+    "unused_in_lemma_logic": [
+      "allow_nonfinite",
+      "channels",
+      "device",
+      "dtype",
+      "height_max",
+      "layout",
+      "type",
+      "value_max",
+      "value_min",
+      "width_max"
+    ],
+    "finding": "value bounds, maximum spatial bounds, and allow_nonfinite are receipt-bound but are not consumed by either current lemma"
+  },
+  "domain_assurance": {
+    "detection": {
+      "registration": {
+        "detected_structural": 0,
+        "structural_cases": 5,
+        "detection_rate": 0.0,
+        "false_rejects": 0,
+        "cases": [
+          {
+            "case": "all_valid",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "first_wrong_dtype",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "later_wrong_dtype",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "later_wrong_channels",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "later_too_small",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "later_non_tensor",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "value_outside_declared_range",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "nonfinite_value",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          }
+        ]
+      },
+      "batch_boundary": {
+        "detected_structural": 1,
+        "structural_cases": 5,
+        "detection_rate": 0.2,
+        "false_rejects": 0,
+        "cases": [
+          {
+            "case": "all_valid",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "first_wrong_dtype",
+            "expected_structural_violation": true,
+            "rejected": true,
+            "violations": [
+              {
+                "sample": 0,
+                "violations": [
+                  "dtype"
+                ]
+              }
+            ]
+          },
+          {
+            "case": "later_wrong_dtype",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "later_wrong_channels",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "later_too_small",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "later_non_tensor",
+            "expected_structural_violation": true,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "value_outside_declared_range",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "nonfinite_value",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          }
+        ]
+      },
+      "per_sample": {
+        "detected_structural": 5,
+        "structural_cases": 5,
+        "detection_rate": 1.0,
+        "false_rejects": 0,
+        "cases": [
+          {
+            "case": "all_valid",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "first_wrong_dtype",
+            "expected_structural_violation": true,
+            "rejected": true,
+            "violations": [
+              {
+                "sample": 0,
+                "violations": [
+                  "dtype"
+                ]
+              }
+            ]
+          },
+          {
+            "case": "later_wrong_dtype",
+            "expected_structural_violation": true,
+            "rejected": true,
+            "violations": [
+              {
+                "sample": 2,
+                "violations": [
+                  "dtype"
+                ]
+              }
+            ]
+          },
+          {
+            "case": "later_wrong_channels",
+            "expected_structural_violation": true,
+            "rejected": true,
+            "violations": [
+              {
+                "sample": 1,
+                "violations": [
+                  "channels"
+                ]
+              }
+            ]
+          },
+          {
+            "case": "later_too_small",
+            "expected_structural_violation": true,
+            "rejected": true,
+            "violations": [
+              {
+                "sample": 3,
+                "violations": [
+                  "height_min"
+                ]
+              }
+            ]
+          },
+          {
+            "case": "later_non_tensor",
+            "expected_structural_violation": true,
+            "rejected": true,
+            "violations": [
+              {
+                "sample": 2,
+                "violations": [
+                  "type"
+                ]
+              }
+            ]
+          },
+          {
+            "case": "value_outside_declared_range",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "nonfinite_value",
+            "expected_structural_violation": false,
+            "rejected": false,
+            "violations": []
+          }
+        ]
+      }
+    },
+    "dense_batch_detection": {
+      "detected_structural": 3,
+      "structural_cases": 3,
+      "detection_rate": 1.0,
+      "false_rejects": 0,
+      "cases": [
+        {
+          "case": "dense_valid",
+          "expected_structural_violation": false,
+          "rejected": false,
+          "violations": []
+        },
+        {
+          "case": "dense_wrong_dtype",
+          "expected_structural_violation": true,
+          "rejected": true,
+          "violations": [
+            {
+              "sample": "dense_batch",
+              "violations": [
+                "dtype"
+              ]
+            }
+          ]
+        },
+        {
+          "case": "dense_wrong_channels",
+          "expected_structural_violation": true,
+          "rejected": true,
+          "violations": [
+            {
+              "sample": "dense_batch",
+              "violations": [
+                "channels"
+              ]
+            }
+          ]
+        },
+        {
+          "case": "dense_too_small",
+          "expected_structural_violation": true,
+          "rejected": true,
+          "violations": [
+            {
+              "sample": "dense_batch",
+              "violations": [
+                "height_min"
+              ]
+            }
+          ]
+        },
+        {
+          "case": "dense_value_outside_range",
+          "expected_structural_violation": false,
+          "rejected": false,
+          "violations": []
+        },
+        {
+          "case": "dense_nonfinite",
+          "expected_structural_violation": false,
+          "rejected": false,
+          "violations": []
+        }
+      ]
+    },
+    "overhead": {
+      "registration": {
+        "scope": "one control-plane declaration",
+        "repetitions": 200,
+        "median_ns": 15400.0,
+        "p95_ns": 40900,
+        "descriptive_only": true
+      },
+      "batch_boundary": {
+        "scope": "one 16-sample list boundary",
+        "repetitions": 200,
+        "median_ns": 2800.0,
+        "p95_ns": 3000,
+        "descriptive_only": true
+      },
+      "dense_batch_boundary": {
+        "scope": "one uniform NCHW tensor with 16 samples",
+        "repetitions": 200,
+        "median_ns": 6500.0,
+        "p95_ns": 12500,
+        "descriptive_only": true
+      },
+      "per_sample": {
+        "scope": "all 16 samples",
+        "repetitions": 200,
+        "median_ns": 38400.0,
+        "p95_ns": 70300,
+        "descriptive_only": true
+      }
+    }
+  },
+  "native_boundary": {
+    "runtime_identity": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "machine": "AMD64",
+      "torch": "2.0.1+cpu",
+      "torchvision": "0.15.2+cpu",
+      "torch_cuda": null,
+      "torch_cxx11_abi": false,
+      "torch_config_sha256": "8255a713f04245139f51f820b50671a8dcdf17d00f214ba11c8f4890ce7388d6",
+      "identity_sha256": "09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9"
+    },
+    "pure_python": {
+      "class": "pure_python",
+      "identity_sha256": "b64a39a6e72e8ed6b6504676bb9b5eba0fd02f236aa76fdc5086cac223dfc436",
+      "binding_scope": "portable callable layers, constants, defaults, closure, and referenced globals",
+      "strict_policy": "allow_local_proof",
+      "source_index_status": "supported",
+      "source_index_sha256": "b64a39a6e72e8ed6b6504676bb9b5eba0fd02f236aa76fdc5086cac223dfc436"
+    },
+    "known_versioned_native": {
+      "class": "known_versioned_native",
+      "identity_sha256": "09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9",
+      "binding_scope": "torchvision Python dispatch plus pinned torch/torchvision build identity; native kernel bytes and hardware state are not fully attested",
+      "strict_policy": "allow_versioned_relation_only",
+      "source_index_status": "supported",
+      "source_index_sha256": "987722839e4621a9c0bf1e2c4d9aea760bc0531f75eb56d235be3b018293939d"
+    },
+    "opaque_native": {
+      "class": "opaque_native",
+      "identity_sha256": null,
+      "binding_scope": "callable is builtin/native or has an unportable closure",
+      "strict_policy": "force_unknown",
+      "source_index_status": "unknown",
+      "source_index_sha256": "4a6c28e3f3fbf89dd8b4d87b51baf4f81bc4f4b57e5f83d9c49d28b25b6aa6e7"
+    }
+  },
+  "dry_run": {
+    "public_sha256": "9bdafb6676e1162a74cfef08c0188a867ea73eeaddf3908ca67299b302b75dc7",
+    "oracle_sha256": "c2cc1c9ddcde0e7c6f20b12fbec83254e7579744dc487c6ba10eb613e389c433",
+    "prediction_sha256": "bda4cf8e3477b1619f58cb0987e276f5de4f037b064c97995c4b4c1ad79f95c8",
+    "score": {
+      "unsafe_supported": 0,
+      "unresolved_supported": 0,
+      "overall_commutes_coverage": {
+        "successes": 3,
+        "total": 3,
+        "rate": 1.0,
+        "low": 0.4385029682449546,
+        "high": 1.0
+      },
+      "family_strata": {
+        "identity": {
+          "commutes": 1,
+          "supported_commutes": 1,
+          "wilson": {
+            "successes": 1,
+            "total": 1,
+            "rate": 1.0,
+            "low": 0.20654931437723745,
+            "high": 1.0
+          }
+        },
+        "pointwise_spatial": {
+          "commutes": 0,
+          "supported_commutes": 0,
+          "wilson": {
+            "successes": 0,
+            "total": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          }
+        },
+        "random_context": {
+          "commutes": 0,
+          "supported_commutes": 0,
+          "wilson": {
+            "successes": 0,
+            "total": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          }
+        },
+        "boundary_definedness": {
+          "commutes": 1,
+          "supported_commutes": 1,
+          "wilson": {
+            "successes": 1,
+            "total": 1,
+            "rate": 1.0,
+            "low": 0.20654931437723745,
+            "high": 1.0
+          }
+        },
+        "rounding_precision": {
+          "commutes": 0,
+          "supported_commutes": 0,
+          "wilson": {
+            "successes": 0,
+            "total": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          }
+        },
+        "stateful_external": {
+          "commutes": 0,
+          "supported_commutes": 0,
+          "wilson": {
+            "successes": 0,
+            "total": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          }
+        },
+        "other_nontrivial": {
+          "commutes": 1,
+          "supported_commutes": 1,
+          "wilson": {
+            "successes": 1,
+            "total": 1,
+            "rate": 1.0,
+            "low": 0.20654931437723745,
+            "high": 1.0
+          }
+        }
+      },
+      "rng_strata": {
+        "global_sequential": {
+          "commutes": 3,
+          "supported_commutes": 3,
+          "wilson": {
+            "successes": 3,
+            "total": 3,
+            "rate": 1.0,
+            "low": 0.4385029682449546,
+            "high": 1.0
+          }
+        },
+        "operator_keyed": {
+          "commutes": 0,
+          "supported_commutes": 0,
+          "wilson": {
+            "successes": 0,
+            "total": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          }
+        },
+        "not_applicable": {
+          "commutes": 0,
+          "supported_commutes": 0,
+          "wilson": {
+            "successes": 0,
+            "total": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          }
+        }
+      },
+      "non_identity_supported": 2,
+      "supported_framework_count": 2,
+      "scientific_evidence": false
+    },
+    "scientific_evidence": false
+  },
+  "checks": [
+    {
+      "name": "frozen predecessors exact",
+      "passed": true,
+      "observed": {
+        "experiments/autocontract_reorder_capability_v2.py": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35",
+        "experiments/autocontract_r3_source_index_v1.py": "7e6251c0388fce23c115919258ac43fb9d620ea38f8902082fe6da7cfbb5238c",
+        "benchmark/final_v2/reorder_public_manifest.schema.json": "6cf298ebb99d1a42ec4ddcecabb2a5e5aa363601e1999cc00ef034334e0c5039",
+        "benchmark/final_v2/reorder_private_oracle.schema.json": "4e3a5e85742ae8d64655477f0543875348ef0f6886a025df30812d09d87518d0",
+        "benchmark/final_v2/reorder_prediction.schema.json": "a2cf76aae5a7c7069a1f58dcf2709de9c7289abda45eed467833e512ef338789",
+        "outputs/autocontract_p5m_relation_boundary_falsification.json": "f244a33287d66902ff569d6fe94c2f7489120c1d0974f6468036954823edbec8",
+        "outputs/autocontract_p5n_reorder_final_handoff_selftest.json": "e48438d1ad1802781b184b6120eec97d6656e22940f9d919b5bf0c774754202f"
+      }
+    },
+    {
+      "name": "lemma premise-use audit isolates only spatial minima in proof logic",
+      "passed": true
+    },
+    {
+      "name": "value/max/nonfinite fields classified declaration-only",
+      "passed": true
+    },
+    {
+      "name": "final-v3 public template validates",
+      "passed": true
+    },
+    {
+      "name": "final-v3 private template validates",
+      "passed": true
+    },
+    {
+      "name": "final-v3 prediction template validates",
+      "passed": true
+    },
+    {
+      "name": "per-sample guard detects every structural violation",
+      "passed": true
+    },
+    {
+      "name": "registration attestation does not pretend to detect runtime substitution",
+      "passed": true
+    },
+    {
+      "name": "representative batch sentinel limitation is measured",
+      "passed": true
+    },
+    {
+      "name": "uniform dense-batch structural sentinel detects shared violations",
+      "passed": true
+    },
+    {
+      "name": "unused value range is not hot-scanned",
+      "passed": true
+    },
+    {
+      "name": "unused finite-value declaration is not hot-scanned",
+      "passed": true
+    },
+    {
+      "name": "pure Python callable remains distinguishable",
+      "passed": true
+    },
+    {
+      "name": "torchvision transform is version-bound native, not mislabeled pure Python",
+      "passed": true
+    },
+    {
+      "name": "uninspectable builtin fails closed as opaque native",
+      "passed": true
+    },
+    {
+      "name": "eight-pair contaminated dry-run validates",
+      "passed": true
+    },
+    {
+      "name": "opaque native Supported without external attestation rejected",
+      "passed": true,
+      "reason": "P5OError:p5o-dry-pair-07:opaque_native_supported_without_attestation"
+    },
+    {
+      "name": "Supported with runtime premise violation rejected",
+      "passed": true,
+      "reason": "P5OError:p5o-dry-pair-00:supported_without_runtime_domain_assurance"
+    },
+    {
+      "name": "local exact lemma cannot silently authorize tolerance relation",
+      "passed": true,
+      "reason": "P5OError:p5o-dry-pair-00:local_exact_lemma_used_for_tolerance_relation"
+    },
+    {
+      "name": "family/RNG/Wilson/non-identity reporting produced",
+      "passed": true
+    },
+    {
+      "name": "guard overhead measured descriptively without posthoc threshold",
+      "passed": true
+    }
+  ],
+  "claim_boundary": "P5O is a premise/native-boundary and protocol dry-run. It does not establish independent coverage, full native-kernel soundness, or end-to-end training benefit."
+}

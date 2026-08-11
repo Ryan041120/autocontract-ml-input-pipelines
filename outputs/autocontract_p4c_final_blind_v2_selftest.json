@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "name": "strict public accepted",
+      "passed": true
+    },
+    {
+      "name": "strict private accepted",
+      "passed": true
+    },
+    {
+      "name": "salted commitment created",
+      "passed": true
+    },
+    {
+      "name": "untampered oracle verified",
+      "passed": true
+    },
+    {
+      "name": "public semantic label leak rejected",
+      "observed": "answer-bearing key(s) in public manifest: $.units[0].expected_semantic_decision",
+      "passed": true
+    },
+    {
+      "name": "public outcome leak rejected",
+      "observed": "answer-bearing key(s) in public manifest: $.units[0].final_status",
+      "passed": true
+    },
+    {
+      "name": "missing exact operation rejected",
+      "observed": "fixture-unit-000.operation_context keys mismatch; missing=['operation'], extra=[]",
+      "passed": true
+    },
+    {
+      "name": "mechanism/check mismatch rejected",
+      "observed": "fixture-unit-030: replay checks do not exactly match mechanism",
+      "passed": true
+    },
+    {
+      "name": "stored replay missing parameter record rejected",
+      "observed": "fixture-unit-030: stored replay requires parameter_record lineage",
+      "passed": true
+    },
+    {
+      "name": "unbound target operand rejected",
+      "observed": "fixture-unit-030: target-dependent operand is unbound",
+      "passed": true
+    },
+    {
+      "name": "empty source component rejected",
+      "observed": "fixture-unit-000: source binding components cannot be empty",
+      "passed": true
+    },
+    {
+      "name": "non-fail-closed source policy rejected",
+      "observed": "fixture-unit-000: source-index must fail closed",
+      "passed": true
+    },
+    {
+      "name": "placeholder artifact hash rejected",
+      "observed": "analyzer_bundle.runner.sha256 is a placeholder",
+      "passed": true
+    },
+    {
+      "name": "public/private mismatch rejected",
+      "observed": "public/private unit IDs must match exactly",
+      "passed": true
+    },
+    {
+      "name": "post-commit private tampering rejected",
+      "observed": "private oracle changed after commitment",
+      "passed": true
+    },
+    {
+      "name": "non-replay capability label rejected",
+      "observed": "fixture-unit-000: non-replay unit must be not_applicable",
+      "passed": true
+    },
+    {
+      "name": "replay not-applicable label rejected",
+      "observed": "fixture-unit-030: replay unit needs an applicable capability label",
+      "passed": true
+    },
+    {
+      "name": "cache cannot claim ReplayCapabilityV1 rejected",
+      "observed": "fixture-unit-042: non-replay candidate cannot claim ReplayCapabilityV1",
+      "passed": true
+    },
+    {
+      "name": "all declared artifacts frozen",
+      "passed": true
+    },
+    {
+      "name": "freeze excludes private oracle instance path",
+      "passed": true
+    }
+  ],
+  "note": "Synthetic administrative fixture only; not benchmark evidence.",
+  "passed": 20,
+  "schema_version": "autocontract.final-handoff-selftest.v2",
+  "status": "pass",
+  "total": 20
+}

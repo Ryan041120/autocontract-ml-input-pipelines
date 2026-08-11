@@ -1,0 +1,75 @@
+{
+  "schema_version": "autocontract.final-public.v2",
+  "artifact_type": "public_manifest",
+  "benchmark_id": "autocontract-final-v2-draft",
+  "status": "draft",
+  "created_at": "2026-07-30T00:00:00Z",
+  "selection_author": "TO_BE_ASSIGNED_INDEPENDENTLY",
+  "claim_scope": "Final-blind evaluation of semantic contract inference and safe optimization decisions under exact operation context and source binding.",
+  "analyzer_bundle": {
+    "systems": {
+      "effect": {"name": "EffectV7", "path": "experiments/autocontract_h7h_effect_v7.py", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+      "replay_capability": {"name": "ReplayCapabilityV1", "path": "experiments/autocontract_replay_capability_v1.py", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+      "source_index": {"name": "ExecutableSourceIndexV1", "path": "experiments/autocontract_r3_source_index_v1.py", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+    },
+    "runner": {"path": "experiments/TO_BE_FROZEN_RUNNER.py", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "adapters": [{"path": "experiments/TO_BE_FROZEN_ADAPTER.py", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}],
+    "schemas": [
+      {"path": "benchmark/final_v2/public_manifest.schema.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+      {"path": "benchmark/final_v2/private_oracle.schema.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+      {"path": "benchmark/final_v1/replay_capability_v1.schema.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+    ]
+  },
+  "contamination_policy": {
+    "registry_path": "benchmark/final_v1/contamination_registry.json",
+    "selection_cutoff": "2026-07-30T00:00:00Z",
+    "minimum_novel_frameworks": 3
+  },
+  "metric_gates": {
+    "known_unsafe_false_accepts_max": 0,
+    "semantic_safe_recall_min": 0.8,
+    "semantic_reason_accuracy_min": 0.9,
+    "semantic_resolution_min": 0.9,
+    "replay_capability_resolution_min": 0.9,
+    "source_resolution_min": 0.9,
+    "final_safe_admit_recall_min": 0.8,
+    "oracle_benefit_coverage_min": 0.9
+  },
+  "units": [
+    {
+      "unit_id": "replace-with-public-unit-id",
+      "task_type": "rewrite_validation",
+      "split": "final_blind",
+      "framework": "REPLACE_WITH_NOVEL_FRAMEWORK",
+      "domain": "vision",
+      "repository": {"url": "https://github.com/REPLACE/REPOSITORY", "release": "REPLACE_WITH_RELEASE", "commit_sha": "0000000000000000000000000000000000000000"},
+      "source_binding": {"path": "REPLACE_WITH_SOURCE_PATH", "public_symbol": "REPLACE_WITH_PUBLIC_SYMBOL", "binding_sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+      "operation_context": {
+        "configuration": {},
+        "operation": "replay_apply",
+        "lifecycle_phase": "iteration",
+        "named_modes": ["training"],
+        "assumptions": [],
+        "input_schema_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "candidate": {"kind": "registered_parameter_replay", "operators": ["REPLACE_WITH_PUBLIC_SYMBOL"], "cost_profile_id": "REPLACE_WITH_PROFILE"},
+      "contract_plan": {
+        "semantic": {"analyzer_entrypoint": "analyze_effect_v7", "required_effect_dimensions": ["rng", "state", "lineage", "targets", "diversity"]},
+        "replay_capability": {
+          "mechanism": "stored_parameter_record",
+          "required_checks": ["caller_rng_unchanged", "exact_replay", "public_restore_completed", "record_generated", "stored_params_present"],
+          "lineage_operands": [{"name": "sample", "role": "primary_input"}, {"name": "parameters", "role": "parameter_record"}],
+          "target_dependent_operands": ["sample"]
+        },
+        "source_index": {"schema_version": "autocontract.executable-source-index.v1", "binding_components": [{"name": "root", "callable_slots": ["__call__"]}], "unknown_policy": "fail_closed"}
+      },
+      "verification_plan": {
+        "output_checks": ["paired exact-output check"],
+        "effect_checks": ["paired caller-state check"],
+        "replay_capability_checks": ["validate ReplayCapabilityV1 receipt"],
+        "source_checks": ["recompute and compare ExecutableSourceIndexV1"],
+        "performance_checks": ["paired end-to-end training throughput"]
+      }
+    }
+  ]
+}

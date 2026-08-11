@@ -1,0 +1,44 @@
+{
+  "schema_version": "autocontract.p5g-reorder-capability-protocol.v0",
+  "status": "implementation_protocol",
+  "date": "2026-07-30",
+  "objective": "Repair P5F by separating effect/cache eligibility from reordering authorization and failing closed without pairwise, source-bound ReorderCapability receipts.",
+  "frozen_failure": {
+    "path": "outputs/autocontract_p5f_reorder_unsoundness.json",
+    "sha256": "83076a5667e219c334e10402ddad8b1ef813a3ab6264ed5f5a67e175cca16eff",
+    "verdict": "fail_unsafe_reorder_authorization"
+  },
+  "frozen_compiler": {
+    "path": "experiments/autocontract_p5a_constraint_compiler.py",
+    "sha256": "c96ed767f97ecd82d6ea7bc574d4a0211bb530464ec42c9960d9459598f5d0ab"
+  },
+  "policy": {
+    "receipt_binding": [
+      "operation_context_sha256",
+      "input_schema_sha256",
+      "both operator IDs",
+      "both contract SHA-256 digests",
+      "both SourceIndex SHA-256 digests",
+      "commutes relation",
+      "proof method and proof SHA-256"
+    ],
+    "default": "Every operator is fixed for reordering unless it belongs to a contiguous admitted region of at least two operators.",
+    "region_admission": "Every unordered pair inside the region has exactly one valid Supported commutes receipt, and no member already has a P5A barrier.",
+    "conflict": "Missing, duplicate, unsupported, unknown, stale, malformed, or ambiguously oriented receipts do not authorize a pair.",
+    "backend_semantics": "cedar may enumerate arbitrary permutations inside an unfixed region, so pairwise completeness is required; fixed operators form region boundaries."
+  },
+  "required_tests": [
+    "schema and standard-library validator accept a valid receipt",
+    "P5F noncommutative pipeline with no receipts fixes all operators",
+    "the repaired cedar plan preserves the original order and output",
+    "three pairwise-commuting operators with all three receipts retain a six-plan search space",
+    "the commuting optimized plan may reorder but preserves output",
+    "missing one receipt prevents a three-operator unrestricted region",
+    "source or contract drift invalidates affected receipts",
+    "unsupported/unknown/duplicate receipts fail closed",
+    "a P5A barrier is never cleared",
+    "explicit dependencies are preserved",
+    "output contains no cost/placement/tier decision"
+  ],
+  "claim_boundary": "Mechanism calibration on synthetic Python functions and one fixed cedar profile. ReorderCapabilityV0 is not yet inferred automatically and is not independent final evidence."
+}

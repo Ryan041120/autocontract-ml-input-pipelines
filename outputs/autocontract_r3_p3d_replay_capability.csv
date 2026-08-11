@@ -1,0 +1,12 @@
+framework,symbol,semantic,capability,capability_reason,source,final,final_reason,exact_replay,caller_rng_drift,lineage_operands,receipt_bytes,probe_ms
+imgaug,imgaug.augmenters.arithmetic.Multiply,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image_0;image_1,827,4.2647
+imgaug,imgaug.augmenters.blur.AverageBlur,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image_0;image_1,827,3.9316
+imgaug,imgaug.augmenters.geometric.Affine,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image_0;image_1,827,13.358
+imgaug,imgaug.augmenters.size.CropToFixedSize,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image_0;image_1,827,4.5126
+imgaug,imgaug.augmenters.contrast.LinearContrast,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image_0;image_1,826,4.793
+Albumentations,albumentations.augmentations.geometric.flip.VerticalFlip,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image,746,6.4733
+Albumentations,albumentations.augmentations.pixel.transforms.RandomGamma,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image,746,4.3052
+Albumentations,albumentations.augmentations.blur.transforms.GaussianBlur,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image,747,11.2861
+Albumentations,albumentations.augmentations.geometric.transforms.Affine,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image,747,11.4358
+Albumentations,albumentations.augmentations.crops.transforms.CenterCrop,admit,supported,all_family_obligations_satisfied,supported,admit,all_contract_layers_satisfied,True,False,image,747,14.5079
+Albumentations,albumentations.augmentations.mixing.domain_adaptation.HistogramMatching,admit,unsupported,framework_public_replay_serialization_not_supported,supported,unsupported,framework_replay_capability_unsupported,False,False,image;hm_metadata,1139,3.378

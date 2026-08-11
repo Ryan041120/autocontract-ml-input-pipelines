@@ -1,0 +1,41 @@
+{
+  "schema_version": "autocontract.p5f-reorder-unsoundness-protocol.v0",
+  "status": "falsification_protocol_frozen_after_counterexample_discovery",
+  "date": "2026-07-30",
+  "question": "Does P5A's current effect/cache-oriented constraint mapping safely authorize cedar reordering for pure one-to-one operators without explicit dependencies?",
+  "expected_verdict": "FAIL if the optimizer-selected execution differs from the baseline execution while P5A emits no reorder barrier.",
+  "upstream": {
+    "repository": "https://github.com/stanford-mast/cedar",
+    "commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+    "git_blob_sha256": {
+      "cedar/compose/optimizer.py": "11c70d449ad1fbeccc6f19ca0bcac56fef919e7f464699d96814ae80506de09b",
+      "cedar/compose/feature.py": "6d450748bbea8ce53f9360e12c3d776a3805b4f9cccd0400d2d29e4271986aeb",
+      "tests/data/test_profile_stats.yml": "8fcd2c41df608a60a90efd26698c4ade4c5d428a398e4a2e68c0d74b431685e2"
+    }
+  },
+  "frozen_inputs": {
+    "experiments/autocontract_p5a_constraint_compiler.py": "c96ed767f97ecd82d6ea7bc574d4a0211bb530464ec42c9960d9459598f5d0ab",
+    "outputs/autocontract_p5a_constraint_compiler_selftest.json": "59d75486cc547277616ad99361a01d3aa66a1e9991091329ebcb4bf4b470ee7a",
+    "outputs/autocontract_p5e_cedar_reorder_constraint_consumption.json": "db80c6d97c27a4c19c4feb1d497fcffcaca5e849ea19dc30c932b2ad8ed01317"
+  },
+  "counterexample": {
+    "source": [0, 1, 2, 3, 4],
+    "original_functions": ["decode(x)=x+1", "crop(x)=2x", "normalize(x)=x-3"],
+    "all_p5a_effect_fields": "semantic Admit, source Supported, randomness/state/external none, one_to_one, no explicit depends_on",
+    "expected_p5a_hints": "all random=false, fix=false, depends_on=[]",
+    "expected_logical_path": [3, 2, 1, 0],
+    "expected_optimized_path": [3, 0, 1, 2],
+    "expected_baseline_output": [-1, 1, 3, 5, 7],
+    "expected_optimized_output": [-5, -3, -1, 1, 3]
+  },
+  "claim_effect": {
+    "withdraw": "P5A can safely authorize cedar adjacent reordering from effect purity and explicit dependencies alone.",
+    "retain": [
+      "P5D's cache optimizer consumes is_random and moves its cache boundary.",
+      "P5E's cedar optimizer mechanically consumes fix and depends_on.",
+      "P5A remains a useful cache/randomness constraint prototype when claims are rewrite-specific."
+    ],
+    "required_fix": "Introduce a separate ReorderCapability receipt that binds an operator pair/order/context and proves commutativity or equivalent-order preservation; fail closed without it."
+  },
+  "non_attribution": "cedar explicitly relies on user-provided reordering constraints. This test falsifies the AutoContract-to-cedar authorization policy, not cedar's documented optimizer contract."
+}

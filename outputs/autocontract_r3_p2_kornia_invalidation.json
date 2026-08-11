@@ -1,0 +1,630 @@
+{
+  "schema_version": "autocontract.r3-p2-kornia-invalidation.v0",
+  "artifact_role": "posthoc_real_source_invalidation_calibration_not_blind_evidence",
+  "protocol_sha256": "2a3d60162afe06fb2bb9210d22f0f9d7d19da9cc43e4b484b37731f5096ae28c",
+  "environment": {
+    "python": "3.12.4",
+    "torch": "2.4.0",
+    "kornia": "0.8.3",
+    "device": "cpu",
+    "repository_head": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930"
+  },
+  "artifact_bytes": {
+    "dynamic_reprobe": 0,
+    "output_snapshot_guard": 64,
+    "lineage_v1": 706,
+    "measured_source_v2_candidate": 810
+  },
+  "summaries": [
+    {
+      "policy": "dynamic_reprobe",
+      "tp": 2,
+      "fp": 10,
+      "fn": 0,
+      "tn": 1,
+      "required_invalidation_recall": 0.09090909090909091,
+      "benign_preservation": 1.0,
+      "reason_coverage": 0.09090909090909091,
+      "median_ms": 40.8956,
+      "total_calls": 48,
+      "crashes": 1
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "tp": 2,
+      "fp": 6,
+      "fn": 0,
+      "tn": 5,
+      "required_invalidation_recall": 0.45454545454545453,
+      "benign_preservation": 1.0,
+      "reason_coverage": 0.45454545454545453,
+      "median_ms": 41.4897,
+      "total_calls": 48,
+      "crashes": 1
+    },
+    {
+      "policy": "lineage_v1",
+      "tp": 2,
+      "fp": 1,
+      "fn": 0,
+      "tn": 10,
+      "required_invalidation_recall": 0.9090909090909091,
+      "benign_preservation": 1.0,
+      "reason_coverage": 0.9090909090909091,
+      "median_ms": 1.9217,
+      "total_calls": 0,
+      "crashes": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 11,
+      "required_invalidation_recall": 1.0,
+      "benign_preservation": 1.0,
+      "reason_coverage": 1.0,
+      "median_ms": 252.7636,
+      "total_calls": 0,
+      "crashes": 0
+    }
+  ],
+  "predictions": [
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "stable_same_instance",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 135.0937,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "stable_same_instance",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 41.4897,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "stable_same_instance",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 5.8627,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "stable_same_instance",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 274.04,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "stable_equivalent_instance",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 45.5299,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "stable_equivalent_instance",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 39.7553,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "stable_equivalent_instance",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 2.1113,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "stable_equivalent_instance",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 259.4394,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "honest_framework_version_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 40.8956,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "honest_framework_version_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 48.4481,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "honest_framework_version_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "framework_version_mismatch"
+      ],
+      "elapsed_ms": 2.6438,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "honest_framework_version_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "framework_version_mismatch"
+      ],
+      "elapsed_ms": 277.6022,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "honest_repository_commit_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 40.0674,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "honest_repository_commit_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 41.6988,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "honest_repository_commit_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "repository_commit_mismatch"
+      ],
+      "elapsed_ms": 1.5552,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "honest_repository_commit_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "repository_commit_mismatch"
+      ],
+      "elapsed_ms": 189.421,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "sample_lineage_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 43.9846,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "sample_lineage_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 38.0935,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "sample_lineage_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "sample_lineage_mismatch"
+      ],
+      "elapsed_ms": 2.0033,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "sample_lineage_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "sample_lineage_mismatch"
+      ],
+      "elapsed_ms": 245.6444,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "operator_configuration_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 37.2795,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "operator_configuration_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 33.2724,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "operator_configuration_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "operator_graph_mismatch"
+      ],
+      "elapsed_ms": 1.9093,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "operator_configuration_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "operator_graph_mismatch"
+      ],
+      "elapsed_ms": 346.9969,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "child_order_drift",
+      "admitted": false,
+      "outcome": "crash",
+      "reasons": [
+        "runtime_crash:AttributeError"
+      ],
+      "elapsed_ms": 4.1314,
+      "calls": 0
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "child_order_drift",
+      "admitted": false,
+      "outcome": "crash",
+      "reasons": [
+        "runtime_crash:AttributeError"
+      ],
+      "elapsed_ms": 6.408,
+      "calls": 0
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "child_order_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "operator_graph_mismatch",
+        "unknown_child_binding:RandomHorizontalFlip_0",
+        "unknown_child_binding:ColorJiggle_2",
+        "incomplete_or_reordered_child_sequence"
+      ],
+      "elapsed_ms": 2.2432,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "child_order_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "operator_graph_mismatch",
+        "unknown_child_binding:RandomHorizontalFlip_0",
+        "unknown_child_binding:ColorJiggle_2",
+        "incomplete_or_reordered_child_sequence",
+        "executable_source_mismatch"
+      ],
+      "elapsed_ms": 339.0078,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "input_schema_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 41.5708,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "input_schema_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "registered_output_mismatch"
+      ],
+      "elapsed_ms": 42.5296,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "input_schema_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "input_schema_mismatch"
+      ],
+      "elapsed_ms": 1.7813,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "input_schema_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "input_schema_mismatch"
+      ],
+      "elapsed_ms": 216.3922,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "parameter_record_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 37.9711,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "parameter_record_drift",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 41.554,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "parameter_record_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "parameter_record_mismatch"
+      ],
+      "elapsed_ms": 1.8579,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "parameter_record_drift",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "parameter_record_mismatch"
+      ],
+      "elapsed_ms": 210.9522,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "missing_child_record",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 21.2414,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "missing_child_record",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "registered_output_mismatch"
+      ],
+      "elapsed_ms": 26.304,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "missing_child_record",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "parameter_record_mismatch",
+        "child_sequence_mismatch",
+        "incomplete_or_reordered_child_sequence"
+      ],
+      "elapsed_ms": 1.8223,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "missing_child_record",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "parameter_record_mismatch",
+        "child_sequence_mismatch",
+        "incomplete_or_reordered_child_sequence"
+      ],
+      "elapsed_ms": 379.979,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "unsupported_child_effect",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 4.1169,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "unsupported_child_effect",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "registered_output_mismatch"
+      ],
+      "elapsed_ms": 5.4678,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "unsupported_child_effect",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "operator_graph_mismatch",
+        "parameter_record_mismatch",
+        "child_sequence_mismatch",
+        "unsupported_child_effect:Identity_0"
+      ],
+      "elapsed_ms": 1.0411,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "unsupported_child_effect",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "operator_graph_mismatch",
+        "parameter_record_mismatch",
+        "child_sequence_mismatch",
+        "unsupported_child_effect:Identity_0",
+        "executable_source_mismatch"
+      ],
+      "elapsed_ms": 151.7244,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "tampered_certificate",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 43.0935,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "tampered_certificate",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 53.3835,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "tampered_certificate",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "certificate_integrity_mismatch",
+        "sample_lineage_mismatch"
+      ],
+      "elapsed_ms": 6.4469,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "tampered_certificate",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "certificate_integrity_mismatch",
+        "sample_lineage_mismatch"
+      ],
+      "elapsed_ms": 227.9457,
+      "calls": 0
+    },
+    {
+      "policy": "dynamic_reprobe",
+      "case_id": "silent_same_commit_callable_patch",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 43.282,
+      "calls": 4
+    },
+    {
+      "policy": "output_snapshot_guard",
+      "case_id": "silent_same_commit_callable_patch",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "registered_output_mismatch"
+      ],
+      "elapsed_ms": 42.3244,
+      "calls": 4
+    },
+    {
+      "policy": "lineage_v1",
+      "case_id": "silent_same_commit_callable_patch",
+      "admitted": true,
+      "outcome": "classified",
+      "reasons": [],
+      "elapsed_ms": 1.9217,
+      "calls": 0
+    },
+    {
+      "policy": "measured_source_v2_candidate",
+      "case_id": "silent_same_commit_callable_patch",
+      "admitted": false,
+      "outcome": "classified",
+      "reasons": [
+        "executable_source_mismatch"
+      ],
+      "elapsed_ms": 252.7636,
+      "calls": 0
+    }
+  ],
+  "checks": {
+    "protocol_hash_recorded": true,
+    "repository_commit_verified": true,
+    "thirteen_cases_accounted": true,
+    "all_policy_predictions_accounted": true,
+    "lineage_v1_silent_drift_exposed": true,
+    "measured_v2_rejects_silent_drift": true,
+    "measured_v2_preserves_benign_controls": true,
+    "canonical_digest_ignores_formatting_comments": true,
+    "canonical_digest_detects_executable_change": true
+  },
+  "passed": 9,
+  "total": 9,
+  "status": "pass"
+}

@@ -1,0 +1,12 @@
+framework,symbol,v0_status,v1_status,no_entry_drop,same_process_stable,three_process_stable,v0_bytes,v1_bytes,v0_median_ms,v1_median_ms,mutation_reject,mutation_unknown,mutation_admit,all_restored
+imgaug,imgaug.augmenters.arithmetic.Multiply,supported,supported,True,True,True,17836,18976,20.3369,24.8825,2,1,0,True
+imgaug,imgaug.augmenters.blur.AverageBlur,supported,supported,True,True,True,24562,27122,34.2818,30.8664,2,1,0,True
+imgaug,imgaug.augmenters.geometric.Affine,supported,supported,True,True,True,21151,22691,30.075,31.465,2,1,0,True
+imgaug,imgaug.augmenters.size.CropToFixedSize,supported,supported,True,True,True,17389,18477,16.7356,20.3818,2,1,0,True
+imgaug,imgaug.augmenters.contrast.LinearContrast,supported,supported,True,True,True,20897,22615,17.0022,19.157,2,1,0,True
+Albumentations,albumentations.augmentations.geometric.flip.VerticalFlip,supported,supported,True,True,True,59576,63095,125.2971,130.5121,2,1,0,True
+Albumentations,albumentations.augmentations.pixel.transforms.RandomGamma,supported,supported,True,True,True,56883,59687,179.2198,181.7734,2,1,0,True
+Albumentations,albumentations.augmentations.blur.transforms.GaussianBlur,supported,supported,True,True,True,58603,61725,181.3985,176.5649,2,1,0,True
+Albumentations,albumentations.augmentations.geometric.transforms.Affine,supported,supported,True,True,True,68770,73767,188.716,183.4559,2,1,0,True
+Albumentations,albumentations.augmentations.crops.transforms.CenterCrop,supported,supported,True,True,True,69985,74956,212.436,223.0617,2,1,0,True
+Albumentations,albumentations.augmentations.mixing.domain_adaptation.HistogramMatching,supported,supported,True,True,True,58685,61477,168.4504,163.3903,2,1,0,True

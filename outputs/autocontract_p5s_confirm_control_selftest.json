@@ -1,0 +1,86 @@
+{
+  "schema_version": "autocontract.p5s-confirm-control-selftest.v1",
+  "phase": "confirm-control-selftest",
+  "status": "pass",
+  "scientific_evidence": false,
+  "protocol_sha256": "d78c1a6c6e662b374dea5624fe2804baeac50564f2505c919d57a26e33e6a77a",
+  "runner_sha256": "5453de6a8b5c97e6b30999aabbc3a6030b3c586cc6e96b013f10b0ccc501d7cc",
+  "manifest_sha256": "255c725ea321b653925cd530f2664c7760d6d651745cf200258b58d9661005c8",
+  "manifest_schema_sha256": "d57d0710722c97fc587b863b4433c6eecf754aa03afcae7631f81e72ecc0794d",
+  "dependency_closure": {
+    "p5a": "c96ed767f97ecd82d6ea7bc574d4a0211bb530464ec42c9960d9459598f5d0ab",
+    "p5m": "42ac1f44c01e027467d87216f76e78fb89a0cdc610cf544130687ca7c71e52ec",
+    "v0": "77da9d207f62a3e732f5242aebf76bcdae43acebf16baa02cbb3f9879d93a5ae",
+    "v2": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35",
+    "v3": "f74b37993e7dc5d4b5c304c7f3f0facabfae61ca4eecc9a8896bae372d179333",
+    "r3_source_index_v1": "7e6251c0388fce23c115919258ac43fb9d620ea38f8902082fe6da7cfbb5238c",
+    "r3_source_index_v0": "02a10103e26cb4a55f646428d7e24f14bdf73b133149e29c220a78f38829ab2b",
+    "manifest_schema": "d57d0710722c97fc587b863b4433c6eecf754aa03afcae7631f81e72ecc0794d"
+  },
+  "runtime": {
+    "cedar_commit": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "torch_threads": 1
+  },
+  "fold": "calibration",
+  "cache_warming": {
+    "procedure": "timer-outside SHA-256 verification reads each selected PNG once; OS cache is thereby warmed before feature construction",
+    "fold": "calibration",
+    "files": [
+      "0801.png",
+      "0802.png",
+      "0803.png",
+      "0804.png",
+      "0805.png",
+      "0806.png",
+      "0807.png",
+      "0808.png",
+      "0809.png",
+      "0810.png"
+    ],
+    "files_count": 10,
+    "bytes_read": 45576674,
+    "archive_attestation": "not reread here; acquisition manifest is the frozen archive-attestation boundary"
+  },
+  "passed": 5,
+  "total": 5,
+  "checks": [
+    {
+      "name": "synthetic_15_block_control_flow",
+      "passed": true,
+      "observed": {
+        "calls": 30
+      }
+    },
+    {
+      "name": "synthetic_exact_ab_ba_order",
+      "passed": true
+    },
+    {
+      "name": "calibration_only_two_blocks_four_real_arms",
+      "passed": true,
+      "observed": {
+        "fold": "calibration",
+        "calls": 4
+      }
+    },
+    {
+      "name": "receipt_verified_exact_pair",
+      "passed": true
+    },
+    {
+      "name": "negative_receipts_fail_closed",
+      "passed": true,
+      "observed": {
+        "no": 1,
+        "tampered": 1,
+        "mixed": 1,
+        "config": 1,
+        "domain": 1
+      }
+    }
+  ],
+  "claim_boundary": "Synthetic control-flow and calibration-only regression coverage; no A/B confirmation data, ratios, or benefit evidence."
+}
