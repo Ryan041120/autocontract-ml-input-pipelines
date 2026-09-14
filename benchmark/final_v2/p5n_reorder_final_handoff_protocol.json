@@ -1,0 +1,42 @@
+{
+  "schema_version": "autocontract.p5n-reorder-final-handoff-protocol.v0",
+  "status": "predeclared_administrative_readiness_only",
+  "date": "2026-07-30",
+  "question": "Can an independent reorder-pair corpus, private three-way oracle, analyzer prediction, and reveal score be kept role-separated and cryptographically bound while reusing final-blind v2 canonical hashing and artifact-freeze conventions?",
+  "frozen_predecessors": {
+    "experiments/autocontract_final_benchmark_admin_v2.py": "a0b9a57fed978fabc6b11168e10f09ca4249a2efc8d0d031aebfa2e62332434a",
+    "benchmark/final_v2/public_manifest.schema.json": "3fadc4bf051cbc96bd20009580a309ab8df6831f2d72eb8dc5508987392704a6",
+    "benchmark/final_v2/private_oracle.schema.json": "2cd215714075c1098d777cfe4fbdf15680bf781f5f62dc84dbfa888bc315d0c0",
+    "benchmark/final_v1/contamination_registry.json": "7630793ab3078797ba7d310206931cdad47819724c145cab33e3e5545525aa84",
+    "benchmark/final_v1/p5m_relation_boundary_falsification_protocol.json": "0a9aeba84db25ae536643cfcd1a83e58df2a216489109ba1868a58b241b6049c",
+    "experiments/autocontract_p5m_relation_boundary_falsification.py": "42ac1f44c01e027467d87216f76e78fb89a0cdc610cf544130687ca7c71e52ec",
+    "outputs/autocontract_p5m_relation_boundary_falsification.json": "f244a33287d66902ff569d6fe94c2f7489120c1d0974f6468036954823edbec8"
+  },
+  "roles": {
+    "selector": "Chooses 20-40 exact pairs from at least three frameworks and two domains without analyzer predictions, receipts, private labels, or P5K-P5M pair labels.",
+    "annotators": "A primary and reviewer label exact source/config/domain/RNG-bound statements without analyzer outputs; an adjudicator resolves disagreements.",
+    "oracle_custodian": "Holds the salted private oracle and releases only its commitment before prediction seal.",
+    "analyzer_operator": "Sees only the sealed public manifest, public source, analyzer bundle, and oracle commitment until prediction seal.",
+    "evaluator": "Verifies both commitments after reveal and computes frozen metrics without changing predictions or labels."
+  },
+  "metric_gates": {
+    "unsafe_supported_max": 0,
+    "unresolved_supported_max": 0,
+    "commutes_coverage_min": 0.3,
+    "prediction_completion_min": 1.0,
+    "minimum_pairs": 20,
+    "maximum_pairs": 40,
+    "minimum_frameworks": 3,
+    "minimum_domains": 2
+  },
+  "hypotheses": {
+    "h1_schema": "Public, private, and prediction fixtures validate against separate exact schemas.",
+    "h2_leakage": "Answer-bearing public/prediction keys, independence violations, contamination, ID mismatch, missing units, and label/witness inconsistencies fail closed.",
+    "h3_commitments": "Post-commit oracle tampering and post-seal prediction tampering are detected; the public freeze contains no private oracle path or content.",
+    "h4_scoring": "Reveal reports unsafe Supported first, preserves Unknown as a separate denominator, checks all frozen gates, and detects a synthetic unsafe Supported prediction.",
+    "h5_self_test": "A 24-pair, three-framework, two-domain synthetic administrative fixture passes exactly 30 checks."
+  },
+  "pass_rule": "All 30 synthetic administrative checks pass and all frozen predecessor hashes remain exact.",
+  "no_go_rule": "This package cannot be called independent evidence until real selectors and annotators satisfy the roles, a real private oracle is committed, predictions are sealed before reveal, and no analyzer developer has seen private labels.",
+  "claim_boundary": "Administrative handoff readiness only; synthetic framework names, labels, predictions, scores, and burden values are not scientific evidence."
+}

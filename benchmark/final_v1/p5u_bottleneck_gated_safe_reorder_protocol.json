@@ -1,0 +1,87 @@
+{
+  "protocol_id": "autocontract_p5u_bottleneck_gated_safe_reorder",
+  "version": "v1",
+  "status": "design_only_no_data",
+  "scientific_evidence": false,
+  "execution_authorized": false,
+  "data_access_authorized": false,
+  "scope": "P5U no-data design; P5V single-machine CPU-warm baseline-only profiling specified but not executed",
+  "research_positioning": {
+    "stage": "undergraduate",
+    "claim": "safe, selective reordering only when an input-pipeline bottleneck is demonstrated",
+    "excluded": ["general training acceleration", "distributed near-data processing", "cold-cache claims", "GPU claims", "test-set claims"]
+  },
+  "research_questions": [
+    {"id": "RQ1", "question": "When is reordering worth studying?", "hypothesis": "At least one registered cell meets both qualification thresholds."},
+    {"id": "RQ2", "question": "Can strict semantic authorization safely reduce candidates?", "hypothesis": "No confirmed semantic counterexample is authorized."},
+    {"id": "RQ3", "question": "Can D improve end-to-end behavior without task harm?", "hypothesis": "D/A meets the registered paired performance gate in a qualified target; C/A is descriptive only."},
+    {"id": "RQ4", "question": "Does the cost gate avoid safe-but-not-worthwhile choices?", "hypothesis": "D/C is a registered secondary comparison and the cost gate does not worsen stability."}
+  ],
+  "p5v_cells": [
+    {"id": "M1", "model": "MobileNetV3-small", "crop": 224},
+    {"id": "M2", "model": "MobileNetV3-small", "crop": 448},
+    {"id": "R1", "model": "ResNet18", "crop": 224},
+    {"id": "R2", "model": "ResNet18", "crop": 448}
+  ],
+  "fixed_conditions": ["single_machine", "CPU_warm", "worker=0", "no_prefetch", "same labeled dataset and split", "same batch size", "same dtype/device", "same registered seeds", "train_validation_test_isolation"],
+  "split_contract": {
+    "profile_calibration_split": "P5V baseline profiling and target/contrast selection only",
+    "effect_evaluation_split": "future A/B/C/D performance comparison only",
+    "task_validation_split": "task-layer secondary sanity check only",
+    "test_split": "forbidden throughout all phases",
+    "p5v_model_parameters": "discard; never initialize P5W or task evaluation",
+    "forced_image_reuse": "freeze reuse boundary before execution and downgrade result to non-blind descriptive evidence"
+  },
+  "p5v_measurement": {"warmup_blocks": 5, "measured_blocks": 20, "steps_per_block": "fixed before execution", "purpose": "baseline forward/backward/optimizer steps for end-to-end time decomposition only; no multi-arm benefit experiment or complete training/convergence evaluation", "invalid_if": ["MAD/median > 0.10", "environment gate failure", "power gate failure", "temperature gate failure", "any abnormal or missing block"], "invalid_action": "first-error stop; no automatic rerun, no post-hoc outlier deletion, no block substitution"},
+  "record_metrics": ["data_read_time", "preprocess_time", "consumer_blocked_wait_time", "model_compute_time", "end_to_end_step_time", "batch_sample_count", "warmup_and_measurement_window", "operator_costs", "bytes_in_out", "random_state_flag", "median", "IQR", "MAD", "failure_count", "missing_block_count", "environment_power_temperature_gates"],
+  "definitions": {
+    "exposed_input_share": "median(consumer_blocked_wait_time) / median(end_to_end_step_time)",
+    "predicted_gain_share": "predicted_gain_time / median(end_to_end_step_time)",
+    "predicted_gain_time": "only measured serialized costs exposed on the critical path; not an observed speedup",
+    "timing_boundary": "end_to_end_step_time starts at block batch acquisition and ends after optimizer step; consumer_blocked_wait_time is exposed consumer wait"
+  },
+  "qualification": {
+    "exposed_input_share_min": 0.20,
+    "predicted_gain_share_min": 0.05,
+    "requires_complete_baseline": true,
+    "requires_labeled_validation_split": true,
+    "selection": "target=max(predicted_gain_share) among qualified cells; tie=lower_dispersion_then_fixed_lexicographic_order",
+    "contrast": "cell with minimum predicted_gain_share among all four cells; if qualified, call low-opportunity contrast",
+    "no_qualification_action": "stop reorder experiments and retain descriptive baseline only",
+    "forbidden_selection_basis": ["P5T points", "post-hoc observed benefit", "test-set results"]
+  },
+  "arms": {
+    "A": "original preprocessing order",
+    "B": "cost/heuristic reorder without AutoContract authorization; risk contrast only",
+    "C": "AutoContract strict-safe candidates only",
+    "D": "AutoContract strict-safe candidates plus cost model and 5% selection gate"
+  },
+  "cost_model": {
+    "formula": "C(plan)=sum(profiled_latency(op_i,input_shape_i,dtype_i)); predicted_gain_share=[C(baseline)-C(candidate)]/baseline_median_step_time",
+    "selection_gate": "strict_authorization == true AND predicted_gain_share >= 0.05",
+    "fixed_overhead": "median(receipt_verification_time + cost_selection_time + cedar_planning_time)",
+    "per_batch_saving": "C(baseline) - C(candidate)",
+    "break_even_batches": "ceil(fixed_overhead/per_batch_saving) when per_batch_saving > 0; nonexistent when per_batch_saving <= 0",
+    "one_time_overhead_recording": "P5W records receipt verification, cost selection, and Cedar planning separately; none is mixed into steady-state primary wall-time",
+    "expansion_factor": "explains shape/bytes only; not safety evidence",
+    "not_a_claim_of_observed_speedup": true
+  },
+  "safety_layers": {
+    "scope": "Normalize↔RandomCrop(no padding), single-machine high-resolution vision input; other candidates are not automatically included",
+    "strict_semantic_required": ["exact tensor equality", "shape", "dtype", "label", "definedness/exception", "Python RNG post-state", "NumPy RNG post-state", "PyTorch RNG post-state", "same file/decode count", "receipt source/config/domain/RNG binding", "unsafe canary false accept = 0"],
+    "unknown_policy": "Unknown or unproven candidates are rejected",
+    "task_result_complement": ["same initialization", "same sample order", "same seed", "short-training loss", "logits", "gradient", "model state", "3 fixed-seed paired trainings on legal labeled validation data", "end-to-end time", "input wait"],
+    "task_result_role": "secondary sanity check; 3 seeds do not prove statistical equivalence or general non-inferiority",
+    "relationship": "strict semantic layer is necessary; any failure blocks task training and benefit statistics; task-result layer is complementary; neither substitutes for the other"
+  },
+  "future_statistics_and_stopping": {
+    "p5v": "5 warm-up + 20 measured blocks per cell; report median/IQR/MAD; invalid on MAD/median > 10% or environment/power/temperature gate failure",
+    "future": "target and contrast each 20 paired blocks; pre-generated balanced order; primary=D/A paired end-to-end wall-time ratio; fixed-seed 10000-draw percentile bootstrap on log ratio; benefit requires D/A median < 0.95 and 95% CI upper < 0.95; C/A descriptive ablation; D/C secondary",
+    "task_non_inferiority_margin": "not yet determined; blocker before P5W freeze and cannot replace performance gate",
+    "stop_on": ["data leakage", "split mismatch", "semantic counterexample", "unauthorized candidate", "abnormal exit", "unbound configuration", "invalid or missing block", "target fails qualification", "all safe candidates below 5%", "D/A fails performance gate"],
+    "first_error_stop": true
+  },
+  "blockers": ["labeled dataset and four mutually exclusive split contracts must be resolved before P5V", "explicit authorization must be obtained before P5V", "task-level non-inferiority margin must be fixed before P5W freeze"],
+  "non_claims": ["generalization", "causality", "statistical significance", "GPU or cold-cache benefit", "distributed NDP benefit", "formal test-set performance"],
+  "execution": {"executed": false, "data_accessed": false, "results_generated": false, "runner_created": false, "launcher_created": false, "freeze_created": false, "execution_closure_created": false}
+}

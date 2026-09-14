@@ -1,0 +1,224 @@
+{
+  "schema_version": "autocontract.p5c-cedar-runtime-smoke-result.v0",
+  "status": "pass",
+  "passed": 15,
+  "total": 15,
+  "protocol_sha256": "7098c1bc91d44829f3f1d73615cc3a70a2637df3ee3c63d6e68808cf3ac3c8de",
+  "runner_sha256": "1d4ea01a1107df72238e2bf2e08f72904956be0eb5ffaaf46838f794dae4eaf4",
+  "upstream_commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+  "runtime": {
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "tensorflow": "2.14.0",
+    "ray": "2.7.0",
+    "numpy": "1.26.0",
+    "torchvision": "0.15.2+cpu",
+    "torchdata": "0.6.1"
+  },
+  "resolved_environment": {
+    "count": 70,
+    "sha256": "fbb312c113f003f8234391f99a44a9c6724a99bdf8c2af5115248d8bf47f30b3",
+    "packages": [
+      "absl-py==2.5.0",
+      "aiosignal==1.4.0",
+      "astunparse==1.6.3",
+      "attrs==26.1.0",
+      "certifi==2026.7.22",
+      "cffi==2.1.0",
+      "charset-normalizer==3.4.9",
+      "click==8.4.2",
+      "colorama==0.4.6",
+      "cryptography==49.0.0",
+      "filelock==3.32.2",
+      "flatbuffers==25.12.19",
+      "frozenlist==1.8.0",
+      "gast==0.7.0",
+      "google-auth-oauthlib==1.0.0",
+      "google-auth==2.56.2",
+      "google-pasta==0.2.0",
+      "grpcio==1.83.0",
+      "h5py==3.16.0",
+      "idna==3.18",
+      "jinja2==3.1.6",
+      "jsonschema-specifications==2025.9.1",
+      "jsonschema==4.26.0",
+      "keras==2.14.0",
+      "libclang==18.1.1",
+      "markdown==3.10.2",
+      "markupsafe==3.0.3",
+      "ml-dtypes==0.2.0",
+      "mpmath==1.3.0",
+      "msgpack==1.2.1",
+      "networkx==3.6.1",
+      "numpy==1.26.0",
+      "oauthlib==3.3.1",
+      "opt_einsum==3.4.0",
+      "packaging==26.2",
+      "pillow==12.3.0",
+      "pip==26.2",
+      "protobuf==4.25.9",
+      "psutil==5.9.5",
+      "psutil==7.2.2",
+      "pyasn1==0.6.4",
+      "pyasn1_modules==0.4.2",
+      "pycparser==3.0",
+      "pympler==1.1",
+      "pywin32==312",
+      "pyyaml==6.0.3",
+      "ray==2.7.0",
+      "referencing==0.37.0",
+      "requests-oauthlib==2.0.0",
+      "requests==2.34.2",
+      "rpds-py==2026.6.3",
+      "setproctitle==1.2.2",
+      "setuptools==70.3.0",
+      "six==1.17.0",
+      "sympy==1.14.0",
+      "tensorboard-data-server==0.7.2",
+      "tensorboard==2.14.1",
+      "tensorflow-estimator==2.14.0",
+      "tensorflow-intel==2.14.0",
+      "tensorflow-io-gcs-filesystem==0.31.0",
+      "tensorflow==2.14.0",
+      "termcolor==3.3.0",
+      "torch==2.0.1",
+      "torchdata==0.6.1",
+      "torchvision==0.15.2",
+      "typing_extensions==4.16.0",
+      "urllib3==2.7.0",
+      "werkzeug==3.1.8",
+      "wheel==0.47.0",
+      "wrapt==1.14.2"
+    ]
+  },
+  "checks": [
+    {
+      "name": "upstream_checkout_matches_commit",
+      "passed": true,
+      "observed": "f062305fcdab196e871c5d09b4c82ab788b4da79"
+    },
+    {
+      "name": "upstream_git_blob_and_worktree_normalization_match",
+      "passed": true,
+      "observed": {
+        "cedar/pipes/map.py": {
+          "git_blob_sha256": "dc99e3646996ab306071da3cab7f3fb8063486645f884c986a366277d8c572b2",
+          "worktree_sha256": "28028747f4535d7afdfd41c0ddbbd66fed212e5dc510b3891d2a3e0ef25219df",
+          "normalized_worktree_sha256": "dc99e3646996ab306071da3cab7f3fb8063486645f884c986a366277d8c572b2",
+          "git_blob_matches": true,
+          "normalized_worktree_matches": true
+        },
+        "cedar/pipes/pipe.py": {
+          "git_blob_sha256": "4ecac2a92e5100f6419a7a9f5247f9a2a058fbad5f76f5cb1df5ebac26b2710c",
+          "worktree_sha256": "dc09df70b489326b92d621ade115112ebedd730b6ff44d1487629357d4b819cf",
+          "normalized_worktree_sha256": "4ecac2a92e5100f6419a7a9f5247f9a2a058fbad5f76f5cb1df5ebac26b2710c",
+          "git_blob_matches": true,
+          "normalized_worktree_matches": true
+        }
+      }
+    },
+    {
+      "name": "upstream_worktree_is_clean",
+      "passed": true,
+      "observed": "clean"
+    },
+    {
+      "name": "frozen_local_inputs_unchanged",
+      "passed": true,
+      "observed": {
+        "outputs/autocontract_p5b_cedar_api_conformance.json": "217a4060fbe16326365102611968bf8ecbc9a4fa2697ebb5ea18c85b577766d9",
+        "benchmark/final_v1/p5b_cedar_api_conformance_protocol_v1.json": "c666b44548f935b64a30058aede7478eed0ea70c6f37477d1c15d2424ecaa84f",
+        "experiments/autocontract_p5b_cedar_api_conformance.py": "ff1d40fc788e1edc983b52412acdef818bfbfe61b12de86829b825b753f37570"
+      }
+    },
+    {
+      "name": "core_runtime_versions_match",
+      "passed": true,
+      "observed": {
+        "python": "3.11.9",
+        "torch": "2.0.1+cpu",
+        "tensorflow": "2.14.0",
+        "ray": "2.7.0",
+        "numpy": "1.26.0",
+        "torchvision": "0.15.2+cpu",
+        "torchdata": "0.6.1"
+      }
+    },
+    {
+      "name": "cedar_public_imports_succeed",
+      "passed": true
+    },
+    {
+      "name": "p5b_recipe_is_non_vacuous",
+      "passed": true,
+      "observed": [
+        "depends_on",
+        "fix"
+      ]
+    },
+    {
+      "name": "three_mapper_objects_construct",
+      "passed": true,
+      "observed": 3
+    },
+    {
+      "name": "constructor_tag_state_matches_recipe",
+      "passed": true,
+      "observed": [
+        "autocontract:decode",
+        "autocontract:crop",
+        "autocontract:normalize"
+      ]
+    },
+    {
+      "name": "constructor_random_state_matches_recipe",
+      "passed": true,
+      "observed": [
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "name": "public_fix_state_matches_recipe",
+      "passed": true,
+      "observed": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "public_depends_on_state_matches_recipe",
+      "passed": true,
+      "observed": [
+        null,
+        [
+          "autocontract:decode"
+        ],
+        null
+      ]
+    },
+    {
+      "name": "logical_chain_preserves_operator_order",
+      "passed": true
+    },
+    {
+      "name": "optimizer_is_disabled",
+      "passed": true,
+      "observed": false
+    },
+    {
+      "name": "synthetic_data_path_matches_expected_output",
+      "passed": true,
+      "observed": [
+        -1,
+        1,
+        3,
+        5,
+        7
+      ]
+    }
+  ],
+  "note": "Runtime public API and optimizer-disabled data path only; no cedar optimizer or performance claim."
+}

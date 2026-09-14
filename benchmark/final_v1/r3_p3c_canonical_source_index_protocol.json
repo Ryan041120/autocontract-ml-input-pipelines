@@ -1,0 +1,99 @@
+{
+  "schema_version": "autocontract.r3-p3c-canonical-source-index-protocol.v0",
+  "status": "preregistered_before_candidate_implementation",
+  "date": "2026-07-30",
+  "research_question": "Can a recursive, typed constant representation remove SourceIndexV0 process identity and hash-order nondeterminism without weakening callable coverage or mutation invalidation?",
+  "claim_boundary": "Targeted posthoc repair of the P3b cross-process counterexample on 11 known units plus synthetic constant fixtures. This does not repair HistogramMatching replay capability and is not blind evidence.",
+  "frozen_inputs": {
+    "source_index_v0_sha256": "02a10103e26cb4a55f646428d7e24f14bdf73b133149e29c220a78f38829ab2b",
+    "p3b_protocol_sha256": "d3546e7c5e776daa30f2595b8a632259f255d0fa81a53183d84b6e2cd1fb604b",
+    "p3b_runner_sha256": "63f3a191ff3454e478e0dccb567e904cd45d971fa784e10a254249866b0bbb3",
+    "p3b_result_sha256": "7b578086772df053d347bd23ece51f26cb2bd06aa91927ad01dbc4cb8c827d02",
+    "runtime_manifest_sha256": "ec784c445453fb2bb55ce4a30422f865a0d1309bcefe56838a58e3a9f941bff0",
+    "runtime_lock_sha256": "a7df261bf1a8e747b0dc3bec27fc2e837e99f71ccdc0230319c47d152fdd3bdb"
+  },
+  "observed_v0_counterexample": {
+    "same_process_stable": "11/11",
+    "cross_process_stable": "3/11",
+    "unstable_units": [
+      "imgaug.augmenters.blur.AverageBlur",
+      "imgaug.augmenters.contrast.LinearContrast",
+      "albumentations.augmentations.geometric.flip.VerticalFlip",
+      "albumentations.augmentations.pixel.transforms.RandomGamma",
+      "albumentations.augmentations.blur.transforms.GaussianBlur",
+      "albumentations.augmentations.geometric.transforms.Affine",
+      "albumentations.augmentations.crops.transforms.CenterCrop",
+      "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching"
+    ],
+    "root_causes": [
+      "repr(code.co_consts) embeds nested code-object memory addresses",
+      "repr(frozenset) order varies with hash randomization"
+    ]
+  },
+  "candidate_policy": {
+    "separate_module": "Implement SourceIndexV1 as a new candidate module; do not edit SourceIndexV0 or any P3b artifact.",
+    "typed_constants": [
+      "None, bool, int and str by typed value",
+      "float by hex form with explicit NaN and infinity tags",
+      "complex as canonical real/imag floats",
+      "bytes by length and SHA-256",
+      "tuple recursively in order",
+      "frozenset recursively then sort by canonical JSON",
+      "Ellipsis and NotImplemented by explicit tags",
+      "nested code objects by bytecode digest, argument/flag metadata, names/varnames/freevars/cellvars and recursively canonical constants"
+    ],
+    "excluded_identity": [
+      "memory address",
+      "repr(code object)",
+      "hash iteration order",
+      "first line number and line table"
+    ],
+    "unknown_constant": "Any unsupported constant type makes the callable/index Unknown; its repr is not admitted as a fallback.",
+    "hot_sentinel": "Unchanged SourceIndexV0 hot sentinel; P3c only changes deployment-time portable representation."
+  },
+  "evaluation": {
+    "real_units": "The exact 11 P3b factory/configuration/component-slot bundles under the same isolated runtime.",
+    "processes": [
+      "parent process",
+      "fresh process with PYTHONHASHSEED=1",
+      "fresh process with PYTHONHASHSEED=2"
+    ],
+    "v0_v1_comparison": "Report status and entry count per component; V1 must not silently drop a V0 entry.",
+    "portable_mutations": [
+      "class delegating wrapper",
+      "instance delegating wrapper",
+      "instance native override"
+    ],
+    "synthetic_fixtures": [
+      "nested list-comprehension code object is cross-process stable",
+      "frozenset constant is stable across hash seeds",
+      "format/comment-only and docstring-only changes preserve digest",
+      "executable AST, default, closure, referenced global, wrapper and origin changes alter digest",
+      "native callable remains Unknown"
+    ]
+  },
+  "primary_metrics": [
+    "V1 Supported/Unknown and entry-count parity on 11 units",
+    "same-process and three-process digest stability",
+    "portable mutation Reject/Unknown/Admit and baseline restoration",
+    "synthetic fixture pass count",
+    "index bytes and cold construction time versus V0"
+  ],
+  "success_gates": [
+    "all 11 V1 bundles retain complete registered-component coverage",
+    "V1 status is Supported for all 11 units and no V0 entry is dropped",
+    "V1 digest is stable 11/11 within process and across both fresh hash-seeded processes",
+    "all 22 delegating-wrapper mutations are Reject, all 11 native overrides are Unknown, and none are Admit",
+    "all 33 mutations restore the exact baseline digest/status",
+    "all synthetic constant/source fixtures pass",
+    "no P3b, SourceIndexV0, framework source, runtime manifest or lock artifact changes"
+  ],
+  "falsification_rules": [
+    "Deleting constants from the index is not a valid portability fix.",
+    "Replacing code-object repr with only outer bytecode is invalid because nested executable semantics would be unbound.",
+    "A digest stable under one default hash seed is insufficient; both registered fresh hash-seeded processes must match.",
+    "Raw digest drift under Unknown is not a Reject decision.",
+    "Any HistogramMatching replay result remains the P3b failure and is outside P3c's repair scope.",
+    "If V1 fails, retain the result and create a new protocol before changing canonicalization policy."
+  ]
+}

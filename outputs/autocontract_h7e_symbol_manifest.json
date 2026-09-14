@@ -1,131 +1,131 @@
 {
-  "schema_version": 1,
-  "repository_root": "C:\\Users\\23527\\OneDrive - Macau University of Science and Technology\\文档\\research\\.research\\semantics_safe_reconfiguration\\h7e_corpus\\audiomentations_repo",
-  "revision": "19609e6d6624ef9e4933412ccda78fb6221f77e1",
-  "expected_revision": "19609e6d6624ef9e4933412ccda78fb6221f77e1",
-  "revision_verified": true,
-  "package": "audiomentations",
-  "algorithm": "explicit-reexport-top-level-ast-v1",
-  "policy": {
-    "executes_target_package": false,
-    "class_or_function_bodies_used": false,
-    "star_reexports": "unresolved",
-    "ambiguous_reexports": "unresolved",
-    "external_reexports": "unresolved"
-  },
-  "bindings": [
-    {
-      "public_symbol": "audiomentations.Normalize",
-      "status": "resolved",
-      "public_module": "audiomentations",
-      "defining_module": "audiomentations.augmentations.normalize",
-      "defining_name": "Normalize",
-      "source_path": "audiomentations/augmentations/normalize.py",
-      "source_line": 10,
-      "source_sha256": "864087415e244d48675f3c502b0a6f71fad29c4821eea42f4d6c6de16d616f4a",
-      "binding_sha256": "522eaa4b5b9ccf281c3af93679518f62de3b5f6466b586d46e7c82e454fad458",
-      "export_chain": [
-        "audiomentations.Normalize",
-        "audiomentations.augmentations.normalize.Normalize"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "audiomentations.PolarityInversion",
-      "status": "resolved",
-      "public_module": "audiomentations",
-      "defining_module": "audiomentations.augmentations.polarity_inversion",
-      "defining_name": "PolarityInversion",
-      "source_path": "audiomentations/augmentations/polarity_inversion.py",
-      "source_line": 7,
-      "source_sha256": "90b14fff3899997e1de21100ab3895051f8be497056c205fe17e160553206636",
-      "binding_sha256": "7686bdc6a62b10f5310850b66a6d8efaad70aa5ccb3f7c2f88fe8965c6f4d76a",
-      "export_chain": [
-        "audiomentations.PolarityInversion",
-        "audiomentations.augmentations.polarity_inversion.PolarityInversion"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "audiomentations.AddGaussianNoise",
-      "status": "resolved",
-      "public_module": "audiomentations",
-      "defining_module": "audiomentations.augmentations.add_gaussian_noise",
-      "defining_name": "AddGaussianNoise",
-      "source_path": "audiomentations/augmentations/add_gaussian_noise.py",
-      "source_line": 9,
-      "source_sha256": "4a4fc0d378be0bbb28c6f7a4ad981ddd3046f7b4bc9fb8a9da30b0b06aabd959",
-      "binding_sha256": "7fe5ab9f217af5b135f380eac5f87c9ed5651ab4d4d7c1de5c7c1cc944e1941d",
-      "export_chain": [
-        "audiomentations.AddGaussianNoise",
-        "audiomentations.augmentations.add_gaussian_noise.AddGaussianNoise"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "audiomentations.Clip",
-      "status": "resolved",
-      "public_module": "audiomentations",
-      "defining_module": "audiomentations.augmentations.clip",
-      "defining_name": "Clip",
-      "source_path": "audiomentations/augmentations/clip.py",
-      "source_line": 7,
-      "source_sha256": "a954e7bf5965d1bc4a3adf6ebb3ad399f11c2eb95663c4b6c2a584fb1785ae03",
-      "binding_sha256": "f3b7e623c4d3a310e6b8ece25f331bec37d02c0f64cf52c7ee697b32fd99cc9c",
-      "export_chain": [
-        "audiomentations.Clip",
-        "audiomentations.augmentations.clip.Clip"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "audiomentations.Lambda",
-      "status": "resolved",
-      "public_module": "audiomentations",
-      "defining_module": "audiomentations.augmentations.lambda_transform",
-      "defining_name": "Lambda",
-      "source_path": "audiomentations/augmentations/lambda_transform.py",
-      "source_line": 9,
-      "source_sha256": "e56aed24ee78abe80d2e8a1a68f0923e6ce99f3567dda3795175c4195e12495f",
-      "binding_sha256": "dc240b0b35f7b2697aff8523f06933682a34adbf502c8fa632f01a9f53942da5",
-      "export_chain": [
-        "audiomentations.Lambda",
-        "audiomentations.augmentations.lambda_transform.Lambda"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "audiomentations.Compose",
-      "status": "resolved",
-      "public_module": "audiomentations",
-      "defining_module": "audiomentations.core.composition",
-      "defining_name": "Compose",
-      "source_path": "audiomentations/core/composition.py",
-      "source_line": 96,
-      "source_sha256": "b72ac855ff2240d19d7d5c83bf115ff79a6cff34a268315512eeda5844d8a41e",
-      "binding_sha256": "0dd4e0b4bee0dd019f5d2fa9143afee18f5299a1ac955709922a4b2145955341",
-      "export_chain": [
-        "audiomentations.Compose",
-        "audiomentations.core.composition.Compose"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "audiomentations.AddBackgroundNoise",
-      "status": "resolved",
-      "public_module": "audiomentations",
-      "defining_module": "audiomentations.augmentations.add_background_noise",
-      "defining_name": "AddBackgroundNoise",
-      "source_path": "audiomentations/augmentations/add_background_noise.py",
-      "source_line": 21,
-      "source_sha256": "b0090299b9fc797759d0428eee03369c6d40442e660aecd2ac224345ab4fa9f1",
-      "binding_sha256": "878d87c4e7bce4389b537a6c4f180bb3adb1a16b7d3488ea6f456ffe9ecf1aa4",
-      "export_chain": [
-        "audiomentations.AddBackgroundNoise",
-        "audiomentations.augmentations.add_background_noise.AddBackgroundNoise"
-      ],
-      "reason": null
-    }
-  ],
-  "manifest_sha256": "dddf71eb188383b517cacd02b071b9f8f7f24226f83085f3a6c2a1edaac19c46"
+    "schema_version":  1,
+    "repository_root":  ".research/semantics_safe_reconfiguration/h7e_corpus/audiomentations_repo",
+    "revision":  "19609e6d6624ef9e4933412ccda78fb6221f77e1",
+    "expected_revision":  "19609e6d6624ef9e4933412ccda78fb6221f77e1",
+    "revision_verified":  true,
+    "package":  "audiomentations",
+    "algorithm":  "explicit-reexport-top-level-ast-v1",
+    "policy":  {
+                   "executes_target_package":  false,
+                   "class_or_function_bodies_used":  false,
+                   "star_reexports":  "unresolved",
+                   "ambiguous_reexports":  "unresolved",
+                   "external_reexports":  "unresolved"
+               },
+    "bindings":  [
+                     {
+                         "public_symbol":  "audiomentations.Normalize",
+                         "status":  "resolved",
+                         "public_module":  "audiomentations",
+                         "defining_module":  "audiomentations.augmentations.normalize",
+                         "defining_name":  "Normalize",
+                         "source_path":  "audiomentations/augmentations/normalize.py",
+                         "source_line":  10,
+                         "source_sha256":  "864087415e244d48675f3c502b0a6f71fad29c4821eea42f4d6c6de16d616f4a",
+                         "binding_sha256":  "522eaa4b5b9ccf281c3af93679518f62de3b5f6466b586d46e7c82e454fad458",
+                         "export_chain":  [
+                                              "audiomentations.Normalize",
+                                              "audiomentations.augmentations.normalize.Normalize"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "audiomentations.PolarityInversion",
+                         "status":  "resolved",
+                         "public_module":  "audiomentations",
+                         "defining_module":  "audiomentations.augmentations.polarity_inversion",
+                         "defining_name":  "PolarityInversion",
+                         "source_path":  "audiomentations/augmentations/polarity_inversion.py",
+                         "source_line":  7,
+                         "source_sha256":  "90b14fff3899997e1de21100ab3895051f8be497056c205fe17e160553206636",
+                         "binding_sha256":  "7686bdc6a62b10f5310850b66a6d8efaad70aa5ccb3f7c2f88fe8965c6f4d76a",
+                         "export_chain":  [
+                                              "audiomentations.PolarityInversion",
+                                              "audiomentations.augmentations.polarity_inversion.PolarityInversion"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "audiomentations.AddGaussianNoise",
+                         "status":  "resolved",
+                         "public_module":  "audiomentations",
+                         "defining_module":  "audiomentations.augmentations.add_gaussian_noise",
+                         "defining_name":  "AddGaussianNoise",
+                         "source_path":  "audiomentations/augmentations/add_gaussian_noise.py",
+                         "source_line":  9,
+                         "source_sha256":  "4a4fc0d378be0bbb28c6f7a4ad981ddd3046f7b4bc9fb8a9da30b0b06aabd959",
+                         "binding_sha256":  "7fe5ab9f217af5b135f380eac5f87c9ed5651ab4d4d7c1de5c7c1cc944e1941d",
+                         "export_chain":  [
+                                              "audiomentations.AddGaussianNoise",
+                                              "audiomentations.augmentations.add_gaussian_noise.AddGaussianNoise"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "audiomentations.Clip",
+                         "status":  "resolved",
+                         "public_module":  "audiomentations",
+                         "defining_module":  "audiomentations.augmentations.clip",
+                         "defining_name":  "Clip",
+                         "source_path":  "audiomentations/augmentations/clip.py",
+                         "source_line":  7,
+                         "source_sha256":  "a954e7bf5965d1bc4a3adf6ebb3ad399f11c2eb95663c4b6c2a584fb1785ae03",
+                         "binding_sha256":  "f3b7e623c4d3a310e6b8ece25f331bec37d02c0f64cf52c7ee697b32fd99cc9c",
+                         "export_chain":  [
+                                              "audiomentations.Clip",
+                                              "audiomentations.augmentations.clip.Clip"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "audiomentations.Lambda",
+                         "status":  "resolved",
+                         "public_module":  "audiomentations",
+                         "defining_module":  "audiomentations.augmentations.lambda_transform",
+                         "defining_name":  "Lambda",
+                         "source_path":  "audiomentations/augmentations/lambda_transform.py",
+                         "source_line":  9,
+                         "source_sha256":  "e56aed24ee78abe80d2e8a1a68f0923e6ce99f3567dda3795175c4195e12495f",
+                         "binding_sha256":  "dc240b0b35f7b2697aff8523f06933682a34adbf502c8fa632f01a9f53942da5",
+                         "export_chain":  [
+                                              "audiomentations.Lambda",
+                                              "audiomentations.augmentations.lambda_transform.Lambda"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "audiomentations.Compose",
+                         "status":  "resolved",
+                         "public_module":  "audiomentations",
+                         "defining_module":  "audiomentations.core.composition",
+                         "defining_name":  "Compose",
+                         "source_path":  "audiomentations/core/composition.py",
+                         "source_line":  96,
+                         "source_sha256":  "b72ac855ff2240d19d7d5c83bf115ff79a6cff34a268315512eeda5844d8a41e",
+                         "binding_sha256":  "0dd4e0b4bee0dd019f5d2fa9143afee18f5299a1ac955709922a4b2145955341",
+                         "export_chain":  [
+                                              "audiomentations.Compose",
+                                              "audiomentations.core.composition.Compose"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "audiomentations.AddBackgroundNoise",
+                         "status":  "resolved",
+                         "public_module":  "audiomentations",
+                         "defining_module":  "audiomentations.augmentations.add_background_noise",
+                         "defining_name":  "AddBackgroundNoise",
+                         "source_path":  "audiomentations/augmentations/add_background_noise.py",
+                         "source_line":  21,
+                         "source_sha256":  "b0090299b9fc797759d0428eee03369c6d40442e660aecd2ac224345ab4fa9f1",
+                         "binding_sha256":  "878d87c4e7bce4389b537a6c4f180bb3adb1a16b7d3488ea6f456ffe9ecf1aa4",
+                         "export_chain":  [
+                                              "audiomentations.AddBackgroundNoise",
+                                              "audiomentations.augmentations.add_background_noise.AddBackgroundNoise"
+                                          ],
+                         "reason":  null
+                     }
+                 ],
+    "manifest_sha256":  "dddf71eb188383b517cacd02b071b9f8f7f24226f83085f3a6c2a1edaac19c46"
 }

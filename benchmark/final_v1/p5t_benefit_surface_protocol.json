@@ -1,0 +1,38 @@
+{
+  "schema_version": "autocontract.p5t-benefit-surface-protocol.v0",
+  "status": "calibration_only_m0_not_run",
+  "scientific_evidence": false,
+  "purpose": "M0 is an exploratory CPU-warm calibration over predeclared workload axes. It is not a P5S extension, blind confirmation, confidence interval, or Go/No-Go study.",
+  "dataset_boundary": {
+    "allowed_ids": "0801-0810 only",
+    "forbidden_ids": "0811-0900; the runner must never open, hash, or read their image bytes",
+    "source": "Official DIV2K validation HR, using the P5T split manifest only."
+  },
+  "cells": [
+    {"id": "mobilenetv3_crop224", "model": "mobilenet_v3_small", "crop": 224},
+    {"id": "mobilenetv3_crop448", "model": "mobilenet_v3_small", "crop": 448},
+    {"id": "resnet18_crop224", "model": "resnet18", "crop": 224},
+    {"id": "resnet18_crop448", "model": "resnet18", "crop": 448}
+  ],
+  "execution": {
+    "cache_state": "CPU warm only; cold is unsupported unless physical-read telemetry independently establishes it.",
+    "blocks_per_cell": 2,
+    "sequences": ["CAAC", "ACCA"],
+    "arms": {"C": "baseline candidate_count=1", "A": "receipt-authorized candidate_count=2"},
+    "fresh_child_cli_per_block": true,
+    "balanced_schedule": [
+      {"sequence":"CAAC","cells":["mobilenetv3_crop224","resnet18_crop448","mobilenetv3_crop448","resnet18_crop224"]},
+      {"sequence":"ACCA","cells":["resnet18_crop224","mobilenetv3_crop448","resnet18_crop448","mobilenetv3_crop224"]}
+    ],
+    "timer_start": "Immediately before load_from_plan / the first possible file open.",
+    "timer_stop": "Immediately after SGD.step.",
+    "timer_included": ["streaming file read", "PNG decode", "preprocess", "stack", "model forward", "loss", "backward", "SGD.step"],
+    "timer_excluded": ["model construction", "Cedar planning", "receipt verification", "cache warming", "telemetry collection"]
+  },
+  "semantic_gates": "For same-seed C/A comparisons: exact tensor records, shapes, Python/NumPy/torch RNG digests, finite loss/logits/gradients/model state and their digests; exact open/decode counts and candidate/plan gates.",
+  "cpu_runtime": {"python": "3.11.9", "torch": "2.0.1+cpu", "torchvision": "0.15.2+cpu", "cedar_commit": "f062305fcdab196e871c5d09b4c82ab788b4da79", "threads": 1},
+  "frozen_inputs": "Before any P5T dataset path resolution, stat, hash or decode, verify a review-approved versioned attempt-1 v3 freeze and launcher. Restart is governed by p5t_m0_launcher_incident_v1.json and p5t_m0_dependency_incident_v1.json: attempt0 control-plane and dependency activation failures are non-scientific. The v3 freeze binds this protocol, P5T split/schema/runner, pinned P5S closure, v7 selftest, both incidents, synchronous versioned launcher generator, launcher-smoke v2, and Cedar import-smoke v1. Cedar is activated from the validated clean root after runtime/Git validation and before any split/data resolution. Parent/child output SHA-256 values are deliberately excluded to avoid a circular self-hash.",
+  "gpu_readiness_only": {"python": "3.9.19", "torch": "2.4.0+cu124", "torchvision": "0.19.0+cu124", "device": "RTX 4060", "gpu_family_authorized": false, "scope": "basic_cuda_matmul_only", "claim": "A probe/smoke only; it makes no CPU-vs-GPU causal claim and no Cedar/model semantic claim."},
+  "analysis": "Report all cells and all points descriptively. Do not delete points using telemetry, pool cells into a blind CI, or make a benefit/Go claim."
+  ,"attempt2_diagnostic_contract":{"ordinals":[2,3,4,5,6,7,8],"ordinal1":"forbidden","schedule":[[2,"CAAC","resnet18_crop448"],[3,"CAAC","mobilenetv3_crop448"],[4,"CAAC","resnet18_crop224"],[5,"ACCA","resnet18_crop224"],[6,"ACCA","mobilenetv3_crop448"],[7,"ACCA","resnet18_crop448"],[8,"ACCA","mobilenetv3_crop224"]],"stop":"first_failure","forbidden":["timer","telemetry","ratio","point","arms","m0_aggregate","successful_child_payload"],"logs":"bounded sanitized tail plus raw byte_count and SHA-256; fixed p5t-path-secret-performance-redaction-v1 removes paths, secrets, timing, telemetry, ratio, point and arm payload values","receipt":"atomic write-once, failure or no_failure_reproduced","post_diagnostic":"new freeze required"}
+}

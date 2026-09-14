@@ -1,0 +1,19 @@
+{
+  "schema_version": "autocontract.p5a-constraint-compiler-protocol.v2",
+  "status": "administrative_binding_correction_before_rerun",
+  "date": "2026-07-30",
+  "inherits": {
+    "path": "benchmark/final_v1/p5a_constraint_compiler_protocol_v1.json",
+    "sha256": "528f76066ad3d435ac6e92ee6da3c4ec235f4a8123f51debcfd0284b280525d1",
+    "unchanged": "All v1 semantic corrections, inherited rules, non-claims, and 15 gates remain unchanged."
+  },
+  "observed_attempt": {
+    "path": "outputs/autocontract_p5a_constraint_compiler_selftest_attempt1_protocol_mismatch.json",
+    "sha256": "403bfb5d1293c7cd3b756553f6a2929e235c7ed9b234b9441ff214cc76a7d243",
+    "nominal_result": "15/15 PASS",
+    "administrative_verdict": "invalid_protocol_binding",
+    "problem": "The result protocol_sha256 still pointed to v0 rather than the v1 composition amendment."
+  },
+  "only_correction": "Bind the runner and result protocol_sha256 to this v2 protocol; do not change compilation behavior, fixtures, or gates.",
+  "pass_rule": "15/15 gates pass and result.protocol_sha256 equals this file's SHA-256."
+}

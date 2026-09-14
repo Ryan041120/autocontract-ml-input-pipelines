@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/autocontract/final-oracle-v1.schema.json",
+  "title": "AutoContract final blind benchmark private oracle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "benchmark_id",
+    "public_manifest_sha256",
+    "commitment_salt_hex",
+    "annotators",
+    "units",
+    "adjudication"
+  ],
+  "properties": {
+    "schema_version": {"const": "autocontract.final-oracle.v1"},
+    "artifact_type": {"const": "private_oracle"},
+    "benchmark_id": {"type": "string"},
+    "public_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "commitment_salt_hex": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "annotators": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["annotator_id", "role", "independent_of_analyzer", "conflict_disclosure"],
+        "properties": {
+          "annotator_id": {"type": "string", "minLength": 1},
+          "role": {"enum": ["primary", "reviewer", "adjudicator"]},
+          "independent_of_analyzer": {"const": true},
+          "conflict_disclosure": {"type": "string"}
+        }
+      }
+    },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unit_id",
+          "expected_decision",
+          "known_unsafe",
+          "coarse_reason",
+          "effect_labels",
+          "semantic_oracle",
+          "rationale",
+          "confidence",
+          "evidence_anchors",
+          "reviewed_by"
+        ],
+        "properties": {
+          "unit_id": {"type": "string"},
+          "expected_decision": {"enum": ["admit", "reject"]},
+          "known_unsafe": {"type": "boolean"},
+          "coarse_reason": {
+            "enum": [
+              "none",
+              "hidden_rng_effect",
+              "external_state_drift",
+              "state_mutation",
+              "mode_dependent_effect",
+              "lineage_or_binding_mismatch",
+              "augmentation_diversity_frozen",
+              "gradient_or_autograd_change",
+              "unsupported_or_ambiguous"
+            ]
+          },
+          "effect_labels": {
+            "type": "object",
+            "additionalProperties": {"enum": ["present", "absent", "unknown"]}
+          },
+          "semantic_oracle": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["output", "rng", "gradient", "lineage", "diversity"],
+            "properties": {
+              "output": {"type": "string", "minLength": 1},
+              "rng": {"type": "string", "minLength": 1},
+              "gradient": {"type": "string", "minLength": 1},
+              "lineage": {"type": "string", "minLength": 1},
+              "diversity": {"type": "string", "minLength": 1}
+            }
+          },
+          "rationale": {"type": "string", "minLength": 10},
+          "confidence": {"enum": ["high", "medium", "low"]},
+          "evidence_anchors": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "reviewed_by": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+        }
+      }
+    },
+    "adjudication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "disagreement_count", "record_path"],
+      "properties": {
+        "status": {"enum": ["pending", "complete"]},
+        "disagreement_count": {"type": "integer", "minimum": 0},
+        "record_path": {"type": "string"}
+      }
+    }
+  }
+}

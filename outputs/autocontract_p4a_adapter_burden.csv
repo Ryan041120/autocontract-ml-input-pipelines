@@ -1,0 +1,11 @@
+framework,status,formal_units,calibration_units,operation_decisions,declared_rules,rules_per_formal_unit,semantic_sloc,semantic_decision_points,binding_sloc,semantic_sloc_per_formal_unit,runtime_components,runtime_slots,capability_requirements,lightweight_diagnostic,prospective_time
+MONAI,adapter,4,0,4,4,1.0,31,1,0,7.75,0,0,0,True,unavailable
+MMDetection,adapter,6,0,6,6,1.0,72,14,0,12.0,0,0,0,True,unavailable
+TorchIO,adapter,7,4,7,6,0.8571428571428571,115,19,0,16.428571428571427,0,0,0,True,unavailable
+TorchGeo,adapter,5,0,5,5,1.0,91,8,0,18.2,0,0,0,True,unavailable
+audiomentations,adapter,7,0,7,7,1.0,197,39,26,28.142857142857142,0,0,0,False,unavailable
+imgaug,adapter_plus_runtime_policy,8,8,8,8,1.0,315,80,23,39.375,1,3,5,False,unavailable
+Albumentations,adapter_plus_runtime_policy,8,7,8,9,1.125,415,107,22,51.875,3,11,6,False,unavailable
+Kornia,adapter_plus_shared_runtime_policy,5,5,9,8,1.6,50,8,16,10.0,1,7,0,False,unavailable
+NVIDIA DALI,unsupported_no_adapter,2,0,2,0,,0,0,0,,0,0,0,,unavailable
+torchvision,development_example_no_frozen_adapter,0,0,0,0,,0,0,0,,0,0,0,,unavailable

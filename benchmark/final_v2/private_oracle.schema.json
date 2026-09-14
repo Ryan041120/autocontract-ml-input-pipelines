@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/autocontract/final-oracle-v2.schema.json",
+  "title": "AutoContract final-blind private oracle v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "benchmark_id", "public_manifest_sha256", "commitment_salt_hex", "annotators", "units", "adjudication"],
+  "properties": {
+    "schema_version": {"const": "autocontract.final-oracle.v2"},
+    "artifact_type": {"const": "private_oracle"},
+    "benchmark_id": {"type": "string"},
+    "public_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "commitment_salt_hex": {"$ref": "#/$defs/sha256"},
+    "annotators": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/annotator"}},
+    "units": {"type": "array", "items": {"$ref": "#/$defs/unit"}},
+    "adjudication": {
+      "type": "object", "additionalProperties": false, "required": ["status", "disagreement_count", "record_path"],
+      "properties": {"status": {"enum": ["pending", "complete"]}, "disagreement_count": {"type": "integer", "minimum": 0}, "record_path": {"type": "string"}}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "annotator": {
+      "type": "object", "additionalProperties": false, "required": ["annotator_id", "role", "independent_of_analyzer", "conflict_disclosure"],
+      "properties": {"annotator_id": {"type": "string"}, "role": {"enum": ["primary", "reviewer", "adjudicator"]}, "independent_of_analyzer": {"const": true}, "conflict_disclosure": {"type": "string"}}
+    },
+    "unit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["unit_id", "expected_semantic_decision", "known_unsafe", "coarse_reason", "expected_replay_capability_status", "replay_capability_reason", "effect_labels", "semantic_oracle", "rationale", "confidence", "evidence_anchors", "reviewed_by"],
+      "properties": {
+        "unit_id": {"type": "string"},
+        "expected_semantic_decision": {"enum": ["admit", "reject"]},
+        "known_unsafe": {"type": "boolean"},
+        "coarse_reason": {"type": "string"},
+        "expected_replay_capability_status": {"enum": ["supported", "unsupported", "unknown", "not_applicable"]},
+        "replay_capability_reason": {"type": "string", "minLength": 4},
+        "effect_labels": {"type": "object"},
+        "semantic_oracle": {
+          "type": "object", "additionalProperties": false, "required": ["output", "rng", "gradient", "lineage", "diversity"],
+          "properties": {"output": {}, "rng": {}, "gradient": {}, "lineage": {}, "diversity": {}}
+        },
+        "rationale": {"type": "string", "minLength": 10},
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "evidence_anchors": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "reviewed_by": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      }
+    }
+  }
+}

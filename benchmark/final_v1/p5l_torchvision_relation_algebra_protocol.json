@@ -1,0 +1,36 @@
+{
+  "schema_version": "autocontract.p5l-torchvision-relation-algebra-protocol.v0",
+  "status": "predeclared_known-corpus_mechanism_and_coverage_calibration",
+  "date": "2026-07-30",
+  "question": "Can a small locally replayed relation algebra recover nonzero strict coverage on P5K real pairs without conflicting with any observed counterexample?",
+  "frozen_inputs": {
+    "outputs/autocontract_p5k_torchvision_real_pairs.json": "9e52a568d69fa13fcc1de292e24f27cebbdafa2f2fe69e4c36ca2e5ee449a386",
+    "benchmark/final_v1/p5k_torchvision_pair_manifest.json": "4941024fa07930a5533b37d3df42d637e9e9baef214f34e013af4744283b7a54",
+    "benchmark/final_v1/p5k_torchvision_real_pair_protocol.json": "9114bd671f9aba7ca4c07c6438a5aea9c424bea0841148036ef707dea47564a2",
+    "experiments/autocontract_p5k_torchvision_real_pairs.py": "ba0cbf707c1ec06f620c9a3edd017bd2ec604df7834fe784f3c06a838ff87b58",
+    "experiments/autocontract_reorder_capability_v1.py": "fdce8818dab5c763b08fa197aaa9c1d046991a8d1f4eaf348201a63d2d10fe44"
+  },
+  "runtime": {
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "torchvision_v2_python_files": 24,
+    "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1"
+  },
+  "allowed_lemmas": {
+    "identity_composition_v0": "A locally verified effect-free Identity commutes with a supported total operator on the bound domain.",
+    "pointwise_channel_map_spatial_index_v0": "A deterministic spatially pointwise channel map commutes with a value-preserving spatial index map or no-padding spatial selection whose parameters depend only on spatial shape and RNG independent of the pointwise map."
+  },
+  "explicit_exclusions": ["resize/interpolation", "blur/convolution boundary", "dtype conversion/rounding", "color jitter/clipping", "random erasing/region fill", "stateful UDF", "arbitrary Call AST"],
+  "hypotheses": {
+    "h1_coverage": "Exactly 10 of P5K's 14 global Unknown pairs receive locally replayed Supported receipts; overall strict coverage is 10/28.",
+    "h2_no_conflict": "Zero of P5K's 14 counterexample pairs receive a Supported receipt.",
+    "h3_unknown_preservation": "The four remaining no-counterexample pairs (normalize-resize, resize-random_hflip, gaussian_blur-normalize, to_uint8-resize) remain Unknown.",
+    "h4_binding": "Framework tree, verifier closure/version, input-domain, operator type/config, SourceIndex, lemma/artifact and duplicate tampering fail closed.",
+    "h5_schema": "Every emitted receipt validates against the public V2 schema.",
+    "h6_backend": "Identity/Normalize/CenterCrop obtain three pair receipts, restore six cedar candidates, trigger a reordered real-operator plan, and preserve output against the fixed baseline."
+  },
+  "stop_rule": "If verified coverage is below 30% of P5K Unknown pairs or any counterexample conflict occurs, stop automatic relation-producer expansion and retain only the external proof-carrying gate.",
+  "pass_rule": "All six hypotheses hold on the frozen P5K corpus and fixed cedar commit; no excluded semantic family is silently admitted.",
+  "claim_boundary": "Known contaminated torchvision mechanism calibration, not an independent commutativity oracle, formal proof of torchvision, or cross-version guarantee."
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "autocontract.p5t-m0-selftest.v2",
+  "phase": "selftest",
+  "status": "error",
+  "scientific_evidence": false,
+  "protocol_sha256": "2660076978f93296804359922791f750278ab50325acb52f885c829b2e80d0ea",
+  "runner_sha256": "854d47342348bce7532b157c24734c8f5698ae05f1393712ba68635810bb325f",
+  "split_manifest_sha256": "b6038b203664bb5cfd6486758ab98013b32e6b062d9a3192cda4b027f77d143b",
+  "suite_sha256": "80f58ec9977013a34e319c97f3ee4081461f0b270a2b91f20d2c313d54d249f1",
+  "checks": [
+    {
+      "name": "only_calibration_ids_resolve",
+      "passed": true
+    },
+    {
+      "name": "blind_and_reserved_ids_absent_from_accessible_split",
+      "passed": true
+    },
+    {
+      "name": "cells_sequences_and_balanced_schedule_exact",
+      "passed": true
+    },
+    {
+      "name": "mapping_preserved_across_eight_synthetic_arms",
+      "passed": true
+    },
+    {
+      "name": "nonfinite_tamper_rejected",
+      "passed": true
+    },
+    {
+      "name": "candidate_and_schema_tamper_rejected",
+      "passed": true
+    },
+    {
+      "name": "wrong_crop_domain_rejected",
+      "passed": true
+    },
+    {
+      "name": "nonmonotonic_cpu_telemetry_rejected",
+      "passed": true
+    },
+    {
+      "name": "unfrozen_anchor_rejected_before_data_path_use",
+      "passed": true
+    },
+    {
+      "name": "freeze_validation_precedes_runtime_and_data_resolution",
+      "passed": true
+    },
+    {
+      "name": "result_envelope_schema",
+      "passed": false
+    }
+  ],
+  "claim_boundary": "Pure synthetic access/control validation; no DIV2K image bytes are opened."
+}

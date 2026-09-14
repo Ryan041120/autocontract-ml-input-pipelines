@@ -1,0 +1,8 @@
+policy,candidates,tp,fp,fn,tn,safe_recall,unsafe_precision,selected_candidates,selected_safe,selected_unsafe,oracle_plan_safe_opportunities,plan_safe_opportunity_coverage,annotation_signatures,non_overlap_valid
+fail_closed,37,0,0,15,22,0.0,1.0,0,0,0,10,0.0,0,True
+registry_only,37,6,0,9,22,0.4,1.0,4,4,0,10,0.4,6,True
+static_only,37,15,0,0,22,1.0,1.0,10,10,0,10,1.0,0,True
+dynamic_only,37,15,1,0,21,1.0,0.9545454545454546,11,10,1,10,1.0,0,True
+hybrid,37,15,0,0,22,1.0,1.0,10,10,0,10,1.0,7,True
+manual_full,37,15,0,0,22,1.0,1.0,10,10,0,10,1.0,30,True
+human_oracle,37,15,0,0,22,1.0,1.0,10,10,0,10,1.0,candidate_oracle,True

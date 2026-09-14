@@ -1,0 +1,43 @@
+{
+  "schema_version": "autocontract.p5m-relation-boundary-falsification-protocol.v0",
+  "status": "predeclared_known-corpus_adversarial_calibration",
+  "date": "2026-07-30",
+  "question": "Do P5L's handwritten torchvision relation lemmas fail closed outside their declared domain and remain observationally consistent with the fixed implementation at admitted boundary points, including RNG post-state after a real cedar reorder?",
+  "frozen_inputs": {
+    "benchmark/final_v1/p5l_torchvision_relation_algebra_protocol.json": "3843573119c59f87b3075541344145d3bb763f2d62578c330a07b7aed4e8c5d6",
+    "benchmark/final_v1/reorder_capability_v2.schema.json": "abb1c1f5853ab0df0bd9aa93507a2a7880f1d260fd6ab098ebaae1c4b39c7387",
+    "experiments/autocontract_reorder_capability_v2.py": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35",
+    "experiments/autocontract_p5l_torchvision_relation_algebra.py": "c300c9dc93edd1dfb6eaf96e9970c3c8cfb27b07fe33f4cf110929895f9a1a2b",
+    "outputs/autocontract_p5l_torchvision_relation_algebra.json": "832e2f721ae4df169d55d4e2763faa5483e2fbdf7e42b3f1af08cd7590980b38"
+  },
+  "runtime": {
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "torchvision_v2_python_files": 24,
+    "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1",
+    "cedar_commit": "f062305fcdab196e871c5d09b4c82ab788b4da79"
+  },
+  "predeclared_matrix": {
+    "domain_and_totality_mutations": 15,
+    "operator_configuration_mutations": 13,
+    "admitted_pair_configurations": 18,
+    "spatial_corner_shapes": 4,
+    "rng_seeds": 6,
+    "memory_layouts": ["contiguous", "noncontiguous_chw"],
+    "metamorphic_trials": 864,
+    "random_cedar_chain": ["normalize", "random_crop", "identity"]
+  },
+  "hypotheses": {
+    "h1_freeze": "All P5L artifacts remain byte-identical and the exact framework tree and clean cedar commit are active.",
+    "h2_domain_fail_closed": "All 15 malformed or totality-violating domain cases fail before a Supported receipt is emitted.",
+    "h3_config_fail_closed": "All 13 unsupported operator type/configuration cases fail before a Supported receipt is emitted.",
+    "h4_runtime_bridge": "All 864 admitted boundary trials produce outputs, exact tensors, identical exception behavior, and identical Python/NumPy/torch RNG post-state in both orders.",
+    "h5_lemma_coverage": "The admitted matrix exercises both P5L lemmas, all four spatial corner shapes, and contiguous plus non-contiguous CHW tensors.",
+    "h6_backend_random": "Three V2 receipts restore six cedar candidates for Normalize/RandomCrop/Identity, cedar selects a different order, and execution preserves exact outputs plus RNG post-state.",
+    "h7_burden": "Generation/verification latency, receipt bytes, module SLOC and semantic-adapter SLOC are recorded descriptively; no low-overhead claim is inferred."
+  },
+  "pass_rule": "Every frozen/input/runtime check passes; zero domain/config mutation is admitted; zero admitted metamorphic or cedar trial has an output, exception, or RNG mismatch.",
+  "stop_rule": "Any admitted-domain mismatch or any domain/config unsafe accept revokes the affected lemma version and stops proof-family expansion. A PASS permits only mutation-hardened known-version calibration, not a soundness or generalization claim.",
+  "claim_boundary": "Adversarial and metamorphic calibration of two handwritten lemmas on a known fixed torchvision slice; not formal verification of upstream code, an independent oracle, runtime enforcement of declared input membership, or cross-version evidence."
+}

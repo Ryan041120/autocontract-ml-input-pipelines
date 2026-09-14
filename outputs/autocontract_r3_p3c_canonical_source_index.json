@@ -1,0 +1,812 @@
+{
+  "schema_version": "autocontract.r3-p3c-canonical-source-index-result.v0",
+  "protocol_sha256": "bec7be39dda3640c106a11aef38a4d167df765db8f114f6dc39a6236d8518dd4",
+  "runner_sha256": "2e63e7fb26f4a8f5e82f7fc3259cf0a22b364b1098d5b43ba7e5c0a3a4b245f8",
+  "candidate_v1_sha256": "7e6251c0388fce23c115919258ac43fb9d620ea38f8902082fe6da7cfbb5238c",
+  "status": "pass",
+  "freeze_checks": {
+    "protocol": true,
+    "p3b_runner": true,
+    "p3b_result": true,
+    "v0": true,
+    "v1": true,
+    "manifest": true,
+    "lock": true,
+    "python_3_9_19": true
+  },
+  "gates": {
+    "all_11_complete_component_coverage": true,
+    "all_11_supported_and_no_v0_entry_drop": true,
+    "all_11_same_and_three_process_stable": true,
+    "portable_mutations_22_reject_11_unknown_0_admit": true,
+    "all_33_restore_baseline": true,
+    "all_source_and_constant_fixtures": true,
+    "frozen_inputs_unchanged": true
+  },
+  "units": [
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.arithmetic.Multiply",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 17836
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "e090f50afacd100b809c8553bd70ad1b7a1f64aca1a2f315cc0c1b2bdc250d35",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 18976
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "e090f50afacd100b809c8553bd70ad1b7a1f64aca1a2f315cc0c1b2bdc250d35",
+        "seed1": "e090f50afacd100b809c8553bd70ad1b7a1f64aca1a2f315cc0c1b2bdc250d35",
+        "seed2": "e090f50afacd100b809c8553bd70ad1b7a1f64aca1a2f315cc0c1b2bdc250d35"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 20.3369,
+          "min_ms": 17.0924,
+          "max_ms": 22.5904
+        },
+        "v1": {
+          "median_ms": 24.8825,
+          "min_ms": 22.6961,
+          "max_ms": 36.6275
+        }
+      }
+    },
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.blur.AverageBlur",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 24562
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "a484ec685532d56686644e57b9435eb7d3c3f90dbd7aac551c7d810382b4469e",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 27122
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "a484ec685532d56686644e57b9435eb7d3c3f90dbd7aac551c7d810382b4469e",
+        "seed1": "a484ec685532d56686644e57b9435eb7d3c3f90dbd7aac551c7d810382b4469e",
+        "seed2": "a484ec685532d56686644e57b9435eb7d3c3f90dbd7aac551c7d810382b4469e"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 34.2818,
+          "min_ms": 29.1804,
+          "max_ms": 49.6571
+        },
+        "v1": {
+          "median_ms": 30.8664,
+          "min_ms": 25.0216,
+          "max_ms": 42.8568
+        }
+      }
+    },
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.geometric.Affine",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 21151
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "2aced9036465acb86c5befe16e7442db5fcdb43ba930c1fbe94e442510efd86b",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 22691
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "2aced9036465acb86c5befe16e7442db5fcdb43ba930c1fbe94e442510efd86b",
+        "seed1": "2aced9036465acb86c5befe16e7442db5fcdb43ba930c1fbe94e442510efd86b",
+        "seed2": "2aced9036465acb86c5befe16e7442db5fcdb43ba930c1fbe94e442510efd86b"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 30.075,
+          "min_ms": 25.7165,
+          "max_ms": 35.7498
+        },
+        "v1": {
+          "median_ms": 31.465,
+          "min_ms": 27.4257,
+          "max_ms": 39.6106
+        }
+      }
+    },
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.size.CropToFixedSize",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 17389
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "f9d25082c9a4ee3276d45066d40020ba606f9df3fe79aa68d42c76028616f194",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 18477
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "f9d25082c9a4ee3276d45066d40020ba606f9df3fe79aa68d42c76028616f194",
+        "seed1": "f9d25082c9a4ee3276d45066d40020ba606f9df3fe79aa68d42c76028616f194",
+        "seed2": "f9d25082c9a4ee3276d45066d40020ba606f9df3fe79aa68d42c76028616f194"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 16.7356,
+          "min_ms": 14.9221,
+          "max_ms": 19.92
+        },
+        "v1": {
+          "median_ms": 20.3818,
+          "min_ms": 17.9718,
+          "max_ms": 24.4836
+        }
+      }
+    },
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.contrast.LinearContrast",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 20897
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "36b792a8301d4db1ab013ed067cc03b0b779c2558507445c429b4496ad2d46c7",
+        "entry_counts": [
+          3
+        ],
+        "bytes": 22615
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "36b792a8301d4db1ab013ed067cc03b0b779c2558507445c429b4496ad2d46c7",
+        "seed1": "36b792a8301d4db1ab013ed067cc03b0b779c2558507445c429b4496ad2d46c7",
+        "seed2": "36b792a8301d4db1ab013ed067cc03b0b779c2558507445c429b4496ad2d46c7"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 17.0022,
+          "min_ms": 14.7516,
+          "max_ms": 18.1166
+        },
+        "v1": {
+          "median_ms": 19.157,
+          "min_ms": 17.3117,
+          "max_ms": 20.118
+        }
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.geometric.flip.VerticalFlip",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          2,
+          1,
+          8
+        ],
+        "bytes": 59576
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "8423ab82e0d6f85930a6b0bc00eaff30933f57ffbe1d42bfa6d17bffca32748e",
+        "entry_counts": [
+          2,
+          1,
+          8
+        ],
+        "bytes": 63095
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "8423ab82e0d6f85930a6b0bc00eaff30933f57ffbe1d42bfa6d17bffca32748e",
+        "seed1": "8423ab82e0d6f85930a6b0bc00eaff30933f57ffbe1d42bfa6d17bffca32748e",
+        "seed2": "8423ab82e0d6f85930a6b0bc00eaff30933f57ffbe1d42bfa6d17bffca32748e"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 125.2971,
+          "min_ms": 116.8607,
+          "max_ms": 141.5623
+        },
+        "v1": {
+          "median_ms": 130.5121,
+          "min_ms": 120.8931,
+          "max_ms": 141.7295
+        }
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.pixel.transforms.RandomGamma",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          2,
+          1,
+          6
+        ],
+        "bytes": 56883
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "d8c6f5b88be729d6eab50c7921760e15d05f8c1844e8ecc1919264470a688da1",
+        "entry_counts": [
+          2,
+          1,
+          6
+        ],
+        "bytes": 59687
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "d8c6f5b88be729d6eab50c7921760e15d05f8c1844e8ecc1919264470a688da1",
+        "seed1": "d8c6f5b88be729d6eab50c7921760e15d05f8c1844e8ecc1919264470a688da1",
+        "seed2": "d8c6f5b88be729d6eab50c7921760e15d05f8c1844e8ecc1919264470a688da1"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 179.2198,
+          "min_ms": 165.758,
+          "max_ms": 184.2294
+        },
+        "v1": {
+          "median_ms": 181.7734,
+          "min_ms": 153.7214,
+          "max_ms": 195.8599
+        }
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.blur.transforms.GaussianBlur",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          2,
+          1,
+          6
+        ],
+        "bytes": 58603
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "724b41417be4d3a7c5f51a6f6ffabbc0f5773786b806c609dde9c6178b9b7ab5",
+        "entry_counts": [
+          2,
+          1,
+          6
+        ],
+        "bytes": 61725
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "724b41417be4d3a7c5f51a6f6ffabbc0f5773786b806c609dde9c6178b9b7ab5",
+        "seed1": "724b41417be4d3a7c5f51a6f6ffabbc0f5773786b806c609dde9c6178b9b7ab5",
+        "seed2": "724b41417be4d3a7c5f51a6f6ffabbc0f5773786b806c609dde9c6178b9b7ab5"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 181.3985,
+          "min_ms": 172.6696,
+          "max_ms": 183.1467
+        },
+        "v1": {
+          "median_ms": 176.5649,
+          "min_ms": 168.9958,
+          "max_ms": 214.7944
+        }
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.geometric.transforms.Affine",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          2,
+          1,
+          8
+        ],
+        "bytes": 68770
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "8e675f34ee0f9d8105ef5a523caf380dab7670b91da81d4c9e0a4183c8c87c19",
+        "entry_counts": [
+          2,
+          1,
+          8
+        ],
+        "bytes": 73767
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "8e675f34ee0f9d8105ef5a523caf380dab7670b91da81d4c9e0a4183c8c87c19",
+        "seed1": "8e675f34ee0f9d8105ef5a523caf380dab7670b91da81d4c9e0a4183c8c87c19",
+        "seed2": "8e675f34ee0f9d8105ef5a523caf380dab7670b91da81d4c9e0a4183c8c87c19"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 188.716,
+          "min_ms": 159.0795,
+          "max_ms": 221.6869
+        },
+        "v1": {
+          "median_ms": 183.4559,
+          "min_ms": 168.8781,
+          "max_ms": 222.3975
+        }
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.crops.transforms.CenterCrop",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          2,
+          1,
+          8
+        ],
+        "bytes": 69985
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "54e0c8541063681b3f22668563143d7ff9faa40c9d139389d2c10dff8d968377",
+        "entry_counts": [
+          2,
+          1,
+          8
+        ],
+        "bytes": 74956
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "54e0c8541063681b3f22668563143d7ff9faa40c9d139389d2c10dff8d968377",
+        "seed1": "54e0c8541063681b3f22668563143d7ff9faa40c9d139389d2c10dff8d968377",
+        "seed2": "54e0c8541063681b3f22668563143d7ff9faa40c9d139389d2c10dff8d968377"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 212.436,
+          "min_ms": 189.8672,
+          "max_ms": 250.6815
+        },
+        "v1": {
+          "median_ms": 223.0617,
+          "min_ms": 177.1145,
+          "max_ms": 249.4089
+        }
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching",
+      "v0": {
+        "status": "supported",
+        "entry_counts": [
+          2,
+          1,
+          6
+        ],
+        "bytes": 58685
+      },
+      "v1": {
+        "status": "supported",
+        "coverage": "complete_registered_components",
+        "sha256": "8c9011799fa8f5f15da7d6e2243127e2ba20f5db636509255cfcb7c4986d57ee",
+        "entry_counts": [
+          2,
+          1,
+          6
+        ],
+        "bytes": 61477
+      },
+      "no_entry_drop": true,
+      "same_process_stable": true,
+      "three_process_stable": true,
+      "process_digests": {
+        "parent": "8c9011799fa8f5f15da7d6e2243127e2ba20f5db636509255cfcb7c4986d57ee",
+        "seed1": "8c9011799fa8f5f15da7d6e2243127e2ba20f5db636509255cfcb7c4986d57ee",
+        "seed2": "8c9011799fa8f5f15da7d6e2243127e2ba20f5db636509255cfcb7c4986d57ee"
+      },
+      "mutations": [
+        {
+          "attack": "class_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_delegate_wrapper",
+          "decision": "reject",
+          "raw_drift": true,
+          "current_status": "supported",
+          "restored": true
+        },
+        {
+          "attack": "instance_native_override",
+          "decision": "unknown",
+          "raw_drift": true,
+          "current_status": "unknown",
+          "restored": true
+        }
+      ],
+      "timing": {
+        "v0": {
+          "median_ms": 168.4504,
+          "min_ms": 151.1816,
+          "max_ms": 185.5756
+        },
+        "v1": {
+          "median_ms": 163.3903,
+          "min_ms": 152.7429,
+          "max_ms": 169.8862
+        }
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "case": "format_comment_only",
+      "expected": "same",
+      "observed": "same",
+      "passed": true
+    },
+    {
+      "case": "docstring_only",
+      "expected": "same",
+      "observed": "same",
+      "passed": true
+    },
+    {
+      "case": "executable_ast",
+      "expected": "different",
+      "observed": "different",
+      "passed": true
+    },
+    {
+      "case": "default_change",
+      "expected": "different",
+      "observed": "different",
+      "passed": true
+    },
+    {
+      "case": "closure_change",
+      "expected": "different",
+      "observed": "different",
+      "passed": true
+    },
+    {
+      "case": "referenced_global",
+      "expected": "different",
+      "observed": "different",
+      "passed": true
+    },
+    {
+      "case": "wrapper_change",
+      "expected": "different",
+      "observed": "different",
+      "passed": true
+    },
+    {
+      "case": "origin_shadow",
+      "expected": "different",
+      "observed": "different",
+      "passed": true
+    },
+    {
+      "case": "native_unknown",
+      "expected": "unknown",
+      "observed": "unknown",
+      "passed": true
+    }
+  ],
+  "cross_process_fixture_stable": true,
+  "process_artifacts": {
+    "seed1": {
+      "path": "autocontract_r3_p3c_source_index_v1_process_seed1.json",
+      "sha256": "6d4073a52f3e0b9a19e311a1a4ff27feb25146d1f5a80b37630c1abbd0e8e988"
+    },
+    "seed2": {
+      "path": "autocontract_r3_p3c_source_index_v1_process_seed2.json",
+      "sha256": "d3b2face9f82af93101d481f481120787894665041f9c230dabfcdc91195d91c"
+    }
+  }
+}

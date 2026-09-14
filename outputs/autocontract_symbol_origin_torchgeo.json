@@ -1,99 +1,99 @@
 {
-  "schema_version": 1,
-  "repository_root": "C:\\Users\\23527\\OneDrive - Macau University of Science and Technology\\文档\\research\\.research\\semantics_safe_reconfiguration\\h7d_corpus\\torchgeo_repo",
-  "revision": "120b8b1d477e8911ed052ec84a197dd545254e63",
-  "expected_revision": "120b8b1d477e8911ed052ec84a197dd545254e63",
-  "revision_verified": true,
-  "package": "torchgeo",
-  "algorithm": "explicit-reexport-top-level-ast-v1",
-  "policy": {
-    "executes_target_package": false,
-    "class_or_function_bodies_used": false,
-    "star_reexports": "unresolved",
-    "ambiguous_reexports": "unresolved",
-    "external_reexports": "unresolved"
-  },
-  "bindings": [
-    {
-      "public_symbol": "torchgeo.transforms.RandomGrayscale",
-      "status": "resolved",
-      "public_module": "torchgeo.transforms",
-      "defining_module": "torchgeo.transforms.color",
-      "defining_name": "RandomGrayscale",
-      "source_path": "torchgeo/transforms/color.py",
-      "source_line": 10,
-      "source_sha256": "61482eef5bbcb3e608ae783272d57369f2ea2609ccac3359fb36bcf553127fc1",
-      "binding_sha256": "91c8bc9f866f7463ce5c0299d8babbbce461d7904b35c4c548859adf82dba2c7",
-      "export_chain": [
-        "torchgeo.transforms.RandomGrayscale",
-        "torchgeo.transforms.color.RandomGrayscale"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "torchgeo.transforms.AppendNormalizedDifferenceIndex",
-      "status": "resolved",
-      "public_module": "torchgeo.transforms",
-      "defining_module": "torchgeo.transforms.indices",
-      "defining_name": "AppendNormalizedDifferenceIndex",
-      "source_path": "torchgeo/transforms/indices.py",
-      "source_line": 18,
-      "source_sha256": "31c7ef6a9d65249c700fa33310c0f7fd5a32ba80c41fa76d081da1b63f718a8f",
-      "binding_sha256": "8626e08bf220f164d5305fa3f4dfc19fd3799cecfb097d84d9c3d1a8774151c5",
-      "export_chain": [
-        "torchgeo.transforms.AppendNormalizedDifferenceIndex",
-        "torchgeo.transforms.indices.AppendNormalizedDifferenceIndex"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "torchgeo.transforms.AppendTriBandNormalizedDifferenceIndex",
-      "status": "resolved",
-      "public_module": "torchgeo.transforms",
-      "defining_module": "torchgeo.transforms.indices",
-      "defining_name": "AppendTriBandNormalizedDifferenceIndex",
-      "source_path": "torchgeo/transforms/indices.py",
-      "source_line": 292,
-      "source_sha256": "31c7ef6a9d65249c700fa33310c0f7fd5a32ba80c41fa76d081da1b63f718a8f",
-      "binding_sha256": "0b414cce3ed8830747e7236cdeb87048af03c0f946bb545f314990cc5b4f2d11",
-      "export_chain": [
-        "torchgeo.transforms.AppendTriBandNormalizedDifferenceIndex",
-        "torchgeo.transforms.indices.AppendTriBandNormalizedDifferenceIndex"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "torchgeo.transforms.Rearrange",
-      "status": "resolved",
-      "public_module": "torchgeo.transforms",
-      "defining_module": "torchgeo.transforms.temporal",
-      "defining_name": "Rearrange",
-      "source_path": "torchgeo/transforms/temporal.py",
-      "source_line": 13,
-      "source_sha256": "e52e8b8c1f85a3f4aebca5a6957d630ea5e6834011418f891f87224c7404b9e9",
-      "binding_sha256": "17bdbe8f6d561e69dee5eb2d779a689b04a62683b64c0af1bbfc7552933a1769",
-      "export_chain": [
-        "torchgeo.transforms.Rearrange",
-        "torchgeo.transforms.temporal.Rearrange"
-      ],
-      "reason": null
-    },
-    {
-      "public_symbol": "torchgeo.transforms.SatSlideMix",
-      "status": "resolved",
-      "public_module": "torchgeo.transforms",
-      "defining_module": "torchgeo.transforms.spatial",
-      "defining_name": "SatSlideMix",
-      "source_path": "torchgeo/transforms/spatial.py",
-      "source_line": 14,
-      "source_sha256": "4c2f995aef2e32084845f1690c85ee5127c21c29b54d28264822f715f2d06d99",
-      "binding_sha256": "1f0202d8c736f7825ea4c6629fa5f6bc29bdc89a2468603d28188694af7bad9a",
-      "export_chain": [
-        "torchgeo.transforms.SatSlideMix",
-        "torchgeo.transforms.spatial.SatSlideMix"
-      ],
-      "reason": null
-    }
-  ],
-  "manifest_sha256": "a95affe19f2e57ff2baae8f4ef117e5d467bb9215f34db6dd7796484a2ceff6d"
+    "schema_version":  1,
+    "repository_root":  ".research/semantics_safe_reconfiguration/h7d_corpus/torchgeo_repo",
+    "revision":  "120b8b1d477e8911ed052ec84a197dd545254e63",
+    "expected_revision":  "120b8b1d477e8911ed052ec84a197dd545254e63",
+    "revision_verified":  true,
+    "package":  "torchgeo",
+    "algorithm":  "explicit-reexport-top-level-ast-v1",
+    "policy":  {
+                   "executes_target_package":  false,
+                   "class_or_function_bodies_used":  false,
+                   "star_reexports":  "unresolved",
+                   "ambiguous_reexports":  "unresolved",
+                   "external_reexports":  "unresolved"
+               },
+    "bindings":  [
+                     {
+                         "public_symbol":  "torchgeo.transforms.RandomGrayscale",
+                         "status":  "resolved",
+                         "public_module":  "torchgeo.transforms",
+                         "defining_module":  "torchgeo.transforms.color",
+                         "defining_name":  "RandomGrayscale",
+                         "source_path":  "torchgeo/transforms/color.py",
+                         "source_line":  10,
+                         "source_sha256":  "61482eef5bbcb3e608ae783272d57369f2ea2609ccac3359fb36bcf553127fc1",
+                         "binding_sha256":  "91c8bc9f866f7463ce5c0299d8babbbce461d7904b35c4c548859adf82dba2c7",
+                         "export_chain":  [
+                                              "torchgeo.transforms.RandomGrayscale",
+                                              "torchgeo.transforms.color.RandomGrayscale"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "torchgeo.transforms.AppendNormalizedDifferenceIndex",
+                         "status":  "resolved",
+                         "public_module":  "torchgeo.transforms",
+                         "defining_module":  "torchgeo.transforms.indices",
+                         "defining_name":  "AppendNormalizedDifferenceIndex",
+                         "source_path":  "torchgeo/transforms/indices.py",
+                         "source_line":  18,
+                         "source_sha256":  "31c7ef6a9d65249c700fa33310c0f7fd5a32ba80c41fa76d081da1b63f718a8f",
+                         "binding_sha256":  "8626e08bf220f164d5305fa3f4dfc19fd3799cecfb097d84d9c3d1a8774151c5",
+                         "export_chain":  [
+                                              "torchgeo.transforms.AppendNormalizedDifferenceIndex",
+                                              "torchgeo.transforms.indices.AppendNormalizedDifferenceIndex"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "torchgeo.transforms.AppendTriBandNormalizedDifferenceIndex",
+                         "status":  "resolved",
+                         "public_module":  "torchgeo.transforms",
+                         "defining_module":  "torchgeo.transforms.indices",
+                         "defining_name":  "AppendTriBandNormalizedDifferenceIndex",
+                         "source_path":  "torchgeo/transforms/indices.py",
+                         "source_line":  292,
+                         "source_sha256":  "31c7ef6a9d65249c700fa33310c0f7fd5a32ba80c41fa76d081da1b63f718a8f",
+                         "binding_sha256":  "0b414cce3ed8830747e7236cdeb87048af03c0f946bb545f314990cc5b4f2d11",
+                         "export_chain":  [
+                                              "torchgeo.transforms.AppendTriBandNormalizedDifferenceIndex",
+                                              "torchgeo.transforms.indices.AppendTriBandNormalizedDifferenceIndex"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "torchgeo.transforms.Rearrange",
+                         "status":  "resolved",
+                         "public_module":  "torchgeo.transforms",
+                         "defining_module":  "torchgeo.transforms.temporal",
+                         "defining_name":  "Rearrange",
+                         "source_path":  "torchgeo/transforms/temporal.py",
+                         "source_line":  13,
+                         "source_sha256":  "e52e8b8c1f85a3f4aebca5a6957d630ea5e6834011418f891f87224c7404b9e9",
+                         "binding_sha256":  "17bdbe8f6d561e69dee5eb2d779a689b04a62683b64c0af1bbfc7552933a1769",
+                         "export_chain":  [
+                                              "torchgeo.transforms.Rearrange",
+                                              "torchgeo.transforms.temporal.Rearrange"
+                                          ],
+                         "reason":  null
+                     },
+                     {
+                         "public_symbol":  "torchgeo.transforms.SatSlideMix",
+                         "status":  "resolved",
+                         "public_module":  "torchgeo.transforms",
+                         "defining_module":  "torchgeo.transforms.spatial",
+                         "defining_name":  "SatSlideMix",
+                         "source_path":  "torchgeo/transforms/spatial.py",
+                         "source_line":  14,
+                         "source_sha256":  "4c2f995aef2e32084845f1690c85ee5127c21c29b54d28264822f715f2d06d99",
+                         "binding_sha256":  "1f0202d8c736f7825ea4c6629fa5f6bc29bdc89a2468603d28188694af7bad9a",
+                         "export_chain":  [
+                                              "torchgeo.transforms.SatSlideMix",
+                                              "torchgeo.transforms.spatial.SatSlideMix"
+                                          ],
+                         "reason":  null
+                     }
+                 ],
+    "manifest_sha256":  "a95affe19f2e57ff2baae8f4ef117e5d467bb9215f34db6dd7796484a2ceff6d"
 }

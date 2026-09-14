@@ -1,0 +1,102 @@
+{
+  "schema_version": "autocontract.p5v-runtime-environment-manifest.v1",
+  "date": "2026-09-09",
+  "status": "ready_for_manifest_only_no_profiling",
+  "scientific_evidence": false,
+  "authorization_boundary": {
+    "allowed": [
+      "instantiate one isolated P5V Python 3.11 environment",
+      "run import-only dependency checks",
+      "generate the P5V DTD split manifest once under the authorized duplicate-quarantine amendment"
+    ],
+    "not_allowed": [
+      "dataset profiling",
+      "model construction or training",
+      "Cedar execution",
+      "performance timing"
+    ]
+  },
+  "environment": {
+    "root": "C:/Users/23527/AppData/Local/AutoContract/runtimes/p5v-py311",
+    "python_executable": "C:/Users/23527/AppData/Local/AutoContract/runtimes/p5v-py311/Scripts/python.exe",
+    "python_executable_sha256": "e28f5b95e929738774687cd6f9f5a8c1b54b16053e9b0d4381a476bc1ec523ff",
+    "python_version": "3.11.9",
+    "implementation": "CPython",
+    "system_site_packages": false,
+    "pyvenv_cfg_sha256": "5a01623e6767c008c938a0cb67cdb5dac5b3d50c75e0c60a0fddc0c60192993e",
+    "base_python": {
+      "path": "C:/Users/23527/AppData/Local/AutoContract/runtimes/uv-python/cpython-3.11.9-windows-x86_64-none/python.exe",
+      "sha256": "bc07f574617ce5f1462be1efa9917e3825c9e7c99086baf6390ddfafd204fd83"
+    },
+    "creator": "uv 0.11.26"
+  },
+  "direct_packages": {
+    "numpy": "1.26.0",
+    "Pillow": "12.3.0",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "torchdata": "0.6.1",
+    "Pympler": "1.1",
+    "PyYAML": "6.0.3",
+    "psutil": "7.2.2",
+    "cryptography": "49.0.0",
+    "jsonschema": "4.26.0"
+  },
+  "pip_freeze": [
+    "attrs==26.1.0",
+    "certifi==2022.12.7",
+    "cffi==2.1.1",
+    "charset-normalizer==2.1.1",
+    "cryptography==49.0.0",
+    "filelock==3.32.3",
+    "idna==3.4",
+    "Jinja2==3.1.6",
+    "jsonschema==4.26.0",
+    "jsonschema-specifications==2025.9.1",
+    "MarkupSafe==3.0.3",
+    "mpmath==1.3.0",
+    "networkx==3.6.1",
+    "numpy==1.26.0",
+    "packaging==26.3",
+    "pillow==12.3.0",
+    "psutil==7.2.2",
+    "pycparser==3.0",
+    "Pympler==1.1",
+    "pywin32==312",
+    "PyYAML==6.0.3",
+    "referencing==0.37.0",
+    "requests==2.28.1",
+    "rpds-py==2026.6.3",
+    "sympy==1.14.0",
+    "torch==2.0.1+cpu",
+    "torchdata==0.6.1",
+    "torchvision==0.15.2+cpu",
+    "typing_extensions==4.16.0",
+    "urllib3==1.26.13"
+  ],
+  "import_only_check": {
+    "passed": true,
+    "versions": {
+      "python": "3.11.9",
+      "numpy": "1.26.0",
+      "Pillow": "12.3.0",
+      "torch": "2.0.1+cpu",
+      "torchvision": "0.15.2+cpu",
+      "torchdata": "0.6.1"
+    },
+    "torchvision_dtd_module_origin": "C:/Users/23527/AppData/Local/AutoContract/runtimes/p5v-py311/Lib/site-packages/torchvision/datasets/dtd.py"
+  },
+  "isolation_guarantees": {
+    "p5t_runtime_modified": false,
+    "system_path_modified": false,
+    "python_registered_systemwide": false
+  },
+  "deferred": [
+    "Cedar dependency closure and import",
+    "dataset profiling",
+    "model construction",
+    "training",
+    "performance measurement"
+  ],
+  "claim_boundary": "Environment and import readiness only; this file contains no profiling, semantic, task, or performance evidence."
+}

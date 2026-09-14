@@ -1,0 +1,51 @@
+{
+  "schema_version": "autocontract.p5s-div2k-e2e-protocol.v2",
+  "scientific_evidence": false,
+  "status": "preregistered_not_run",
+  "data_source": "Official DIV2K validation HR manifest acquired only after explicit academic-research-license acceptance.",
+  "primary_scope": "Warm-cache E2E only. Model construction, source download, manifest construction, optimizer planning, and receipt verification are outside the confirmatory timer and must instead be reported as cold/setup descriptive costs.",
+  "workload_timer": {
+    "start": "Immediately before first file-open/read of the first sample in an arm.",
+    "included": ["file read", "PNG decode", "uint8-to-float conversion", "runtime domain guard", "cedar execution/load path", "collation/stack", "MobileNet forward", "loss", "backward", "SGD optimizer.step completion"],
+    "stop": "Immediately after the final optimizer.step completes.",
+    "excluded": ["model construction", "data download", "manifest construction", "optimizer planning", "receipt verification"]
+  },
+  "filesystem_state": "Warm filesystem cache. Report the cache-warming procedure and do not extrapolate this primary result to cold-storage performance.",
+  "execution_freeze": "Before either blind confirmation fold, create one immutable execution-freeze receipt after calibration profile and smoke both pass. The receipt binds this protocol, runner, dependency closure, manifest schema and manifest, profile YAML, profile output and smoke output. Confirm and aggregate must reject any missing or mismatched receipt. The freeze receipt is not self-referential: it does not bind its own SHA, while confirm and aggregate record that SHA.",
+  "incident_amendment": "benchmark/final_v1/p5s_div2k_incident_amendment_v1.json records two deterministic Fold A implementation failures before an evaluable output existed. A corrected-run freeze must bind that amendment and a passing calibration-only confirm-control-selftest before any fresh confirmation restart.",
+  "fixed_folds": {"calibration": "0801-0810 (never used for final effect)", "A": "0811-0842", "B": "0843-0874", "reserved": "0875-0900 (untouched)"},
+  "arms": {
+    "shared": "Both arms use the identical streaming source, cedar optimize/load path, frozen profile, seeds, runtime guard, collation, and MobileNet training step.",
+    "baseline": "V3 emits fixed Normalize and RandomCrop hints (one candidate).",
+    "authorized": "The only intentional difference: exactly one verified V3 receipt-derived Normalize/RandomCrop fix setting opens two candidates while RandomCrop remains random=true.",
+    "manual": "Optional semantic/performance descriptive comparator only; it cannot enter the primary Go test and must not be called regret unless made fully fair under a separately preregistered protocol."
+  },
+  "candidate_contract": {"candidate_count_authorized": 2, "random_crop_random": true, "fixed_prefix": ["decode", "to_float", "guard"], "only_movable_pair": ["normalize", "random_crop"], "authorization": "exactly one V2 receipt that verifies this exact pair"},
+  "paired_execution": {
+    "fresh_cli_processes_per_fold": 1,
+    "total_fresh_cli_processes": 2,
+    "blocks_per_process": 15,
+    "runs_per_block": 2,
+    "order": "Odd-numbered blocks are AB (baseline then authorized); even-numbered blocks are BA (authorized then baseline).",
+    "total_paired_wall_time_ratios": 30,
+    "no_reordering_or_fold_changes_after_results": true
+  },
+  "correctness_gates": {"semantic": "definedness and output/trace checks over the guarded input domain", "rng": "fixed seed plus expected RNG-state accounting", "model": "pseudo labels are only execution traces; no accuracy claim"},
+  "confirmatory_analysis": {
+    "only_primary_metric": "Paired warm E2E wall_time ratio: authorized/baseline.",
+    "descriptive_only": ["examples_per_second reciprocal of wall time", "cold/setup costs", "manual comparator"],
+    "bootstrap": {
+      "seed": 20260807,
+      "input": "Exactly the 30 paired authorized/baseline warm E2E wall-time ratios, with no substitutions or exclusions after inspection.",
+      "transform": "Take the natural logarithm of each ratio.",
+      "draws": 10000,
+      "per_draw": "Sample 30 logged ratios with replacement and compute their arithmetic mean.",
+      "ci": "Two-sided 95% percentile CI for the mean log-ratio. Sort the 10,000 bootstrap means ascending and use fixed nearest-rank, zero-based indices 249 (lower: ceil(0.025*10000)-1) and 9749 (upper: ceil(0.975*10000)-1).",
+      "reported_scale": "Exponentiate CI endpoints to the ratio scale; the Go threshold uses exp(upper_log_CI)."
+    },
+    "fold_summary": "For each fold independently, compute the ordinary median of its original 15 authorized/baseline ratios; do not bootstrap or pool this fold-median gate.",
+    "go_condition": "All semantic/RNG/model gates pass; fold A and fold B each have median authorized/baseline wall-time ratio < 0.95; and exp(upper_log_CI) from the fixed 30-pair bootstrap is < 0.95.",
+    "no_go_condition": "Otherwise report mechanism-only / no-go and make no end-to-end benefit claim."
+  },
+  "claim_boundary": "This is a preregistered protocol, not an executed experiment and not scientific evidence. Files, folds, arms, and analysis cannot be changed after results are inspected."
+}

@@ -21,12 +21,22 @@ dist/
 *.sqlite-wal
 *.tmp
 *.bak
+*.lock
+*.stage.json
+*.stderr.raw
+*.work/
+*.zip
 
 # Credentials and machine-local configuration
 .env
 .env.*
 *.pem
 *.key
+
+# Final benchmark labels stay with the independent oracle custodian
+/private/
+benchmark/final_v1/private_oracle.json
+*.private-oracle.json
 
 # OS/editor noise
 .DS_Store

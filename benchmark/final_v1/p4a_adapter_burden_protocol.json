@@ -1,0 +1,171 @@
+{
+  "schema_version": "autocontract.p4a-adapter-burden-protocol.v0",
+  "status": "preregistered_before_measurement",
+  "date": "2026-07-30",
+  "research_question": "How much framework-specific code and declarative knowledge was actually required to obtain the reported AutoContract coverage, and is the current evidence sufficient to claim displacement of per-operator manual hints?",
+  "claim_boundary": "Retrospective, reproducible code/rule accounting over contaminated development frameworks. It is not prospective person-time, cognitive-load, usability, or final-blind evidence.",
+  "frozen_registry_sha256": "7630793ab3078797ba7d310206931cdad47819724c145cab33e3e5545525aa84",
+  "frozen_file_sha256": {
+    "outputs/autocontract_h7_adapter_manifest.json": "2b00443dfc9454417558d1d58c2021e90706df9aa3f96e680413d25f2d78418a",
+    "outputs/autocontract_h7c_adapter_manifest.json": "a3de1646b48b3f348ff7aa1f1585012f142d5fa34d7855d414dbea637265c05f",
+    "outputs/autocontract_h7d_torchgeo_manifest.json": "727a5c6aa768a00544d2e6d771f6db15e1dd54807ec80ce4ebff2886f4f21853",
+    "outputs/autocontract_h7e_adapter_manifest.json": "a9b4aa01b66b5cfcaf87cd96b48598d21ec1ee183a23a31f7afd87bc77944a43",
+    "outputs/autocontract_h7f_adapter_manifest.json": "1d4f065be126a8b3b85aed85de5b90b02bb11e648e1fde99102c10a16397b37e",
+    "outputs/autocontract_h7g_adapter_manifest.json": "af7563faa1a23f1ce7ea71d1a71e62c333f964b366ee9c9a87254d99379d65ad",
+    "outputs/autocontract_h7h_adapter_manifest.json": "c52391c8b535787d3fe40e38959cf0aa3647d448694bc7666b50dfab048da542",
+    "experiments/autocontract_h7_adapters.py": "29084054dd86c215de7e8767ff23dcf23f32ae75604dbf1aa64084f9893fdcb5",
+    "experiments/autocontract_h7c_torchio.py": "45513c13259d597c2ac513832ce7caf113b18118838cfb9fed7253d8357059c5",
+    "experiments/autocontract_h7d_torchgeo.py": "9ba5c423239288aba1932519790e34215fd61d018e7322439e5a9d1ae5fb2c14",
+    "experiments/autocontract_h7e_audiomentations.py": "051ad6dbdaed41e034e0115b9494bdd7ee5c996b39d13bc8ec40e975e3569358",
+    "experiments/autocontract_h7f_effect_v5.py": "bf241f852a4a04490b521b4e1d2b512e50c003e7009216cb849c6c4946ddac1f",
+    "experiments/autocontract_h7f_imgaug.py": "938fbe85fbf1f11ef0a1dde2f6951646689c932be71e6f1a47ed2f5b6ed79646",
+    "experiments/autocontract_h7g_effect_v6.py": "61a8bec715916675ef42f4cf0f6f20aec896144b143174ea617ce3534166a6cb",
+    "experiments/autocontract_h7g_albumentations.py": "5a39faeb05c070be1bd3af487ab1013b6c6a08f77abc5bd7e4e6f0228ee21276",
+    "experiments/autocontract_h7h_effect_v7.py": "3aa49f7d40e1b4f09d61ed42364a338a0892f25f2b0f1006749159ac82e84b84",
+    "experiments/autocontract_h7h_kornia.py": "53fc8a5edc862f064a836419b78336b6b417420c9fbab5bc5bc63c7c8f63ee0f"
+  },
+  "frameworks": [
+    {
+      "name": "MONAI",
+      "status": "adapter",
+      "manifest": "outputs/autocontract_h7_adapter_manifest.json",
+      "formal_units": 4,
+      "code_items": [
+        {"file": "experiments/autocontract_h7_adapters.py", "category": "semantic", "names": ["monai_analyze"]}
+      ]
+    },
+    {
+      "name": "MMDetection",
+      "status": "adapter",
+      "manifest": "outputs/autocontract_h7_adapter_manifest.json",
+      "formal_units": 6,
+      "code_items": [
+        {"file": "experiments/autocontract_h7_adapters.py", "category": "semantic", "names": ["MMDET_EXTERNAL_BASES", "MMDET_TARGET_TOKENS", "mmdet_targets", "mmdet_analyze"]}
+      ]
+    },
+    {
+      "name": "TorchIO",
+      "status": "adapter",
+      "manifest": "outputs/autocontract_h7c_adapter_manifest.json",
+      "formal_units": 7,
+      "calibration_units": 4,
+      "code_items": [
+        {"file": "experiments/autocontract_h7c_torchio.py", "category": "semantic", "names": ["TORCHIO_RULES", "parse_bundle", "construction_nodes", "has_external_framework_import", "has_user_callable_boundary", "is_child_container", "infer_torchio"]}
+      ]
+    },
+    {
+      "name": "TorchGeo",
+      "status": "adapter",
+      "manifest": "outputs/autocontract_h7d_torchgeo_manifest.json",
+      "formal_units": 5,
+      "code_items": [
+        {"file": "experiments/autocontract_h7d_torchgeo.py", "category": "semantic", "names": ["KORNIA_BASES", "TORCHGEO_RULES", "execution_hooks", "construction_hooks", "infer_torchgeo"]}
+      ]
+    },
+    {
+      "name": "audiomentations",
+      "status": "adapter",
+      "manifest": "outputs/autocontract_h7e_adapter_manifest.json",
+      "formal_units": 7,
+      "code_items": [
+        {"file": "experiments/autocontract_h7e_audiomentations.py", "category": "binding", "names": ["HOOKS", "EXTERNAL_AUDIO_TOKENS", "package_classes", "target_class"]},
+        {"file": "experiments/autocontract_h7e_audiomentations.py", "category": "semantic", "names": ["ADAPTER_RULES", "construction_nodes", "execution_nodes", "assigned_callable_attrs", "invoked_self_attrs", "has_child_delegation", "has_external_audio_operand", "analyze_unit"]},
+        {"file": "experiments/autocontract_h7f_effect_v5.py", "category": "semantic", "names": ["infer_audiomentations_v5"]}
+      ]
+    },
+    {
+      "name": "imgaug",
+      "status": "adapter_plus_runtime_policy",
+      "manifest": "outputs/autocontract_h7f_adapter_manifest.json",
+      "formal_units": 8,
+      "calibration_units": 8,
+      "code_items": [
+        {"file": "experiments/autocontract_h7f_imgaug.py", "category": "binding", "names": ["public_binding", "package_classes", "target_class", "class_chain"]},
+        {"file": "experiments/autocontract_h7f_imgaug.py", "category": "semantic", "names": ["EXECUTION_NAMES", "EXTERNAL_PARAM_TOKENS", "CALLABLE_PARAM_TOKENS", "ADAPTER_RULES", "construction_nodes", "execution_nodes", "operator_execution_nodes", "assigned_constructor_attrs", "invoked_self_attrs", "has_child_delegation", "consumes_rng", "imgaug_mode_guard", "super_resolution_imgaug", "classify_direct_state", "analyze"]},
+        {"file": "experiments/autocontract_h7g_effect_v6.py", "category": "semantic", "names": ["callable_bindings_imgaug", "infer_imgaug_v6"]}
+      ],
+      "runtime_policy": {"components": 1, "registered_slots": 3, "capability_requirements": 5, "origin": "manual_framework_family"}
+    },
+    {
+      "name": "Albumentations",
+      "status": "adapter_plus_runtime_policy",
+      "manifest": "outputs/autocontract_h7g_adapter_manifest.json",
+      "formal_units": 8,
+      "calibration_units": 7,
+      "code_items": [
+        {"file": "experiments/autocontract_h7g_albumentations.py", "category": "binding", "names": ["public_binding", "package_index", "target_class", "class_chain"]},
+        {"file": "experiments/autocontract_h7g_albumentations.py", "category": "semantic", "names": ["EXECUTION_NAMES", "RNG_ATTRS", "ADAPTER_RULES", "construction_nodes", "execution_nodes", "inherited_execution_nodes", "is_compose", "has_child_delegation", "rng_accesses", "has_replay_guard", "callable_annotations", "container_callable_attrs", "direct_callable_bindings", "h7f_invoked_attrs", "super_resolution", "analyze"]},
+        {"file": "experiments/autocontract_h7h_effect_v7.py", "category": "semantic", "names": ["albumentations_callable_bindings", "albumentations_v7"]}
+      ],
+      "runtime_policy": {"components": 3, "registered_slots": 11, "capability_requirements": 6, "origin": "manual_framework_family_plus_targets_as_params"}
+    },
+    {
+      "name": "Kornia",
+      "status": "adapter_plus_shared_runtime_policy",
+      "manifest": "outputs/autocontract_h7h_adapter_manifest.json",
+      "formal_units": 5,
+      "calibration_units": 5,
+      "operation_decisions": 9,
+      "code_items": [
+        {"file": "experiments/autocontract_h7h_kornia.py", "category": "binding", "names": ["public_binding", "package_classes", "target_class"]},
+        {"file": "experiments/autocontract_h7h_kornia.py", "category": "semantic", "names": ["ADAPTER_RULES", "empty_predecessor", "is_child_container", "analyze"]}
+      ],
+      "runtime_policy": {"components": 1, "registered_slots": 7, "capability_requirements": 0, "origin": "shared_default_plus_effect_reachable_slice"}
+    },
+    {
+      "name": "NVIDIA DALI",
+      "status": "unsupported_no_adapter",
+      "formal_units": 2,
+      "reason": "backend graph and factory execution semantics remained Unknown"
+    },
+    {
+      "name": "torchvision",
+      "status": "development_example_no_frozen_adapter",
+      "formal_units": 0,
+      "reason": "used in cache/transform examples but never onboarded as a frozen H7 adapter"
+    }
+  ],
+  "shared_infrastructure": [
+    {"file": "experiments/autocontract_h7_adapters.py", "names": ["FrameworkAdapter", "adapter_for", "execution_nodes", "execution_state_writes", "external_bases", "validator_reasons"]}
+  ],
+  "measurement_policy": {
+    "logical_sloc": "For each preregistered top-level function/class/assignment, count nonblank non-comment physical lines in its AST lineno..end_lineno span. Overlapping spans within one framework/category are unioned before counting.",
+    "decision_points": "Count If, IfExp, For, AsyncFor, While, Try handlers, Match cases and BoolOp extra operands inside registered function/class nodes; assignments contribute zero.",
+    "declared_rules": "Read only the manifest rules array registered for that framework; MONAI/MMDetection select their named adapter entry from the shared manifest.",
+    "separation": "Report semantic adapter SLOC, binding/onboarding glue SLOC and shared infrastructure separately. Evaluation, sealing, CSV, protocol loading and result-scoring functions are excluded.",
+    "no_double_count": "A code line can appear at most once per framework/category and shared infrastructure is not charged again to each framework.",
+    "time": "Historical person-hours were not logged prospectively. Report unavailable, never zero and never infer time from SLOC.",
+    "denominators": "Use formal public symbols, not operation decisions; Kornia additionally reports nine mode/phase decisions."
+  },
+  "primary_metrics": [
+    "semantic adapter SLOC and decision points per framework",
+    "binding glue SLOC per framework",
+    "declared structural rules and rules/formal-unit",
+    "runtime component/slot/capability-policy entries",
+    "calibration/formal unit counts",
+    "shared infrastructure SLOC",
+    "frameworks with prospective onboarding time",
+    "unsupported or example-only contaminated frameworks"
+  ],
+  "diagnostic_thresholds": {
+    "lightweight_semantic_adapter_sloc_max": 150,
+    "lightweight_rules_per_formal_unit_max": 1.5,
+    "minimum_lightweight_framework_fraction": 0.75,
+    "human_time_claim_requires_prospective_frameworks": 1
+  },
+  "success_gates": [
+    "all ten contaminated framework sources are accounted for as adapter, unsupported, or example-only",
+    "all preregistered code items exist and no registered spans overlap across semantic/binding categories for the same framework",
+    "all eight adapters have a manifest rule count and formal-unit denominator",
+    "at least 75% of adapters meet both descriptive lightweight thresholds",
+    "human-time displacement remains unsupported unless at least one framework has prospective timing"
+  ],
+  "falsification_rules": [
+    "Do not count shared analyzer code as if it were zero-cost or charge it eight times.",
+    "Do not count runner/admin code as adapter semantics merely because it is in the same file.",
+    "Do not convert rule strings, SLOC or cells into person-hours.",
+    "Do not describe retrospective code written while inspecting a framework as zero-shot onboarding.",
+    "A low rules/unit ratio cannot establish reduced cognitive burden without prospective human measurement.",
+    "If a preregistered item is missing or renamed, retain failure and create a new protocol version before changing the item list."
+  ]
+}

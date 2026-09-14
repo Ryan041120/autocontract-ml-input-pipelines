@@ -1,125 +1,42 @@
 # AutoContract
 
-Contract-carrying rewrites for machine-learning input pipelines.
+研究机器学习输入流水线的安全重排：先验证具体操作对在限定条件下能否交换，再由优化器选择执行方案。
 
-AutoContract studies how to infer conservative semantic-effect contracts for
-ML preprocessing operators and use those contracts to guard reordering,
-caching, parameter replay, and composition. The current prototype is
-adapter-assisted: unsupported or unresolved Python behavior fails closed.
+## 当前进度（2026-09-09）
 
-> Research status: mechanism prototype and pilot evaluation. This repository
-> does not claim framework-agnostic inference for arbitrary Python/C++/CUDA
-> operators, formal equivalence for every accepted rewrite, or end-to-end
-> exactly-once model updates.
+当前推进 P5V：DTD 数据划分 manifest 已生成，P5V 专用 Python 3.11.9 环境已建立。隔离 8 个跨划分重复样本后，共保留 3,752 个样本；profiling 尚未运行。
 
-## Research question
+P5S 的性能收益结论仍为 **No-Go**。P5T 已完成一次 8-block 校准，只允许逐点描述，不能据此声称整体稳定加速。P5V 的 manifest 和环境准备不构成科学结果。
 
-Can an input-pipeline optimizer automatically recover enough phase-,
-configuration-, randomness-, state-, and lineage-sensitive information to
-enable useful rewrites without accepting known unsafe transformations?
+## 从这里开始
 
-The intended architecture is:
+| 想了解什么 | 入口 |
+|---|---|
+| 当前状态、约束和下一步 | [CURRENT_STATE.md](CURRENT_STATE.md) |
+| 各阶段研究及对应代码、协议、结果 | [研究导航](docs/research_index.md) |
+| 老师推荐论文与 AutoContract 的对比 | [论文对比笔记](docs/literature/NDP-DF论文与AutoContract对比.md) |
+| 给老师的阶段汇报 | [汇报材料](reports/supervisor/README.md) |
+| 历史研究叙述 | [历史 README](docs/history/README_before_organization_2026-09-09.md) |
+| 本轮文件迁移与保留说明 | [整理记录](docs/organization_log.md) |
 
-```text
-operator source + configuration + framework adapter
-                         |
-                         v
-              EffectV7 contract inference
-                         |
-                         v
-                  rewrite validator
-                         |
-             +-----------+-----------+
-             |                       |
-             v                       v
-     existing cost optimizer   atomic runtime checks
-                                     |
-                                     v
-                         output/RNG/gradient/lineage
-```
+## 目录用途
 
-## Current evidence
+| 目录 | 内容 |
+|---|---|
+| `docs/` | 研究导航、论文阅读、选题背景、历史状态 |
+| `reports/supervisor/` | 可直接发给老师的汇报文件 |
+| `tools/` | 汇报生成等辅助工具 |
+| `experiments/` | 版本化实验代码，保留原路径 |
+| `benchmark/` | 协议、schema、冻结配置和 manifest，保留原路径 |
+| `outputs/` | 实验结果与执行记录，保留原路径 |
+| `.research/` | 原始研究记录、源码语料和第三方 Git 子模块 |
+| `review/` | 历史评审提示与打包工具 |
+| `tmp/` | 论文提取文本和 PDF 检查预览等工作材料 |
 
-- Hidden RNG effects can make apparently deterministic operators unsafe to
-  skip or reorder.
-- A generic blind EffectV2 evaluation failed, motivating adapter-assisted,
-  phase-aware and configuration-aware analysis.
-- The frozen EffectV7/Kornia pilot passed 9/9 registered decisions with zero
-  known-unsafe false accepts. Its scale is still too small for a broad claim.
-- The H7I-H7K runtime path validates parameter lineage, seals mutable records,
-  composes child contracts, and applies registered operators atomically.
-- H7L-H7M extend the prototype with signed provenance, Merkle batches, fenced
-  leases, and buffered release. These are treated as distributed-system
-  extensions rather than the primary paper contribution.
-- In the H7M Kornia batch-size-4 pilot, consumer latency was 0.835x H7L and was
-  lower in 10/10 randomized rounds; batch size 1 was a no-go at 1.911x.
+## 环境与执行
 
-The complete, caveated result history is in
-[the current experiment summary](.research/semantics_safe_reconfiguration/current_experiment_summary.zh-CN.md).
+各研究阶段使用独立环境。P5V 环境见 [环境清单](benchmark/final_v1/p5v_runtime_environment_manifest.json)；根目录 `requirements.txt` 是历史依赖记录，不应直接用于重建 P5V。
 
-## Repository layout
+当前用户要求暂不运行 profiling。目录整理不启动实验，也不改变数据划分和既有结论。冻结版本、失败现场及 partial 记录的使用边界见 [当前状态](CURRENT_STATE.md)。
 
-- `experiments/`: analyzers, runtime prototypes, safety tests and benchmarks.
-- `outputs/`: checked-in tables, manifests and reports; transient SQLite state
-  is intentionally ignored.
-- `.research/semantics_safe_reconfiguration/`: protocols, freeze records,
-  candidate-selection notes and postmortems.
-- `.research/literature_matrix.md`: related-work matrix.
-- `cachew_pecan_optimization_research_memo.md`: the original broad-direction
-  memo and the evidence used to narrow the topic.
-
-Several frozen upstream frameworks are Git submodules. Clone recursively:
-
-```bash
-git clone --recurse-submodules <repository-url>
-```
-
-See [THIRD_PARTY.md](THIRD_PARTY.md) for exact repositories and commits.
-
-## Environment
-
-The latest H7 experiments were validated on Windows with Python 3.12.4 and a
-CPU build of PyTorch 2.4.0. Install the recorded Python dependencies with:
-
-```bash
-python -m pip install -r requirements.txt
-```
-
-PyTorch wheels are platform-specific. If the command above does not select the
-desired CPU/CUDA build, install the matching PyTorch and torchvision wheels
-first, then install the remaining requirements.
-
-## Quick verification
-
-Compile the latest protocol/runtime files:
-
-```bash
-python -m py_compile \
-  experiments/autocontract_h7m_batch_lease.py \
-  experiments/autocontract_h7m_buffered_executor.py \
-  experiments/autocontract_h7m_kornia_buffered.py
-```
-
-Run the dependency-light H7M protocol self-test:
-
-```bash
-python experiments/autocontract_h7m_batch_lease.py \
-  --self-test \
-  --output outputs/autocontract_h7m_batch_lease_selftest.json
-```
-
-Verify the frozen Kornia corpus and analyzer hashes after cloning submodules:
-
-```bash
-python -c "import sys; sys.path.insert(0, 'experiments'); import autocontract_h7h_kornia as h; print(h.verify_freeze())"
-```
-
-## Publication boundary and next work
-
-The next research milestone is not a broader exactly-once trainer protocol.
-It is a consolidated benchmark and an optimizer integration that compares
-AutoContract with manual cedar-style hints, static-only analysis, dynamic
-differential testing, fail-closed execution, and a human oracle.
-
-Before making this repository public, review the third-party source snapshots,
-licenses, dataset terms, and the research claims with the project supervisor.
+第三方来源和版本见 [THIRD_PARTY.md](THIRD_PARTY.md)；Git 子模块路径维持不变。

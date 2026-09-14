@@ -1,0 +1,22 @@
+{
+  "protocol": "AutoContract H8C registered multi-workload cache benchmark calibration",
+  "claim_boundary": "registered internal calibration benchmark; source and oracle are not independently blinded",
+  "sample_count": 48,
+  "epochs": 4,
+  "repeats": 3,
+  "checks": {
+    "two_safe_and_three_unsafe_workloads": true,
+    "cv_and_audio_domains_present": true,
+    "semantic_traces_match_registered_expectations": true,
+    "safe_workloads_preserve_epoch_diversity": true,
+    "full_cache_freezes_diversity": true,
+    "hybrid_zero_unsafe_false_accepts": true,
+    "hybrid_safe_recall_gate": true,
+    "hybrid_benefit_coverage_gate": true,
+    "hybrid_zero_unsafe_plan_selections": true,
+    "dynamic_only_unsafe_false_accepts_exposed": true,
+    "dynamic_only_unsafe_plan_selection_exposed": true,
+    "semantic_reject_dominates_positive_cost": true
+  },
+  "all_checks_pass": true
+}

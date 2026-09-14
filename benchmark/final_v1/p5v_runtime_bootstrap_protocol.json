@@ -1,0 +1,59 @@
+{
+  "schema_version": "autocontract.p5v-runtime-bootstrap-protocol.v0",
+  "date": "2026-09-09",
+  "status": "bootstrap_authorized_incomplete",
+  "scientific_evidence": false,
+  "user_authorization": {
+    "create_independent_p5v_python_3_11_environment": true,
+    "profiling_authorized": false
+  },
+  "isolation": {
+    "runtime_root": "C:/Users/23527/AppData/Local/AutoContract/runtimes/p5v-py311",
+    "modify_p5t_runtime": false,
+    "system_site_packages": false,
+    "modify_system_path": false,
+    "register_python_systemwide": false
+  },
+  "base_python": {
+    "version": "3.11.9",
+    "implementation": "uv-managed CPython",
+    "path": "C:/Users/23527/AppData/Local/AutoContract/runtimes/uv-python/cpython-3.11.9-windows-x86_64-none/python.exe",
+    "sha256": "bc07f574617ce5f1462be1efa9917e3825c9e7c99086baf6390ddfafd204fd83",
+    "launch_verified": true,
+    "uv_install_note": "uv downloaded and installed the exact interpreter but returned exit 1 while creating its optional minor-version link; the explicit versioned interpreter path launches as Python 3.11.9 and is used directly."
+  },
+  "direct_pins": [
+    "numpy==1.26.0",
+    "Pillow==12.3.0",
+    "torch==2.0.1+cpu",
+    "torchvision==0.15.2+cpu",
+    "torchdata==0.6.1",
+    "Pympler==1.1",
+    "PyYAML==6.0.3",
+    "psutil==7.2.2",
+    "cryptography==49.0.0",
+    "jsonschema==4.26.0"
+  ],
+  "install_policy": {
+    "torch_index": "https://download.pytorch.org/whl/cpu",
+    "general_index": "https://pypi.org/simple",
+    "resolver_selected_transitives_recorded_after_install": true,
+    "no_unpinned_direct_dependency": true
+  },
+  "allowed_checks": [
+    "Python version and executable SHA-256",
+    "direct package version and module origin",
+    "import-only torch/torchvision/DTD check",
+    "pip freeze capture"
+  ],
+  "deferred": [
+    "Cedar full dependency closure and import",
+    "runtime domain guard execution",
+    "model construction",
+    "dataset profiling",
+    "training",
+    "performance timing"
+  ],
+  "failure_rule": "first-error stop for bootstrap; do not modify or fall back to the P5T runtime",
+  "claim_boundary": "Environment bootstrap only; successful imports are not semantic, performance, or task evidence."
+}

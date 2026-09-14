@@ -1,0 +1,47 @@
+{
+  "schema_version": "autocontract.reorder-final-public.v1",
+  "artifact_type": "reorder_public_manifest",
+  "benchmark_id": "replace-with-benchmark-id",
+  "evaluation_mode": "development_dry_run",
+  "status": "draft",
+  "created_at": "replace-with-ISO8601-time",
+  "selection_author": "replace-with-selector",
+  "selection_independent_of_analyzer": true,
+  "claim_scope": "Replace with exact framework, domain, observation, RNG, and native-boundary scope.",
+  "contamination_registry": {"path": "benchmark/final_v1/contamination_registry.json", "sha256": "7630793ab3078797ba7d310206931cdad47819724c145cab33e3e5545525aa84", "selection_cutoff": "replace-with-cutoff"},
+  "reporting_plan": {
+    "unsafe_supported_max": 0, "unresolved_supported_max": 0, "prediction_completion_min": 1.0, "commutes_coverage_pilot_floor": 0.3,
+    "family_stratified": true, "rng_stratified": true, "wilson_intervals": true,
+    "non_identity_supported_report": true, "supported_framework_count_report": true,
+    "viability_threshold_status": "draft_pending_dry_run"
+  },
+  "frameworks": [{"framework_id": "replace-framework", "domain": "replace-domain", "repository_url": "https://example.invalid/repository", "release": "replace-release", "commit_sha": "0000000000000000000000000000000000000000", "source_tree_sha256": "0000000000000000000000000000000000000000000000000000000000000000"}],
+  "pairs": [{
+    "pair_id": "replace-pair-id", "framework_id": "replace-framework", "pair_family": "other_nontrivial",
+    "left": {
+      "operator_id": "left", "type": "replace.Left", "configuration": {}, "source_index_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "native_boundary": {"class": "opaque_native", "identity_sha256": null, "binding_scope": "Replace native boundary scope.", "strict_policy": "force_unknown"}
+    },
+    "right": {
+      "operator_id": "right", "type": "replace.Right", "configuration": {}, "source_index_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "native_boundary": {"class": "opaque_native", "identity_sha256": null, "binding_scope": "Replace native boundary scope.", "strict_policy": "force_unknown"}
+    },
+    "input_domain": {
+      "description": "Replace with a structured input-domain statement and exact premise profile.", "artifact_path": "replace-domain.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "premise_profile": {
+        "required_runtime_premises": ["type", "layout", "channels", "dtype", "device"],
+        "declaration_only_fields": ["value_min", "value_max", "allow_nonfinite"],
+        "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "assurance_plan": {"mode": "registration", "guard_artifact": null, "value_scan": "not_required_by_current_lemma"}
+    },
+    "operation_context": {
+      "scope": "one_invocation_each_order", "rng_assignment": "global_sequential", "state_reset": "same_pre_pair_state",
+      "observational_relation": {"output": "exact_tensor", "tolerance_artifact": null, "definedness": "same", "exception": "exact_type_and_normalized_payload", "rng_post_state": "exact_python_numpy_torch"},
+      "optimizer_reorder_scope": "adjacent_swap"
+    },
+    "source_anchors": ["replace-source-anchor"], "inclusion_reason": "Replace with a label-free family coverage reason.",
+    "contamination": {"development_fixture": true, "registry_match": true}
+  }],
+  "analyzer_bundle": [{"name": "P5O analyzer", "path": "experiments/autocontract_p5o_domain_native_assurance.py", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}]
+}

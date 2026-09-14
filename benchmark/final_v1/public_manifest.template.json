@@ -1,0 +1,62 @@
+{
+  "schema_version": "autocontract.final-public.v1",
+  "artifact_type": "public_manifest",
+  "benchmark_id": "autocontract-final-v1-draft",
+  "status": "draft",
+  "created_at": "2026-07-29T00:00:00Z",
+  "selection_author": "independent-corpus-curator",
+  "claim_scope": "One-shot evaluation of effect-contract inference and semantics-preserving ML input-pipeline optimization on source units not used for analyzer development.",
+  "analyzer_bundle": {
+    "effect_system": "EffectV7-frozen",
+    "optimizer_policy": "hybrid-fail-closed-v0",
+    "runner_path": "experiments/TO_BE_FROZEN_final_runner.py",
+    "adapter_paths": ["experiments/TO_BE_FROZEN_final_adapter.py"]
+  },
+  "contamination_policy": {
+    "registry_path": "benchmark/final_v1/contamination_registry.json",
+    "selection_cutoff": "2026-07-29T00:00:00Z",
+    "minimum_novel_frameworks": 1
+  },
+  "metric_gates": {
+    "known_unsafe_false_accepts_max": 0,
+    "safe_recall_min": 0.8,
+    "coarse_reason_accuracy_min": 0.9,
+    "analyzer_coverage_min": 0.9,
+    "oracle_benefit_coverage_min": 0.9
+  },
+  "units": [
+    {
+      "unit_id": "replace-with-real-unit-001",
+      "task_type": "rewrite_validation",
+      "split": "final_blind",
+      "framework": "replace-with-unseen-framework",
+      "domain": "replace-with-domain",
+      "repository": {
+        "url": "https://github.com/OWNER/REPOSITORY",
+        "release": "replace-with-release",
+        "commit_sha": "0000000000000000000000000000000000000000"
+      },
+      "source_binding": {
+        "path": "replace/with/source.py",
+        "public_symbol": "replace.with.symbol",
+        "binding_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "context": {
+        "configuration": {},
+        "phase": "iteration",
+        "named_modes": [],
+        "assumptions": []
+      },
+      "candidate": {
+        "kind": "cache_prefix",
+        "operators": ["replace.with.operator"],
+        "cost_profile_id": "replace-with-profile-id"
+      },
+      "verification_plan": {
+        "output_checks": ["Define comparison inputs and tolerance without recording an outcome."],
+        "effect_checks": ["Measure RNG, mutable state, lineage, and mode-sensitive traces."],
+        "performance_checks": ["Measure paired baseline and candidate latency after correctness evaluation."]
+      }
+    }
+  ]
+}

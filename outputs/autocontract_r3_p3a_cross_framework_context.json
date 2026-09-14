@@ -1,0 +1,460 @@
+{
+  "schema_version": "autocontract.r3-p3a-cross-framework-context.v0",
+  "artifact_role": "posthoc_context_compatible_transfer_not_blind_evidence",
+  "protocol_sha256": "f4afd13108cfb75c420cbd54c87ffbc3a96a00d3c4d9f19516be910c18c809fa",
+  "freeze_checks": {
+    "effect_v7": true,
+    "imgaug_adapter": true,
+    "albumentations_adapter": true
+  },
+  "context_exclusions": [
+    {
+      "framework": "TorchIO",
+      "units": 7,
+      "status": "unsupported_context",
+      "reason": "legacy sample_apply protocol has no frozen replay_apply evidence"
+    }
+  ],
+  "summary": {
+    "eligible_frameworks": 2,
+    "eligible_replay_families": 2,
+    "eligible_units": 16,
+    "excluded_torchio_units": 7,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "tn": 5,
+    "safe_recall": 1.0,
+    "reason_accuracy": 1.0,
+    "static_ast_slice_coverage_on_admits": 1.0,
+    "static_ast_slice_total_bytes": 11029,
+    "static_ast_slice_total_methods": 63,
+    "full_runtime_measured_index_ready_frameworks": 0,
+    "new_effect_or_adapter_rules": 0,
+    "manual_context_mapping_entries": 3
+  },
+  "eligible_predictions": [
+    {
+      "framework": "imgaug",
+      "public_symbol": "imgaug.augmenters.arithmetic.Multiply",
+      "configuration": "imgaug.deterministic",
+      "phase": "replay_apply",
+      "replay_family": "rng_state_restoration",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "imgaug",
+      "public_symbol": "imgaug.augmenters.blur.AverageBlur",
+      "configuration": "imgaug.deterministic",
+      "phase": "replay_apply",
+      "replay_family": "rng_state_restoration",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "imgaug",
+      "public_symbol": "imgaug.augmenters.geometric.Affine",
+      "configuration": "imgaug.deterministic",
+      "phase": "replay_apply",
+      "replay_family": "rng_state_restoration",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "imgaug",
+      "public_symbol": "imgaug.augmenters.size.CropToFixedSize",
+      "configuration": "imgaug.deterministic",
+      "phase": "replay_apply",
+      "replay_family": "rng_state_restoration",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "imgaug",
+      "public_symbol": "imgaug.augmenters.contrast.LinearContrast",
+      "configuration": "imgaug.deterministic",
+      "phase": "replay_apply",
+      "replay_family": "rng_state_restoration",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "imgaug",
+      "public_symbol": "imgaug.augmenters.meta.SomeOf",
+      "configuration": "imgaug.deterministic",
+      "phase": "replay_apply",
+      "replay_family": "rng_state_restoration",
+      "expected": "reject",
+      "actual": "reject",
+      "reasons": "unresolved_child_effect",
+      "reason_match": true,
+      "analysis_status": "unknown",
+      "static_slice_status": "not_applicable"
+    },
+    {
+      "framework": "imgaug",
+      "public_symbol": "imgaug.augmenters.meta.WithChannels",
+      "configuration": "imgaug.deterministic",
+      "phase": "replay_apply",
+      "replay_family": "rng_state_restoration",
+      "expected": "reject",
+      "actual": "reject",
+      "reasons": "unresolved_child_effect",
+      "reason_match": true,
+      "analysis_status": "unknown",
+      "static_slice_status": "not_applicable"
+    },
+    {
+      "framework": "imgaug",
+      "public_symbol": "imgaug.augmenters.meta.AssertLambda",
+      "configuration": "imgaug.deterministic",
+      "phase": "replay_apply",
+      "replay_family": "rng_state_restoration",
+      "expected": "reject",
+      "actual": "reject",
+      "reasons": "unresolved_user_callable;unresolved_callable_origin:public_input_derived",
+      "reason_match": true,
+      "analysis_status": "unknown",
+      "static_slice_status": "not_applicable"
+    },
+    {
+      "framework": "Albumentations",
+      "public_symbol": "albumentations.augmentations.geometric.flip.VerticalFlip",
+      "configuration": "albumentations.replay",
+      "phase": "replay_apply",
+      "replay_family": "parameter_record_replay",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "Albumentations",
+      "public_symbol": "albumentations.augmentations.pixel.transforms.RandomGamma",
+      "configuration": "albumentations.replay",
+      "phase": "replay_apply",
+      "replay_family": "parameter_record_replay",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "Albumentations",
+      "public_symbol": "albumentations.augmentations.blur.transforms.GaussianBlur",
+      "configuration": "albumentations.replay",
+      "phase": "replay_apply",
+      "replay_family": "parameter_record_replay",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "Albumentations",
+      "public_symbol": "albumentations.augmentations.geometric.transforms.Affine",
+      "configuration": "albumentations.replay",
+      "phase": "replay_apply",
+      "replay_family": "parameter_record_replay",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "Albumentations",
+      "public_symbol": "albumentations.augmentations.crops.transforms.CenterCrop",
+      "configuration": "albumentations.replay",
+      "phase": "replay_apply",
+      "replay_family": "parameter_record_replay",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    },
+    {
+      "framework": "Albumentations",
+      "public_symbol": "albumentations.core.composition.OneOf",
+      "configuration": "albumentations.replay",
+      "phase": "replay_apply",
+      "replay_family": "parameter_record_replay",
+      "expected": "reject",
+      "actual": "reject",
+      "reasons": "unresolved_child_effect",
+      "reason_match": true,
+      "analysis_status": "unknown",
+      "static_slice_status": "not_applicable"
+    },
+    {
+      "framework": "Albumentations",
+      "public_symbol": "albumentations.core.composition.Sequential",
+      "configuration": "albumentations.replay",
+      "phase": "replay_apply",
+      "replay_family": "parameter_record_replay",
+      "expected": "reject",
+      "actual": "reject",
+      "reasons": "unresolved_child_effect;reachable_sampling_rng",
+      "reason_match": true,
+      "analysis_status": "unknown",
+      "static_slice_status": "not_applicable"
+    },
+    {
+      "framework": "Albumentations",
+      "public_symbol": "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching",
+      "configuration": "albumentations.replay",
+      "phase": "replay_apply",
+      "replay_family": "parameter_record_replay",
+      "expected": "admit",
+      "actual": "admit",
+      "reasons": "none",
+      "reason_match": true,
+      "analysis_status": "resolved",
+      "static_slice_status": "partial_static"
+    }
+  ],
+  "static_ast_slices": [
+    {
+      "public_symbol": "imgaug.augmenters.arithmetic.Multiply",
+      "status": "partial_static",
+      "sha256": "2d33be8c40acff596daf57439bac08326e3d671f9d881f1fbd7df129ca458d26",
+      "bytes": 1359,
+      "methods": 9,
+      "method_names": [
+        "_augment_batch_",
+        "_augment_bounding_boxes",
+        "_augment_heatmaps",
+        "_augment_images",
+        "_augment_keypoints",
+        "_augment_line_strings",
+        "_augment_polygons",
+        "_augment_segmentation_maps",
+        "augment_batch_"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.blur.AverageBlur",
+      "status": "partial_static",
+      "sha256": "c9c53f33091ecd4b94f24d6a2494628b74e291df2d31bd3a10c95694a35eeadf",
+      "bytes": 1350,
+      "methods": 9,
+      "method_names": [
+        "_augment_batch_",
+        "_augment_bounding_boxes",
+        "_augment_heatmaps",
+        "_augment_images",
+        "_augment_keypoints",
+        "_augment_line_strings",
+        "_augment_polygons",
+        "_augment_segmentation_maps",
+        "augment_batch_"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.geometric.Affine",
+      "status": "partial_static",
+      "sha256": "e1cf7bef85feae52669a382a72db9953b39a558f04ae18ae687b430986245ae1",
+      "bytes": 1355,
+      "methods": 9,
+      "method_names": [
+        "_augment_batch_",
+        "_augment_bounding_boxes",
+        "_augment_heatmaps",
+        "_augment_images",
+        "_augment_keypoints",
+        "_augment_line_strings",
+        "_augment_polygons",
+        "_augment_segmentation_maps",
+        "augment_batch_"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.size.CropToFixedSize",
+      "status": "partial_static",
+      "sha256": "08122733f2956b5e1516cd9b28408a9abce859447eaf9a8c5251592427f079ad",
+      "bytes": 1354,
+      "methods": 9,
+      "method_names": [
+        "_augment_batch_",
+        "_augment_bounding_boxes",
+        "_augment_heatmaps",
+        "_augment_images",
+        "_augment_keypoints",
+        "_augment_line_strings",
+        "_augment_polygons",
+        "_augment_segmentation_maps",
+        "augment_batch_"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "imgaug.augmenters.contrast.LinearContrast",
+      "status": "partial_static",
+      "sha256": "a69b9a169d2712609f1517db0c96983540018d6b3f04cae3611d0c6aa0ba9963",
+      "bytes": 1361,
+      "methods": 9,
+      "method_names": [
+        "_augment_batch_",
+        "_augment_bounding_boxes",
+        "_augment_heatmaps",
+        "_augment_images",
+        "_augment_keypoints",
+        "_augment_line_strings",
+        "_augment_polygons",
+        "_augment_segmentation_maps",
+        "augment_batch_"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.geometric.flip.VerticalFlip",
+      "status": "partial_static",
+      "sha256": "fcb21e4c79727aef9d40d69034774ddce7ab843492a294467bc9ec92236d09a8",
+      "bytes": 702,
+      "methods": 3,
+      "method_names": [
+        "__call__",
+        "apply",
+        "apply_with_params"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.pixel.transforms.RandomGamma",
+      "status": "partial_static",
+      "sha256": "9a4ad5d4f43b51bd462c999f239f5e186bb33b1e9896b571fa80bb6f9314519f",
+      "bytes": 705,
+      "methods": 3,
+      "method_names": [
+        "__call__",
+        "apply",
+        "apply_with_params"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.blur.transforms.GaussianBlur",
+      "status": "partial_static",
+      "sha256": "b59651419e8d0d079256ea90ae90fe5554ed3593fd629eef760709e9d237bd1e",
+      "bytes": 704,
+      "methods": 3,
+      "method_names": [
+        "__call__",
+        "apply",
+        "apply_with_params"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.geometric.transforms.Affine",
+      "status": "partial_static",
+      "sha256": "5de8bdd86e65045c3b8ed5b80a9ccb10ad7d50d4798ae62753c7c2482e2a4f56",
+      "bytes": 708,
+      "methods": 3,
+      "method_names": [
+        "__call__",
+        "apply",
+        "apply_with_params"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.crops.transforms.CenterCrop",
+      "status": "partial_static",
+      "sha256": "c225d0fe4c3870854bf450866b832b4012e37212931f21f5cbcb77ed7e8a9448",
+      "bytes": 704,
+      "methods": 3,
+      "method_names": [
+        "__call__",
+        "apply",
+        "apply_with_params"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    },
+    {
+      "public_symbol": "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching",
+      "status": "partial_static",
+      "sha256": "b089c6caa84c58a2b02db58ce0035505f0e68d8c3553a940ac540fb3c2cb4f5c",
+      "bytes": 727,
+      "methods": 3,
+      "method_names": [
+        "__call__",
+        "apply",
+        "apply_with_params"
+      ],
+      "limitation": "defaults/closures/globals/native/runtime-origin/monkeypatch not measured"
+    }
+  ],
+  "runtime_readiness": [
+    {
+      "framework": "TorchIO",
+      "ready": false,
+      "status": "unsupported_missing_runtime_dependency",
+      "missing": "complete_vendored_package",
+      "environment": "frozen_python_3.12_torch_2.4_cpu"
+    },
+    {
+      "framework": "imgaug",
+      "ready": false,
+      "status": "unsupported_missing_runtime_dependency",
+      "missing": "cv2",
+      "environment": "frozen_python_3.12_torch_2.4_cpu"
+    },
+    {
+      "framework": "Albumentations",
+      "ready": false,
+      "status": "unsupported_missing_runtime_dependency",
+      "missing": "pydantic;cv2",
+      "environment": "frozen_python_3.12_torch_2.4_cpu"
+    }
+  ],
+  "checks": {
+    "protocol_hash_recorded": true,
+    "frozen_analyzers_and_adapters_verified": true,
+    "torchio_excluded_from_replay_denominator": true,
+    "sixteen_eligible_units_accounted": true,
+    "two_replay_families_eligible": true,
+    "zero_unsafe_false_accepts": true,
+    "safe_recall_gate": true,
+    "reason_accuracy_gate": true,
+    "zero_rule_change": true,
+    "static_slice_separated_from_runtime_readiness": true,
+    "missing_runtime_is_unsupported": true
+  },
+  "passed": 11,
+  "total": 11,
+  "status": "pass"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "autocontract.p5t-m0-selftest.v8",
+  "phase": "selftest",
+  "status": "pass",
+  "scientific_evidence": false,
+  "runner_sha256": "49bd16fbbf5642e35aea35bd2a120265f78326a576285e6bb3117ccdd70e0f8a",
+  "protocol_sha256": "75443787a039ba49a70253d73e3cb8a64da9b5f64f00db75f50048c16d7db3be",
+  "schema_sha256": "e9f7d47fdcbac7c311a9f517352ee2316240e9db297c503f867e1a23e26f3dc8",
+  "split_manifest_sha256": "47deaf7746e89a121c0cc1571989da9dd469ab9a3f6ec29a12c3a77afc4026ba",
+  "dataset_access": "not_attempted",
+  "legacy_selftest": {
+    "passed": 30,
+    "total": 30
+  },
+  "diagnostic_synthetic": {
+    "passed": 24,
+    "total": 24
+  },
+  "claim_boundary": "No-data regression controls only; no dataset path, image, diagnostic cell, receipt, or scientific result."
+}

@@ -102,9 +102,9 @@
 
 我写了一个明确标注为 **toy、不是论文复现** 的非平稳仿真：
 
-- [实验脚本](experiments/dynamic_reoptimization_toy.py)
-- [汇总结果](outputs/dynamic_reoptimization_summary.csv)
-- [完整 trace](outputs/dynamic_reoptimization_trace.csv)
+- [实验脚本](../../experiments/dynamic_reoptimization_toy.py)
+- [汇总结果](../../outputs/dynamic_reoptimization_summary.csv)
+- [完整 trace](../../outputs/dynamic_reoptimization_trace.csv)
 
 仿真依次构造 steady、host contention、network congestion、augmentation-heavy 四个阶段。比较：
 
@@ -135,11 +135,11 @@
 
 文件：
 
-- [实验脚本](experiments/real_cpu_contention_benchmark.py)
-- [完整 worker sweep](outputs/real_cpu_contention_profiles.csv)
-- [完整 sweep 图](outputs/real_cpu_contention_profiles.png)
-- [6/8-worker 定向复测](outputs/real_cpu_contention_profiles_confirm68.csv)
-- [切换回本分析](outputs/real_cpu_contention_break_even_confirm68.csv)
+- [实验脚本](../../experiments/real_cpu_contention_benchmark.py)
+- [完整 worker sweep](../../outputs/real_cpu_contention_profiles.csv)
+- [完整 sweep 图](../../outputs/real_cpu_contention_profiles.png)
+- [6/8-worker 定向复测](../../outputs/real_cpu_contention_profiles_confirm68.csv)
+- [切换回本分析](../../outputs/real_cpu_contention_break_even_confirm68.csv)
 
 完整 sweep 的关键结果：
 
@@ -176,10 +176,10 @@
 
 文件：
 
-- [连续实验脚本](experiments/online_adaptation_experiment.py)
-- [汇总结果](outputs/online_adaptation_summary.csv)
-- [逐 batch trace](outputs/online_adaptation_trace.csv)
-- [trace 图](outputs/online_adaptation_trace.png)
+- [连续实验脚本](../../experiments/online_adaptation_experiment.py)
+- [汇总结果](../../outputs/online_adaptation_summary.csv)
+- [逐 batch trace](../../outputs/online_adaptation_trace.csv)
+- [trace 图](../../outputs/online_adaptation_trace.png)
 
 关键结果：
 
@@ -242,4 +242,4 @@ Go/No-Go 标准建议：至少在两类真实扰动、两个模型上，static �
 
 > 我继续查了 DART、A-Dloader、cedar 和 MegaScale-Data，发现“动态调 worker”“状态感知扩缩”和“考虑 rescaling cost”都已经有人做，不能作为新点。我又做了连续在线切换实验：离线 profile 认为 contention 下 6 worker 更好，但真实 8→6 probe→8 rollback 计入重建后，比固定 8 worker 慢 34.2%。因此我把问题收窄为：能否对整个 input plan 做带置信度、失败 probe 预算和退化上界的 staged/canary reconfiguration。下一步先精读 DART/MegaScale-Data 查清边界，再在 Linux 和真实数据上验证；若任何升级条件失败，就不做通用新系统，改成 reconfiguration 成本与不稳定性的经验研究。
 
-这个表述把“已有工作已经占据的部分”“负实验确认的失败模式”和“仍需证明的窄假设”分开，更适合现在发给学长讨论。完整三道门判断见 [.research/topic_dossier.md](.research/topic_dossier.md)。
+这个表述把“已有工作已经占据的部分”“负实验确认的失败模式”和“仍需证明的窄假设”分开，更适合现在发给学长讨论。完整三道门判断见 [.research/topic_dossier.md](../../.research/topic_dossier.md)。
