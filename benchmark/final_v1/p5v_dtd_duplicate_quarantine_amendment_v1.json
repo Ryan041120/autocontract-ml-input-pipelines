@@ -1,0 +1,65 @@
+{
+  "schema_version": "autocontract.p5v-dtd-duplicate-quarantine-amendment.v1",
+  "date": "2026-09-09",
+  "status": "authorized_no_data_amendment",
+  "scientific_evidence": false,
+  "parent_protocol": {
+    "path": "benchmark/final_v1/p5v_dtd_dataset_split_protocol.json",
+    "sha256": "43dc92a1664051913853f17bcbd2cd9c0f70fdd1a101150fb168c53cbe163863"
+  },
+  "trigger_incident": {
+    "path": "benchmark/final_v1/p5v_dtd_acquisition_preflight_incident_v1.json",
+    "sha256": "088d2dde2c48e623686472da531f295084f9ae14ae17aa75c423d36984a89a27",
+    "attempt": 0,
+    "reason": "four content SHA-256 equivalence classes crossed allowed study splits",
+    "performance_values_observed_before_amendment": false
+  },
+  "user_authorization": {
+    "authorized": true,
+    "scope": [
+      "retain DTD",
+      "quarantine duplicate content",
+      "create an independent P5V Python 3.11 environment",
+      "run exactly one fresh manifest-generation attempt"
+    ],
+    "profiling_authorized": false,
+    "training_authorized": false
+  },
+  "replacement_rule": {
+    "sequence": [
+      "apply the original deterministic train1 10/30 subdivision",
+      "hash all entries in profile_calibration, effect_evaluation, and task_validation",
+      "group allowed entries by exact file-content SHA-256",
+      "if one SHA-256 occurs in more than one allowed study split, quarantine every member of that equivalence class",
+      "retain all non-quarantined entries in their original assigned split"
+    ],
+    "move_between_splits": false,
+    "replacement_sampling": false,
+    "count_backfill": false,
+    "test1_access": false,
+    "performance_or_label_conditioning": false,
+    "record_required": [
+      "every quarantined SHA-256",
+      "every quarantined relative path, class, label, and original study split",
+      "pre-quarantine counts",
+      "post-quarantine counts",
+      "post-quarantine per-class counts"
+    ],
+    "validity_gate": "after quarantine, allowed splits must be pairwise path-disjoint and content-SHA-disjoint, and every one of the 47 classes must remain represented in each allowed split",
+    "failure_action": "first-error stop; publish no manifest; do not retry or alter the rule"
+  },
+  "fresh_attempt": {
+    "authorized_attempt_number": 1,
+    "maximum_attempts": 1,
+    "output": "benchmark/final_v1/p5v_dtd_split_manifest.json",
+    "write_once": true,
+    "no_existing_output_required": true
+  },
+  "runtime_boundary": {
+    "create_new_p5v_python_3_11_environment": true,
+    "modify_p5t_environment": false,
+    "adopt_anaconda_python_3_9_for_p5v": false,
+    "profiling_remains_blocked_after_manifest": true
+  },
+  "claim_boundary": "Administrative duplicate-quarantine amendment after a no-result manifest failure; not profiling, performance evidence, task evidence, or authorization to run P5V."
+}
