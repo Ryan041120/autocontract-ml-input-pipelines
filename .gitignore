@@ -43,3 +43,9 @@ benchmark/final_v1/private_oracle.json
 Thumbs.db
 .idea/
 .vscode/
+
+# Local publication bookkeeping and machine preparation assets
+/.research/publication-local/
+/.research/tools/
+/tmp/pdfs/
+/ignored

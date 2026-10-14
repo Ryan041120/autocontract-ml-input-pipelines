@@ -1,0 +1,394 @@
+{
+  "date": "2026-10-14",
+  "artifact_type": "public_projection_of_saved_research_findings",
+  "scientific_evidence": false,
+  "independent_benchmark_complete": false,
+  "method_advantage_established": false,
+  "stable_end_to_end_benefit_established": false,
+  "real_task_quality_established": false,
+  "full_current_Cedar_API_verified": false,
+  "profiling_resumed_by_publication": false,
+  "saved_model_examples": {
+    "pair_cases": 3,
+    "owned_region_cases": 1,
+    "scope": "conditional trusted model only",
+    "origins": [
+      {
+        "original_record": "outputs/autocontract_conditional_proof_checked.json",
+        "original_record_sha256": "aec213f59664480efa7412a8ad8c8acd0fbf75975697a856aae81930500bd05c",
+        "evidence_role": "saved_local_development_record_not_independent_reference"
+      },
+      {
+        "original_record": "outputs/autocontract_owned_batch_development.json",
+        "original_record_sha256": "7d2656760f3d3819197440508301bed9cc51b121e12ed0e6346031b16074f8bc",
+        "evidence_role": "saved_local_development_record_not_independent_reference"
+      }
+    ]
+  },
+  "owned_development": {
+    "configurations": 5,
+    "checks": {
+      "passed": 81,
+      "total": 81
+    },
+    "normalize_crop_calls": 52,
+    "stack_calls": 13,
+    "real_RandomCrop_224_448_covered": false,
+    "origin": {
+      "original_record": "outputs/autocontract_owned_batch_development.json",
+      "original_record_sha256": "7d2656760f3d3819197440508301bed9cc51b121e12ed0e6346031b16074f8bc",
+      "evidence_role": "saved_local_development_record_not_independent_reference"
+    }
+  },
+  "earlier_common_context_comparison": {
+    "rows": [
+      {
+        "case_id": "half_normalize_hflip",
+        "context_sha256": "b06bccb0de6fb45c4ea3f9ff70f72063e5f23326268bff03f5a2c688ee7fad8e",
+        "methods": {
+          "autocontract": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "strong_static": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "fail_closed": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "manual_hints": {
+            "prediction_present": false,
+            "role": "optional_manual_input_not_provided"
+          },
+          "fixed_output": {
+            "status": "accept",
+            "evidence": "finite_probe",
+            "operator_calls": 96,
+            "execution_authorized": false
+          },
+          "fixed_stateful": {
+            "status": "accept",
+            "evidence": "finite_probe",
+            "operator_calls": 96,
+            "execution_authorized": false
+          },
+          "source_guided_stateful": {
+            "status": "accept",
+            "evidence": "finite_probe",
+            "operator_calls": 96,
+            "execution_authorized": false
+          }
+        }
+      },
+      {
+        "case_id": "other_mean_hflip",
+        "context_sha256": "8c7e27c1d2feb5371111443c415f4269b6480faeadfff4c7ec0a8c61ea6d0799",
+        "methods": {
+          "autocontract": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "strong_static": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "fail_closed": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "manual_hints": {
+            "prediction_present": false,
+            "role": "optional_manual_input_not_provided"
+          },
+          "fixed_output": {
+            "status": "accept",
+            "evidence": "finite_probe",
+            "operator_calls": 96,
+            "execution_authorized": false
+          },
+          "fixed_stateful": {
+            "status": "accept",
+            "evidence": "finite_probe",
+            "operator_calls": 96,
+            "execution_authorized": false
+          },
+          "source_guided_stateful": {
+            "status": "accept",
+            "evidence": "finite_probe",
+            "operator_calls": 96,
+            "execution_authorized": false
+          }
+        }
+      },
+      {
+        "case_id": "half_normalize_center_crop",
+        "context_sha256": "3c23c7163d0b14bd5ba036b511ba8f21cb23c28f2300a7798e6fc9419088e73b",
+        "methods": {
+          "autocontract": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "strong_static": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "fail_closed": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "manual_hints": {
+            "prediction_present": false,
+            "role": "optional_manual_input_not_provided"
+          },
+          "fixed_output": {
+            "status": "reject",
+            "evidence": "counterexample",
+            "operator_calls": 4,
+            "execution_authorized": false
+          },
+          "fixed_stateful": {
+            "status": "reject",
+            "evidence": "counterexample",
+            "operator_calls": 4,
+            "execution_authorized": false
+          },
+          "source_guided_stateful": {
+            "status": "reject",
+            "evidence": "counterexample",
+            "operator_calls": 4,
+            "execution_authorized": false
+          }
+        }
+      },
+      {
+        "case_id": "half_normalize_resize",
+        "context_sha256": "3347b4392233d33a185d761d43602e362df527a25259aa3eb735cc4b60d87672",
+        "methods": {
+          "autocontract": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "strong_static": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "fail_closed": {
+            "status": "unknown",
+            "evidence": "none",
+            "operator_calls": 0,
+            "execution_authorized": false
+          },
+          "manual_hints": {
+            "prediction_present": false,
+            "role": "optional_manual_input_not_provided"
+          },
+          "fixed_output": {
+            "status": "reject",
+            "evidence": "counterexample",
+            "operator_calls": 52,
+            "execution_authorized": false
+          },
+          "fixed_stateful": {
+            "status": "reject",
+            "evidence": "counterexample",
+            "operator_calls": 52,
+            "execution_authorized": false
+          },
+          "source_guided_stateful": {
+            "status": "reject",
+            "evidence": "counterexample",
+            "operator_calls": 4,
+            "execution_authorized": false
+          }
+        }
+      }
+    ],
+    "origin": {
+      "original_record": "outputs/autocontract_consolidated_development.json",
+      "original_record_sha256": "623c182876a72753ac95bb9d93a68ace27c2e3f57348bf66f3e2f0d64e97e284",
+      "evidence_role": "saved_local_development_record_not_independent_reference"
+    },
+    "limitations": [
+      "known development cases",
+      "conditional model proofs were added later in different contexts",
+      "finite accepts are not proofs",
+      "artificial cost profile is not measured benefit"
+    ]
+  },
+  "proof_reuse_audit": {
+    "cases": [
+      {
+        "case_id": "unchanged",
+        "old_certificate_verified": true,
+        "fresh_model_verified": true,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      },
+      {
+        "case_id": "case_name_only",
+        "old_certificate_verified": false,
+        "fresh_model_verified": true,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      },
+      {
+        "case_id": "probability_zero",
+        "old_certificate_verified": false,
+        "fresh_model_verified": true,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      },
+      {
+        "case_id": "probability_one",
+        "old_certificate_verified": false,
+        "fresh_model_verified": true,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      },
+      {
+        "case_id": "larger_legal_dimension_domain",
+        "old_certificate_verified": false,
+        "fresh_model_verified": true,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      },
+      {
+        "case_id": "unsupported_mean",
+        "old_certificate_verified": false,
+        "fresh_model_verified": false,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 1
+      },
+      {
+        "case_id": "changed_observation_boundary",
+        "old_certificate_verified": false,
+        "fresh_model_verified": false,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 1
+      },
+      {
+        "case_id": "concurrent_history",
+        "old_certificate_verified": false,
+        "fresh_model_verified": false,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 1
+      },
+      {
+        "case_id": "missing_resource_assumption",
+        "old_certificate_verified": false,
+        "fresh_model_verified": false,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 1
+      },
+      {
+        "case_id": "changed_source_declaration",
+        "old_certificate_verified": false,
+        "fresh_model_verified": true,
+        "saved_declarations_match": false,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      },
+      {
+        "case_id": "changed_runtime_declaration",
+        "old_certificate_verified": false,
+        "fresh_model_verified": true,
+        "saved_declarations_match": false,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      },
+      {
+        "case_id": "changed_public_pool_declaration",
+        "old_certificate_verified": false,
+        "fresh_model_verified": true,
+        "saved_declarations_match": false,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      },
+      {
+        "case_id": "tampered_certificate_same_context",
+        "old_certificate_verified": false,
+        "fresh_model_verified": true,
+        "saved_declarations_match": true,
+        "old_derivation_calls": 1,
+        "fresh_derivation_calls": 2
+      }
+    ],
+    "origin": {
+      "original_record": "outputs/autocontract_proof_reuse_study.json",
+      "original_record_sha256": "f975f5ec6e69e726c89e24df6fb244140b0f96fc40b29fc2e38b183e6e7be279",
+      "evidence_role": "saved_local_development_record_not_independent_reference"
+    },
+    "actual_adapter_rerun": false,
+    "cache_speedup_measured": false
+  },
+  "P5S_historical_benefit": {
+    "fold_medians": {
+      "A": 0.9357462972605437,
+      "B": 0.938124415445505
+    },
+    "ratio_confidence_interval": [
+      0.9062025665112897,
+      0.9525072528184634
+    ],
+    "go": false,
+    "required_upper_bound_strictly_below": 0.95,
+    "scope": "historical pinned CPU warm-cache descriptive research; scientific_evidence=false",
+    "true_classification_quality_measured": false,
+    "origin": {
+      "original_record": "outputs/autocontract_p5s_div2k_aggregate.json",
+      "original_record_sha256": "9983402db0e8bfa00677a1ac00aa75e9e959dcaf2b8714ea3acc2d4b8a76013b",
+      "evidence_role": "saved_local_development_record_not_independent_reference"
+    }
+  },
+  "P5T_boundary": {
+    "allowed": "pointwise eight-point calibration description only",
+    "not_allowed": [
+      "pooled acceleration",
+      "confidence intervals",
+      "selection of new workloads",
+      "reuse of old partial performance"
+    ]
+  },
+  "P5V_status": {
+    "baseline_configuration_prepared": true,
+    "runner_fixture_development_complete": true,
+    "direct_temperature_gate_wiring_developed": true,
+    "native_pipeline_measurement_verified": false,
+    "profiling_run": false,
+    "resource_preparation_deferred": true
+  },
+  "human_evaluation_policy": "manual hints and human oracle optional; automatic evidence still requires valid scope and reference checks"
+}
