@@ -1,0 +1,133 @@
+{
+  "schema_version": "autocontract.p5t-m0-selftest.v7",
+  "phase": "selftest",
+  "status": "pass",
+  "scientific_evidence": false,
+  "protocol_sha256": "438a7f2668f4b3598a57d3fa4fba2ae7eeb473346be09c047b0fa7992be4c29e",
+  "runner_sha256": "e986ddf48d38bc1a525d78992b67705ba58b09d1e107382524acf34a33e059ff",
+  "split_manifest_sha256": "47deaf7746e89a121c0cc1571989da9dd469ab9a3f6ec29a12c3a77afc4026ba",
+  "suite_sha256": "8c74d6ed328b998c954661d76c127a3d197bf610ad2393b218f069ed9c81e241",
+  "checks": [
+    {
+      "name": "only_calibration_ids_resolve",
+      "passed": true
+    },
+    {
+      "name": "p5s_manifest_record_equality_and_0803_anchor",
+      "passed": true
+    },
+    {
+      "name": "blind_and_reserved_ids_absent_from_accessible_split",
+      "passed": true
+    },
+    {
+      "name": "cells_sequences_and_balanced_schedule_exact",
+      "passed": true
+    },
+    {
+      "name": "nonfinite_wall_process_loss_rejected",
+      "passed": true
+    },
+    {
+      "name": "wrong_tags_fix_random_rejected",
+      "passed": true
+    },
+    {
+      "name": "semantic_tensor_rng_model_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "wrong_crop_domain_rejected",
+      "passed": true
+    },
+    {
+      "name": "telemetry_cumulative_and_type_rejected",
+      "passed": true
+    },
+    {
+      "name": "nested_schema_extra_missing_rejected",
+      "passed": true
+    },
+    {
+      "name": "path_traversal_rejected",
+      "passed": true
+    },
+    {
+      "name": "outside_root_resolution_rejected",
+      "passed": true
+    },
+    {
+      "name": "record_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "atomic_overwrite_and_partial_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_missing_child_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_duplicate_child_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_wrong_child_phase_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_wrong_child_status_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_wrong_child_hash_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_wrong_child_runtime_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_duplicate_pid_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_duplicate_uuid_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_wrong_schedule_rejected",
+      "passed": true
+    },
+    {
+      "name": "aggregate_wrong_point_rejected",
+      "passed": true
+    },
+    {
+      "name": "freeze_rejects_before_dataset_resolution",
+      "passed": true
+    },
+    {
+      "name": "mapping_preserved_before_all_real_or_synthetic_arms",
+      "passed": true
+    },
+    {
+      "name": "cedar_valid_injected_origin_under_requested_root",
+      "passed": true
+    },
+    {
+      "name": "cedar_preloaded_outside_root_rejected",
+      "passed": true
+    },
+    {
+      "name": "cedar_activation_failure_precedes_dataset_resolution",
+      "passed": true
+    },
+    {
+      "name": "result_envelope_schema",
+      "passed": true
+    }
+  ],
+  "claim_boundary": "Pure synthetic access/control validation; no DIV2K image bytes are opened."
+}

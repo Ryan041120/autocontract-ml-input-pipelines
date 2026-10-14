@@ -1,0 +1,67 @@
+{
+  "schema_version": "autocontract.cache-benchmark.v0",
+  "protocol": "AutoContract H8C registered multi-workload cache benchmark calibration",
+  "date": "2026-07-29",
+  "claim_boundary": "registered internal calibration benchmark; source and oracle are not independently blinded",
+  "research_question": "Can a common contract gate preserve safe cache-prefix performance opportunities while rejecting hidden RNG, external-state drift, and full-cache diversity violations?",
+  "measurement": {
+    "samples": 48,
+    "epochs": 4,
+    "repeats": 3,
+    "torch_threads": 1,
+    "device": "cpu"
+  },
+  "workloads": [
+    {
+      "id": "cv_safe_prefix",
+      "domain": "computer_vision",
+      "cache_boundary": "deterministic_prefix",
+      "expected_decision": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "id": "audio_safe_prefix",
+      "domain": "audio",
+      "cache_boundary": "content_bound_deterministic_prefix",
+      "expected_decision": "admit",
+      "coarse_reason": "none"
+    },
+    {
+      "id": "cv_hidden_rng_prefix",
+      "domain": "computer_vision",
+      "cache_boundary": "deterministic_output_but_rng_consuming_prefix",
+      "expected_decision": "reject",
+      "coarse_reason": "hidden_rng_effect"
+    },
+    {
+      "id": "cv_external_state_prefix",
+      "domain": "computer_vision",
+      "cache_boundary": "environment_dependent_prefix",
+      "expected_decision": "reject",
+      "coarse_reason": "external_state_drift"
+    },
+    {
+      "id": "cv_full_cache",
+      "domain": "computer_vision",
+      "cache_boundary": "epoch_varying_suffix_included",
+      "expected_decision": "reject",
+      "coarse_reason": "augmentation_diversity_frozen"
+    }
+  ],
+  "baselines": [
+    "fail_closed",
+    "registry_only",
+    "static_only",
+    "dynamic_only",
+    "hybrid",
+    "manual_hint",
+    "human_oracle"
+  ],
+  "gates": {
+    "hybrid_known_unsafe_false_accepts": 0,
+    "hybrid_safe_recall": 0.8,
+    "hybrid_human_oracle_benefit_coverage": 0.9,
+    "semantic_trace_matches_expected": 1.0
+  },
+  "interpretation_rule": "All policies receive identical candidates and measured cost scores. Dynamic-only observes only same-context output equality and is intentionally unable to prove future invalidation. Human oracle is an upper bound, not a deployable policy. Any code change after sealing requires a new freeze and benchmark version."
+}

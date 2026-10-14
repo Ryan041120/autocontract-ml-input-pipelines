@@ -1,0 +1,54 @@
+{
+  "schema_version": "autocontract.h8c-r2-novelty-falsification-protocol.v0",
+  "status": "internal_calibration_preregistered",
+  "date": "2026-07-30",
+  "research_question": "Does an EffectV7-style source contract retain a safety/coverage advantage over a fair stateful dynamic baseline as the public probe budget increases?",
+  "claim_boundary": "Synthetic parameterized threat families with known source and non-independent oracle. This is a novelty falsification pilot, not final benchmark evidence.",
+  "dynamic_policy": {
+    "budgets": [1, 3, 7, 15, 31, 63],
+    "input_schedule": "8-bit base-2 Van der Corput sequence",
+    "worker_schedule": [0, 1, 2, 4, 8],
+    "training_mode": true,
+    "observations": [
+      "output digest",
+      "Python/NumPy/Torch RNG state",
+      "serializable instance state",
+      "gradient connectivity when applicable",
+      "declared source binding",
+      "declared external-file binding"
+    ],
+    "forbidden_inputs": ["oracle label", "gold reason", "unit-specific trigger schedule"]
+  },
+  "contract_policy": {
+    "reachability": "EffectV7 conservative reachable_nodes over the public __call__ entrypoint",
+    "generic_effect_patterns": [
+      "Python/NumPy/Torch RNG call",
+      "instance or module/global state write",
+      "environment/file/time external read",
+      "gradient detach",
+      "source binding mismatch"
+    ],
+    "discharges": ["matching content-bound external file"],
+    "forbidden_inputs": ["oracle label", "dynamic probe result"]
+  },
+  "families": {
+    "safe_controls": ["pure", "content_bound_file", "keyed_deterministic", "mode_pure"],
+    "rare_input_rng_thresholds": [224, 240, 248, 252],
+    "periodic_global_state_periods": [4, 8, 16, 32],
+    "worker_mode_rng_triggers": [1, 4, 8],
+    "other": ["unbound_external_file", "gradient_detach", "source_drift"]
+  },
+  "primary_outputs": [
+    "unsafe false accepts by dynamic budget",
+    "safe recall by dynamic budget",
+    "family-level detection by budget",
+    "contract unsafe false accepts and safe recall",
+    "probe calls and wall-clock overhead",
+    "contract analysis overhead"
+  ],
+  "falsification_rules": [
+    "If stateful dynamic matches contract at practical budget with no greater manual/context specification burden, detection-accuracy novelty is weak.",
+    "If contract gains safety only by rejecting safe content-bound controls, its coverage claim is weak.",
+    "If neither policy detects a preregistered applicable threat, record the failure without adding a posthoc rule under this protocol ID."
+  ]
+}

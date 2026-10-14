@@ -1,0 +1,18 @@
+{
+  "schema_version": "autocontract.p4c-final-blind-v2-protocol.v2",
+  "status": "administrative_selftest_correction_before_rerun",
+  "date": "2026-07-30",
+  "inherits": {
+    "path": "benchmark/final_v1/p4c_final_blind_v2_protocol_v1.json",
+    "sha256": "bb2880a6569377f0a3afedd84373bc319b9e12fae06762c95c757e7d7f6d370f",
+    "unchanged": "All v1 metric, leakage, scope, source-binding, independence and one-shot rules remain frozen."
+  },
+  "observed_attempt": {
+    "path": "outputs/autocontract_p4c_final_blind_v2_selftest_attempt0_fail.json",
+    "sha256": "5a8519b7fc286dde59f0f9c75cb28e7ec71c0a11d460b49f490adf1b713f61ac",
+    "result": "19/20 FAIL",
+    "sole_failure": "The self-test rejected the literal substring private_oracle in the public freeze, although that substring came from the declared public JSON Schema filename private_oracle.schema.json rather than an oracle-instance path."
+  },
+  "only_correction": "The no-private-path assertion must reject the exact private oracle instance path and any dedicated private-oracle path field, while allowing the public schema artifact that defines the private-oracle format.",
+  "falsification_boundary": "This correction must not remove the oracle instance path check, add the private oracle instance to the freeze, alter any metric gate, or change any corpus/label rule."
+}

@@ -1,0 +1,2457 @@
+{
+  "date": "2026-10-14",
+  "artifact_type": "public_projection_of_saved_conditional_models",
+  "scientific_evidence": false,
+  "independent_reference": false,
+  "native_formally_verified": false,
+  "execution_authorized": false,
+  "packaged_model_source_sha256": {
+    "experiments/autocontract_baseline_catalog.py": "e5be4281df4d255fb4d78fb1d439dc4a120a05d8aea32c8b8d16e5612c95553a",
+    "experiments/autocontract_comparison_request.py": "507eeba29170f23d81d2471b21787aba28c26c07301b73539bd23b123ab6e6ab",
+    "experiments/autocontract_normalize_hflip_model.py": "2fbe473fb4f653e064d346a41a8e0fcc9779d4b23e9dce23194c2992313d3a01",
+    "experiments/autocontract_owned_crop_model.py": "b8954155fb0a81fc9f112b63aa00758eebd607f2691b1836a7458da840927328"
+  },
+  "examples": [
+    {
+      "case_id": "half_normalize_hflip",
+      "boundary": "pair_exit_strict",
+      "context": {
+        "case_id": "half_normalize_hflip",
+        "operators": [
+          {
+            "type": "Normalize",
+            "kwargs": {
+              "mean": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "std": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "inplace": false
+            }
+          },
+          {
+            "type": "RandomHorizontalFlip",
+            "kwargs": {
+              "p": 0.5
+            }
+          }
+        ],
+        "domain": {
+          "type": "torch.Tensor",
+          "layout": "CHW",
+          "channels": 3,
+          "dtype": "torch.float32",
+          "value_min": 0.0,
+          "value_max": 1.0,
+          "height_min": 4,
+          "height_max": 4,
+          "width_min": 4,
+          "width_max": 4,
+          "device": "cpu",
+          "allow_nonfinite": false
+        },
+        "operator_ir": [
+          {
+            "kind": "pointwise_channel_affine",
+            "operator_type": "torchvision.transforms.v2._misc.Normalize",
+            "config": {
+              "mean_hex": [
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1"
+              ],
+              "std_hex": [
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1"
+              ],
+              "inplace": false
+            },
+            "source_index_sha256": "73dad0c222ab42574cd587bd89c4da6b5e5ff334320580859bede8c8dc9c4e11",
+            "properties": {
+              "consumes_rng": false,
+              "preserves_spatial_shape": true,
+              "value_action": "per_pixel_channel_affine"
+            }
+          },
+          {
+            "kind": "spatial_index_map",
+            "operator_type": "torchvision.transforms.v2._geometry.RandomHorizontalFlip",
+            "config": {
+              "axis": "horizontal",
+              "probability_hex": "0x1.0000000000000p-1"
+            },
+            "source_index_sha256": "05b7ca4b6ee10dbe1398a1a82943643529037be42cf11c7011feab7badf2dd65",
+            "properties": {
+              "consumes_rng": true,
+              "preserves_spatial_shape": true,
+              "value_action": "permute_spatial_indices"
+            }
+          }
+        ],
+        "runtime": {
+          "python": "3.11.9",
+          "torch": "2.0.1+cpu",
+          "torchvision": "0.15.2+cpu",
+          "torchvision_v2_python_files": 24,
+          "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1"
+        },
+        "baseline_order": [
+          "left",
+          "right"
+        ],
+        "boundary": "pair_exit_strict",
+        "observer": "exact_cpu_tensor_bits_metadata_definedness_exception_input_rng_object_state_aliases",
+        "trusted_scope": "serial_trusted_startup_declared_native_semantics_no_external_intermediate_observer",
+        "public_pool": [
+          {
+            "name": "zeros",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "ramp",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              0.02040816326530612,
+              0.04081632653061224,
+              0.061224489795918366,
+              0.08163265306122448,
+              0.10204081632653061,
+              0.12244897959183673,
+              0.14285714285714285,
+              0.16326530612244897,
+              0.1836734693877551,
+              0.20408163265306123,
+              0.22448979591836735,
+              0.24489795918367346,
+              0.2653061224489796,
+              0.2857142857142857,
+              0.30612244897959184,
+              0.32653061224489793,
+              0.3469387755102041,
+              0.3673469387755102,
+              0.3877551020408163,
+              0.40816326530612246,
+              0.42857142857142855,
+              0.4489795918367347,
+              0.46938775510204084,
+              0.4897959183673469,
+              0.5102040816326531,
+              0.5306122448979592,
+              0.5510204081632653,
+              0.5714285714285714,
+              0.5918367346938775,
+              0.6122448979591837,
+              0.6326530612244898,
+              0.6530612244897959,
+              0.673469387755102,
+              0.6938775510204082,
+              0.7142857142857143,
+              0.7346938775510204,
+              0.7551020408163265,
+              0.7755102040816326,
+              0.7959183673469388,
+              0.8163265306122449,
+              0.8367346938775511,
+              0.8571428571428571,
+              0.8775510204081632,
+              0.8979591836734694,
+              0.9183673469387755,
+              0.9387755102040817,
+              0.9591836734693877
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "rounding_edges",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "implementation_sha256": {
+          "autocontract_consolidated_cpu.py": "b2bc4effa30e796c5763bbabc050fa98dc3e2b56f6dc6072c91dbbd9fc5bc3b2",
+          "autocontract_torch_baseline.py": "f39c3ff75642b2e8946800b703fad597ea237b9d1f1fb7052f3263e71f3502b2",
+          "autocontract_normalize_hflip_guard.py": "a7bee5d486cf4c9c9ed8a4af431f90a80fc98f54e98c5b5d8b5187e1d7f9a477",
+          "autocontract_pair_entry.py": "76eea24286210766055a1cd5970f7c6affd57742ab60d861315f5866951b37b8",
+          "autocontract_normalize_hflip_study.py": "ea3e490f0f0a185340601a952320e54c7c3be52fd64db889327bf6760fdabed1",
+          "autocontract_strict_pair_bridge.py": "edd643c2a8bf319b7f497a686c6d53075d374ada7e8461ffe2368fb9b2f3d21f",
+          "autocontract_normalize_hflip_model.py": "2fbe473fb4f653e064d346a41a8e0fcc9779d4b23e9dce23194c2992313d3a01",
+          "autocontract_conditional_pair_proof.py": "0b211eb11bbc57055e678afe51791cc9302fa0def1638b33d57046706ae05293"
+        },
+        "source_argument_sha256": "e5a982ef4777c29f5dcd7ac2b097c4badf0c5c976359d2578aa260c617d022a4",
+        "study_anchor_sha256": "01090ef7413d251c4a9ac7de6179cbc878f0c2219d89ed9ff6d04f309c7b39c4",
+        "proof_semantics": "trusted_binary32_normalize_half_and_copying_hflip",
+        "trusted_assumptions": [
+          "trusted_startup_and_exact_builtin_source_to_model_correspondence",
+          "binary32_RNE_sub_then_div_same_coordinate_semantics_preserve_denormals",
+          "out_of_place_sub_and_copying_flip_fresh_canonical_storage_div_preserves_layout",
+          "one_CPU_rand_draw_for_flip_no_other_declared_rng_or_object_input_writes",
+          "serial_no_concurrent_mutation_hooks_modes_or_external_intermediate_observer",
+          "sufficient_resources_no_external_interrupts_unmodeled_telemetry_excluded"
+        ],
+        "allowed_history": "arbitrary_finite_serial_calls_fresh_nonshared_legal_inputs_no_external_mutation",
+        "entry_contract": {
+          "ordinary_dense_tensor": true,
+          "requires_grad": false,
+          "contiguous": true,
+          "storage_offset": 0,
+          "fresh_nonshared_inputs": true,
+          "fresh_builtin_objects_no_hooks_extra_state_or_overrides": true
+        },
+        "source_to_model_mapping": "trusted_exact_builtin_mapping_not_Python_or_native_formal_verification"
+      },
+      "certificate": {
+        "proof_kind": "symbolic_transition_equality_under_declared_primitive_axioms",
+        "context_sha256": "d26a48672f7bf69aad3961e9a37130dc03c9a8d105705a144ac715d054618ad3",
+        "arbitrary_coordinate": {
+          "c": "0<=c<3",
+          "h": "0<=h<H",
+          "w": "0<=w<W"
+        },
+        "branches": [
+          {
+            "flip_branch": false,
+            "baseline": {
+              "order": [
+                "normalize",
+                "hflip"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "input"
+                ]
+              ],
+              "allocations_not_in_observer": 1,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      "w"
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x1.0000000000000p-1"
+                ]
+              }
+            },
+            "swapped": {
+              "order": [
+                "hflip",
+                "normalize"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "input"
+                ]
+              ],
+              "allocations_not_in_observer": 1,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      "w"
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x1.0000000000000p-1"
+                ]
+              }
+            },
+            "observations_equal": true
+          },
+          {
+            "flip_branch": true,
+            "baseline": {
+              "order": [
+                "normalize",
+                "hflip"
+              ],
+              "image_expression": [
+                "copy_hflip",
+                [
+                  "normalize_half",
+                  [
+                    "input"
+                  ]
+                ]
+              ],
+              "allocations_not_in_observer": 2,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      [
+                        "sub_int",
+                        [
+                          "sub_int",
+                          "W",
+                          1
+                        ],
+                        "w"
+                      ]
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x1.0000000000000p-1"
+                ]
+              }
+            },
+            "swapped": {
+              "order": [
+                "hflip",
+                "normalize"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "copy_hflip",
+                  [
+                    "input"
+                  ]
+                ]
+              ],
+              "allocations_not_in_observer": 2,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      [
+                        "sub_int",
+                        [
+                          "sub_int",
+                          "W",
+                          1
+                        ],
+                        "w"
+                      ]
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x1.0000000000000p-1"
+                ]
+              }
+            },
+            "observations_equal": true
+          }
+        ],
+        "totality": {
+          "input_interval_enclosure": [
+            "0",
+            "1"
+          ],
+          "sub_interval": [
+            "-1/2",
+            "1/2"
+          ],
+          "div_interval": [
+            "-1",
+            "1"
+          ],
+          "std_exact_nonzero": "0x1.0000000000000p-1",
+          "representable_endpoints_and_no_overflow_under_RNE_contract": true,
+          "normal_return_conditional_on_resource_and_dispatch_assumptions": true
+        },
+        "history_argument": {
+          "base": "equal_declared_initial_rng_input_and_object_state",
+          "step": "both_branches_equal_observation_and_equal_next_protected_state",
+          "closed_state": "fresh_output_canonical_and_disjoint_protected_states_unchanged_rng_trace_equal",
+          "result": "arbitrary_finite_serial_calls_fresh_nonshared_legal_inputs_no_external_mutation"
+        },
+        "trusted_assumptions": [
+          "trusted_startup_and_exact_builtin_source_to_model_correspondence",
+          "binary32_RNE_sub_then_div_same_coordinate_semantics_preserve_denormals",
+          "out_of_place_sub_and_copying_flip_fresh_canonical_storage_div_preserves_layout",
+          "one_CPU_rand_draw_for_flip_no_other_declared_rng_or_object_input_writes",
+          "serial_no_concurrent_mutation_hooks_modes_or_external_intermediate_observer",
+          "sufficient_resources_no_external_interrupts_unmodeled_telemetry_excluded"
+        ],
+        "native_formally_verified": false,
+        "execution_authorized": false
+      },
+      "origin": {
+        "original_record": "outputs/autocontract_conditional_proof_checked.json",
+        "original_record_sha256": "aec213f59664480efa7412a8ad8c8acd0fbf75975697a856aae81930500bd05c",
+        "evidence_role": "saved_local_development_record_not_independent_reference"
+      }
+    },
+    {
+      "case_id": "half_normalize_hflip_p0",
+      "boundary": "pair_exit_strict",
+      "context": {
+        "case_id": "half_normalize_hflip_p0",
+        "operators": [
+          {
+            "type": "Normalize",
+            "kwargs": {
+              "mean": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "std": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "inplace": false
+            }
+          },
+          {
+            "type": "RandomHorizontalFlip",
+            "kwargs": {
+              "p": 0.0
+            }
+          }
+        ],
+        "domain": {
+          "type": "torch.Tensor",
+          "layout": "CHW",
+          "channels": 3,
+          "dtype": "torch.float32",
+          "value_min": 0.0,
+          "value_max": 1.0,
+          "height_min": 4,
+          "height_max": 4,
+          "width_min": 4,
+          "width_max": 4,
+          "device": "cpu",
+          "allow_nonfinite": false
+        },
+        "operator_ir": [
+          {
+            "kind": "pointwise_channel_affine",
+            "operator_type": "torchvision.transforms.v2._misc.Normalize",
+            "config": {
+              "mean_hex": [
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1"
+              ],
+              "std_hex": [
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1"
+              ],
+              "inplace": false
+            },
+            "source_index_sha256": "73dad0c222ab42574cd587bd89c4da6b5e5ff334320580859bede8c8dc9c4e11",
+            "properties": {
+              "consumes_rng": false,
+              "preserves_spatial_shape": true,
+              "value_action": "per_pixel_channel_affine"
+            }
+          },
+          {
+            "kind": "spatial_index_map",
+            "operator_type": "torchvision.transforms.v2._geometry.RandomHorizontalFlip",
+            "config": {
+              "axis": "horizontal",
+              "probability_hex": "0x0.0p+0"
+            },
+            "source_index_sha256": "05b7ca4b6ee10dbe1398a1a82943643529037be42cf11c7011feab7badf2dd65",
+            "properties": {
+              "consumes_rng": true,
+              "preserves_spatial_shape": true,
+              "value_action": "permute_spatial_indices"
+            }
+          }
+        ],
+        "runtime": {
+          "python": "3.11.9",
+          "torch": "2.0.1+cpu",
+          "torchvision": "0.15.2+cpu",
+          "torchvision_v2_python_files": 24,
+          "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1"
+        },
+        "baseline_order": [
+          "left",
+          "right"
+        ],
+        "boundary": "pair_exit_strict",
+        "observer": "exact_cpu_tensor_bits_metadata_definedness_exception_input_rng_object_state_aliases",
+        "trusted_scope": "serial_trusted_startup_declared_native_semantics_no_external_intermediate_observer",
+        "public_pool": [
+          {
+            "name": "zeros",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "ramp",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              0.02040816326530612,
+              0.04081632653061224,
+              0.061224489795918366,
+              0.08163265306122448,
+              0.10204081632653061,
+              0.12244897959183673,
+              0.14285714285714285,
+              0.16326530612244897,
+              0.1836734693877551,
+              0.20408163265306123,
+              0.22448979591836735,
+              0.24489795918367346,
+              0.2653061224489796,
+              0.2857142857142857,
+              0.30612244897959184,
+              0.32653061224489793,
+              0.3469387755102041,
+              0.3673469387755102,
+              0.3877551020408163,
+              0.40816326530612246,
+              0.42857142857142855,
+              0.4489795918367347,
+              0.46938775510204084,
+              0.4897959183673469,
+              0.5102040816326531,
+              0.5306122448979592,
+              0.5510204081632653,
+              0.5714285714285714,
+              0.5918367346938775,
+              0.6122448979591837,
+              0.6326530612244898,
+              0.6530612244897959,
+              0.673469387755102,
+              0.6938775510204082,
+              0.7142857142857143,
+              0.7346938775510204,
+              0.7551020408163265,
+              0.7755102040816326,
+              0.7959183673469388,
+              0.8163265306122449,
+              0.8367346938775511,
+              0.8571428571428571,
+              0.8775510204081632,
+              0.8979591836734694,
+              0.9183673469387755,
+              0.9387755102040817,
+              0.9591836734693877
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "rounding_edges",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "implementation_sha256": {
+          "autocontract_consolidated_cpu.py": "b2bc4effa30e796c5763bbabc050fa98dc3e2b56f6dc6072c91dbbd9fc5bc3b2",
+          "autocontract_torch_baseline.py": "f39c3ff75642b2e8946800b703fad597ea237b9d1f1fb7052f3263e71f3502b2",
+          "autocontract_normalize_hflip_guard.py": "a7bee5d486cf4c9c9ed8a4af431f90a80fc98f54e98c5b5d8b5187e1d7f9a477",
+          "autocontract_pair_entry.py": "76eea24286210766055a1cd5970f7c6affd57742ab60d861315f5866951b37b8",
+          "autocontract_normalize_hflip_study.py": "ea3e490f0f0a185340601a952320e54c7c3be52fd64db889327bf6760fdabed1",
+          "autocontract_strict_pair_bridge.py": "edd643c2a8bf319b7f497a686c6d53075d374ada7e8461ffe2368fb9b2f3d21f",
+          "autocontract_normalize_hflip_model.py": "2fbe473fb4f653e064d346a41a8e0fcc9779d4b23e9dce23194c2992313d3a01",
+          "autocontract_conditional_pair_proof.py": "0b211eb11bbc57055e678afe51791cc9302fa0def1638b33d57046706ae05293"
+        },
+        "source_argument_sha256": "e5a982ef4777c29f5dcd7ac2b097c4badf0c5c976359d2578aa260c617d022a4",
+        "study_anchor_sha256": "01090ef7413d251c4a9ac7de6179cbc878f0c2219d89ed9ff6d04f309c7b39c4",
+        "proof_semantics": "trusted_binary32_normalize_half_and_copying_hflip",
+        "trusted_assumptions": [
+          "trusted_startup_and_exact_builtin_source_to_model_correspondence",
+          "binary32_RNE_sub_then_div_same_coordinate_semantics_preserve_denormals",
+          "out_of_place_sub_and_copying_flip_fresh_canonical_storage_div_preserves_layout",
+          "one_CPU_rand_draw_for_flip_no_other_declared_rng_or_object_input_writes",
+          "serial_no_concurrent_mutation_hooks_modes_or_external_intermediate_observer",
+          "sufficient_resources_no_external_interrupts_unmodeled_telemetry_excluded"
+        ],
+        "allowed_history": "arbitrary_finite_serial_calls_fresh_nonshared_legal_inputs_no_external_mutation",
+        "entry_contract": {
+          "ordinary_dense_tensor": true,
+          "requires_grad": false,
+          "contiguous": true,
+          "storage_offset": 0,
+          "fresh_nonshared_inputs": true,
+          "fresh_builtin_objects_no_hooks_extra_state_or_overrides": true
+        },
+        "source_to_model_mapping": "trusted_exact_builtin_mapping_not_Python_or_native_formal_verification"
+      },
+      "certificate": {
+        "proof_kind": "symbolic_transition_equality_under_declared_primitive_axioms",
+        "context_sha256": "0e9c13749202bbdfe4b0c79bc1dc0e2dfdbb119c46e44243d786b9ed2ae0dec4",
+        "arbitrary_coordinate": {
+          "c": "0<=c<3",
+          "h": "0<=h<H",
+          "w": "0<=w<W"
+        },
+        "branches": [
+          {
+            "flip_branch": false,
+            "baseline": {
+              "order": [
+                "normalize",
+                "hflip"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "input"
+                ]
+              ],
+              "allocations_not_in_observer": 1,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      "w"
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x0.0p+0"
+                ]
+              }
+            },
+            "swapped": {
+              "order": [
+                "hflip",
+                "normalize"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "input"
+                ]
+              ],
+              "allocations_not_in_observer": 1,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      "w"
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x0.0p+0"
+                ]
+              }
+            },
+            "observations_equal": true
+          },
+          {
+            "flip_branch": true,
+            "baseline": {
+              "order": [
+                "normalize",
+                "hflip"
+              ],
+              "image_expression": [
+                "copy_hflip",
+                [
+                  "normalize_half",
+                  [
+                    "input"
+                  ]
+                ]
+              ],
+              "allocations_not_in_observer": 2,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      [
+                        "sub_int",
+                        [
+                          "sub_int",
+                          "W",
+                          1
+                        ],
+                        "w"
+                      ]
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x0.0p+0"
+                ]
+              }
+            },
+            "swapped": {
+              "order": [
+                "hflip",
+                "normalize"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "copy_hflip",
+                  [
+                    "input"
+                  ]
+                ]
+              ],
+              "allocations_not_in_observer": 2,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      [
+                        "sub_int",
+                        [
+                          "sub_int",
+                          "W",
+                          1
+                        ],
+                        "w"
+                      ]
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x0.0p+0"
+                ]
+              }
+            },
+            "observations_equal": true
+          }
+        ],
+        "totality": {
+          "input_interval_enclosure": [
+            "0",
+            "1"
+          ],
+          "sub_interval": [
+            "-1/2",
+            "1/2"
+          ],
+          "div_interval": [
+            "-1",
+            "1"
+          ],
+          "std_exact_nonzero": "0x1.0000000000000p-1",
+          "representable_endpoints_and_no_overflow_under_RNE_contract": true,
+          "normal_return_conditional_on_resource_and_dispatch_assumptions": true
+        },
+        "history_argument": {
+          "base": "equal_declared_initial_rng_input_and_object_state",
+          "step": "both_branches_equal_observation_and_equal_next_protected_state",
+          "closed_state": "fresh_output_canonical_and_disjoint_protected_states_unchanged_rng_trace_equal",
+          "result": "arbitrary_finite_serial_calls_fresh_nonshared_legal_inputs_no_external_mutation"
+        },
+        "trusted_assumptions": [
+          "trusted_startup_and_exact_builtin_source_to_model_correspondence",
+          "binary32_RNE_sub_then_div_same_coordinate_semantics_preserve_denormals",
+          "out_of_place_sub_and_copying_flip_fresh_canonical_storage_div_preserves_layout",
+          "one_CPU_rand_draw_for_flip_no_other_declared_rng_or_object_input_writes",
+          "serial_no_concurrent_mutation_hooks_modes_or_external_intermediate_observer",
+          "sufficient_resources_no_external_interrupts_unmodeled_telemetry_excluded"
+        ],
+        "native_formally_verified": false,
+        "execution_authorized": false
+      },
+      "origin": {
+        "original_record": "outputs/autocontract_conditional_proof_checked.json",
+        "original_record_sha256": "aec213f59664480efa7412a8ad8c8acd0fbf75975697a856aae81930500bd05c",
+        "evidence_role": "saved_local_development_record_not_independent_reference"
+      }
+    },
+    {
+      "case_id": "half_normalize_hflip_p1",
+      "boundary": "pair_exit_strict",
+      "context": {
+        "case_id": "half_normalize_hflip_p1",
+        "operators": [
+          {
+            "type": "Normalize",
+            "kwargs": {
+              "mean": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "std": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "inplace": false
+            }
+          },
+          {
+            "type": "RandomHorizontalFlip",
+            "kwargs": {
+              "p": 1.0
+            }
+          }
+        ],
+        "domain": {
+          "type": "torch.Tensor",
+          "layout": "CHW",
+          "channels": 3,
+          "dtype": "torch.float32",
+          "value_min": 0.0,
+          "value_max": 1.0,
+          "height_min": 4,
+          "height_max": 4,
+          "width_min": 4,
+          "width_max": 4,
+          "device": "cpu",
+          "allow_nonfinite": false
+        },
+        "operator_ir": [
+          {
+            "kind": "pointwise_channel_affine",
+            "operator_type": "torchvision.transforms.v2._misc.Normalize",
+            "config": {
+              "mean_hex": [
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1"
+              ],
+              "std_hex": [
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1"
+              ],
+              "inplace": false
+            },
+            "source_index_sha256": "73dad0c222ab42574cd587bd89c4da6b5e5ff334320580859bede8c8dc9c4e11",
+            "properties": {
+              "consumes_rng": false,
+              "preserves_spatial_shape": true,
+              "value_action": "per_pixel_channel_affine"
+            }
+          },
+          {
+            "kind": "spatial_index_map",
+            "operator_type": "torchvision.transforms.v2._geometry.RandomHorizontalFlip",
+            "config": {
+              "axis": "horizontal",
+              "probability_hex": "0x1.0000000000000p+0"
+            },
+            "source_index_sha256": "05b7ca4b6ee10dbe1398a1a82943643529037be42cf11c7011feab7badf2dd65",
+            "properties": {
+              "consumes_rng": true,
+              "preserves_spatial_shape": true,
+              "value_action": "permute_spatial_indices"
+            }
+          }
+        ],
+        "runtime": {
+          "python": "3.11.9",
+          "torch": "2.0.1+cpu",
+          "torchvision": "0.15.2+cpu",
+          "torchvision_v2_python_files": 24,
+          "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1"
+        },
+        "baseline_order": [
+          "left",
+          "right"
+        ],
+        "boundary": "pair_exit_strict",
+        "observer": "exact_cpu_tensor_bits_metadata_definedness_exception_input_rng_object_state_aliases",
+        "trusted_scope": "serial_trusted_startup_declared_native_semantics_no_external_intermediate_observer",
+        "public_pool": [
+          {
+            "name": "zeros",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "ramp",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              0.02040816326530612,
+              0.04081632653061224,
+              0.061224489795918366,
+              0.08163265306122448,
+              0.10204081632653061,
+              0.12244897959183673,
+              0.14285714285714285,
+              0.16326530612244897,
+              0.1836734693877551,
+              0.20408163265306123,
+              0.22448979591836735,
+              0.24489795918367346,
+              0.2653061224489796,
+              0.2857142857142857,
+              0.30612244897959184,
+              0.32653061224489793,
+              0.3469387755102041,
+              0.3673469387755102,
+              0.3877551020408163,
+              0.40816326530612246,
+              0.42857142857142855,
+              0.4489795918367347,
+              0.46938775510204084,
+              0.4897959183673469,
+              0.5102040816326531,
+              0.5306122448979592,
+              0.5510204081632653,
+              0.5714285714285714,
+              0.5918367346938775,
+              0.6122448979591837,
+              0.6326530612244898,
+              0.6530612244897959,
+              0.673469387755102,
+              0.6938775510204082,
+              0.7142857142857143,
+              0.7346938775510204,
+              0.7551020408163265,
+              0.7755102040816326,
+              0.7959183673469388,
+              0.8163265306122449,
+              0.8367346938775511,
+              0.8571428571428571,
+              0.8775510204081632,
+              0.8979591836734694,
+              0.9183673469387755,
+              0.9387755102040817,
+              0.9591836734693877
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "rounding_edges",
+            "shape": [
+              3,
+              4,
+              4
+            ],
+            "values": [
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448,
+              1.1754943508222875e-38,
+              0.0,
+              1.0,
+              0.5,
+              -0.0,
+              0.4999999701976776,
+              0.5000000596046448
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "implementation_sha256": {
+          "autocontract_consolidated_cpu.py": "b2bc4effa30e796c5763bbabc050fa98dc3e2b56f6dc6072c91dbbd9fc5bc3b2",
+          "autocontract_torch_baseline.py": "f39c3ff75642b2e8946800b703fad597ea237b9d1f1fb7052f3263e71f3502b2",
+          "autocontract_normalize_hflip_guard.py": "a7bee5d486cf4c9c9ed8a4af431f90a80fc98f54e98c5b5d8b5187e1d7f9a477",
+          "autocontract_pair_entry.py": "76eea24286210766055a1cd5970f7c6affd57742ab60d861315f5866951b37b8",
+          "autocontract_normalize_hflip_study.py": "ea3e490f0f0a185340601a952320e54c7c3be52fd64db889327bf6760fdabed1",
+          "autocontract_strict_pair_bridge.py": "edd643c2a8bf319b7f497a686c6d53075d374ada7e8461ffe2368fb9b2f3d21f",
+          "autocontract_normalize_hflip_model.py": "2fbe473fb4f653e064d346a41a8e0fcc9779d4b23e9dce23194c2992313d3a01",
+          "autocontract_conditional_pair_proof.py": "0b211eb11bbc57055e678afe51791cc9302fa0def1638b33d57046706ae05293"
+        },
+        "source_argument_sha256": "e5a982ef4777c29f5dcd7ac2b097c4badf0c5c976359d2578aa260c617d022a4",
+        "study_anchor_sha256": "01090ef7413d251c4a9ac7de6179cbc878f0c2219d89ed9ff6d04f309c7b39c4",
+        "proof_semantics": "trusted_binary32_normalize_half_and_copying_hflip",
+        "trusted_assumptions": [
+          "trusted_startup_and_exact_builtin_source_to_model_correspondence",
+          "binary32_RNE_sub_then_div_same_coordinate_semantics_preserve_denormals",
+          "out_of_place_sub_and_copying_flip_fresh_canonical_storage_div_preserves_layout",
+          "one_CPU_rand_draw_for_flip_no_other_declared_rng_or_object_input_writes",
+          "serial_no_concurrent_mutation_hooks_modes_or_external_intermediate_observer",
+          "sufficient_resources_no_external_interrupts_unmodeled_telemetry_excluded"
+        ],
+        "allowed_history": "arbitrary_finite_serial_calls_fresh_nonshared_legal_inputs_no_external_mutation",
+        "entry_contract": {
+          "ordinary_dense_tensor": true,
+          "requires_grad": false,
+          "contiguous": true,
+          "storage_offset": 0,
+          "fresh_nonshared_inputs": true,
+          "fresh_builtin_objects_no_hooks_extra_state_or_overrides": true
+        },
+        "source_to_model_mapping": "trusted_exact_builtin_mapping_not_Python_or_native_formal_verification"
+      },
+      "certificate": {
+        "proof_kind": "symbolic_transition_equality_under_declared_primitive_axioms",
+        "context_sha256": "acf590acfb4e58118e06d544719850e800c4bb08112629e1e853e47586d97e19",
+        "arbitrary_coordinate": {
+          "c": "0<=c<3",
+          "h": "0<=h<H",
+          "w": "0<=w<W"
+        },
+        "branches": [
+          {
+            "flip_branch": false,
+            "baseline": {
+              "order": [
+                "normalize",
+                "hflip"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "input"
+                ]
+              ],
+              "allocations_not_in_observer": 1,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      "w"
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x1.0000000000000p+0"
+                ]
+              }
+            },
+            "swapped": {
+              "order": [
+                "hflip",
+                "normalize"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "input"
+                ]
+              ],
+              "allocations_not_in_observer": 1,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      "w"
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x1.0000000000000p+0"
+                ]
+              }
+            },
+            "observations_equal": true
+          },
+          {
+            "flip_branch": true,
+            "baseline": {
+              "order": [
+                "normalize",
+                "hflip"
+              ],
+              "image_expression": [
+                "copy_hflip",
+                [
+                  "normalize_half",
+                  [
+                    "input"
+                  ]
+                ]
+              ],
+              "allocations_not_in_observer": 2,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      [
+                        "sub_int",
+                        [
+                          "sub_int",
+                          "W",
+                          1
+                        ],
+                        "w"
+                      ]
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x1.0000000000000p+0"
+                ]
+              }
+            },
+            "swapped": {
+              "order": [
+                "hflip",
+                "normalize"
+              ],
+              "image_expression": [
+                "normalize_half",
+                [
+                  "copy_hflip",
+                  [
+                    "input"
+                  ]
+                ]
+              ],
+              "allocations_not_in_observer": 2,
+              "observation": {
+                "definedness": "normal_return_under_resource_assumption",
+                "output_value_at_arbitrary_coordinate": [
+                  "binary32_div_RNE",
+                  [
+                    "binary32_sub_RNE",
+                    [
+                      "input_binary32_bits_at",
+                      "c",
+                      "h",
+                      [
+                        "sub_int",
+                        [
+                          "sub_int",
+                          "W",
+                          1
+                        ],
+                        "w"
+                      ]
+                    ],
+                    "0x1.0000000000000p-1"
+                  ],
+                  "0x1.0000000000000p-1"
+                ],
+                "output_metadata": {
+                  "dtype": "float32",
+                  "device": "cpu",
+                  "layout": "strided",
+                  "requires_grad": false,
+                  "shape": [
+                    3,
+                    "H",
+                    "W"
+                  ],
+                  "stride": [
+                    [
+                      "mul",
+                      "H",
+                      "W"
+                    ],
+                    "W",
+                    1
+                  ],
+                  "storage_offset": 0
+                },
+                "input_post_state": "input_bits_metadata_and_root_aliases_unchanged",
+                "object_post_state": "normalize_and_flip_transparent_state_unchanged",
+                "tensor_alias_relations": {
+                  "output_fresh_disjoint_from_input_state_and_past_live_roots": true,
+                  "protected_root_aliases": "unchanged"
+                },
+                "rng_post_state": {
+                  "python": "P",
+                  "numpy": "N",
+                  "torch_cpu": [
+                    "advance_exact_draw_trace",
+                    "R",
+                    [
+                      [
+                        "torch_cpu_rand",
+                        1
+                      ]
+                    ]
+                  ]
+                },
+                "branch_predicate": [
+                  "same_rand1_result_ge_probability",
+                  "R",
+                  "0x1.0000000000000p+0"
+                ]
+              }
+            },
+            "observations_equal": true
+          }
+        ],
+        "totality": {
+          "input_interval_enclosure": [
+            "0",
+            "1"
+          ],
+          "sub_interval": [
+            "-1/2",
+            "1/2"
+          ],
+          "div_interval": [
+            "-1",
+            "1"
+          ],
+          "std_exact_nonzero": "0x1.0000000000000p-1",
+          "representable_endpoints_and_no_overflow_under_RNE_contract": true,
+          "normal_return_conditional_on_resource_and_dispatch_assumptions": true
+        },
+        "history_argument": {
+          "base": "equal_declared_initial_rng_input_and_object_state",
+          "step": "both_branches_equal_observation_and_equal_next_protected_state",
+          "closed_state": "fresh_output_canonical_and_disjoint_protected_states_unchanged_rng_trace_equal",
+          "result": "arbitrary_finite_serial_calls_fresh_nonshared_legal_inputs_no_external_mutation"
+        },
+        "trusted_assumptions": [
+          "trusted_startup_and_exact_builtin_source_to_model_correspondence",
+          "binary32_RNE_sub_then_div_same_coordinate_semantics_preserve_denormals",
+          "out_of_place_sub_and_copying_flip_fresh_canonical_storage_div_preserves_layout",
+          "one_CPU_rand_draw_for_flip_no_other_declared_rng_or_object_input_writes",
+          "serial_no_concurrent_mutation_hooks_modes_or_external_intermediate_observer",
+          "sufficient_resources_no_external_interrupts_unmodeled_telemetry_excluded"
+        ],
+        "native_formally_verified": false,
+        "execution_authorized": false
+      },
+      "origin": {
+        "original_record": "outputs/autocontract_conditional_proof_checked.json",
+        "original_record_sha256": "aec213f59664480efa7412a8ad8c8acd0fbf75975697a856aae81930500bd05c",
+        "evidence_role": "saved_local_development_record_not_independent_reference"
+      }
+    },
+    {
+      "case_id": "tiny_owned_normalize_center_crop_stack",
+      "boundary": "owned_stack_batch_exit",
+      "context": {
+        "boundary": "owned_stack_batch_exit",
+        "trusted_assumptions": [
+          "trusted_startup_unmodified_builtin_and_consumer_source_to_model_mapping",
+          "binary32_sub_half_then_div_half_same_coordinate_semantics_fixed_environment",
+          "in_bounds_center_crop_reads_same_value_independent_center_coordinates_no_padding",
+          "fresh_stack_copies_logical_sample_values_canonical_NCHW_without_retaining_intermediates",
+          "private_builtin_transforms_do_not_export_temporaries_or_write_protected_roots_or_rng",
+          "serial_no_hooks_callbacks_external_intermediate_or_gc_frame_observation",
+          "sufficient_resources_no_interrupts_native_totality_on_declared_valid_domain"
+        ],
+        "history": "finite_serial_complete_batches_fresh_nonshared_inputs_private_transforms_per_batch",
+        "baseline_order": [
+          "normalize",
+          "crop",
+          "stack"
+        ],
+        "crop_size": [
+          2,
+          2
+        ],
+        "entry": {
+          "batch_count": [
+            1,
+            4
+          ],
+          "input_shape": "3xHxW",
+          "H": [
+            2,
+            8
+          ],
+          "W": [
+            2,
+            8
+          ],
+          "dtype": "float32",
+          "device": "cpu",
+          "values": [
+            0,
+            1
+          ],
+          "ordinary_contiguous_zero_offset_no_grad": true,
+          "fresh_nonshared_inputs": true,
+          "immutable_ordered_labels_and_unique_ids": true
+        },
+        "normalization": {
+          "mean_hex": [
+            "0x1.0000000000000p-1",
+            "0x1.0000000000000p-1",
+            "0x1.0000000000000p-1"
+          ],
+          "std_hex": [
+            "0x1.0000000000000p-1",
+            "0x1.0000000000000p-1",
+            "0x1.0000000000000p-1"
+          ],
+          "inplace": false
+        },
+        "ownership_basis": "matched_audited_template_plus_declared_native_non_escape",
+        "region_structure": {
+          "matched": true,
+          "source_sha256": "be2376ef93a49f4c703695b8e7dbf88e1508ee2b7502c8f8a4cfd5471eefb238",
+          "basis": "exact_audited_template_with_local_container_fresh_stack_and_sanitized_failure",
+          "callee_non_escape_assumed": true,
+          "general_python_ownership_proved": false,
+          "native_formally_verified": false,
+          "execution_authorized": false
+        },
+        "runtime": {
+          "python": "3.11.9",
+          "torch": "2.0.1+cpu",
+          "torchvision": "0.15.2+cpu",
+          "torchvision_v2_python_files": 24,
+          "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1"
+        },
+        "consumer_source_sha256": "716d5bb2001817184cc4ec5f59ffd62228be9445947673a1065f140e42598d22",
+        "source_sha256": {
+          "autocontract_owned_batch_region.py": "716d5bb2001817184cc4ec5f59ffd62228be9445947673a1065f140e42598d22",
+          "autocontract_owned_crop_model.py": "b8954155fb0a81fc9f112b63aa00758eebd607f2691b1836a7458da840927328",
+          "autocontract_safety_observation.py": "f33f640d2d872357339ae4cf9e67fa10e11357722428f0019b7a1f3a55cdda67",
+          "autocontract_torch_baseline.py": "f39c3ff75642b2e8946800b703fad597ea237b9d1f1fb7052f3263e71f3502b2",
+          "autocontract_normalize_hflip_guard.py": "a7bee5d486cf4c9c9ed8a4af431f90a80fc98f54e98c5b5d8b5187e1d7f9a477",
+          "autocontract_pair_entry.py": "76eea24286210766055a1cd5970f7c6affd57742ab60d861315f5866951b37b8"
+        },
+        "operator_ir": [
+          {
+            "kind": "pointwise_channel_affine",
+            "operator_type": "torchvision.transforms.v2._misc.Normalize",
+            "config": {
+              "mean_hex": [
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1"
+              ],
+              "std_hex": [
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1",
+                "0x1.0000000000000p-1"
+              ],
+              "inplace": false
+            },
+            "source_index_sha256": "73dad0c222ab42574cd587bd89c4da6b5e5ff334320580859bede8c8dc9c4e11",
+            "properties": {
+              "consumes_rng": false,
+              "preserves_spatial_shape": true,
+              "value_action": "per_pixel_channel_affine"
+            }
+          },
+          {
+            "kind": "spatial_selection",
+            "operator_type": "torchvision.transforms.v2._geometry.CenterCrop",
+            "config": {
+              "size": [
+                2,
+                2
+              ],
+              "sampling": "center",
+              "padding": "only_if_input_smaller"
+            },
+            "source_index_sha256": "12f187862d5daef2dc5e3b2d3957adae4d70e75c050412a7ffdfa657679fa398",
+            "properties": {
+              "consumes_rng": false,
+              "preserves_spatial_shape": false,
+              "value_action": "select_spatial_indices"
+            }
+          }
+        ],
+        "delivery_fields": [
+          "status",
+          "batch",
+          "labels",
+          "sample_ids",
+          "fault",
+          "fault_observed"
+        ],
+        "fault_policy": "primitive_builtin_args_only_no_exception_or_traceback_unknown_if_unobserved",
+        "allowed_native_failures": "not_equivalence_proved; conditional theorem assumes totality and sufficient resources"
+      },
+      "certificate": {
+        "proof_kind": "owned_batch_symbolic_equality_under_declared_primitive_axioms",
+        "context_sha256": "ed457def8a3963a413a25f7fb7d310d18e881f50eb26b48e38fde29fc35c8f05",
+        "coordinate_domain": {
+          "B": "1..4",
+          "i": "0<=i<B",
+          "c": "0<=c<3",
+          "y": "0<=y<2",
+          "x": "0<=x<2"
+        },
+        "baseline": {
+          "image_expression": [
+            "crop",
+            [
+              "normalize",
+              [
+                "input"
+              ]
+            ]
+          ],
+          "batch_observation": {
+            "definedness": "normal_complete_batch_under_totality_assumption",
+            "output_value_at_arbitrary_coordinate": [
+              "binary32_div_RNE",
+              [
+                "binary32_sub_RNE",
+                [
+                  "input_binary32_bits_at",
+                  "i",
+                  "c",
+                  [
+                    "add_int",
+                    [
+                      "center_top",
+                      "H_i",
+                      2
+                    ],
+                    "y"
+                  ],
+                  [
+                    "add_int",
+                    [
+                      "center_left",
+                      "W_i",
+                      2
+                    ],
+                    "x"
+                  ]
+                ],
+                "0x1.0000000000000p-1"
+              ],
+              "0x1.0000000000000p-1"
+            ],
+            "output_metadata": {
+              "shape": [
+                "B",
+                3,
+                2,
+                2
+              ],
+              "stride": [
+                12,
+                4,
+                2,
+                1
+              ],
+              "storage_offset": 0,
+              "dtype": "float32",
+              "device": "cpu",
+              "layout": "strided",
+              "requires_grad": false
+            },
+            "input_post_state": "all_original_bits_metadata_and_root_aliases_unchanged",
+            "labels": "same_ordered_immutable_labels",
+            "sample_ids": "same_ordered_unique_ids",
+            "tensor_alias_relations": "batch_fresh_disjoint_from_inputs_and_previous_live_batches",
+            "external_object_state": "owner_unchanged_private_transforms_not_exported",
+            "rng_post_state": {
+              "python": "P",
+              "numpy": "N",
+              "torch_cpu": "R"
+            },
+            "delivery_trace": "one_complete_batch_in_same_sample_order_no_partial_delivery"
+          }
+        },
+        "swapped": {
+          "image_expression": [
+            "normalize",
+            [
+              "crop",
+              [
+                "input"
+              ]
+            ]
+          ],
+          "batch_observation": {
+            "definedness": "normal_complete_batch_under_totality_assumption",
+            "output_value_at_arbitrary_coordinate": [
+              "binary32_div_RNE",
+              [
+                "binary32_sub_RNE",
+                [
+                  "input_binary32_bits_at",
+                  "i",
+                  "c",
+                  [
+                    "add_int",
+                    [
+                      "center_top",
+                      "H_i",
+                      2
+                    ],
+                    "y"
+                  ],
+                  [
+                    "add_int",
+                    [
+                      "center_left",
+                      "W_i",
+                      2
+                    ],
+                    "x"
+                  ]
+                ],
+                "0x1.0000000000000p-1"
+              ],
+              "0x1.0000000000000p-1"
+            ],
+            "output_metadata": {
+              "shape": [
+                "B",
+                3,
+                2,
+                2
+              ],
+              "stride": [
+                12,
+                4,
+                2,
+                1
+              ],
+              "storage_offset": 0,
+              "dtype": "float32",
+              "device": "cpu",
+              "layout": "strided",
+              "requires_grad": false
+            },
+            "input_post_state": "all_original_bits_metadata_and_root_aliases_unchanged",
+            "labels": "same_ordered_immutable_labels",
+            "sample_ids": "same_ordered_unique_ids",
+            "tensor_alias_relations": "batch_fresh_disjoint_from_inputs_and_previous_live_batches",
+            "external_object_state": "owner_unchanged_private_transforms_not_exported",
+            "rng_post_state": {
+              "python": "P",
+              "numpy": "N",
+              "torch_cpu": "R"
+            },
+            "delivery_trace": "one_complete_batch_in_same_sample_order_no_partial_delivery"
+          }
+        },
+        "center_offset_bounds": [
+          {
+            "dimension": 2,
+            "offset": 0
+          },
+          {
+            "dimension": 3,
+            "offset": 0
+          },
+          {
+            "dimension": 4,
+            "offset": 1
+          },
+          {
+            "dimension": 5,
+            "offset": 2
+          },
+          {
+            "dimension": 6,
+            "offset": 2
+          },
+          {
+            "dimension": 7,
+            "offset": 2
+          },
+          {
+            "dimension": 8,
+            "offset": 3
+          }
+        ],
+        "totality": {
+          "crop_in_bounds_without_padding": true,
+          "all_sample_outputs_same_3x2x2_shape": true,
+          "sub_range": [
+            "-1/2",
+            "1/2"
+          ],
+          "div_range": [
+            "-1",
+            "1"
+          ],
+          "exact_nonzero_std": "0x1.0000000000000p-1"
+        },
+        "history_induction": {
+          "base": "equal_declared_initial_state",
+          "step": "equal_delivery_and_unchanged_protected_state",
+          "freshness": "private_transforms_recreated_and_stack_fresh_per_batch",
+          "scope": "finite_serial_complete_batches_fresh_nonshared_inputs_private_transforms_per_batch"
+        },
+        "trusted_assumptions": [
+          "trusted_startup_unmodified_builtin_and_consumer_source_to_model_mapping",
+          "binary32_sub_half_then_div_half_same_coordinate_semantics_fixed_environment",
+          "in_bounds_center_crop_reads_same_value_independent_center_coordinates_no_padding",
+          "fresh_stack_copies_logical_sample_values_canonical_NCHW_without_retaining_intermediates",
+          "private_builtin_transforms_do_not_export_temporaries_or_write_protected_roots_or_rng",
+          "serial_no_hooks_callbacks_external_intermediate_or_gc_frame_observation",
+          "sufficient_resources_no_interrupts_native_totality_on_declared_valid_domain"
+        ],
+        "native_formally_verified": false,
+        "execution_authorized": false
+      },
+      "origin": {
+        "original_record": "outputs/autocontract_owned_batch_development.json",
+        "original_record_sha256": "7d2656760f3d3819197440508301bed9cc51b121e12ed0e6346031b16074f8bc",
+        "evidence_role": "saved_local_development_record_not_independent_reference"
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "autocontract.final-baseline-horizon-protocol.v0",
+  "status": "internal_calibration_not_frozen",
+  "date": "2026-07-30",
+  "runner": "experiments/autocontract_final_baseline_horizon.py",
+  "private_oracle_access": "forbidden",
+  "dynamic_baselines": {
+    "dynamic_output_only": {
+      "role": "historical weak ablation",
+      "observation": "same-instance same-context output digest only",
+      "soundness_claim": false
+    },
+    "dynamic_stateful": {
+      "role": "fair fixed-budget dynamic baseline",
+      "probe_id": "autocontract.dynamic-stateful.v0",
+      "operator_call_budget": 7,
+      "label_independent": true,
+      "observations": [
+        "same-context repeated output",
+        "fresh-instance reproducibility",
+        "cross-epoch output",
+        "Python RNG state",
+        "NumPy RNG state",
+        "Torch RNG state when installed",
+        "serializable object state",
+        "declared environment perturbation"
+      ],
+      "soundness_claim": false
+    }
+  },
+  "horizon": {
+    "source": "workload_manifest",
+    "required_ranges": ["epochs", "planned_runs"],
+    "supported_cost_units": ["sample", "batch", "epoch", "run"],
+    "supported_reuse_scopes": ["call", "epoch", "run", "cross_run"],
+    "global_dataset_semantics": true,
+    "worker_or_replica_multiplier": false,
+    "required_outputs": [
+      "horizon_low",
+      "horizon_planned",
+      "horizon_high",
+      "net_benefit_low_ms",
+      "net_benefit_planned_ms",
+      "net_benefit_high_ms",
+      "decision_stability",
+      "workload_manifest_sha256",
+      "cost_profile_sha256"
+    ]
+  },
+  "freeze_rule": "A future frozen version must bind runner, protocol, environment, probe spec, manifest schema and statistics hashes before any final unit is selected or executed."
+}

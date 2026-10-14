@@ -1,0 +1,13 @@
+{
+  "schema_version": "autocontract.reorder-final-prediction.v1", "artifact_type": "reorder_prediction",
+  "benchmark_id": "replace-with-benchmark-id", "public_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "producer_bundle_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "created_at": "replace-with-ISO8601-time", "status": "sealed",
+  "pairs": [{
+    "pair_id": "replace-pair-id", "status": "unknown", "assurance_level": "none", "reason": "replace-reason", "receipt_sha256": null,
+    "observational_relation_id": "exact-v1",
+    "domain_assurance": {"mode": "registration", "premise_profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "guard_artifact_sha256": null, "checked_invocations": 0, "violations": 0, "overhead_ns_per_invocation": null},
+    "native_decision": {"left_class": "opaque_native", "right_class": "opaque_native", "runtime_identity_sha256": null, "policy": "force_unknown"},
+    "generation_ms": 0.0, "adapter_minutes": 0.0
+  }],
+  "burden": {"total_adapter_minutes": 0.0, "source_inspection_minutes": 0.0, "guard_implementation_minutes": 0.0, "semantic_rule_sloc": 0, "all_pairs_timed": true}
+}

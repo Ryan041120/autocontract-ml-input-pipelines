@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P5S DIV2K acquisition manifest",
+  "type": "object",
+  "required": ["schema_version", "status", "official_url", "license_accepted", "archive", "files", "folds"],
+  "properties": {
+    "schema_version": {"const": "autocontract.p5s-div2k-manifest.v0"},
+    "status": {"enum": ["metadata_only", "acquired", "blocked"]},
+    "official_url": {"const": "https://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_valid_HR.zip"},
+    "license_accepted": {"type": "boolean"},
+    "response_metadata": {"type": ["object", "null"]},
+    "archive": {
+      "type": ["object", "null"],
+      "required": ["path", "sha256", "bytes", "zip_crc_checked"],
+      "properties": {
+        "path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"const": 448993893}, "zip_crc_checked": {"const": true}
+      }, "additionalProperties": false
+    },
+    "files": {"type": "array"},
+    "folds": {"const": {"calibration": "0801-0810", "A": "0811-0842", "B": "0843-0874", "reserved": "0875-0900"}}
+  },
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "metadata_only"}}}, "then": {"properties": {"license_accepted": {"const": false}, "archive": {"const": null}, "files": {"const": []}}}},
+    {"if": {"properties": {"status": {"const": "acquired"}}}, "then": {"properties": {"license_accepted": {"const": true}, "archive": {"type": "object"}, "files": {"type": "array", "minItems": 100, "maxItems": 100}}}}
+  ],
+  "additionalProperties": false
+}

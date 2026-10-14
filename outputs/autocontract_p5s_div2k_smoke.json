@@ -1,0 +1,277 @@
+{
+  "schema_version": "autocontract.p5s-phase.v1",
+  "phase": "smoke",
+  "status": "pass",
+  "scientific_evidence": false,
+  "protocol_sha256": "d78c1a6c6e662b374dea5624fe2804baeac50564f2505c919d57a26e33e6a77a",
+  "runner_sha256": "5453de6a8b5c97e6b30999aabbc3a6030b3c586cc6e96b013f10b0ccc501d7cc",
+  "manifest_sha256": "255c725ea321b653925cd530f2664c7760d6d651745cf200258b58d9661005c8",
+  "manifest_schema_sha256": "d57d0710722c97fc587b863b4433c6eecf754aa03afcae7631f81e72ecc0794d",
+  "dependency_closure": {
+    "p5a": "c96ed767f97ecd82d6ea7bc574d4a0211bb530464ec42c9960d9459598f5d0ab",
+    "p5m": "42ac1f44c01e027467d87216f76e78fb89a0cdc610cf544130687ca7c71e52ec",
+    "v0": "77da9d207f62a3e732f5242aebf76bcdae43acebf16baa02cbb3f9879d93a5ae",
+    "v2": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35",
+    "v3": "f74b37993e7dc5d4b5c304c7f3f0facabfae61ca4eecc9a8896bae372d179333",
+    "r3_source_index_v1": "7e6251c0388fce23c115919258ac43fb9d620ea38f8902082fe6da7cfbb5238c",
+    "r3_source_index_v0": "02a10103e26cb4a55f646428d7e24f14bdf73b133149e29c220a78f38829ab2b",
+    "manifest_schema": "d57d0710722c97fc587b863b4433c6eecf754aa03afcae7631f81e72ecc0794d"
+  },
+  "workload_profile_sha256": "fcfb4a8c8261c5a337199d58f80cf0c8dbbf7547d3fe52ec31b5742c9028c7bb",
+  "profile_output_sha256": "238ec7f53f6e05c45427c055e1c5b913a2dc48715f65b7937602e843f0ec4b6e",
+  "cache_warming": {
+    "procedure": "timer-outside SHA-256 verification reads each selected PNG once; OS cache is thereby warmed before feature construction",
+    "fold": "calibration",
+    "files": [
+      "0801.png",
+      "0802.png",
+      "0803.png",
+      "0804.png",
+      "0805.png",
+      "0806.png",
+      "0807.png",
+      "0808.png",
+      "0809.png",
+      "0810.png"
+    ],
+    "files_count": 10,
+    "bytes_read": 45576674,
+    "archive_attestation": "not reread here; acquisition manifest is the frozen archive-attestation boundary"
+  },
+  "runtime": {
+    "cedar_commit": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "torch_threads": 1
+  },
+  "fold": "calibration",
+  "arms": {
+    "baseline": {
+      "candidate_count": 1,
+      "tags": [
+        "IterSourcePipe_5",
+        "autocontract:decode",
+        "autocontract:to_float",
+        "autocontract:guard",
+        "autocontract:normalize",
+        "autocontract:random_crop"
+      ],
+      "fix": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "random_crop_random": true,
+      "shapes": [
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ]
+      ],
+      "rng": {
+        "python": "43fa26263b7df5d245dd7b7d3989eec472cc4cb4bf3646b3020a1a58fbf92a2e",
+        "numpy": "f1397ca265ad5c714ef5cf478400dcea4dda12da627864cccb2d363d0b5b566c",
+        "torch": "59234162923b3f5cc3081133072553d65fde3d45ec1b5b524a860469b1431813"
+      },
+      "open_count": 10,
+      "decode_count": 10,
+      "wall_ms": null
+    },
+    "authorized": {
+      "candidate_count": 2,
+      "tags": [
+        "IterSourcePipe_5",
+        "autocontract:decode",
+        "autocontract:to_float",
+        "autocontract:guard",
+        "autocontract:random_crop",
+        "autocontract:normalize"
+      ],
+      "fix": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "random_crop_random": true,
+      "shapes": [
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ],
+        [
+          3,
+          224,
+          224
+        ]
+      ],
+      "rng": {
+        "python": "43fa26263b7df5d245dd7b7d3989eec472cc4cb4bf3646b3020a1a58fbf92a2e",
+        "numpy": "f1397ca265ad5c714ef5cf478400dcea4dda12da627864cccb2d363d0b5b566c",
+        "torch": "59234162923b3f5cc3081133072553d65fde3d45ec1b5b524a860469b1431813"
+      },
+      "open_count": 10,
+      "decode_count": 10,
+      "wall_ms": null
+    }
+  },
+  "checks": [
+    {
+      "name": "receipt_verified_exact_pair",
+      "passed": true
+    },
+    {
+      "name": "negative_receipts_fail_closed",
+      "passed": true,
+      "observed": {
+        "no": 1,
+        "tampered": 1,
+        "mixed": 1,
+        "config": 1,
+        "domain": 1
+      }
+    },
+    {
+      "name": "actual_cedar_candidates_and_rng",
+      "passed": true,
+      "observed": {
+        "baseline": 1,
+        "authorized": 2
+      }
+    },
+    {
+      "name": "actual_cedar_orders",
+      "passed": true,
+      "observed": {
+        "baseline": [
+          "autocontract:decode",
+          "autocontract:to_float",
+          "autocontract:guard",
+          "autocontract:normalize",
+          "autocontract:random_crop"
+        ],
+        "authorized": [
+          "autocontract:decode",
+          "autocontract:to_float",
+          "autocontract:guard",
+          "autocontract:random_crop",
+          "autocontract:normalize"
+        ]
+      }
+    },
+    {
+      "name": "tensor_shape_definedness_exact",
+      "passed": true
+    },
+    {
+      "name": "loss_logits_gradient_model_exact",
+      "passed": true,
+      "observed": {
+        "baseline": {
+          "loss_hex": "0x1.26ca8a0000000p+1",
+          "logits": "92585b7173255fcf7906a6cfba2139ea15fd04699136db5d8862b60700931fe7",
+          "gradients": "2e44fa316ff1dbed0395352cbd5e2cb2eee6c9725765a1c4d1b73d7565f339c5",
+          "model_state": "70236ef957ccdba118dd393fb19c89b4f2a885823bf90c1b855c28cdceef5e5e"
+        },
+        "authorized": {
+          "loss_hex": "0x1.26ca8a0000000p+1",
+          "logits": "92585b7173255fcf7906a6cfba2139ea15fd04699136db5d8862b60700931fe7",
+          "gradients": "2e44fa316ff1dbed0395352cbd5e2cb2eee6c9725765a1c4d1b73d7565f339c5",
+          "model_state": "70236ef957ccdba118dd393fb19c89b4f2a885823bf90c1b855c28cdceef5e5e"
+        }
+      }
+    }
+  ],
+  "claim_boundary": "Calibration semantic smoke only. Timers are deliberately absent; no final benefit result is produced."
+}

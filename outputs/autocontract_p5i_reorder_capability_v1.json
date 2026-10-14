@@ -1,0 +1,890 @@
+{
+  "schema_version": "autocontract.p5i-reorder-capability-v1-result.v0",
+  "status": "pass",
+  "system_verdict": "pass_local_replay_closes_p5h_for_restricted_affine_scope",
+  "passed": 23,
+  "total": 23,
+  "protocol_sha256": "8751e6b0a72898d1ef45c08b17cfbf3e5939a78bf177e6d0faddbb2cdae6f91c",
+  "schema_sha256": "56bfa9ac8506adcf307a6eb980ead44934a970f9ed2086dc6a24c26b946d8edb",
+  "module_sha256": "fdce8818dab5c763b08fa197aaa9c1d046991a8d1f4eaf348201a63d2d10fe44",
+  "runner_sha256": "b4dc0a069d66daab9ff5b74291638029e8a66712ec3a9e3eb20a347493354345",
+  "upstream_commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+  "checks": [
+    {
+      "name": "upstream_checkout_matches_commit",
+      "passed": true,
+      "observed": "f062305fcdab196e871c5d09b4c82ab788b4da79"
+    },
+    {
+      "name": "upstream_worktree_is_clean",
+      "passed": true,
+      "observed": "clean"
+    },
+    {
+      "name": "p5h_and_v0_frozen_inputs_unchanged",
+      "passed": true,
+      "observed": {
+        "outputs/autocontract_p5h_reorder_receipt_trust.json": "057fda1f173f4f94dce50dc37c17798a3ffa0d5702f09faef0b08ab220390419",
+        "benchmark/final_v1/p5h_reorder_receipt_trust_protocol.json": "71bfaaf7b5ad3d86a79a7621a1bf44fdf551de9ed55742fdccda58472af5b238",
+        "experiments/autocontract_reorder_capability_v0.py": "77da9d207f62a3e732f5242aebf76bcdae43acebf16baa02cbb3f9879d93a5ae"
+      }
+    },
+    {
+      "name": "p5h_attack_was_reproduced_as_failure",
+      "passed": true,
+      "observed": "fail_unverified_receipt_trust_boundary"
+    },
+    {
+      "name": "schema_requires_local_replay_assurance",
+      "passed": true
+    },
+    {
+      "name": "strict_v1_rejects_p5h_style_v0_assertions",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "reject",
+            "reason": "receipt_keys_mismatch",
+            "count": 1
+          },
+          {
+            "pair": [
+              "decode",
+              "normalize"
+            ],
+            "decision": "reject",
+            "reason": "receipt_keys_mismatch",
+            "count": 1
+          },
+          {
+            "pair": [
+              "crop",
+              "normalize"
+            ],
+            "decision": "reject",
+            "reason": "receipt_keys_mismatch",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "noncommuting_pipeline_cannot_obtain_complete_proof_cover",
+      "passed": true,
+      "observed": {
+        "established": 1,
+        "rejected": [
+          {
+            "pair": "decode<->crop",
+            "reason": "commutativity_not_established"
+          },
+          {
+            "pair": "crop<->normalize",
+            "reason": "commutativity_not_established"
+          }
+        ]
+      }
+    },
+    {
+      "name": "incomplete_noncommuting_proofs_keep_one_safe_plan",
+      "passed": true,
+      "observed": {
+        "candidate_count": 1,
+        "path": [
+          3,
+          2,
+          1,
+          0
+        ],
+        "output": [
+          -1,
+          1,
+          3,
+          5,
+          7
+        ],
+        "fix": [
+          true,
+          true,
+          true
+        ],
+        "regions": [
+          {
+            "operator_ids": [
+              "decode"
+            ],
+            "admitted": false,
+            "reason": "no_supported_neighbor_pair"
+          },
+          {
+            "operator_ids": [
+              "crop"
+            ],
+            "admitted": false,
+            "reason": "no_supported_neighbor_pair"
+          },
+          {
+            "operator_ids": [
+              "normalize"
+            ],
+            "admitted": false,
+            "reason": "no_supported_neighbor_pair"
+          }
+        ]
+      }
+    },
+    {
+      "name": "noncommuting_output_is_preserved",
+      "passed": true,
+      "observed": [
+        -1,
+        1,
+        3,
+        5,
+        7
+      ]
+    },
+    {
+      "name": "three_affine_translation_pairs_are_proved",
+      "passed": true,
+      "observed": [
+        {
+          "schema_version": "autocontract.reorder-capability.v1",
+          "operation_context_sha256": "8f789104ad78919fbcb61aa8ed660ae3db39eddbb400d555bc5d71fccc490111",
+          "input_schema_sha256": "68d604cff2f8567b6e24faa9a0ba1416968e813eb5f9d04195ddd002f3ea73e0",
+          "left": {
+            "operator_id": "crop",
+            "contract_sha256": "ac5381f188507ed26c73ff236285b7a2001a54306249db7f0c40151ec6a5e02e",
+            "source_index_sha256": "bfcefae6e177a353a4994336562171fb59ab74cbc846b3cb40aca02e2ec35668"
+          },
+          "right": {
+            "operator_id": "decode",
+            "contract_sha256": "206788c071a6b4e759d963d6fce340feeac7d4193f42d4661adcb98200a6913b",
+            "source_index_sha256": "1be73132fd6acdd44d1a14c88688d9b830a123c75b5b698f117364fc54a0c91b"
+          },
+          "relation": "commutes",
+          "status": "supported",
+          "assurance_level": "locally_replayed_restricted_static",
+          "verifier": {
+            "verifier_id": "autocontract.restricted-affine-commutativity",
+            "version": "1.0.0",
+            "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+          },
+          "proof_artifact": {
+            "kind": "restricted_affine_commutativity_v0",
+            "domain": "python_int_unbounded_no_exception",
+            "left_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 2,
+                "denominator": 1
+              }
+            },
+            "right_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 1,
+                "denominator": 1
+              }
+            },
+            "left_then_right_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 3,
+                "denominator": 1
+              }
+            },
+            "right_then_left_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 3,
+                "denominator": 1
+              }
+            },
+            "equality": true
+          },
+          "proof_sha256": "4d804ab5695ab03ff1f5e20e86d07818143411b2060a42ab768e08220883322f",
+          "proof_scope": "Exact source-bound unary affine functions over Python unbounded integers; no exceptions, state, I/O, or hidden dispatch."
+        },
+        {
+          "schema_version": "autocontract.reorder-capability.v1",
+          "operation_context_sha256": "8f789104ad78919fbcb61aa8ed660ae3db39eddbb400d555bc5d71fccc490111",
+          "input_schema_sha256": "68d604cff2f8567b6e24faa9a0ba1416968e813eb5f9d04195ddd002f3ea73e0",
+          "left": {
+            "operator_id": "decode",
+            "contract_sha256": "206788c071a6b4e759d963d6fce340feeac7d4193f42d4661adcb98200a6913b",
+            "source_index_sha256": "1be73132fd6acdd44d1a14c88688d9b830a123c75b5b698f117364fc54a0c91b"
+          },
+          "right": {
+            "operator_id": "normalize",
+            "contract_sha256": "ecbdc92a3ab76328df1afdcab1bf9410d88d193f44f8a582f0a4272f9bc217f0",
+            "source_index_sha256": "634e19d8d797da4aef9fb757b52795927a60d041ad9132e95bc12c36797f24df"
+          },
+          "relation": "commutes",
+          "status": "supported",
+          "assurance_level": "locally_replayed_restricted_static",
+          "verifier": {
+            "verifier_id": "autocontract.restricted-affine-commutativity",
+            "version": "1.0.0",
+            "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+          },
+          "proof_artifact": {
+            "kind": "restricted_affine_commutativity_v0",
+            "domain": "python_int_unbounded_no_exception",
+            "left_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 1,
+                "denominator": 1
+              }
+            },
+            "right_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 3,
+                "denominator": 1
+              }
+            },
+            "left_then_right_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 4,
+                "denominator": 1
+              }
+            },
+            "right_then_left_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 4,
+                "denominator": 1
+              }
+            },
+            "equality": true
+          },
+          "proof_sha256": "103412f25428950e677145123650bbdb22146df021dc3f799aad36f7cbcdb3f1",
+          "proof_scope": "Exact source-bound unary affine functions over Python unbounded integers; no exceptions, state, I/O, or hidden dispatch."
+        },
+        {
+          "schema_version": "autocontract.reorder-capability.v1",
+          "operation_context_sha256": "8f789104ad78919fbcb61aa8ed660ae3db39eddbb400d555bc5d71fccc490111",
+          "input_schema_sha256": "68d604cff2f8567b6e24faa9a0ba1416968e813eb5f9d04195ddd002f3ea73e0",
+          "left": {
+            "operator_id": "crop",
+            "contract_sha256": "ac5381f188507ed26c73ff236285b7a2001a54306249db7f0c40151ec6a5e02e",
+            "source_index_sha256": "bfcefae6e177a353a4994336562171fb59ab74cbc846b3cb40aca02e2ec35668"
+          },
+          "right": {
+            "operator_id": "normalize",
+            "contract_sha256": "ecbdc92a3ab76328df1afdcab1bf9410d88d193f44f8a582f0a4272f9bc217f0",
+            "source_index_sha256": "634e19d8d797da4aef9fb757b52795927a60d041ad9132e95bc12c36797f24df"
+          },
+          "relation": "commutes",
+          "status": "supported",
+          "assurance_level": "locally_replayed_restricted_static",
+          "verifier": {
+            "verifier_id": "autocontract.restricted-affine-commutativity",
+            "version": "1.0.0",
+            "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+          },
+          "proof_artifact": {
+            "kind": "restricted_affine_commutativity_v0",
+            "domain": "python_int_unbounded_no_exception",
+            "left_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 2,
+                "denominator": 1
+              }
+            },
+            "right_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 3,
+                "denominator": 1
+              }
+            },
+            "left_then_right_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 5,
+                "denominator": 1
+              }
+            },
+            "right_then_left_ir": {
+              "coefficient": {
+                "numerator": 1,
+                "denominator": 1
+              },
+              "intercept": {
+                "numerator": 5,
+                "denominator": 1
+              }
+            },
+            "equality": true
+          },
+          "proof_sha256": "52248c3f46389967488c1b7daf7e0f9d196844e9c25d5ebaa28677a024db6982",
+          "proof_scope": "Exact source-bound unary affine functions over Python unbounded integers; no exceptions, state, I/O, or hidden dispatch."
+        }
+      ]
+    },
+    {
+      "name": "emitted_receipts_validate_against_public_schema",
+      "passed": true
+    },
+    {
+      "name": "strict_local_replay_admits_complete_region",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "admit",
+            "reason": "locally_replayed_supported",
+            "count": 1
+          },
+          {
+            "pair": [
+              "decode",
+              "normalize"
+            ],
+            "decision": "admit",
+            "reason": "locally_replayed_supported",
+            "count": 1
+          },
+          {
+            "pair": [
+              "crop",
+              "normalize"
+            ],
+            "decision": "admit",
+            "reason": "locally_replayed_supported",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [
+          [
+            "crop",
+            "decode"
+          ],
+          [
+            "decode",
+            "normalize"
+          ],
+          [
+            "crop",
+            "normalize"
+          ]
+        ],
+        "activated_pairs": [
+          [
+            "crop",
+            "decode"
+          ],
+          [
+            "crop",
+            "normalize"
+          ],
+          [
+            "decode",
+            "normalize"
+          ]
+        ],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "verified_receipts_restore_six_cedar_candidates",
+      "passed": true,
+      "observed": {
+        "candidate_count": 6,
+        "path": [
+          3,
+          0,
+          1,
+          2
+        ],
+        "output": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "fix": [
+          false,
+          false,
+          false
+        ],
+        "regions": [
+          {
+            "operator_ids": [
+              "decode",
+              "crop",
+              "normalize"
+            ],
+            "admitted": true,
+            "reason": "pairwise_complete_supported"
+          }
+        ]
+      }
+    },
+    {
+      "name": "verified_reorder_preserves_runtime_output",
+      "passed": true,
+      "observed": {
+        "baseline": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "optimized": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "name": "self_consistent_but_false_artifact_fails_replay",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "reject",
+            "reason": "proof_artifact_replay_mismatch",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "proof_digest_tamper_fails_closed",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "reject",
+            "reason": "proof_digest_mismatch",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "verifier_version_tamper_fails_closed",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "reject",
+            "reason": "verifier_identity_mismatch",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "verifier_source_tamper_fails_closed",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "reject",
+            "reason": "verifier_source_mismatch",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "source_index_drift_fails_closed",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "decode",
+              "normalize"
+            ],
+            "decision": "reject",
+            "reason": "left_binding_mismatch",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "revoked_verifier_build_fails_closed",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "reject",
+            "reason": "verifier_revoked",
+            "count": 1
+          },
+          {
+            "pair": [
+              "decode",
+              "normalize"
+            ],
+            "decision": "reject",
+            "reason": "verifier_revoked",
+            "count": 1
+          },
+          {
+            "pair": [
+              "crop",
+              "normalize"
+            ],
+            "decision": "reject",
+            "reason": "verifier_revoked",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "duplicate_receipt_is_ambiguous_and_fails_closed",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "crop",
+              "decode"
+            ],
+            "decision": "reject",
+            "reason": "duplicate_or_ambiguous_receipts",
+            "count": 2
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "unsupported_call_expression_is_unknown_and_fixed",
+      "passed": true,
+      "observed": "unsupported_expression:Call"
+    },
+    {
+      "name": "strict_output_contains_no_optimizer_decisions",
+      "passed": true
+    }
+  ],
+  "cases": {
+    "p5h_style_forgery": {
+      "schema_version": "autocontract.reorder-capability-verification.v1",
+      "assurance_level": "locally_replayed_restricted_static",
+      "verifier": {
+        "verifier_id": "autocontract.restricted-affine-commutativity",
+        "version": "1.0.0",
+        "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+      },
+      "receipt_audit": [
+        {
+          "pair": [
+            "crop",
+            "decode"
+          ],
+          "decision": "reject",
+          "reason": "receipt_keys_mismatch",
+          "count": 1
+        },
+        {
+          "pair": [
+            "decode",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "receipt_keys_mismatch",
+          "count": 1
+        },
+        {
+          "pair": [
+            "crop",
+            "normalize"
+          ],
+          "decision": "reject",
+          "reason": "receipt_keys_mismatch",
+          "count": 1
+        }
+      ],
+      "verified_pairs": [],
+      "activated_pairs": [],
+      "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+    },
+    "noncommuting_strict": {
+      "candidate_count": 1,
+      "path": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "output": [
+        -1,
+        1,
+        3,
+        5,
+        7
+      ],
+      "fix": [
+        true,
+        true,
+        true
+      ],
+      "regions": [
+        {
+          "operator_ids": [
+            "decode"
+          ],
+          "admitted": false,
+          "reason": "no_supported_neighbor_pair"
+        },
+        {
+          "operator_ids": [
+            "crop"
+          ],
+          "admitted": false,
+          "reason": "no_supported_neighbor_pair"
+        },
+        {
+          "operator_ids": [
+            "normalize"
+          ],
+          "admitted": false,
+          "reason": "no_supported_neighbor_pair"
+        }
+      ]
+    },
+    "commuting_baseline": {
+      "candidate_count": 1,
+      "path": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "output": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "fix": [
+        true,
+        true,
+        true
+      ],
+      "regions": [
+        {
+          "operator_ids": [
+            "decode"
+          ],
+          "admitted": false,
+          "reason": "no_supported_neighbor_pair"
+        },
+        {
+          "operator_ids": [
+            "crop"
+          ],
+          "admitted": false,
+          "reason": "no_supported_neighbor_pair"
+        },
+        {
+          "operator_ids": [
+            "normalize"
+          ],
+          "admitted": false,
+          "reason": "no_supported_neighbor_pair"
+        }
+      ]
+    },
+    "commuting_verified_optimized": {
+      "candidate_count": 6,
+      "path": [
+        3,
+        0,
+        1,
+        2
+      ],
+      "output": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "fix": [
+        false,
+        false,
+        false
+      ],
+      "regions": [
+        {
+          "operator_ids": [
+            "decode",
+            "crop",
+            "normalize"
+          ],
+          "admitted": true,
+          "reason": "pairwise_complete_supported"
+        }
+      ]
+    }
+  },
+  "claim_boundary": "Restricted-static mechanism calibration only. This closes untrusted receipt acceptance for the implemented affine integer subset; real ML operator coverage and independent validation remain open."
+}

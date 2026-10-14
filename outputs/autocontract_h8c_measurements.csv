@@ -1,0 +1,6 @@
+workload_id,raw_median_s,cached_median_s,build_median_s,cold_candidate_s,optimizer_score_s,trace_match,raw_unique_outputs,cached_unique_outputs
+cv_safe_prefix,1.306459,0.6908666,0.1242997,0.8151663,0.49129270000000014,True,4,4
+audio_safe_prefix,0.2585327,0.0233994,0.0566649,0.0800643,0.17846840000000003,True,4,4
+cv_hidden_rng_prefix,0.5488613,0.1103355,0.1164173,0.2267528,0.3221085,False,4,4
+cv_external_state_prefix,1.2893087,0.6510127,0.1574054,0.8084181,0.48089060000000006,False,4,4
+cv_full_cache,1.4537375,0.0274422,0.280555,0.30799719999999997,1.1457402999999997,False,4,1

@@ -1,0 +1,62 @@
+{
+  "protocol": "AutoContract H8B content-bound cache-prefix optimizer pilot",
+  "claim_boundary": "retrospective H5 integration; not a new CUDA rerun",
+  "contract_sha256": "f545cdbe367fc96307b8f5e561b7bf3e2ce1b4e324974e273e1435c352c30338",
+  "dataset_manifest_sha256": "56571f2173e4f0c4d7397ed4ed782a6141ff7caa17bf55ac91e40198a31a5af2",
+  "cache_content_sha256": "4b7132f75127ba35315ced0e468e800393b6a6b4833ed922a3d8fe33b505dc95",
+  "legacy_metadata_reasons": [
+    "missing:cache_content_sha256",
+    "missing:dataset_manifest_sha256",
+    "missing:entry_key",
+    "missing:prefix_contract_sha256",
+    "missing:proof_sha256",
+    "missing:suffix_contract_sha256",
+    "missing:torch_version",
+    "missing:torchvision_version"
+  ],
+  "mutation_rejections": {
+    "dataset": [
+      "dataset_manifest_mismatch",
+      "cache_proof_digest_mismatch"
+    ],
+    "prefix": [
+      "prefix_contract_mismatch",
+      "cache_proof_digest_mismatch"
+    ],
+    "suffix": [
+      "suffix_rng_contract_mismatch",
+      "cache_proof_digest_mismatch"
+    ],
+    "cache": [
+      "cache_content_mismatch",
+      "cache_proof_digest_mismatch"
+    ],
+    "shape": [
+      "cache_output_schema_mismatch",
+      "cache_proof_digest_mismatch"
+    ],
+    "entry_key": [
+      "cache_entry_key_incomplete",
+      "cache_proof_digest_mismatch"
+    ]
+  },
+  "benefit_positive_training_workloads": 1,
+  "mean_human_oracle_benefit_coverage": 1.0,
+  "checks": {
+    "prefix_source_contract_resolved": true,
+    "prefix_calls_only_trusted_deterministic_ops": true,
+    "suffix_rng_address_stable": true,
+    "legacy_metadata_rejected": true,
+    "legacy_same_run_dynamic_trace_was_one": true,
+    "content_addressed_proof_valid": true,
+    "cache_recomputation_audit_all_match": true,
+    "all_invalidation_mutations_rejected": true,
+    "cache_contract_admitted": true,
+    "h5a_profile_decisions_match_oracle": true,
+    "h5b_cold_decision_matches_oracle": true,
+    "h5b_warm_decision_matches_oracle": true,
+    "h5b_warm_human_oracle_benefit_coverage_one": true,
+    "semantic_reject_cannot_be_bypassed_by_positive_cost": true
+  },
+  "all_checks_pass": true
+}

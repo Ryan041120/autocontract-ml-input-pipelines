@@ -1,0 +1,86 @@
+{
+  "schema_version": "autocontract.p5v-dtd-acquisition-preflight-incident.v1",
+  "date": "2026-09-09",
+  "recorded_at_utc": "2026-09-09T12:26:55.3867529Z",
+  "status": "blocked_first_error_stop",
+  "scientific_evidence": false,
+  "user_authorization": {
+    "authorized": true,
+    "scope": [
+      "download and read DTD",
+      "verify official archive",
+      "instantiate the allowed-split manifest",
+      "minimal environment preflight"
+    ],
+    "excluded": [
+      "P5V profiling",
+      "task training",
+      "benchmark result generation"
+    ]
+  },
+  "acquisition": {
+    "source": "https://www.robots.ox.ac.uk/~vgg/data/dtd/download/dtd-r1.0.1.tar.gz",
+    "local_archive": "C:/Users/23527/AppData/Local/AutoContract/datasets/dtd-r1.0.1/dtd-r1.0.1.tar.gz",
+    "local_extraction_root": "C:/Users/23527/AppData/Local/AutoContract/datasets/dtd-r1.0.1/extracted/dtd",
+    "bytes": 625239812,
+    "expected_torchvision_md5": "fff73e5086ae6bdbea199a49dfb8a4c1",
+    "actual_md5": "fff73e5086ae6bdbea199a49dfb8a4c1",
+    "actual_sha256": "e42855a52a4950a3b59612834602aa253914755c95b0cff9ead6d07395f8e205",
+    "md5_verified": true,
+    "extracted": true,
+    "git_or_onedrive_storage": false
+  },
+  "manifest_attempt": {
+    "attempt": 0,
+    "generator": "experiments/autocontract_p5v_dtd_split_manifest.py",
+    "generator_sha256": "2b2322497b8ed6da85cb92e26a1aefc06b18b9e1d8ab58cb935fb8243425ee58",
+    "protocol": "benchmark/final_v1/p5v_dtd_dataset_split_protocol.json",
+    "protocol_sha256": "43dc92a1664051913853f17bcbd2cd9c0f70fdd1a101150fb168c53cbe163863",
+    "administrative_python": "C:/Users/23527/anaconda3/python.exe",
+    "administrative_python_version": "3.9.19",
+    "administrative_python_sha256": "af4049dd6fac5fa49c0c39b883a04376f9c0dba8e14b3d3258c3b0cd93503bf6",
+    "pillow_version": "10.4.0",
+    "exit_code": 1,
+    "output_manifest": "benchmark/final_v1/p5v_dtd_split_manifest.json",
+    "output_manifest_created": false,
+    "failure": "duplicate content SHA-256 crossed allowed study splits",
+    "collision_count": 4,
+    "collision_split_pairs": {
+      "profile_calibration__effect_evaluation": 2,
+      "effect_evaluation__task_validation": 2
+    },
+    "collision_sha256": [
+      "e1b1f209308ff9a7cfb1f5668050ff518da2341750940a6ff1cee1683d87352e",
+      "a2be8f29df9e40e469023763f39294525c0e54ddaa56ac88a5e441652636d90d",
+      "2876fc6e0d3e28e28759c4dd1d0a257bedebba0d52ab053e4067ef8b46b0725d",
+      "6b3d41ca592101d029de785c82fe821b05a6cb9559be5b2efde3826e2815f74d"
+    ],
+    "first_error_stop_respected": true,
+    "automatic_retry": false,
+    "samples_moved_or_replaced": false,
+    "test1_parsed_by_generator": false
+  },
+  "runtime_preflight": {
+    "p5t_fixed_python": "C:/Users/23527/.codex/runtimes/autocontract-p5-cedar-py311/Scripts/python.exe",
+    "p5t_fixed_python_sha256": "21bb438c0d4a6f1f164b9a646f6ee000340185e5871180aec06db8d3f07c0082",
+    "p5t_fixed_python_bytes_unchanged": true,
+    "p5t_fixed_python_launchable": false,
+    "cause": "the venv pyvenv.cfg references a former Microsoft Store Python 3.11 base executable that is no longer present at the recorded path",
+    "p5t_runtime_modified": false,
+    "anaconda_python_adopted_for_p5v": false,
+    "p5v_runtime_status": "unresolved"
+  },
+  "research_execution": {
+    "p5v_profiling_started": false,
+    "training_started": false,
+    "cedar_started": false,
+    "performance_values_observed": false,
+    "scientific_result_generated": false
+  },
+  "decision_required": {
+    "recommended": "Keep DTD and preregister a no-replacement quarantine of every cross-split content-duplicate equivalence class before a fresh manifest attempt.",
+    "alternative": "Abandon DTD and return to the predeclared Oxford-IIIT Pet fallback.",
+    "not_authorized": "No amendment, fresh manifest attempt, runtime replacement, or P5V execution may proceed automatically."
+  }
+}
+

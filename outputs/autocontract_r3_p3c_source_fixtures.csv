@@ -1,0 +1,10 @@
+case,expected,observed,passed
+format_comment_only,same,same,True
+docstring_only,same,same,True
+executable_ast,different,different,True
+default_change,different,different,True
+closure_change,different,different,True
+referenced_global,different,different,True
+wrapper_change,different,different,True
+origin_shadow,different,different,True
+native_unknown,unknown,unknown,True

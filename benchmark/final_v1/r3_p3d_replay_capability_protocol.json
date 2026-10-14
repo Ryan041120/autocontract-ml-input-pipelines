@@ -1,0 +1,94 @@
+{
+  "schema_version": "autocontract.r3-p3d-replay-capability-protocol.v0",
+  "status": "preregistered_before_capability_runner",
+  "date": "2026-07-30",
+  "research_question": "Can a separate runtime capability contract prevent a conditionally effect-safe but non-recordable public replay operation from becoming a deployable rewrite, while preserving the other ten P3b units?",
+  "naming_decision": "This is ReplayCapabilityV1, not EffectV8. EffectV7 semantic reachability remains frozen; capability is a separate conjunct in final rewrite eligibility.",
+  "claim_boundary": "Posthoc repair and composition calibration on 11 known P3b admits. It is not blind accuracy evidence and does not prove capability for untested inputs or framework versions.",
+  "frozen_inputs": {
+    "effect_v7_p3a_result_sha256": "b9986a154a653e7242e09554e9527af1571d2690b9fccbe702cae51ecee0f74c",
+    "p3b_result_sha256": "7b578086772df053d347bd23ece51f26cb2bd06aa91927ad01dbc4cb8c827d02",
+    "p3c_protocol_v1_sha256": "bec7be39dda3640c106a11aef38a4d167df765db8f114f6dc39a6236d8518dd4",
+    "p3c_result_sha256": "d66a3ef26bf9e9874c023dbbceb5e4ed197587217c038c1f73f3ff2bf63232ca",
+    "source_index_v1_sha256": "7e6251c0388fce23c115919258ac43fb9d620ea38f8902082fe6da7cfbb5238c",
+    "runtime_manifest_sha256": "ec784c445453fb2bb55ce4a30422f865a0d1309bcefe56838a58e3a9f941bff0",
+    "runtime_lock_sha256": "a7df261bf1a8e747b0dc3bec27fc2e837e99f71ccdc0230319c47d152fdd3bdb"
+  },
+  "contract_layers": {
+    "semantic": "Frozen EffectV7 actual decision for the exact configuration/phase/reachable path.",
+    "capability": "Framework-family-specific evidence that the public operation can be invoked, record/restored when required, exactly replayed on the bound fixture, and has all target-dependent operands bound by lineage.",
+    "source": "P3c SourceIndexV1 is Supported and three-process stable for the registered callable bundle.",
+    "final": "Safety dominates: semantic Reject remains Reject. Otherwise Admit requires semantic Admit AND capability Supported AND source Supported; Unknown is never promoted; an explicit framework capability prohibition returns Unsupported(capability)."
+  },
+  "framework_capability_specs": [
+    {
+      "framework": "imgaug",
+      "mechanism": "rng_state_restoration",
+      "requirements": [
+        "the deployed augmenter reports deterministic=True",
+        "the public call is callable",
+        "three equal copied batches produce exact dtype/shape/value equality",
+        "caller Python and NumPy global RNG do not drift",
+        "input schema and image-content digests are bound in the capability receipt"
+      ],
+      "record_serialization": "not_applicable_for_this_replay_family"
+    },
+    {
+      "framework": "Albumentations",
+      "mechanism": "stored_parameter_record",
+      "requirements": [
+        "ReplayCompose public record generation returns a replay dictionary",
+        "each applied leaf has a non-null stored params record",
+        "ReplayCompose public restore/replay completes without exception",
+        "three replays match the recorded output exactly",
+        "caller Python and NumPy global RNG do not drift",
+        "image and every metadata target consumed during parameter generation are digest-bound in the receipt"
+      ],
+      "explicit_prohibition": "A framework NotImplementedError from public serialization is Unsupported(capability), not semantic Reject and not Admit."
+    }
+  ],
+  "registered_expected_outcomes": {
+    "semantic_admit": 11,
+    "source_supported_and_stable": 11,
+    "capability_supported": 10,
+    "capability_unsupported": 1,
+    "final_admit": 10,
+    "final_unsupported": 1,
+    "unsupported_symbol": "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching",
+    "unsupported_reason": "framework_public_replay_serialization_not_supported"
+  },
+  "composition_truth_table": [
+    {"semantic": "reject", "capability": "supported", "source": "supported", "expected": "reject"},
+    {"semantic": "unknown", "capability": "supported", "source": "supported", "expected": "unknown"},
+    {"semantic": "admit", "capability": "unsupported", "source": "supported", "expected": "unsupported"},
+    {"semantic": "admit", "capability": "unknown", "source": "supported", "expected": "unknown"},
+    {"semantic": "admit", "capability": "supported", "source": "unknown", "expected": "unknown"},
+    {"semantic": "admit", "capability": "supported", "source": "supported", "expected": "admit"},
+    {"semantic": "admit", "capability": "supported_target_dependent_unbound", "source": "supported", "expected": "unsupported"},
+    {"semantic": "reject", "capability": "unsupported", "source": "unknown", "expected": "reject"}
+  ],
+  "primary_metrics": [
+    "semantic/capability/source/final status and reason per unit",
+    "public record generation, stored-leaf params, restore, exact replay and caller-RNG checks",
+    "lineage-bound operand names and content digests",
+    "composition truth-table pass count",
+    "capability receipt bytes and probe latency"
+  ],
+  "success_gates": [
+    "all 11 frozen EffectV7 semantic decisions remain Admit and are not rewritten",
+    "all 11 SourceIndexV1 inputs are Supported and three-process stable",
+    "capability outcome is exactly 10 Supported and one explicit Unsupported for HistogramMatching",
+    "final outcome is exactly 10 Admit, one Unsupported, zero accidental Admit for the unsupported unit",
+    "all ten final Admits pass exact replay and caller-RNG checks with bound input/metadata digests",
+    "all eight composition truth-table cases pass",
+    "no P3a/P3b/P3c, framework source, runtime manifest or lock artifact changes"
+  ],
+  "falsification_rules": [
+    "Do not relabel HistogramMatching as semantically unsafe merely because public serialization is unsupported.",
+    "Catching NotImplementedError and hand-crafting a private replay record is outside the registered public operation and invalidates v0.",
+    "One successful output replay cannot replace SourceIndexV1 or semantic evidence; all three layers remain explicit.",
+    "A target-dependent record without every consumed target digest in lineage is Unsupported, even if the one fixture happens to replay.",
+    "Capability evidence is scoped to the frozen framework/runtime/configuration/input schema; it cannot be generalized to all inputs or versions.",
+    "If any of the other ten units becomes Unsupported, retain the result and create a new protocol before changing requirements."
+  ]
+}

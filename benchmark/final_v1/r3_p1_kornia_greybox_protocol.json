@@ -1,0 +1,65 @@
+{
+  "schema_version": "autocontract.r3-p1-kornia-greybox-protocol.v0",
+  "status": "internal_calibration_preregistered",
+  "date": "2026-07-30",
+  "research_question": "On the nine real H7H Kornia symbol/configuration units, does frozen EffectV7 retain a safety, coverage, auditability, or total-cost advantage over stateful black-box and public-source-guided greybox dynamic baselines?",
+  "claim_boundary": "Posthoc method calibration on already-known H7H source and oracle. Results cannot be reported as a new blind holdout.",
+  "source_protocol": "outputs/autocontract_h7h_protocol.json",
+  "source_freeze": "outputs/autocontract_h7h_freeze.json",
+  "repository": {
+    "path": ".research/semantics_safe_reconfiguration/h7h_corpus/kornia_repo",
+    "commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930"
+  },
+  "units": {
+    "count": 9,
+    "decision_unit": "(public_symbol, configuration, phase)",
+    "configurations": ["kornia.params_provided", "kornia.params_absent"],
+    "phases": ["replay_apply", "sample_apply"]
+  },
+  "runtime_probe": {
+    "wall_clock_budgets_ms": [25, 100, 500],
+    "max_calls_per_unit": 16,
+    "input_shape": [2, 3, 32, 32],
+    "input_seed": 20260730,
+    "warmup_calls": 1,
+    "observations": [
+      "Python/NumPy/Torch RNG state",
+      "post-warmup serializable instance state",
+      "same-context output digest",
+      "gradient connectivity",
+      "crash and soft-timeout"
+    ]
+  },
+  "policies": {
+    "dynamic_blackbox": "Receives the public unit configuration and runnable operator factory but does not inspect source or oracle.",
+    "dynamic_source_guided": "Receives the same runtime evidence plus public symbol/source/MRO; it may conservatively reject unresolved Sequential child delegation using a predeclared generic container heuristic.",
+    "effect_v7_frozen": "Reuses the frozen H7H analyzer, adapter and validator without modification.",
+    "manual_full": "Uses one complete decision/reason hint per unit as an oracle upper bound, not a deployable automatic method."
+  },
+  "fairness": [
+    "Dynamic policies use identical factories, prepared params, inputs, warmup, budgets and max-call limits.",
+    "The greybox policy may inspect public source but not expected decision or coarse reason.",
+    "EffectV7 predictions are produced before the H7H expected fields are joined for scoring.",
+    "Shared package-index and runtime-factory setup are reported separately from per-unit latency.",
+    "Crash, timeout and unknown remain in the denominator."
+  ],
+  "burden_accounting": [
+    "EffectV7 adapter rule count and adapter LOC",
+    "greybox semantic guidance rule count and guidance LOC",
+    "runtime factory entries and factory LOC",
+    "manual hint count and fields"
+  ],
+  "primary_outputs": [
+    "TP/FP/FN/TN and safe recall by policy and budget",
+    "classified/unknown/crash/timeout counts",
+    "per-unit and shared setup wall time",
+    "operator calls",
+    "stable reason coverage",
+    "engineering-burden accounting"
+  ],
+  "falsification_rules": [
+    "If source-guided dynamic matches EffectV7 decisions and reasons with fewer semantic rules and comparable total cost, C1 detection-accuracy novelty is weak.",
+    "If black-box dynamic matches EffectV7, source analysis is not justified on this scope.",
+    "If EffectV7 wins only by treating all containers as unknown, report the coverage/scope limitation rather than a universal safety advantage."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "autocontract.h8c-r1-stateful-dynamic-protocol.v0",
+  "status": "internal_calibration_not_final",
+  "date": "2026-07-30",
+  "purpose": "Test whether a fixed-budget stateful dynamic baseline closes the known H8C false accepts without changing the frozen H8C result.",
+  "runner": "experiments/autocontract_h8c_r1_stateful_dynamic.py",
+  "historical_artifacts": {
+    "measurements": "outputs/autocontract_h8c_measurements.csv",
+    "freeze": "outputs/autocontract_h8c_freeze.json",
+    "read_only": true
+  },
+  "policies": ["dynamic_output_only", "dynamic_stateful", "hybrid"],
+  "probe": {
+    "id": "autocontract.dynamic-stateful.v0",
+    "operator_call_budget": 7,
+    "same_context_repeats": 2,
+    "cross_context_epochs": [0, 1],
+    "environment_key": "AUTOCONTRACT_H8C_GAIN",
+    "environment_values": ["1.0", "1.2"],
+    "observations": [
+      "output digest",
+      "fresh-instance reproducibility",
+      "Python/NumPy/Torch RNG state",
+      "serializable object state",
+      "declared environment perturbation",
+      "cross-epoch output"
+    ]
+  },
+  "claim_boundary": "Known-source, known-oracle calibration. It can falsify an unfair-baseline argument but cannot support unseen-code generalization."
+}

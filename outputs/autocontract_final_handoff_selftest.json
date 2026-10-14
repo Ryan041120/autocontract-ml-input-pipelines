@@ -1,0 +1,54 @@
+{
+  "checks": [
+    {
+      "name": "strict public fixture accepted",
+      "passed": true
+    },
+    {
+      "name": "strict private fixture accepted",
+      "passed": true
+    },
+    {
+      "name": "salted commitment created",
+      "passed": true
+    },
+    {
+      "name": "untampered oracle verified",
+      "passed": true
+    },
+    {
+      "name": "public label leakage rejected",
+      "observed": "answer-bearing key(s) in public manifest: $.units[0].expected_decision",
+      "passed": true
+    },
+    {
+      "name": "post-commit oracle tampering rejected",
+      "observed": "private oracle changed after commitment",
+      "passed": true
+    },
+    {
+      "name": "public/private unit mismatch rejected",
+      "observed": "oracle and public unit IDs must match exactly",
+      "passed": true
+    },
+    {
+      "name": "post-commit public tampering rejected",
+      "observed": "oracle public_manifest_sha256 does not match",
+      "passed": true
+    },
+    {
+      "name": "placeholder source binding rejected",
+      "observed": "placeholder commit SHA is forbidden",
+      "passed": true
+    },
+    {
+      "name": "public execution bundle sealed without private path",
+      "passed": true
+    }
+  ],
+  "note": "Synthetic protocol fixture only; this is not benchmark evidence.",
+  "passed": 10,
+  "schema_version": "autocontract.final-handoff-selftest.v1",
+  "status": "pass",
+  "total": 10
+}

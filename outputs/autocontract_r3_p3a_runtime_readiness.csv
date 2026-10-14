@@ -1,0 +1,4 @@
+framework,ready,status,missing,environment
+TorchIO,False,unsupported_missing_runtime_dependency,complete_vendored_package,frozen_python_3.12_torch_2.4_cpu
+imgaug,False,unsupported_missing_runtime_dependency,cv2,frozen_python_3.12_torch_2.4_cpu
+Albumentations,False,unsupported_missing_runtime_dependency,pydantic;cv2,frozen_python_3.12_torch_2.4_cpu

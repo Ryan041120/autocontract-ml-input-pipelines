@@ -1,0 +1,31 @@
+{
+  "schema_version": "autocontract.r3-p3c-canonical-source-index-protocol.v1",
+  "status": "preregistered_before_candidate_result",
+  "date": "2026-07-30",
+  "inherits_protocol": {
+    "path": "benchmark/final_v1/r3_p3c_canonical_source_index_protocol.json",
+    "sha256": "9acf791daf9a32c5d94e35fdc1c96386f80d02c470ca4d747f755d6f488fc682",
+    "inherited_scope": "All research questions, candidate policies, evaluation cases, primary metrics, success gates and falsification rules are unchanged."
+  },
+  "v0_result": {
+    "status": "fail_before_candidate_execution",
+    "failed_check": "p3b_runner_sha256",
+    "cause": "The preregistration transcribed the runner hash with one missing hexadecimal character f.",
+    "registered_incorrect_value": "63f3a191ff3454e478e0dccb567e904cd45d971fa784e10a254249866b0bbb3",
+    "measured_actual_value": "63f3a191ff3454e478e0dccb567e904cd45d971faf784e10a254249866b0bbb3",
+    "operator_or_candidate_results_observed": false
+  },
+  "only_correction": {
+    "field": "frozen_inputs.p3b_runner_sha256",
+    "correct_value": "63f3a191ff3454e478e0dccb567e904cd45d971faf784e10a254249866b0bbb3"
+  },
+  "frozen_inputs": {
+    "source_index_v0_sha256": "02a10103e26cb4a55f646428d7e24f14bdf73b133149e29c220a78f38829ab2b",
+    "p3b_protocol_sha256": "d3546e7c5e776daa30f2595b8a632259f255d0fa81a53183d84b6e2cd1fb604b",
+    "p3b_runner_sha256": "63f3a191ff3454e478e0dccb567e904cd45d971faf784e10a254249866b0bbb3",
+    "p3b_result_sha256": "7b578086772df053d347bd23ece51f26cb2bd06aa91927ad01dbc4cb8c827d02",
+    "source_index_v1_candidate_sha256": "7e6251c0388fce23c115919258ac43fb9d620ea38f8902082fe6da7cfbb5238c",
+    "runtime_manifest_sha256": "ec784c445453fb2bb55ce4a30422f865a0d1309bcefe56838a58e3a9f941bff0",
+    "runtime_lock_sha256": "a7df261bf1a8e747b0dc3bec27fc2e837e99f71ccdc0230319c47d152fdd3bdb"
+  }
+}

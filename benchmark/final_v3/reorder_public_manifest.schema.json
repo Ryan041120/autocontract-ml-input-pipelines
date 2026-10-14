@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autocontract.local/schemas/v1/reorder_public_manifest.schema.json",
+  "title": "AutoContract premise/native-aware reorder public manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "benchmark_id", "evaluation_mode", "status", "created_at", "selection_author", "selection_independent_of_analyzer", "claim_scope", "contamination_registry", "reporting_plan", "frameworks", "pairs", "analyzer_bundle"],
+  "properties": {
+    "schema_version": {"const": "autocontract.reorder-final-public.v1"},
+    "artifact_type": {"const": "reorder_public_manifest"},
+    "benchmark_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$"},
+    "evaluation_mode": {"enum": ["development_dry_run", "independent_final"]},
+    "status": {"enum": ["draft", "sealed"]},
+    "created_at": {"type": "string", "minLength": 1},
+    "selection_author": {"type": "string", "minLength": 1},
+    "selection_independent_of_analyzer": {"type": "boolean"},
+    "claim_scope": {"type": "string", "minLength": 20},
+    "contamination_registry": {"$ref": "#/$defs/contamination_registry"},
+    "reporting_plan": {"$ref": "#/$defs/reporting_plan"},
+    "frameworks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/framework"}},
+    "pairs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/pair"}},
+    "analyzer_bundle": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/artifact"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sha1": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "artifact": {
+      "type": "object", "additionalProperties": false, "required": ["name", "path", "sha256"],
+      "properties": {"name": {"type": "string", "minLength": 1}, "path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "contamination_registry": {
+      "type": "object", "additionalProperties": false, "required": ["path", "sha256", "selection_cutoff"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}, "selection_cutoff": {"type": "string", "minLength": 1}}
+    },
+    "reporting_plan": {
+      "type": "object", "additionalProperties": false,
+      "required": ["unsafe_supported_max", "unresolved_supported_max", "prediction_completion_min", "commutes_coverage_pilot_floor", "family_stratified", "rng_stratified", "wilson_intervals", "non_identity_supported_report", "supported_framework_count_report", "viability_threshold_status"],
+      "properties": {
+        "unsafe_supported_max": {"const": 0}, "unresolved_supported_max": {"const": 0},
+        "prediction_completion_min": {"const": 1.0}, "commutes_coverage_pilot_floor": {"const": 0.3},
+        "family_stratified": {"const": true}, "rng_stratified": {"const": true}, "wilson_intervals": {"const": true},
+        "non_identity_supported_report": {"const": true}, "supported_framework_count_report": {"const": true},
+        "viability_threshold_status": {"enum": ["draft_pending_dry_run", "frozen_before_independent_selection"]}
+      }
+    },
+    "framework": {
+      "type": "object", "additionalProperties": false,
+      "required": ["framework_id", "domain", "repository_url", "release", "commit_sha", "source_tree_sha256"],
+      "properties": {
+        "framework_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$"}, "domain": {"type": "string", "minLength": 2},
+        "repository_url": {"type": "string", "pattern": "^https://"}, "release": {"type": "string", "minLength": 1},
+        "commit_sha": {"$ref": "#/$defs/sha1"}, "source_tree_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "native_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["class", "identity_sha256", "binding_scope", "strict_policy"],
+      "properties": {
+        "class": {"enum": ["pure_python", "known_versioned_native", "opaque_native", "external_attested_native"]},
+        "identity_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "binding_scope": {"type": "string", "minLength": 10},
+        "strict_policy": {"enum": ["allow_local_proof", "allow_versioned_relation_only", "require_external_attestation", "force_unknown"]}
+      }
+    },
+    "operator": {
+      "type": "object", "additionalProperties": false,
+      "required": ["operator_id", "type", "configuration", "source_index_sha256", "native_boundary"],
+      "properties": {
+        "operator_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,79}$"}, "type": {"type": "string", "minLength": 3},
+        "configuration": {"type": "object"}, "source_index_sha256": {"$ref": "#/$defs/sha256"}, "native_boundary": {"$ref": "#/$defs/native_boundary"}
+      }
+    },
+    "premise_profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required_runtime_premises", "declaration_only_fields", "profile_sha256"],
+      "properties": {
+        "required_runtime_premises": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["type", "layout", "channels", "dtype", "device", "height_min", "width_min"]}},
+        "declaration_only_fields": {"type": "array", "uniqueItems": true, "items": {"enum": ["value_min", "value_max", "height_max", "width_max", "allow_nonfinite"]}},
+        "profile_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "assurance_plan": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "guard_artifact", "value_scan"],
+      "properties": {
+        "mode": {"enum": ["registration", "batch_boundary", "per_sample", "external_attestation"]},
+        "guard_artifact": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/artifact"}]},
+        "value_scan": {"enum": ["not_required_by_current_lemma", "required_by_declared_relation"]}
+      }
+    },
+    "input_domain": {
+      "type": "object", "additionalProperties": false,
+      "required": ["description", "artifact_path", "sha256", "premise_profile", "assurance_plan"],
+      "properties": {
+        "description": {"type": "string", "minLength": 20}, "artifact_path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"},
+        "premise_profile": {"$ref": "#/$defs/premise_profile"}, "assurance_plan": {"$ref": "#/$defs/assurance_plan"}
+      }
+    },
+    "observational_relation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["output", "tolerance_artifact", "definedness", "exception", "rng_post_state"],
+      "properties": {
+        "output": {"enum": ["exact_tensor", "exact_digest", "declared_tolerance"]},
+        "tolerance_artifact": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/artifact"}]},
+        "definedness": {"const": "same"}, "exception": {"enum": ["exact_type_and_normalized_payload", "not_applicable"]},
+        "rng_post_state": {"enum": ["exact_python_numpy_torch", "exact_framework_declared", "not_applicable"]}
+      }
+    },
+    "operation_context": {
+      "type": "object", "additionalProperties": false,
+      "required": ["scope", "rng_assignment", "state_reset", "observational_relation", "optimizer_reorder_scope"],
+      "properties": {
+        "scope": {"const": "one_invocation_each_order"}, "rng_assignment": {"enum": ["global_sequential", "operator_keyed", "explicit_generator", "not_applicable"]},
+        "state_reset": {"const": "same_pre_pair_state"}, "observational_relation": {"$ref": "#/$defs/observational_relation"},
+        "optimizer_reorder_scope": {"enum": ["adjacent_swap", "permutation_with_pairwise_complete_cover"]}
+      }
+    },
+    "contamination": {
+      "type": "object", "additionalProperties": false, "required": ["development_fixture", "registry_match"],
+      "properties": {"development_fixture": {"type": "boolean"}, "registry_match": {"type": "boolean"}}
+    },
+    "pair": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pair_id", "framework_id", "pair_family", "left", "right", "input_domain", "operation_context", "source_anchors", "inclusion_reason", "contamination"],
+      "properties": {
+        "pair_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{4,99}$"}, "framework_id": {"type": "string"},
+        "pair_family": {"enum": ["identity", "pointwise_spatial", "random_context", "boundary_definedness", "rounding_precision", "stateful_external", "other_nontrivial"]},
+        "left": {"$ref": "#/$defs/operator"}, "right": {"$ref": "#/$defs/operator"}, "input_domain": {"$ref": "#/$defs/input_domain"},
+        "operation_context": {"$ref": "#/$defs/operation_context"}, "source_anchors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 3}},
+        "inclusion_reason": {"type": "string", "minLength": 15}, "contamination": {"$ref": "#/$defs/contamination"}
+      }
+    }
+  }
+}

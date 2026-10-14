@@ -1,0 +1,20 @@
+{
+  "schema_version": "autocontract.p5c-cedar-runtime-smoke-protocol.v2",
+  "status": "protocol_inheritance_loader_correction_before_rerun",
+  "date": "2026-07-30",
+  "inherits": {
+    "base_path": "benchmark/final_v1/p5c_cedar_runtime_smoke_protocol.json",
+    "base_sha256": "c6de4ca1444916057ae55fa0cc54347e7b3b3e0aa7a18785c276243d99890ffc",
+    "eol_correction_path": "benchmark/final_v1/p5c_cedar_runtime_smoke_protocol_v1.json",
+    "eol_correction_sha256": "1eda1ccc1de4e3df0f44811662639f280265f21d2c4f53e7c60a3e8ab048b46c"
+  },
+  "observed_attempt": {
+    "path": "outputs/autocontract_p5c_cedar_runtime_smoke_attempt1_protocol_inheritance_error.json",
+    "sha256": "288e0021f1bd2b5dbdcd4ab765da0250a9ac4aa5a6e6ec8cbfb86c5851c3085e",
+    "result": "administrative error before cedar execution",
+    "message": "'fixture'"
+  },
+  "only_correction": "The runner must load the fixture and expected output from the hash-bound complete v0 base while using v1's Git-blob/worktree-normalization checks. No runtime gate or expected value changes.",
+  "pass_rule": "All 15 inherited and corrected checks pass and the result is bound to this v2 protocol.",
+  "claim_boundary": "Runtime public-API and optimizer-disabled data-path compatibility only. No cedar optimizer, plan, safety, or performance claim."
+}

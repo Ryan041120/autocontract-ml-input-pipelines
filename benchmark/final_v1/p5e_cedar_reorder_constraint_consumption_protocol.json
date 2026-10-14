@@ -1,0 +1,45 @@
+{
+  "schema_version": "autocontract.p5e-cedar-reorder-constraint-consumption-protocol.v0",
+  "status": "development_calibration_frozen_after_runtime_exploration",
+  "date": "2026-07-30",
+  "purpose": "Test whether cedar's real reordering optimizer consumes fix and depends_on hints emitted by the frozen P5A compiler.",
+  "claim_boundary": "Plan-level consumption on two synthetic, compiler-generated fixtures and cedar's official profile only. This does not establish semantic correctness, independent generalization, executed-plan equivalence, or performance benefit.",
+  "upstream": {
+    "repository": "https://github.com/stanford-mast/cedar",
+    "commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+    "git_blob_sha256": {
+      "cedar/compose/optimizer.py": "11c70d449ad1fbeccc6f19ca0bcac56fef919e7f464699d96814ae80506de09b",
+      "cedar/compose/utils.py": "b6895474650b13b5cd4e8bf429cb5cdf1082a7b0edf7223b90f71a671c669670",
+      "tests/data/test_profile_stats.yml": "8fcd2c41df608a60a90efd26698c4ade4c5d428a398e4a2e68c0d74b431685e2"
+    }
+  },
+  "frozen_inputs": {
+    "experiments/autocontract_p5a_constraint_compiler.py": "c96ed767f97ecd82d6ea7bc574d4a0211bb530464ec42c9960d9459598f5d0ab",
+    "outputs/autocontract_p5a_constraint_compiler_selftest.json": "59d75486cc547277616ad99361a01d3aa66a1e9991091329ebcb4bf4b470ee7a",
+    "outputs/autocontract_p5d_cedar_optimizer_consumption.json": "b22523811a844b39ddcd1991866220af275fee42d35370830bdbb0ad0b49c7fe"
+  },
+  "fixture": {
+    "logical_path_ids": [3, 2, 1, 0],
+    "operator_id_to_pipe_id": {"decode": 2, "crop": 1, "normalize": 0},
+    "official_profile": "tests/data/test_profile_stats.yml",
+    "optimizer": "reorder only; caching/offload/fusion/parallelism/prefetch disabled"
+  },
+  "fix_case": {
+    "input": "decode=Admit, crop=semantic Unknown, normalize=Admit; no explicit dependency",
+    "expected_compiler_hint": "crop.fix=true",
+    "expected_candidate_counts": {"autocontract": 1, "hint_removed": 6},
+    "expected_selected_paths": {"autocontract": [3, 2, 1, 0], "hint_removed": [3, 0, 1, 2]}
+  },
+  "dependency_case": {
+    "input": "three Admit operators; normalize.depends_on=[decode]",
+    "expected_compiler_hint": "normalize.depends_on=[autocontract:decode]",
+    "expected_candidate_counts": {"autocontract": 3, "hint_removed": 6},
+    "expected_selected_paths": {"autocontract": [3, 2, 0, 1], "hint_removed": [3, 0, 1, 2]}
+  },
+  "pass_rule": "All commit/freeze/compiler-hint checks and all four candidate-count/selected-path assertions pass; the constrained dependency plan orders decode before normalize while the hint-removed optimum violates that order.",
+  "non_claims": [
+    "Hint-removed arms are deliberate metadata ablations, not safety baselines.",
+    "Candidate-count reduction is not automatically a performance improvement.",
+    "The official profile and known synthetic fixtures are calibration, not final evaluation."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "autocontract.p5v-dtd-manifest-attempt-receipt.v1",
+  "created_at_utc": "2026-09-09T12:47:25.3740452Z",
+  "status": "success_no_profiling",
+  "scientific_evidence": false,
+  "attempt": {
+    "ordinal_after_attempt0_first_error_stop": 1,
+    "fresh_invocations_authorized": 1,
+    "fresh_invocations_executed": 1,
+    "exit_code": 0,
+    "automatic_retry_executed": false
+  },
+  "authorization": {
+    "keep_dtd": true,
+    "quarantine_cross_split_exact_duplicates": true,
+    "create_isolated_p5v_python_3_11_environment": true,
+    "regenerate_manifest_once": true,
+    "profiling_authorized": false
+  },
+  "bindings": {
+    "dataset_archive_sha256": "e42855a52a4950a3b59612834602aa253914755c95b0cff9ead6d07395f8e205",
+    "duplicate_quarantine_amendment": {
+      "path": "benchmark/final_v1/p5v_dtd_duplicate_quarantine_amendment_v1.json",
+      "sha256": "1ae35cf2f04b1822142485b942bf23c993861c0adc1ff14ad72cdc4cc92474ec"
+    },
+    "runtime_environment_manifest": {
+      "path": "benchmark/final_v1/p5v_runtime_environment_manifest.json",
+      "sha256": "b5dff03bbcb3843c64357e22ff34df8b612d8a06a2d9be10937b3c2340528322"
+    },
+    "generator": {
+      "path": "experiments/autocontract_p5v_dtd_split_manifest.py",
+      "sha256": "893eaf49737734a836056c9402954780d1399707cf059c44e9aaa8c2b3c6912c"
+    },
+    "output_manifest": {
+      "path": "benchmark/final_v1/p5v_dtd_split_manifest.json",
+      "sha256": "6491cf0aaa7aa2da9cd06bc5ca31a4c68a999b95e47d8a90ac05155a630c61af"
+    }
+  },
+  "runtime": {
+    "requested_environment_path": "C:/Users/23527/AppData/Local/AutoContract/runtimes/p5v-py311",
+    "python_version": "3.11.9",
+    "python_executable_sha256": "e28f5b95e929738774687cd6f9f5a8c1b54b16053e9b0d4381a476bc1ec523ff",
+    "manifest_recorded_executable_path": "C:/Users/23527/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/AutoContract/runtimes/p5v-py311/Scripts/python.exe",
+    "path_note": "The Codex Windows app exposed the LocalAppData environment through its package-local alias during execution; the executable SHA-256 equals the pre-frozen P5V interpreter SHA-256."
+  },
+  "result": {
+    "pre_quarantine_counts": {
+      "profile_calibration": 470,
+      "effect_evaluation": 1410,
+      "task_validation": 1880
+    },
+    "quarantined_equivalence_classes": 4,
+    "quarantined_samples": 8,
+    "samples_moved": false,
+    "replacement_sampling": false,
+    "post_quarantine_counts": {
+      "profile_calibration": 468,
+      "effect_evaluation": 1406,
+      "task_validation": 1878
+    },
+    "post_quarantine_total": 3752
+  },
+  "postchecks": {
+    "json_parse": "pass",
+    "declared_counts_match_records": "pass",
+    "canonical_relative_paths_unique": "pass",
+    "split_keys_unique": "pass",
+    "remaining_cross_split_content_sha256_groups": 0,
+    "all_47_classes_present_in_every_allowed_split": true,
+    "test_accessed": false,
+    "test_entries_included": false,
+    "profiling_executed": false,
+    "training_executed": false
+  },
+  "claim_boundary": "Successful write-once DTD split-manifest instantiation only. This receipt is not profiling, task, semantic, performance, or scientific evidence and authorizes no subsequent run."
+}

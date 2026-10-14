@@ -1,0 +1,41 @@
+{
+  "schema_version": "autocontract.evidence-gaps.v0",
+  "final_claim_ready": false,
+  "historical_stages": 8,
+  "historical_stage_gates_passed": 4,
+  "do_not_report": [
+    "pooled H6-H7H accuracy",
+    "framework-agnostic EffectV7 accuracy from the nine-unit H7H result",
+    "human annotation savings from the H7C single-researcher timing proxy"
+  ],
+  "blocking_gaps": [
+    {
+      "id": "G1",
+      "gap": "No cross-framework final blind corpus has been evaluated once with a single frozen EffectV7.x analyzer.",
+      "exit_criterion": "One preregistered run with zero known-unsafe false accepts, safe recall >= 0.80, reason accuracy >= 0.90, and classified coverage >= 0.90."
+    },
+    {
+      "id": "G2",
+      "gap": "H8C calibrates a five-workload CV/audio cache suite with full pilot oracle benefit and zero hybrid violations, but the corpus is synthetic/internal and its oracle is not independent.",
+      "exit_criterion": "Run the same schema on an independently sealed, real, unseen corpus and achieve >= 0.90 of human-oracle performance benefit with zero semantic violations."
+    },
+    {
+      "id": "G3",
+      "gap": "The final oracle and adapter-effort measurements lack independent human review.",
+      "exit_criterion": "A second annotator or supervisor audits all unsafe cases and a random safe subset; disagreements are adjudicated before unsealing predictions."
+    },
+    {
+      "id": "G4",
+      "gap": "Existing ablations predate EffectV7 and do not use the final corpus and optimizer interface.",
+      "exit_criterion": "Run static-only, dynamic-only, registry-only, hybrid, manual-hint, fail-closed, and human-oracle baselines under one metric schema."
+    }
+  ],
+  "recommended_sequence": [
+    "freeze paper claim and non-claims",
+    "implement the common benchmark runner and oracle schema",
+    "prepare a label-free public manifest and private oracle commitment",
+    "obtain independent annotation and seal a real unseen workload corpus",
+    "preregister and run the final blind benchmark",
+    "run ablation and end-to-end performance evaluation"
+  ]
+}

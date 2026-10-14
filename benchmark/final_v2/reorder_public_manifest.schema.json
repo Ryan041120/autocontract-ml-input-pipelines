@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autocontract.local/schemas/reorder_public_manifest.schema.json",
+  "title": "AutoContract reorder-final public manifest v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "benchmark_id", "status", "created_at", "selection_author", "selection_independent_of_analyzer", "claim_scope", "parent_final_manifest_sha256", "contamination_registry", "visibility_policy", "metric_gates", "frameworks", "pairs", "analyzer_bundle"],
+  "properties": {
+    "schema_version": {"const": "autocontract.reorder-final-public.v0"},
+    "artifact_type": {"const": "reorder_public_manifest"},
+    "benchmark_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$"},
+    "status": {"enum": ["draft", "sealed"]},
+    "created_at": {"type": "string", "minLength": 1},
+    "selection_author": {"type": "string", "minLength": 1},
+    "selection_independent_of_analyzer": {"type": "boolean"},
+    "claim_scope": {"type": "string", "minLength": 20},
+    "parent_final_manifest_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+    "contamination_registry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "selection_cutoff"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}, "selection_cutoff": {"type": "string", "minLength": 1}}
+    },
+    "visibility_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["selector_forbidden", "annotator_forbidden", "analyzer_allowed", "reveal_precondition"],
+      "properties": {
+        "selector_forbidden": {"type": "array", "items": {"type": "string"}, "minItems": 4, "uniqueItems": true},
+        "annotator_forbidden": {"type": "array", "items": {"type": "string"}, "minItems": 2, "uniqueItems": true},
+        "analyzer_allowed": {"type": "array", "items": {"type": "string"}, "minItems": 3, "uniqueItems": true},
+        "reveal_precondition": {"const": "sealed_predictions_and_verified_commitment"}
+      }
+    },
+    "metric_gates": {"$ref": "#/$defs/metric_gates"},
+    "frameworks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/framework"}},
+    "pairs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/pair"}},
+    "analyzer_bundle": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/artifact"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sha1": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "artifact": {
+      "type": "object", "additionalProperties": false, "required": ["name", "path", "sha256"],
+      "properties": {"name": {"type": "string", "minLength": 1}, "path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "metric_gates": {
+      "type": "object", "additionalProperties": false,
+      "required": ["unsafe_supported_max", "unresolved_supported_max", "commutes_coverage_min", "prediction_completion_min", "minimum_pairs", "maximum_pairs", "minimum_frameworks", "minimum_domains"],
+      "properties": {
+        "unsafe_supported_max": {"const": 0}, "unresolved_supported_max": {"const": 0},
+        "commutes_coverage_min": {"const": 0.3}, "prediction_completion_min": {"const": 1.0},
+        "minimum_pairs": {"const": 20}, "maximum_pairs": {"const": 40},
+        "minimum_frameworks": {"const": 3}, "minimum_domains": {"const": 2}
+      }
+    },
+    "framework": {
+      "type": "object", "additionalProperties": false,
+      "required": ["framework_id", "domain", "repository_url", "release", "commit_sha", "source_tree_sha256"],
+      "properties": {
+        "framework_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$"},
+        "domain": {"type": "string", "minLength": 2}, "repository_url": {"type": "string", "pattern": "^https://"},
+        "release": {"type": "string", "minLength": 1}, "commit_sha": {"$ref": "#/$defs/sha1"}, "source_tree_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "operator": {
+      "type": "object", "additionalProperties": false,
+      "required": ["operator_id", "type", "configuration", "source_index_sha256"],
+      "properties": {
+        "operator_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,79}$"},
+        "type": {"type": "string", "minLength": 3}, "configuration": {"type": "object"}, "source_index_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "input_domain": {
+      "type": "object", "additionalProperties": false, "required": ["description", "artifact_path", "sha256"],
+      "properties": {"description": {"type": "string", "minLength": 20}, "artifact_path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "operation_context": {
+      "type": "object", "additionalProperties": false,
+      "required": ["scope", "rng_assignment", "state_reset", "comparison", "optimizer_reorder_scope"],
+      "properties": {
+        "scope": {"const": "one_invocation_each_order"},
+        "rng_assignment": {"enum": ["global_sequential", "operator_keyed", "explicit_generator"]},
+        "state_reset": {"const": "same_pre_pair_state"},
+        "comparison": {"const": "exact_output_definedness_exception_and_rng_post_state"},
+        "optimizer_reorder_scope": {"enum": ["adjacent_swap", "permutation_with_pairwise_complete_cover"]}
+      }
+    },
+    "contamination": {
+      "type": "object", "additionalProperties": false, "required": ["seen_during_p5k_p5m", "registry_match"],
+      "properties": {"seen_during_p5k_p5m": {"const": false}, "registry_match": {"const": false}}
+    },
+    "pair": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pair_id", "framework_id", "left", "right", "input_domain", "operation_context", "source_anchors", "inclusion_reason", "contamination"],
+      "properties": {
+        "pair_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{4,99}$"}, "framework_id": {"type": "string"},
+        "left": {"$ref": "#/$defs/operator"}, "right": {"$ref": "#/$defs/operator"}, "input_domain": {"$ref": "#/$defs/input_domain"},
+        "operation_context": {"$ref": "#/$defs/operation_context"},
+        "source_anchors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 3}},
+        "inclusion_reason": {"type": "string", "minLength": 15}, "contamination": {"$ref": "#/$defs/contamination"}
+      }
+    }
+  }
+}

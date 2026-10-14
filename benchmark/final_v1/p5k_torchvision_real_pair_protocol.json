@@ -1,0 +1,31 @@
+{
+  "schema_version": "autocontract.p5k-torchvision-real-pair-protocol.v0",
+  "status": "predeclared_known-corpus_coverage_audit",
+  "date": "2026-07-30",
+  "question": "What evidence and strict-proof coverage does the current system obtain on real torchvision operator pairs once bounded differential testing is forbidden from minting Supported?",
+  "frozen_inputs": {
+    "experiments/autocontract_feasibility.py": "3d3871e859fdd8cda228722932b0ddc54c31fcc7b14cf01722fe176ceee9c314",
+    "outputs/autocontract_pairs.csv": "e365f2373253b0aed1f8d019fd0f595acd1a5f423e0d15218e9e364e55651ae6",
+    "outputs/autocontract_feasibility.md": "506262cf38b412eb09810efe7cb5a63b4fd765693a80124104364136de31a8d6",
+    "outputs/autocontract_p5i_reorder_capability_v1.json": "47aa8fd846f547c849f863e36684a3059e383263ebb1f72b1bc3b06ce3f91ca6",
+    "outputs/autocontract_p5j_reorder_v1_mutation.json": "b150b45be82970775bb9d3d5f40bf4cb349484d8f5241a016e55b95e37af4c02"
+  },
+  "runtime": {
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "torchvision_v2_python_files": 24,
+    "torchvision_v2_python_tree_sha256": "e63dbf5655cc72e815ffcc9fe8a50fcbc359b103ef24ca25a5600c1ecefb91a1"
+  },
+  "hypotheses": {
+    "h1_version_drift": "The legacy ToDtype(scale=True) constructor fails on the fixed runtime and is reported before a current-version replacement statement is used.",
+    "h2_counterexamples": "Bounded paired probes reproduce counterexamples for every legacy noncommuting label and find none for every legacy commuting label under the frozen global-RNG context.",
+    "h3_evidence_tiers": "A counterexample yields Noncommutes evidence; no counterexample yields Unknown, never strict Supported.",
+    "h4_static_coverage": "The current integer-affine V1 producer has zero Supported coverage on torchvision transform objects; this is reported as a coverage result, not repaired posthoc.",
+    "h5_source_binding": "Every constructible torchvision operator has a non-empty Supported SourceIndexV1 record for explicitly declared forward/_transform/_get_params slots; an empty-slot UDF is rejected by the consumer even if the generic index reports Supported.",
+    "h6_rng_context": "Global sequential RNG and operator-keyed RNG produce at least one different pair decision, demonstrating that commutativity is operation-context dependent."
+  },
+  "probe_budget": {"trials_per_pair_per_rng_context": 24, "seeds": "10007 + 97*trial"},
+  "pass_rule": "Frozen inputs/runtime/manifest hold; all six hypotheses hold; zero bounded-negative results are promoted to Supported.",
+  "claim_boundary": "Known contaminated torchvision calibration. Legacy labels are diagnostics, not an independent oracle. Finite differential testing can refute but cannot prove strict commutativity."
+}

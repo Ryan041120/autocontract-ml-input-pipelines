@@ -1,0 +1,168 @@
+{
+  "schema_version": "autocontract.p5n-reorder-final-handoff-selftest.v0",
+  "status": "pass",
+  "passed": 30,
+  "total": 30,
+  "protocol_sha256": "b371b05357bf8335084f71fe7d6ea2c85ec4ca9ba326ad7a38dbfc44e17ea5d6",
+  "runner_sha256": "e8a69625ffb62d8693f5fb64c08382d928d2ad7a8dd0785c71bd7b012181b597",
+  "public_schema_sha256": "6cf298ebb99d1a42ec4ddcecabb2a5e5aa363601e1999cc00ef034334e0c5039",
+  "private_schema_sha256": "4e3a5e85742ae8d64655477f0543875348ef0f6886a025df30812d09d87518d0",
+  "prediction_schema_sha256": "a2cf76aae5a7c7069a1f58dcf2709de9c7289abda45eed467833e512ef338789",
+  "synthetic_fixture": {
+    "pairs": 24,
+    "frameworks": 3,
+    "domains": 2,
+    "scientific_evidence": false
+  },
+  "checks": [
+    {
+      "name": "frozen predecessors exact",
+      "passed": true,
+      "observed": {
+        "experiments/autocontract_final_benchmark_admin_v2.py": "a0b9a57fed978fabc6b11168e10f09ca4249a2efc8d0d031aebfa2e62332434a",
+        "benchmark/final_v2/public_manifest.schema.json": "3fadc4bf051cbc96bd20009580a309ab8df6831f2d72eb8dc5508987392704a6",
+        "benchmark/final_v2/private_oracle.schema.json": "2cd215714075c1098d777cfe4fbdf15680bf781f5f62dc84dbfa888bc315d0c0",
+        "benchmark/final_v1/contamination_registry.json": "7630793ab3078797ba7d310206931cdad47819724c145cab33e3e5545525aa84",
+        "benchmark/final_v1/p5m_relation_boundary_falsification_protocol.json": "0a9aeba84db25ae536643cfcd1a83e58df2a216489109ba1868a58b241b6049c",
+        "experiments/autocontract_p5m_relation_boundary_falsification.py": "42ac1f44c01e027467d87216f76e78fb89a0cdc610cf544130687ca7c71e52ec",
+        "outputs/autocontract_p5m_relation_boundary_falsification.json": "f244a33287d66902ff569d6fe94c2f7489120c1d0974f6468036954823edbec8"
+      }
+    },
+    {
+      "name": "strict public schema and invariants accepted",
+      "passed": true
+    },
+    {
+      "name": "strict private schema and invariants accepted",
+      "passed": true
+    },
+    {
+      "name": "oracle commitment created",
+      "passed": true
+    },
+    {
+      "name": "untampered oracle commitment verified",
+      "passed": true
+    },
+    {
+      "name": "public freeze binds every analyzer artifact",
+      "passed": true
+    },
+    {
+      "name": "public freeze excludes private oracle",
+      "passed": true
+    },
+    {
+      "name": "strict prediction schema and invariants accepted",
+      "passed": true
+    },
+    {
+      "name": "prediction seal created",
+      "passed": true
+    },
+    {
+      "name": "safe reveal passes frozen gates in safety-first order",
+      "passed": true
+    },
+    {
+      "name": "public label leak rejected",
+      "passed": true,
+      "reason": "ValidationError:Additional properties are not allowed ('label' was unexpected)\n\nFailed validating 'additionalProperties' in schema['properties']['pairs']['items']:\n    {'type': 'object',\n     'additionalProperties': False,\n     'required': ['pair_id',\n                  'framework_id',\n                  'left',\n                  'right',\n                  'input_domain',\n                  'operation_context',\n                  'source_anchors',\n                  'inclusion_reason',\n                  'contamination'],\n     'properties': {'pair_id': {'type': 'string',\n                                'pattern': '^[a-z0-9][a-z0-9._-]{4,99}$'},\n                    'framework_id': {'type': 'string'},\n                    'left': {'$ref': '#/$defs/operator'},\n                    'right': {'$ref': '#/$defs/operator'},\n                    'input_domain': {'$ref': '#/$defs/input_domain'},\n                    'operation_context': {'$ref': '#/$defs/operation_context'},\n                    'source_anchors': {'type': 'array',\n                                       'minItems': 1,\n                                       'items': {'type': 'string',\n                                                 'minLength': 3}},\n                    'inclusion_reason': {'type': 'string', 'minLength': 15},\n                    'contamination': {'$ref': '#/$defs/contamination'}}}\n\nOn instance['pairs'][0]:\n    {'pair_id': 'final-pair-00',\n     'framework_id': 'novelframe-0',\n     'left': {'operator_id': 'left-00',\n              'type': 'novel.Left0',\n              'configuration': {'index': 0},\n              'source_index_sha256': '709d3246c3374fca8f3b4c425b87d20d518fbbffd66ac1525ecad4f1f19eef67'},\n     'right': {'operator_id': 'right-00',\n               'type': 'novel.Right0',\n               'configuration': {'index': 0},\n               'source_index_sha256': '5cb5d45532f8d1274568e04ab5a97da7817e0c9ab545af3595a8428d755700fd'},\n     'input_domain': {'description': 'Synthetic administrative '\n                                     'input-domain statement only.',\n                      'artifact_path': 'benchmark/final_v1/reorder_capability_v2.schema.json',\n                      'sha256': 'abb1c1f5853ab0df0bd9aa93507a2a7880f1d260fd6ab098ebaae1c4b39c7387'},\n     'operation_context': {'scope': 'one_invocation_each_order',\n                           'rng_assignment': 'global_sequential',\n                           'state_reset': 'same_pre_pair_state',\n                           'comparison': 'exact_output_definedness_exception_and_rng_post_state',\n                           'optimizer_reorder_scope': 'adjacent_swap'},\n     'source_anchors': ['synthetic-source:0'],\n     'inclusion_reason': 'Synthetic quota and workflow coverage only.',\n     'contamination': {'seen_during_p5k_p5m': False,\n                       'registry_match': False},\n     'label': 'commutes'}"
+    },
+    {
+      "name": "public counterexample leak rejected",
+      "passed": true,
+      "reason": "ValidationError:Additional properties are not allowed ('counterexample' was unexpected)\n\nFailed validating 'additionalProperties' in schema['properties']['pairs']['items']:\n    {'type': 'object',\n     'additionalProperties': False,\n     'required': ['pair_id',\n                  'framework_id',\n                  'left',\n                  'right',\n                  'input_domain',\n                  'operation_context',\n                  'source_anchors',\n                  'inclusion_reason',\n                  'contamination'],\n     'properties': {'pair_id': {'type': 'string',\n                                'pattern': '^[a-z0-9][a-z0-9._-]{4,99}$'},\n                    'framework_id': {'type': 'string'},\n                    'left': {'$ref': '#/$defs/operator'},\n                    'right': {'$ref': '#/$defs/operator'},\n                    'input_domain': {'$ref': '#/$defs/input_domain'},\n                    'operation_context': {'$ref': '#/$defs/operation_context'},\n                    'source_anchors': {'type': 'array',\n                                       'minItems': 1,\n                                       'items': {'type': 'string',\n                                                 'minLength': 3}},\n                    'inclusion_reason': {'type': 'string', 'minLength': 15},\n                    'contamination': {'$ref': '#/$defs/contamination'}}}\n\nOn instance['pairs'][0]:\n    {'pair_id': 'final-pair-00',\n     'framework_id': 'novelframe-0',\n     'left': {'operator_id': 'left-00',\n              'type': 'novel.Left0',\n              'configuration': {'index': 0},\n              'source_index_sha256': '709d3246c3374fca8f3b4c425b87d20d518fbbffd66ac1525ecad4f1f19eef67'},\n     'right': {'operator_id': 'right-00',\n               'type': 'novel.Right0',\n               'configuration': {'index': 0},\n               'source_index_sha256': '5cb5d45532f8d1274568e04ab5a97da7817e0c9ab545af3595a8428d755700fd'},\n     'input_domain': {'description': 'Synthetic administrative '\n                                     'input-domain statement only.',\n                      'artifact_path': 'benchmark/final_v1/reorder_capability_v2.schema.json',\n                      'sha256': 'abb1c1f5853ab0df0bd9aa93507a2a7880f1d260fd6ab098ebaae1c4b39c7387'},\n     'operation_context': {'scope': 'one_invocation_each_order',\n                           'rng_assignment': 'global_sequential',\n                           'state_reset': 'same_pre_pair_state',\n                           'comparison': 'exact_output_definedness_exception_and_rng_post_state',\n                           'optimizer_reorder_scope': 'adjacent_swap'},\n     'source_anchors': ['synthetic-source:0'],\n     'inclusion_reason': 'Synthetic quota and workflow coverage only.',\n     'contamination': {'seen_during_p5k_p5m': False,\n                       'registry_match': False},\n     'counterexample': {'seed': 1}}"
+    },
+    {
+      "name": "selector independence violation rejected",
+      "passed": true,
+      "reason": "ValidationError:selector is not independent of analyzer"
+    },
+    {
+      "name": "sealed pair quota violation rejected",
+      "passed": true,
+      "reason": "ValidationError:pair quota not met"
+    },
+    {
+      "name": "duplicate public pair rejected",
+      "passed": true,
+      "reason": "ValidationError:duplicate pair_id"
+    },
+    {
+      "name": "contaminated pair rejected",
+      "passed": true,
+      "reason": "ValidationError:False was expected\n\nFailed validating 'const' in schema['properties']['pairs']['items']['properties']['contamination']['properties']['registry_match']:\n    {'const': False}\n\nOn instance['pairs'][0]['contamination']['registry_match']:\n    True"
+    },
+    {
+      "name": "unknown framework reference rejected",
+      "passed": true,
+      "reason": "ValidationError:final-pair-00: unknown framework"
+    },
+    {
+      "name": "placeholder source binding rejected",
+      "passed": true,
+      "reason": "ValidationError:final-pair-00: placeholder operator source binding"
+    },
+    {
+      "name": "private public-hash mismatch rejected",
+      "passed": true,
+      "reason": "ValidationError:oracle public manifest hash mismatch"
+    },
+    {
+      "name": "missing private unit rejected",
+      "passed": true,
+      "reason": "ValidationError:private pair ids/order do not exactly match public manifest"
+    },
+    {
+      "name": "annotator independence violation rejected",
+      "passed": true,
+      "reason": "ValidationError:True was expected\n\nFailed validating 'const' in schema['properties']['annotators']['items']['properties']['independent_of_analyzer']:\n    {'const': True}\n\nOn instance['annotators'][0]['independent_of_analyzer']:\n    False"
+    },
+    {
+      "name": "Noncommutes without witness rejected",
+      "passed": true,
+      "reason": "ValidationError:final-pair-01: Noncommutes requires witness"
+    },
+    {
+      "name": "Commutes with counterexample rejected",
+      "passed": true,
+      "reason": "ValidationError:final-pair-00: Commutes cannot carry counterexample"
+    },
+    {
+      "name": "disagreement without adjudicator rejected",
+      "passed": true,
+      "reason": "ValidationError:final-pair-00: disagreement lacks adjudicator"
+    },
+    {
+      "name": "adjudication disagreement count mismatch rejected",
+      "passed": true,
+      "reason": "ValidationError:adjudication disagreement count mismatch"
+    },
+    {
+      "name": "post-commit oracle tampering rejected",
+      "passed": true,
+      "reason": "ValidationError:oracle changed after commitment"
+    },
+    {
+      "name": "prediction label leak rejected",
+      "passed": true,
+      "reason": "ValidationError:Additional properties are not allowed ('oracle_label' was unexpected)\n\nFailed validating 'additionalProperties' in schema['properties']['pairs']['items']:\n    {'type': 'object',\n     'additionalProperties': False,\n     'required': ['pair_id',\n                  'status',\n                  'assurance_level',\n                  'reason',\n                  'receipt_sha256',\n                  'generation_ms',\n                  'adapter_minutes'],\n     'properties': {'pair_id': {'type': 'string'},\n                    'status': {'enum': ['supported',\n                                        'unknown',\n                                        'unsupported']},\n                    'assurance_level': {'enum': ['locally_replayed_restricted_ast',\n                                                 'locally_replayed_versioned_relation_algebra',\n                                                 'trusted_revocable_external_proof',\n                                                 'none']},\n                    'reason': {'type': 'string', 'minLength': 3},\n                    'receipt_sha256': {'oneOf': [{'type': 'null'},\n                                                 {'$ref': '#/$defs/sha256'}]},\n                    'generation_ms': {'type': 'number', 'minimum': 0},\n                    'adapter_minutes': {'type': 'number', 'minimum': 0}}}\n\nOn instance['pairs'][0]:\n    {'pair_id': 'final-pair-00',\n     'status': 'supported',\n     'assurance_level': 'locally_replayed_versioned_relation_algebra',\n     'reason': 'synthetic_supported',\n     'receipt_sha256': 'f39f0abf1b8b3bf488787ca4e20fcaa09e1b3c43faba53b3cc8058052ccdf21b',\n     'generation_ms': 1.0,\n     'adapter_minutes': 0.5,\n     'oracle_label': 'commutes'}"
+    },
+    {
+      "name": "missing prediction pair rejected",
+      "passed": true,
+      "reason": "ValidationError:prediction ids/order do not exactly match public manifest"
+    },
+    {
+      "name": "post-seal prediction tampering rejected",
+      "passed": true,
+      "reason": "ValidationError:prediction changed after seal"
+    },
+    {
+      "name": "unsafe Supported prediction fails safety gate",
+      "passed": true
+    }
+  ],
+  "claim_boundary": "Administrative handoff readiness only; synthetic framework names, labels, predictions, scores, and burden values are not scientific evidence."
+}

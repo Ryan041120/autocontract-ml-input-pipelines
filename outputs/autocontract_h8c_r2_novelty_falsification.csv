@@ -1,0 +1,8 @@
+policy,budget,tp,fp,fn,tn,safe_recall,unsafe_detection_rate,median_elapsed_ms_per_case,total_operator_calls
+effect_v7_style_contract,0,4,0,0,14,1.0,1.0,6.47725,0
+dynamic_stateful_bound,1,4,12,0,2,1.0,0.14285714285714285,4.728,18
+dynamic_stateful_bound,3,4,11,0,3,1.0,0.21428571428571427,7.6013,54
+dynamic_stateful_bound,7,4,7,0,7,1.0,0.5,13.8235,126
+dynamic_stateful_bound,15,4,5,0,9,1.0,0.6428571428571429,21.7339,270
+dynamic_stateful_bound,31,4,3,0,11,1.0,0.7857142857142857,45.01155,558
+dynamic_stateful_bound,63,4,1,0,13,1.0,0.9285714285714286,88.5108,1134

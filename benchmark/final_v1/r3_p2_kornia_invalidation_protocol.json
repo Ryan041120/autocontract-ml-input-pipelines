@@ -1,0 +1,65 @@
+{
+  "schema_version": "autocontract.r3-p2-kornia-invalidation-protocol.v0",
+  "status": "internal_calibration_preregistered",
+  "date": "2026-07-30",
+  "research_question": "When decision accuracy is held equal on a real Kornia replay pipeline, what incremental protection is supplied by a versioned contract, and does the current v1 certificate actually detect silent executable-code drift?",
+  "claim_boundary": "Posthoc/adversarial calibration on the already-known H7I Kornia pipeline. It is neither blind evidence nor a cross-framework accuracy result.",
+  "repository": {
+    "path": ".research/semantics_safe_reconfiguration/h7h_corpus/kornia_repo",
+    "expected_commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930",
+    "framework_version": "0.8.3"
+  },
+  "pipeline": {
+    "operators": [
+      "RandomHorizontalFlip",
+      "RandomAffine",
+      "ColorJiggle"
+    ],
+    "input_shape": [2, 3, 32, 32],
+    "sample_id": "epoch0/sample17",
+    "seed": 20260730
+  },
+  "policies": {
+    "dynamic_reprobe": "Repeated same-context execution checks output stability and Torch RNG stability but carries no deployment artifact.",
+    "output_snapshot_guard": "Compares the candidate replay output on the registered witness input to a stored output digest; this is input-specific, not a source contract.",
+    "lineage_v1": "Uses the existing H7I ReplayLineageCertificate and child composition unchanged.",
+    "measured_source_v2_candidate": "Adds a measured repository HEAD plus canonical executable-callable/MRO digest to lineage_v1; caller-supplied commit strings alone are insufficient. This is a candidate mechanism, not a frozen contribution."
+  },
+  "cases": [
+    {"id": "stable_same_instance", "expected": "admit", "category": "benign_control"},
+    {"id": "stable_equivalent_instance", "expected": "admit", "category": "benign_control"},
+    {"id": "honest_framework_version_drift", "expected": "reject", "category": "metadata_drift"},
+    {"id": "honest_repository_commit_drift", "expected": "reject", "category": "metadata_drift"},
+    {"id": "sample_lineage_drift", "expected": "reject", "category": "lineage_drift"},
+    {"id": "operator_configuration_drift", "expected": "reject", "category": "configuration_drift"},
+    {"id": "child_order_drift", "expected": "reject", "category": "graph_drift"},
+    {"id": "input_schema_drift", "expected": "reject", "category": "schema_drift"},
+    {"id": "parameter_record_drift", "expected": "reject", "category": "record_drift"},
+    {"id": "missing_child_record", "expected": "reject", "category": "composition_drift"},
+    {"id": "unsupported_child_effect", "expected": "reject", "category": "composition_drift"},
+    {"id": "tampered_certificate", "expected": "reject", "category": "artifact_integrity"},
+    {"id": "silent_same_commit_callable_patch", "expected": "reject", "category": "executable_source_drift"}
+  ],
+  "source_digest_requirements": [
+    "Digest resolved executable callables rather than only class names or repr strings.",
+    "Include child-module paths and types.",
+    "Measure repository HEAD from the checked-out source rather than trusting the caller.",
+    "Canonicalization must ignore comments and formatting while changing on executable AST changes.",
+    "Monkeypatches or dynamically replaced callables must either change the digest or become unsupported/unknown."
+  ],
+  "primary_metrics": [
+    "required-invalidation recall",
+    "benign-control preservation",
+    "false accepts by drift category",
+    "stable reason coverage",
+    "median validation/probe latency",
+    "stored artifact bytes",
+    "semantic rules and LOC proxy"
+  ],
+  "falsification_rules": [
+    "If lineage_v1 admits silent executable drift, claims that v1 is source-bound must be withdrawn until a measured source binding is added.",
+    "If output_snapshot_guard covers all required drift with lower burden and no benign-control loss, the broader contract mechanism is not justified on this scope.",
+    "If measured_source_v2 rejects benign equivalent reconstruction or comment/format-only source changes, report over-invalidation rather than counting conservative rejection as success.",
+    "No policy may use the expected case label during prediction."
+  ]
+}

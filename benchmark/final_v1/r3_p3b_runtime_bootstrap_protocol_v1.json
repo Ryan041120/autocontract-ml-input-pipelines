@@ -1,0 +1,32 @@
+{
+  "schema_version": "autocontract.r3-p3b-runtime-bootstrap-protocol.v1",
+  "status": "bootstrap_revision_preregistered_before_operator_experiments",
+  "date": "2026-07-30",
+  "supersedes_for_bootstrap_only": "r3_p3b_runtime_bootstrap_protocol.json",
+  "v0_protocol_sha256": "17ce9aa3e505f030ebcf0227b92cabaafbe6a3f0f1959a1f24c1019fa12ac3aa",
+  "retained_v0_result": "FAIL: vendored Albumentations imported successfully from the expected commit but module __version__ returned unknown because no installed distribution metadata exists.",
+  "revision_rationale": "Albumentations 2.0.8 derives __version__ from importlib.metadata and intentionally falls back to unknown for a direct source checkout. Installing an Albumentations wheel only to create metadata would introduce a second source copy and weaken origin control.",
+  "version_proof": {
+    "imgaug": [
+      "resolved module origin is inside the vendored repository",
+      "repository HEAD equals the frozen commit",
+      "module __version__ equals 0.4.0"
+    ],
+    "Albumentations": [
+      "resolved module origin is inside the vendored repository",
+      "repository HEAD equals the frozen commit",
+      "HEAD has exact Git tag 2.0.8",
+      "pyproject.toml project.version equals 2.0.8",
+      "module __version__ may be unknown only when no albumentations distribution metadata is installed"
+    ]
+  },
+  "additional_constraints": [
+    "Do not pip-install imgaug or albumentations into the venv.",
+    "Do not create egg-info or dist-info inside either vendored repository.",
+    "Both repositories must remain clean after bootstrap.",
+    "All v0 direct dependency pins remain unchanged.",
+    "Freeze the fully resolved pip lock, module origins, dependency versions, Python ABI, repository commits/tags and protocol hashes before writing the operator experiment protocol."
+  ],
+  "success_gate": "All direct pins match; pip check passes; separate-process imports succeed; source origins and repository identities match; the resolved lock and manifest are hashed.",
+  "claim_boundary": "Environment reproducibility only. A v1 bootstrap pass does not count as replay, source-index or sentinel evidence."
+}

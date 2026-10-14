@@ -1,0 +1,10 @@
+case_id,expected,actual,passed,detail
+comment_and_format_only,same,same,True,canonical AST
+docstring_only,same,same,True,docstrings stripped
+executable_ast_change,different,different,True,return expression changed
+default_argument_change,different,different,True,hot dependency digest
+closure_cell_change,different,different,True,closure cell value
+referenced_global_change,different,different,True,referenced module global
+decorator_wrapper_change,different,different,True,outer and wrapped layers recorded
+origin_path_shadow,different,different,True,"same code, distinct resolved origin"
+uninspectable_native_callable,unknown,unknown,True,native callable fails closed

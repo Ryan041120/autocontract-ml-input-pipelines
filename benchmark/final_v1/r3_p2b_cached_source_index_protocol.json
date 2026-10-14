@@ -1,0 +1,73 @@
+{
+  "schema_version": "autocontract.r3-p2b-cached-source-index-protocol.v0",
+  "status": "internal_calibration_preregistered",
+  "date": "2026-07-30",
+  "research_question": "Can measured executable-source binding be moved to registration/deployment boundaries while a lightweight hot-path sentinel preserves same-process mutation detection at practical cost?",
+  "claim_boundary": "Posthoc mechanism calibration on the known H7I Kornia replay pipeline plus synthetic source-index unit fixtures. It is not blind, cross-framework, or malicious-sandbox evidence.",
+  "repository": {
+    "path": ".research/semantics_safe_reconfiguration/h7h_corpus/kornia_repo",
+    "expected_commit": "d6bb4bf0d8a043c2bb8cef0c346a1b006d100930",
+    "framework_version": "0.8.3"
+  },
+  "boundaries": {
+    "registration": "Build the portable canonical executable index and bind the actually measured repository identity.",
+    "deployment": "Rebuild and compare the canonical index, then create a process-local callable sentinel.",
+    "hot_path": "Compare function/code identities and dependency fingerprints without Git subprocesses, source-file reads, inspect.getsource, or AST parsing.",
+    "execution": "This experiment detects mutations present before the hot check. Concurrent mutation between check and use remains a TOCTOU limitation unless execution is sealed and output is buffered."
+  },
+  "real_kornia_cases": [
+    {"id": "stable_equivalent_instance", "expected": "admit", "category": "benign_control"},
+    {"id": "stable_after_runtime_state", "expected": "admit", "category": "benign_control"},
+    {"id": "class_callable_replacement_after_deploy", "expected": "reject", "category": "monkeypatch"},
+    {"id": "same_function_code_replacement_after_deploy", "expected": "reject", "category": "code_object_drift"},
+    {"id": "instance_forward_override_after_deploy", "expected": "reject", "category": "instance_monkeypatch"},
+    {"id": "native_callable_override_after_deploy", "expected": "unknown", "category": "unsupported_callable"}
+  ],
+  "source_index_fixture_cases": [
+    {"id": "comment_and_format_only", "expected": "same", "category": "benign_source_change"},
+    {"id": "docstring_only", "expected": "same", "category": "benign_source_change"},
+    {"id": "executable_ast_change", "expected": "different", "category": "source_drift"},
+    {"id": "default_argument_change", "expected": "different", "category": "dependency_drift"},
+    {"id": "closure_cell_change", "expected": "different", "category": "dependency_drift"},
+    {"id": "referenced_global_change", "expected": "different", "category": "dependency_drift"},
+    {"id": "decorator_wrapper_change", "expected": "different", "category": "wrapper_drift"},
+    {"id": "origin_path_shadow", "expected": "different", "category": "import_shadow"},
+    {"id": "uninspectable_native_callable", "expected": "unknown", "category": "unsupported_callable"}
+  ],
+  "policies": {
+    "cached_digest_only": "After successful deployment validation, trusts the cached digest and runs lineage_v1 without checking whether resolved callables changed.",
+    "hot_callable_sentinel": "Runs lineage_v1 plus a process-local callable/code/default/closure/global dependency sentinel; unsupported resolution returns Unknown and fails closed.",
+    "cold_reindex": "Rebuilds the full canonical executable index for every decision; retained as a correctness and cost reference, not a proposed hot-path design."
+  },
+  "canonicalization": [
+    "Ignore source locations, formatting, comments and function/class docstrings.",
+    "Preserve executable AST, code-object digest, defaults, keyword defaults and closure values.",
+    "Record referenced immutable globals and callable/module origins; unresolved mutable or native dependencies become Unknown.",
+    "Record every wrapper layer rather than discarding behavior through inspect.unwrap.",
+    "Bind module origin relative to the measured repository root when possible; otherwise bind the resolved absolute origin."
+  ],
+  "cost_metrics": [
+    "registration index latency",
+    "deployment revalidation latency",
+    "sentinel creation latency",
+    "lineage_v1 hot validation latency",
+    "sentinel hot validation latency over at least 100 repetitions",
+    "serialized portable-index bytes",
+    "process-local sentinel entry count"
+  ],
+  "success_gates": [
+    "hot_callable_sentinel preserves both benign Kornia controls",
+    "hot_callable_sentinel rejects all three supported post-deployment mutation classes",
+    "native/uninspectable override is Unknown rather than admitted",
+    "all nine source-index fixture expectations hold",
+    "median sentinel-only hot check is <= 10 ms and <= 10% of median cold reindex",
+    "the hot check executes no Git subprocess and no source/AST indexing path"
+  ],
+  "falsification_rules": [
+    "If cached_digest_only admits post-deployment callable drift, cached digest alone is not a valid runtime source binding.",
+    "If the sentinel cannot detect same-function __code__ replacement or dependency drift without cold parsing, the proposed cache boundary is insufficient.",
+    "If unsupported callables are admitted, measured-source v2 is no-go.",
+    "If benign controls change digest, report over-invalidation rather than counting conservative rejection as success.",
+    "Passing this protocol does not address mutation concurrent with execution, native extension internals, or cross-process portability of process-local identities."
+  ]
+}

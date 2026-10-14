@@ -1,0 +1,329 @@
+{
+  "schema_version": "autocontract.h8c-r1-stateful-dynamic.v0",
+  "artifact_role": "review_driven_internal_calibration_not_blind_evidence",
+  "source_bodies_known": true,
+  "oracle_independent": false,
+  "environment": {
+    "python": "3.12.4",
+    "torch": "2.4.0",
+    "torchvision": "0.19.0",
+    "numpy": "1.26.4",
+    "cuda_available": false,
+    "cuda_device_count": 0
+  },
+  "archived_h8c": {
+    "runner_sha256": "6848690c1b57b5e989ca5f48388bb0f7206c8ded40f1d4fa29c9c961e9a3ff6c",
+    "measurements_sha256": "c29d5131d9a39ac8ce066cffdb36639ebe0732eb0788e8ee94391f3e6646239a",
+    "measurements_reused_without_modification": true
+  },
+  "probe_spec": {
+    "probe_id": "autocontract.dynamic-stateful.v0",
+    "seed": 20260730,
+    "same_context_repeats": 2,
+    "cross_context_epochs": [
+      0,
+      1
+    ],
+    "environment_key": "AUTOCONTRACT_H8C_GAIN",
+    "environment_values": [
+      "1.0",
+      "1.2"
+    ],
+    "max_operator_calls": 7
+  },
+  "probe_results": {
+    "cv_safe_prefix": {
+      "unit_id": "cv_safe_prefix",
+      "output_only_conflict": false,
+      "stateful_conflict": false,
+      "observed_effects": [],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": false,
+      "rng_state_changed": false,
+      "object_state_changed": false,
+      "environment_output_changed": false,
+      "operator_calls": 7,
+      "probe_spec_sha256": "b5bc8c7689dedcaf3b6d1c57f1dec8afe9bb0eb751df40ab5b177b0a448d2802"
+    },
+    "audio_safe_prefix": {
+      "unit_id": "audio_safe_prefix",
+      "output_only_conflict": false,
+      "stateful_conflict": false,
+      "observed_effects": [],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": false,
+      "rng_state_changed": false,
+      "object_state_changed": false,
+      "environment_output_changed": false,
+      "operator_calls": 7,
+      "probe_spec_sha256": "b5bc8c7689dedcaf3b6d1c57f1dec8afe9bb0eb751df40ab5b177b0a448d2802"
+    },
+    "cv_hidden_rng_prefix": {
+      "unit_id": "cv_hidden_rng_prefix",
+      "output_only_conflict": false,
+      "stateful_conflict": true,
+      "observed_effects": [
+        "rng_state_changed"
+      ],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": false,
+      "rng_state_changed": true,
+      "object_state_changed": false,
+      "environment_output_changed": false,
+      "operator_calls": 7,
+      "probe_spec_sha256": "b5bc8c7689dedcaf3b6d1c57f1dec8afe9bb0eb751df40ab5b177b0a448d2802"
+    },
+    "cv_external_state_prefix": {
+      "unit_id": "cv_external_state_prefix",
+      "output_only_conflict": false,
+      "stateful_conflict": true,
+      "observed_effects": [
+        "environment_output_changed"
+      ],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": false,
+      "rng_state_changed": false,
+      "object_state_changed": false,
+      "environment_output_changed": true,
+      "operator_calls": 7,
+      "probe_spec_sha256": "b5bc8c7689dedcaf3b6d1c57f1dec8afe9bb0eb751df40ab5b177b0a448d2802"
+    },
+    "cv_full_cache": {
+      "unit_id": "cv_full_cache",
+      "output_only_conflict": false,
+      "stateful_conflict": true,
+      "observed_effects": [
+        "cross_context_output_changed"
+      ],
+      "same_context_output_changed": false,
+      "fresh_instance_repro_mismatch": false,
+      "cross_context_output_changed": true,
+      "rng_state_changed": false,
+      "object_state_changed": false,
+      "environment_output_changed": false,
+      "operator_calls": 7,
+      "probe_spec_sha256": "b5bc8c7689dedcaf3b6d1c57f1dec8afe9bb0eb751df40ab5b177b0a448d2802"
+    }
+  },
+  "decisions": [
+    {
+      "policy": "dynamic_output_only",
+      "workload_id": "cv_safe_prefix",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": true,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.49129270000000014,
+      "observed_effects": []
+    },
+    {
+      "policy": "dynamic_output_only",
+      "workload_id": "audio_safe_prefix",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": true,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.17846840000000003,
+      "observed_effects": []
+    },
+    {
+      "policy": "dynamic_output_only",
+      "workload_id": "cv_hidden_rng_prefix",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": false,
+      "unsafe_selection": true,
+      "optimizer_score_s": 0.3221085,
+      "observed_effects": [
+        "rng_state_changed"
+      ]
+    },
+    {
+      "policy": "dynamic_output_only",
+      "workload_id": "cv_external_state_prefix",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": false,
+      "unsafe_selection": true,
+      "optimizer_score_s": 0.48089060000000006,
+      "observed_effects": [
+        "environment_output_changed"
+      ]
+    },
+    {
+      "policy": "dynamic_output_only",
+      "workload_id": "cv_full_cache",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": false,
+      "unsafe_selection": true,
+      "optimizer_score_s": 1.1457402999999997,
+      "observed_effects": [
+        "cross_context_output_changed"
+      ]
+    },
+    {
+      "policy": "dynamic_stateful",
+      "workload_id": "cv_safe_prefix",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": true,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.49129270000000014,
+      "observed_effects": []
+    },
+    {
+      "policy": "dynamic_stateful",
+      "workload_id": "audio_safe_prefix",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": true,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.17846840000000003,
+      "observed_effects": []
+    },
+    {
+      "policy": "dynamic_stateful",
+      "workload_id": "cv_hidden_rng_prefix",
+      "semantic_admit": false,
+      "selected": false,
+      "oracle_safe": false,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.3221085,
+      "observed_effects": [
+        "rng_state_changed"
+      ]
+    },
+    {
+      "policy": "dynamic_stateful",
+      "workload_id": "cv_external_state_prefix",
+      "semantic_admit": false,
+      "selected": false,
+      "oracle_safe": false,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.48089060000000006,
+      "observed_effects": [
+        "environment_output_changed"
+      ]
+    },
+    {
+      "policy": "dynamic_stateful",
+      "workload_id": "cv_full_cache",
+      "semantic_admit": false,
+      "selected": false,
+      "oracle_safe": false,
+      "unsafe_selection": false,
+      "optimizer_score_s": 1.1457402999999997,
+      "observed_effects": [
+        "cross_context_output_changed"
+      ]
+    },
+    {
+      "policy": "hybrid",
+      "workload_id": "cv_safe_prefix",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": true,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.49129270000000014,
+      "observed_effects": []
+    },
+    {
+      "policy": "hybrid",
+      "workload_id": "audio_safe_prefix",
+      "semantic_admit": true,
+      "selected": true,
+      "oracle_safe": true,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.17846840000000003,
+      "observed_effects": []
+    },
+    {
+      "policy": "hybrid",
+      "workload_id": "cv_hidden_rng_prefix",
+      "semantic_admit": false,
+      "selected": false,
+      "oracle_safe": false,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.3221085,
+      "observed_effects": [
+        "rng_state_changed"
+      ]
+    },
+    {
+      "policy": "hybrid",
+      "workload_id": "cv_external_state_prefix",
+      "semantic_admit": false,
+      "selected": false,
+      "oracle_safe": false,
+      "unsafe_selection": false,
+      "optimizer_score_s": 0.48089060000000006,
+      "observed_effects": [
+        "environment_output_changed"
+      ]
+    },
+    {
+      "policy": "hybrid",
+      "workload_id": "cv_full_cache",
+      "semantic_admit": false,
+      "selected": false,
+      "oracle_safe": false,
+      "unsafe_selection": false,
+      "optimizer_score_s": 1.1457402999999997,
+      "observed_effects": [
+        "cross_context_output_changed"
+      ]
+    }
+  ],
+  "summaries": [
+    {
+      "policy": "dynamic_output_only",
+      "tp": 2,
+      "fp": 3,
+      "fn": 0,
+      "tn": 0,
+      "safe_recall": 1.0,
+      "unsafe_false_accepts": 3,
+      "unsafe_plan_selections": 3
+    },
+    {
+      "policy": "dynamic_stateful",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 3,
+      "safe_recall": 1.0,
+      "unsafe_false_accepts": 0,
+      "unsafe_plan_selections": 0
+    },
+    {
+      "policy": "hybrid",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 3,
+      "safe_recall": 1.0,
+      "unsafe_false_accepts": 0,
+      "unsafe_plan_selections": 0
+    }
+  ],
+  "checks": {
+    "same_five_h8c_workloads": true,
+    "fixed_seven_call_budget": true,
+    "probe_spec_identical_across_workloads": true,
+    "output_only_reproduces_three_false_accepts": true,
+    "stateful_detects_hidden_rng": true,
+    "stateful_detects_external_state": true,
+    "stateful_detects_frozen_diversity_boundary": true,
+    "stateful_preserves_both_safe_prefixes": true,
+    "stateful_zero_false_accepts": true,
+    "stateful_matches_hybrid_on_known_h8c": true
+  },
+  "passed": 10,
+  "total": 10,
+  "status": "pass"
+}

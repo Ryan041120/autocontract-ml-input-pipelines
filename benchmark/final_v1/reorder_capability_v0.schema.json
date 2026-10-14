@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autocontract.local/schema/reorder_capability_v0.schema.json",
+  "title": "AutoContract ReorderCapabilityV0 receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "operation_context_sha256",
+    "input_schema_sha256",
+    "left",
+    "right",
+    "relation",
+    "status",
+    "proof_method",
+    "proof_sha256",
+    "proof_scope"
+  ],
+  "properties": {
+    "schema_version": {"const": "autocontract.reorder-capability.v0"},
+    "operation_context_sha256": {"$ref": "#/$defs/sha256"},
+    "input_schema_sha256": {"$ref": "#/$defs/sha256"},
+    "left": {"$ref": "#/$defs/operator_binding"},
+    "right": {"$ref": "#/$defs/operator_binding"},
+    "relation": {"enum": ["commutes"]},
+    "status": {"enum": ["supported", "unsupported", "unknown"]},
+    "proof_method": {"enum": ["manual", "static", "differential", "formal", "hybrid"]},
+    "proof_sha256": {"$ref": "#/$defs/sha256"},
+    "proof_scope": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "operator_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operator_id", "contract_sha256", "source_index_sha256"],
+      "properties": {
+        "operator_id": {"type": "string", "minLength": 1},
+        "contract_sha256": {"$ref": "#/$defs/sha256"},
+        "source_index_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

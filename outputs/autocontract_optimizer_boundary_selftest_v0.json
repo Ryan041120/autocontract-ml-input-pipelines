@@ -1,0 +1,33 @@
+{
+  "protocol": "AutoContract optimizer-boundary H3 replay v0",
+  "scope": "interface and opportunity-count pilot; not EffectV7 blind evidence",
+  "effect_seeds": 8,
+  "validator_trials": 8,
+  "oracle_trials": 48,
+  "operators": 30,
+  "candidates": 37,
+  "pipelines": 10,
+  "checks": {
+    "fail_closed_only_eligible_selected": true,
+    "fail_closed_non_overlap": true,
+    "registry_only_only_eligible_selected": true,
+    "registry_only_non_overlap": true,
+    "static_only_only_eligible_selected": true,
+    "static_only_non_overlap": true,
+    "dynamic_only_only_eligible_selected": true,
+    "dynamic_only_non_overlap": true,
+    "hybrid_only_eligible_selected": true,
+    "hybrid_non_overlap": true,
+    "manual_full_only_eligible_selected": true,
+    "manual_full_non_overlap": true,
+    "human_oracle_only_eligible_selected": true,
+    "human_oracle_non_overlap": true,
+    "fail_closed_high_score_cannot_bypass_semantics": true,
+    "hybrid_zero_unsafe_false_accepts": true,
+    "hybrid_safe_recall_gate": true,
+    "dynamic_only_false_accept_preserved": true,
+    "human_oracle_plan_has_no_unsafe_selection": true,
+    "all_contract_digests_bound": true
+  },
+  "all_checks_pass": true
+}

@@ -1,0 +1,9 @@
+policy,budget_ms,tp,fp,fn,tn,safe_recall,known_unsafe_false_accepts,classified,unknown,crash,timeout,reason_accuracy,median_preparation_ms,median_policy_ms,total_calls,budget_overruns
+effect_v7_frozen,0,4,0,0,5,1.0,0,9,0,0,0,1.0,0.0,11.9163,0,0
+dynamic_blackbox,25,4,1,0,4,1.0,1,9,0,0,0,0.8888888888888888,3.1982,45.5001,10,8
+dynamic_blackbox,100,4,1,0,4,1.0,1,9,0,0,0,0.8888888888888888,3.6374,87.1452,45,4
+dynamic_blackbox,500,4,1,0,4,1.0,1,9,0,0,0,0.8888888888888888,2.9789,118.0891,84,0
+dynamic_source_guided,25,4,0,0,5,1.0,0,9,0,0,0,1.0,2.8129,6.7603,25,4
+dynamic_source_guided,100,4,0,0,5,1.0,0,9,0,0,0,1.0,3.3668,35.9356,52,2
+dynamic_source_guided,500,4,0,0,5,1.0,0,9,0,0,0,1.0,3.1883,81.462,65,1
+manual_full,0,4,0,0,5,1.0,0,9,0,0,0,1.0,0.0,0.0,0,0

@@ -1,0 +1,90 @@
+{
+  "schema_version": "autocontract.p4b-replay-capability-schema-protocol.v0",
+  "status": "preregistered_before_schema_and_module",
+  "date": "2026-07-30",
+  "research_question": "Can the P3d layered decision be expressed as a framework-neutral, fail-closed receipt schema and dependency-light validator suitable for freezing before final-blind corpus selection?",
+  "claim_boundary": "Administrative/mechanism self-test only. A valid receipt proves schema consistency and recorded checks, not universal replay correctness or unseen-framework generalization.",
+  "frozen_evidence": {
+    "p3d_protocol_sha256": "263c1a09a663623780a697160cc71dec1a6270c0ad4fafb71bd2b10bba6378c6",
+    "p3d_result_sha256": "8e694749a50b59efc74e722aacfaf40d126e1956da47c502e0dff82986cef949",
+    "p4a_result_sha256": "0b20fe7fc5fd7c8beb27e5946b657ecee612b788cb02cb1c415a82b3d1fb4d9a"
+  },
+  "receipt_required_fields": [
+    "schema_version",
+    "artifact_type",
+    "framework",
+    "framework_version",
+    "mechanism",
+    "configuration_sha256",
+    "runtime_manifest_sha256",
+    "source_index_sha256",
+    "source_index_status",
+    "semantic_status",
+    "capability_status",
+    "lineage_operands",
+    "checks",
+    "reasons",
+    "scope"
+  ],
+  "mechanisms": {
+    "rng_state_restoration": {
+      "required_checks": ["public_callable", "deterministic_mode", "exact_replay", "caller_rng_unchanged"],
+      "record_checks": "not_applicable"
+    },
+    "stored_parameter_record": {
+      "required_checks": ["record_generated", "stored_params_present", "public_restore_completed", "exact_replay", "caller_rng_unchanged"],
+      "record_checks": "required"
+    },
+    "none": {
+      "required_checks": [],
+      "use": "contract-inference or non-replay candidate; capability status must be unsupported unless a future version defines another mechanism"
+    }
+  },
+  "lineage_policy": {
+    "operand_fields": ["name", "role", "digest_sha256", "structure_sha256"],
+    "roles": ["primary_input", "secondary_input", "metadata_target", "parameter_record"],
+    "requirements": [
+      "every replay receipt has at least one primary_input",
+      "stored_parameter_record receipts have at least one parameter_record operand so the validated record bytes are bound",
+      "operand names are unique",
+      "every target-dependent name must appear as a lineage operand; primary_input is allowed for shape/content dependence on the primary sample, while external metadata must use metadata_target",
+      "all digests are 64 lowercase hexadecimal characters"
+    ]
+  },
+  "composition_policy": [
+    "semantic reject dominates and returns reject",
+    "semantic unknown returns unknown",
+    "semantic admit plus capability unsupported returns unsupported",
+    "semantic admit plus capability unknown returns unknown",
+    "semantic admit plus capability supported plus source unknown returns unknown",
+    "only semantic admit plus capability supported plus source supported returns admit"
+  ],
+  "self_tests": [
+    "the eight P3d truth-table rows",
+    "valid rng-state receipt accepted",
+    "valid stored-record receipt accepted",
+    "missing primary lineage rejected",
+    "duplicate operand name rejected",
+    "bad digest rejected",
+    "missing mechanism-required check rejected",
+    "false required check cannot claim capability Supported",
+    "target-dependent operand unbound rejected",
+    "native/source Unknown cannot compose to Admit",
+    "mechanism none cannot claim capability Supported",
+    "unknown field rejected in strict mode"
+  ],
+  "success_gates": [
+    "JSON schema and Python validator agree on both valid receipt fixtures",
+    "all invalid receipt fixtures fail closed with a named reason",
+    "all eight composition truth-table cases pass",
+    "validator imports and self-tests without PyTorch, imgaug, Albumentations or OpenCV",
+    "P3d and P4a frozen inputs remain unchanged"
+  ],
+  "falsification_rules": [
+    "Do not embed framework-specific class or method names in the core validator.",
+    "Framework adapters may populate checks, but cannot redefine composition precedence.",
+    "A receipt with check=false cannot be Supported even if exact_replay=true.",
+    "Schema validation is evidence hygiene, not a proof that measured outputs cover future inputs.",
+    "If a self-test fails, retain v0 and create a new protocol before relaxing required fields or checks."
+  ]
+}

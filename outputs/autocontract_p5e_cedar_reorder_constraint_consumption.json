@@ -1,0 +1,348 @@
+{
+  "schema_version": "autocontract.p5e-cedar-reorder-constraint-consumption-result.v0",
+  "status": "pass",
+  "passed": 17,
+  "total": 17,
+  "protocol_sha256": "182940cc7658ffcc67d22519a73403e7d627dd21a7934409a51fb8f4c4040322",
+  "runner_sha256": "1fc17b92f0615bc547b100988bb6c0ab89f26816f0f0e94dddc600692539bd0c",
+  "upstream_commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+  "checks": [
+    {
+      "name": "upstream_checkout_matches_commit",
+      "passed": true,
+      "observed": "f062305fcdab196e871c5d09b4c82ab788b4da79"
+    },
+    {
+      "name": "upstream_worktree_is_clean",
+      "passed": true,
+      "observed": "clean"
+    },
+    {
+      "name": "upstream_git_blobs_match",
+      "passed": true,
+      "observed": {
+        "cedar/compose/optimizer.py": "11c70d449ad1fbeccc6f19ca0bcac56fef919e7f464699d96814ae80506de09b",
+        "cedar/compose/utils.py": "b6895474650b13b5cd4e8bf429cb5cdf1082a7b0edf7223b90f71a671c669670",
+        "tests/data/test_profile_stats.yml": "8fcd2c41df608a60a90efd26698c4ade4c5d428a398e4a2e68c0d74b431685e2"
+      }
+    },
+    {
+      "name": "frozen_local_inputs_unchanged",
+      "passed": true,
+      "observed": {
+        "experiments/autocontract_p5a_constraint_compiler.py": "c96ed767f97ecd82d6ea7bc574d4a0211bb530464ec42c9960d9459598f5d0ab",
+        "outputs/autocontract_p5a_constraint_compiler_selftest.json": "59d75486cc547277616ad99361a01d3aa66a1e9991091329ebcb4bf4b470ee7a",
+        "outputs/autocontract_p5d_cedar_optimizer_consumption.json": "b22523811a844b39ddcd1991866220af275fee42d35370830bdbb0ad0b49c7fe"
+      }
+    },
+    {
+      "name": "compiler_emits_crop_fix",
+      "passed": true,
+      "observed": [
+        {
+          "operator_id": "decode",
+          "tag": "autocontract:decode",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "33251e827d126cc1ad46081d3201aa3e6c93280924e116835962303d56125e9f",
+          "source_index_sha256": "6e52c68427e90ffb1ce7796e4885c09860d235dfcbb8c4fb895f41e351afbd01"
+        },
+        {
+          "operator_id": "crop",
+          "tag": "autocontract:crop",
+          "random": false,
+          "fix": true,
+          "depends_on": [],
+          "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+          "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+        },
+        {
+          "operator_id": "normalize",
+          "tag": "autocontract:normalize",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "cf213d1a354bd591c52de3fabd67faca3263ea64c67545d51d5f3286c7ed1e59",
+          "source_index_sha256": "e11057f2158d2fdb336a547b75082e019a582ab5893efda723549a7e46cc3d9c"
+        }
+      ]
+    },
+    {
+      "name": "compiler_emits_normalize_dependency",
+      "passed": true,
+      "observed": [
+        {
+          "operator_id": "decode",
+          "tag": "autocontract:decode",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "33251e827d126cc1ad46081d3201aa3e6c93280924e116835962303d56125e9f",
+          "source_index_sha256": "6e52c68427e90ffb1ce7796e4885c09860d235dfcbb8c4fb895f41e351afbd01"
+        },
+        {
+          "operator_id": "crop",
+          "tag": "autocontract:crop",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+          "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+        },
+        {
+          "operator_id": "normalize",
+          "tag": "autocontract:normalize",
+          "random": false,
+          "fix": false,
+          "depends_on": [
+            "autocontract:decode"
+          ],
+          "contract_sha256": "cf213d1a354bd591c52de3fabd67faca3263ea64c67545d51d5f3286c7ed1e59",
+          "source_index_sha256": "e11057f2158d2fdb336a547b75082e019a582ab5893efda723549a7e46cc3d9c"
+        }
+      ]
+    },
+    {
+      "name": "fix_autocontract_candidate_count_matches",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "fix_autocontract_selected_path_matches",
+      "passed": true,
+      "observed": [
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "fix_hint_removed_candidate_count_matches",
+      "passed": true,
+      "observed": 6
+    },
+    {
+      "name": "fix_hint_removed_selected_path_matches",
+      "passed": true,
+      "observed": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "dependency_autocontract_candidate_count_matches",
+      "passed": true,
+      "observed": 3
+    },
+    {
+      "name": "dependency_autocontract_selected_path_matches",
+      "passed": true,
+      "observed": [
+        3,
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "dependency_hint_removed_candidate_count_matches",
+      "passed": true,
+      "observed": 6
+    },
+    {
+      "name": "dependency_hint_removed_selected_path_matches",
+      "passed": true,
+      "observed": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "dependency_constrained_plan_orders_decode_before_normalize",
+      "passed": true,
+      "observed": [
+        3,
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "dependency_removed_optimum_violates_that_order",
+      "passed": true,
+      "observed": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "fix_constrained_plan_keeps_crop_position",
+      "passed": true
+    }
+  ],
+  "observations": {
+    "fix_autocontract": {
+      "recipe": [
+        {
+          "operator_id": "decode",
+          "tag": "autocontract:decode",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "33251e827d126cc1ad46081d3201aa3e6c93280924e116835962303d56125e9f",
+          "source_index_sha256": "6e52c68427e90ffb1ce7796e4885c09860d235dfcbb8c4fb895f41e351afbd01"
+        },
+        {
+          "operator_id": "crop",
+          "tag": "autocontract:crop",
+          "random": false,
+          "fix": true,
+          "depends_on": [],
+          "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+          "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+        },
+        {
+          "operator_id": "normalize",
+          "tag": "autocontract:normalize",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "cf213d1a354bd591c52de3fabd67faca3263ea64c67545d51d5f3286c7ed1e59",
+          "source_index_sha256": "e11057f2158d2fdb336a547b75082e019a582ab5893efda723549a7e46cc3d9c"
+        }
+      ],
+      "candidate_count": 1,
+      "selected_path": [
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    "fix_hint_removed": {
+      "recipe": [
+        {
+          "operator_id": "decode",
+          "tag": "autocontract:decode",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "33251e827d126cc1ad46081d3201aa3e6c93280924e116835962303d56125e9f",
+          "source_index_sha256": "6e52c68427e90ffb1ce7796e4885c09860d235dfcbb8c4fb895f41e351afbd01"
+        },
+        {
+          "operator_id": "crop",
+          "tag": "autocontract:crop",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+          "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+        },
+        {
+          "operator_id": "normalize",
+          "tag": "autocontract:normalize",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "cf213d1a354bd591c52de3fabd67faca3263ea64c67545d51d5f3286c7ed1e59",
+          "source_index_sha256": "e11057f2158d2fdb336a547b75082e019a582ab5893efda723549a7e46cc3d9c"
+        }
+      ],
+      "candidate_count": 6,
+      "selected_path": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    "dependency_autocontract": {
+      "recipe": [
+        {
+          "operator_id": "decode",
+          "tag": "autocontract:decode",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "33251e827d126cc1ad46081d3201aa3e6c93280924e116835962303d56125e9f",
+          "source_index_sha256": "6e52c68427e90ffb1ce7796e4885c09860d235dfcbb8c4fb895f41e351afbd01"
+        },
+        {
+          "operator_id": "crop",
+          "tag": "autocontract:crop",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+          "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+        },
+        {
+          "operator_id": "normalize",
+          "tag": "autocontract:normalize",
+          "random": false,
+          "fix": false,
+          "depends_on": [
+            "autocontract:decode"
+          ],
+          "contract_sha256": "cf213d1a354bd591c52de3fabd67faca3263ea64c67545d51d5f3286c7ed1e59",
+          "source_index_sha256": "e11057f2158d2fdb336a547b75082e019a582ab5893efda723549a7e46cc3d9c"
+        }
+      ],
+      "candidate_count": 3,
+      "selected_path": [
+        3,
+        2,
+        0,
+        1
+      ]
+    },
+    "dependency_hint_removed": {
+      "recipe": [
+        {
+          "operator_id": "decode",
+          "tag": "autocontract:decode",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "33251e827d126cc1ad46081d3201aa3e6c93280924e116835962303d56125e9f",
+          "source_index_sha256": "6e52c68427e90ffb1ce7796e4885c09860d235dfcbb8c4fb895f41e351afbd01"
+        },
+        {
+          "operator_id": "crop",
+          "tag": "autocontract:crop",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+          "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+        },
+        {
+          "operator_id": "normalize",
+          "tag": "autocontract:normalize",
+          "random": false,
+          "fix": false,
+          "depends_on": [],
+          "contract_sha256": "cf213d1a354bd591c52de3fabd67faca3263ea64c67545d51d5f3286c7ed1e59",
+          "source_index_sha256": "e11057f2158d2fdb336a547b75082e019a582ab5893efda723549a7e46cc3d9c"
+        }
+      ],
+      "candidate_count": 6,
+      "selected_path": [
+        3,
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  "note": "Actual cedar reorder candidate and selected-plan consumption of compiler-generated fix/depends_on; synthetic calibration only."
+}

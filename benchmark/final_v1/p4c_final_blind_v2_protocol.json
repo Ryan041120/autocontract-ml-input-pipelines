@@ -1,0 +1,95 @@
+{
+  "schema_version": "autocontract.p4c-final-blind-v2-protocol.v0",
+  "status": "preregistered_before_v2_admin_and_schemas",
+  "date": "2026-07-30",
+  "research_question": "Can the final-blind handoff represent and freeze semantic, replay-capability and executable-source layers without leaking any expected outcome into the public manifest?",
+  "v1_gap_audit": [
+    "public units name only a broad lifecycle phase, not the exact sample_apply/replay_apply/cache operation",
+    "analyzer_bundle does not freeze capability/source-index systems or their schemas",
+    "units do not preregister callable binding components, slot policy, capability mechanism/checks or lineage roles",
+    "private oracle cannot separately score semantic safety and framework capability",
+    "metric gates do not separately measure capability/source resolution and final safe-opportunity recall"
+  ],
+  "frozen_inputs": {
+    "v1_admin_sha256": "3536b4279f6a6e2b1e077f77c951ba38c10d433e522a6ae31a14ffb86a213aff",
+    "v1_public_schema_sha256": "addc64aa2813cc2e63bffd5a42cdbee59b3173254853b24fa538d4201faf8a05",
+    "v1_private_schema_sha256": "e42e0625b8adfbfc04824cc047dc5522635d7c36928b5959098107f05556d4ce",
+    "capability_module_sha256": "e5d4d11a36f7b5cb9ad70ddc1f38f26c66ff0d624142d4e860e82b5e18353383",
+    "capability_schema_sha256": "40cd2d57c266631f73a34efe535d584cbf316eb98c20f14b5479aca6a739e667",
+    "capability_selftest_sha256": "811334a0ddba74aaaae966024b3258ade3f375e7df477cb717cb11b097f555a8"
+  },
+  "public_v2_requirements": {
+    "analyzer_bundle": [
+      "effect system name/path/hash",
+      "capability system name/path/hash",
+      "source-index system name/path/hash",
+      "one-shot runner path/hash",
+      "adapter paths/hashes",
+      "schema paths/hashes"
+    ],
+    "unit_operation_context": [
+      "configuration",
+      "exact operation",
+      "lifecycle phase",
+      "named modes",
+      "assumptions",
+      "input schema SHA-256"
+    ],
+    "unit_contract_plan": [
+      "semantic analyzer entrypoint and required effect dimensions",
+      "capability mechanism and exact required checks",
+      "lineage operand names/roles without content digests",
+      "target-dependent operand names",
+      "source-index schema, binding components/callable slots and fail-closed Unknown policy"
+    ],
+    "forbidden": "No expected semantic decision, capability status, final status, reason, safety hint, content digest or oracle-derived field may be public."
+  },
+  "private_v2_requirements": [
+    "independently reviewed expected semantic decision and coarse reason",
+    "expected capability status/reason for rewrite units; not_applicable for candidate kind none",
+    "semantic output/RNG/gradient/lineage/diversity oracle",
+    "evidence anchors and adjudication",
+    "no source-index expected support label because that is implementation coverage, not ground truth semantics"
+  ],
+  "frozen_metric_gates": {
+    "known_unsafe_false_accepts_max": 0,
+    "semantic_safe_recall_min": 0.8,
+    "semantic_reason_accuracy_min": 0.9,
+    "semantic_resolution_min": 0.9,
+    "capability_resolution_min": 0.9,
+    "source_resolution_min": 0.9,
+    "final_safe_admit_recall_min": 0.8,
+    "oracle_benefit_coverage_min": 0.9
+  },
+  "administrative_self_tests": [
+    "valid 60-unit public/private fixture, commitment, verification and full execution-support seal",
+    "public semantic label leakage rejected",
+    "public capability/final outcome leakage rejected",
+    "missing exact operation rejected",
+    "mechanism/check mismatch rejected",
+    "stored-record plan without parameter_record role rejected",
+    "target-dependent operand not declared in lineage rejected",
+    "empty source binding component/slot rejected",
+    "source Unknown policy other than fail_closed rejected",
+    "placeholder component hashes rejected in sealed mode",
+    "public/private unit mismatch and post-commit tampering rejected",
+    "candidate none with non-not_applicable capability oracle rejected",
+    "rewrite candidate with not_applicable capability oracle rejected",
+    "seal contains every declared system/adapter/schema file and no private-oracle path"
+  ],
+  "success_gates": [
+    "all administrative self-tests pass",
+    "v2 validator and templates import/run without opening any real final source or oracle",
+    "valid public fixture contains no forbidden outcome-bearing keys",
+    "execution freeze covers effect, capability, source-index, runner, adapters and schemas",
+    "v1 files and P4b frozen inputs remain unchanged"
+  ],
+  "falsification_rules": [
+    "Do not put expected capability support in the public plan merely to make the runner easier to configure.",
+    "A callable slot list is configuration, not an oracle label, but must be selected before prediction.",
+    "Do not treat source-index Unknown as semantic incorrect; report it as implementation coverage.",
+    "Do not infer final safe-admit recall by dropping Unsupported or Unknown safe units from the denominator.",
+    "Administrative PASS means ready for handoff only; it is not a final benchmark result.",
+    "If a guardrail fails, retain v0 and create a new protocol before weakening it."
+  ]
+}

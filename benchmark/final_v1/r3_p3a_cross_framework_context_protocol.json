@@ -1,0 +1,70 @@
+{
+  "schema_version": "autocontract.r3-p3a-cross-framework-context-protocol.v0",
+  "status": "internal_calibration_preregistered",
+  "date": "2026-07-30",
+  "research_question": "Does the frozen EffectV7 configuration/phase representation transfer without rule changes to legacy real-source corpora that actually define a comparable replay operation, and how much of the measured-source pipeline can be transferred without runnable framework environments?",
+  "claim_boundary": "Posthoc transfer calibration on already-known H7C/H7F/H7G source and labels. This is not a blind holdout and does not restore a detection-accuracy novelty claim.",
+  "target_operation": {
+    "name": "replay_apply",
+    "eligibility": [
+      "the protocol names an explicit replay/deterministic configuration",
+      "the decision phase is replay_apply rather than legacy sample_apply",
+      "the replay evidence is a stored parameter record or a framework-guaranteed RNG-state restoration",
+      "the unit scope is one sample or one batch and excludes background multiprocessing"
+    ]
+  },
+  "frameworks": [
+    {
+      "name": "TorchIO",
+      "protocol": "outputs/autocontract_h7c_protocol.json",
+      "formal_units": 7,
+      "registered_context": "legacy sample_apply",
+      "compatibility_prediction": "unsupported_context",
+      "reason": "H7C did not freeze a replay_apply operation or stored replay evidence; random-leaf admits answer a different one-sample semantic question."
+    },
+    {
+      "name": "imgaug",
+      "protocol": "outputs/autocontract_h7f_protocol.json",
+      "formal_units": 8,
+      "registered_context": "imgaug_deterministic / replay_apply",
+      "compatibility_prediction": "eligible_rng_state_replay"
+    },
+    {
+      "name": "Albumentations",
+      "protocol": "outputs/autocontract_h7g_protocol.json",
+      "formal_units": 8,
+      "registered_context": "albumentations.replay / replay_apply",
+      "compatibility_prediction": "eligible_parameter_record_replay",
+      "oracle_correction": "HistogramMatching is admit in replay_apply because the public read_fn sampling helper is unreachable; it remains reject in record/sample_apply. This correction was established in the H7G posthoc audit before R3."
+    }
+  ],
+  "policies": {
+    "effect_v7_frozen": "Use the existing frozen EffectV7/V6-compatibility analyzers and validators unchanged; join expected labels only after prediction.",
+    "static_ast_slice_index": "For admitted eligible units, serialize only the analyzer-declared reachable method ASTs, method names, configuration, phase and source origin. This is a partial portable slice artifact, not the full runtime dependency index from P2b.",
+    "runtime_measured_index_readiness": "Audit whether the vendored framework can be imported and instantiated in the frozen PyTorch environment without installing new dependencies. Missing runtime support remains Unsupported, not an implicit source-index success."
+  },
+  "primary_metrics": [
+    "context-eligible units and excluded units by reason",
+    "EffectV7 TP/FP/FN/TN, safe recall and reason accuracy on eligible corrected-oracle units",
+    "zero-rule-change count",
+    "static AST slice coverage and bytes on admitted eligible units",
+    "runtime measured-index ready/unsupported by framework",
+    "manual context-mapping entries"
+  ],
+  "success_gates": [
+    "TorchIO H7C units are excluded from replay accuracy denominators",
+    "all 16 imgaug/Albumentations formal units are accounted for",
+    "effect_v7_frozen has zero unsafe false accepts and at least 90% safe recall on eligible units",
+    "coarse reason accuracy is at least 90%",
+    "no EffectV7 or legacy adapter rule is modified for this run",
+    "static AST slice coverage is reported separately from runtime measured-index readiness",
+    "missing cv2/pydantic/framework runtime support is Unsupported rather than silently replaced by static evidence"
+  ],
+  "falsification_rules": [
+    "If context-incompatible TorchIO units are pooled into replay accuracy, the experiment is invalid.",
+    "If the corrected Albumentations replay oracle is replaced with the original class-level HistogramMatching reject, the experiment is invalid.",
+    "If EffectV7 requires a new framework rule after predictions are observed, retain the zero-change result and create a new protocol/version.",
+    "Static AST slice success cannot be described as full executable-source binding because defaults, closures, globals, native callables and runtime monkeypatches are not measured.",
+    "If fewer than two replay semantic families remain eligible, cross-framework evidence is too narrow for a transfer claim."
+  ]
+}

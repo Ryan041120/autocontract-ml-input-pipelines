@@ -1,0 +1,153 @@
+{
+  "protocol_id": "autocontract_p5v_dtd_dataset_split",
+  "version": "v0",
+  "date": "2026-09-09",
+  "status": "design_only_no_data",
+  "scientific_evidence": false,
+  "execution_authorized": false,
+  "data_access_authorized": false,
+  "parent_protocol": "benchmark/final_v1/p5u_bottleneck_gated_safe_reorder_protocol.json",
+  "decision": {
+    "dataset": "Describable Textures Dataset (DTD)",
+    "release": "r1.0.1",
+    "official_partition": 1,
+    "target": "category",
+    "classes": 47,
+    "images_total": 5640,
+    "images_per_class": 120,
+    "reported_image_size_range": "300x300 to 640x640",
+    "archive_name": "dtd-r1.0.1.tar.gz",
+    "reported_archive_size": "625 MB",
+    "research_use_source": "https://www.robots.ox.ac.uk/~vgg/data/dtd/",
+    "paper_source": "https://www.robots.ox.ac.uk/~vgg/publications/2014/Cimpoi14/cimpoi14.pdf",
+    "torchvision_interface_source": "https://docs.pytorch.org/vision/0.13/generated/torchvision.datasets.DTD.html"
+  },
+  "selection_boundary": {
+    "chosen_before_data_access": true,
+    "forbidden_bases": [
+      "P5T calibration points",
+      "P5S post-hoc benefit direction",
+      "candidate dataset timing",
+      "candidate dataset model accuracy",
+      "test results"
+    ],
+    "rejected_candidates": {
+      "OxfordIIITPet": "usable fallback but requires an additional trainval subdivision and has greater small-sample task variability",
+      "Food101": "too large for the undergraduate single-machine CPU scope",
+      "CIFAR10": "32x32 originals would make crop-448 work artificially upsampled",
+      "DIV2K": "no real classification labels; pseudo labels support traces only"
+    }
+  },
+  "official_partition_expected": {
+    "train1": {"per_class": 40, "total": 1880},
+    "val1": {"per_class": 40, "total": 1880},
+    "test1": {"per_class": 40, "total": 1880}
+  },
+  "study_splits": {
+    "profile_calibration": {
+      "source": "first 10 per class after deterministic train1 ranking",
+      "per_class": 10,
+      "expected_total": 470,
+      "allowed_use": ["P5V baseline profiling", "cell qualification", "target/contrast selection"]
+    },
+    "effect_evaluation": {
+      "source": "remaining 30 per class after deterministic train1 ranking",
+      "per_class": 30,
+      "expected_total": 1410,
+      "allowed_use": ["future A/B/C/D performance comparison", "future paired task-training batches"]
+    },
+    "task_validation": {
+      "source": "all official val1 entries",
+      "per_class": 40,
+      "expected_total": 1880,
+      "allowed_use": ["task-layer secondary sanity-check evaluation only"],
+      "model_updates_forbidden": true
+    },
+    "test": {
+      "source": "official test1",
+      "per_class": 40,
+      "expected_total": 1880,
+      "study_access": "forbidden",
+      "forbidden_operations": ["parse test1 list", "resolve", "stat", "hash", "decode", "DataLoader", "report"]
+    }
+  },
+  "archive_packaging_boundary": "The official package may physically place test files locally; this does not authorize study-level access to test entries.",
+  "train1_subdivision": {
+    "domain_separator": "autocontract.p5v.dtd.partition1.split.v1",
+    "canonical_relative_path": "official case, forward slashes, no machine absolute prefix",
+    "key": "SHA256(UTF8(domain_separator + NUL + class_name + NUL + canonical_relative_path))",
+    "order": "ascending (split_key, canonical_relative_path) independently within each class",
+    "profile_take": 10,
+    "effect_take": 30,
+    "post_hoc_reassignment": false
+  },
+  "future_manifest_requirements": {
+    "sample_fields": ["split", "class_name", "label", "canonical_relative_path", "bytes", "sha256", "width", "height"],
+    "bindings": ["image archive SHA256", "annotations SHA256", "split generator SHA256", "class_to_index mapping", "runtime identity"],
+    "requires_exact_counts": true,
+    "requires_pairwise_disjoint_relative_paths": true,
+    "requires_no_duplicate_content_sha256_across_allowed_splits": true,
+    "duplicate_action": "first-error stop; do not move or replace samples"
+  },
+  "p5v_binding": {
+    "fixed_prefix": [
+      "RGB JPEG decode",
+      "Resize(shorter_edge=512; interpolation and antialias frozen before execution)",
+      "float32 scale to [0,1]",
+      "domain guard"
+    ],
+    "baseline_pair": [
+      "Normalize([0.45,0.40,0.35],[0.25,0.30,0.35],inplace=False)",
+      "RandomCrop(size,padding=None,pad_if_needed=False)"
+    ],
+    "authorized_pair": [
+      "RandomCrop(size,padding=None,pad_if_needed=False)",
+      "Normalize([0.45,0.40,0.35],[0.25,0.30,0.35],inplace=False)"
+    ],
+    "crop_sizes": [224, 448],
+    "models": ["MobileNetV3-small", "ResNet18"],
+    "num_classes": 47,
+    "movable_region": "Normalize and RandomCrop only",
+    "receipt_revalidation_required": true,
+    "p5v_scope": "baseline forward/backward/optimizer timing decomposition only; no complete convergence evaluation"
+  },
+  "isolation": {
+    "p5v_model_parameters": "discard after profiling",
+    "p5w_initialization": "fresh registered initialization; never use P5V state",
+    "task_training_source": "effect_evaluation only",
+    "task_evaluation_source": "task_validation only",
+    "forced_image_reuse": "freeze before execution and downgrade to non-blind descriptive evidence"
+  },
+  "remaining_blockers_before_p5v": [
+    "explicit user authorization for DTD data access and P5V formal execution",
+    "actual archive/annotation SHA256 and research-use record",
+    "write-once instantiated split manifest",
+    "fixed runtime and Cedar identity",
+    "frozen Resize semantics, batch size, steps per block, and environment gates",
+    "local storage, memory, and dependency preflight"
+  ],
+  "p5w_only_blocker": "task-level non-inferiority margin must be fixed before P5W freeze; it does not block P5V",
+  "non_claims": [
+    "data acquired",
+    "split instantiated",
+    "input bottleneck demonstrated",
+    "DTD speedup",
+    "task metric preservation",
+    "generalization",
+    "causality",
+    "statistical significance",
+    "test-set performance"
+  ],
+  "execution": {
+    "dataset_downloaded": false,
+    "dataset_accessed": false,
+    "manifest_generated": false,
+    "profiling_executed": false,
+    "training_executed": false,
+    "results_generated": false,
+    "runner_created": false,
+    "launcher_created": false,
+    "freeze_created": false
+  }
+}
+

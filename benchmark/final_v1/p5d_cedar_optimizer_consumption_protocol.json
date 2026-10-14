@@ -1,0 +1,49 @@
+{
+  "schema_version": "autocontract.p5d-cedar-optimizer-consumption-protocol.v0",
+  "status": "development_calibration_frozen_after_runtime_exploration",
+  "date": "2026-07-30",
+  "purpose": "Test whether cedar's real cache optimizer consumes the P5A is_random hint and moves the chosen cache boundary relative to a counterfactual with that one hint removed.",
+  "claim_boundary": "Plan-level consumption of cedar's randomness hint on the official synthetic profile only. This is not an independent corpus, executed cache, training-benefit, safety, or performance result. fix/depends_on consumption is not tested here.",
+  "upstream": {
+    "repository": "https://github.com/stanford-mast/cedar",
+    "commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+    "git_blob_sha256": {
+      "cedar/compose/optimizer.py": "11c70d449ad1fbeccc6f19ca0bcac56fef919e7f464699d96814ae80506de09b",
+      "cedar/compose/feature.py": "6d450748bbea8ce53f9360e12c3d776a3805b4f9cccd0400d2d29e4271986aeb",
+      "tests/data/test_cache_optimizer_stats.yml": "d01369996e5a4c7cbc6d0dadacca8c99880ba3af9b134b2c363667f85051ac5d"
+    }
+  },
+  "frozen_inputs": {
+    "outputs/autocontract_p5a_constraint_compiler_selftest.json": "59d75486cc547277616ad99361a01d3aa66a1e9991091329ebcb4bf4b470ee7a",
+    "outputs/autocontract_p5c_cedar_runtime_smoke.json": "776f62f171d84d87d87e5fb56367cd00db8cb36d59494b3ecbff5b5dec881cdc",
+    "experiments/autocontract_p5c_cedar_runtime_smoke.py": "1d4ea01a1107df72238e2bf2e08f72904956be0eb5ffaaf46838f794dae4eaf4",
+    "benchmark/final_v1/p5c_cedar_runtime_smoke_protocol_v2.json": "7098c1bc91d44829f3f1d73615cc3a70a2637df3ee3c63d6e68808cf3ac3c8de"
+  },
+  "fixture": {
+    "logical_path_ids": [6, 5, 4, 3, 2, 1, 0],
+    "autocontract_operator_ids": {"decode": 5, "crop": 4, "normalize": 3},
+    "backend_scaffold": {"noop": 2, "later_random_mapper": 1, "fixed_batcher": 0},
+    "official_profile": "tests/data/test_cache_optimizer_stats.yml",
+    "optimizer_options": {
+      "enable_caching": true,
+      "enable_reorder": false,
+      "enable_offload": false,
+      "enable_local_parallelism": false,
+      "enable_fusion": false,
+      "enable_prefetch": false,
+      "disable_physical_opt": true,
+      "num_samples": 100
+    }
+  },
+  "arms": {
+    "autocontract": {"crop_is_random": true, "expected_first_random_id": 4, "expected_cache_edges": [[5, 7], [7, 4]]},
+    "single_hint_removed_counterfactual": {"crop_is_random": false, "expected_first_random_id": 1, "expected_cache_edges": [[2, 7], [7, 1]]}
+  },
+  "pass_rule": "All commit, freeze, runtime, single-variable, logical-graph, and two-arm plan assertions pass; the two optimized paths differ only in cache placement relative to the changed randomness boundary.",
+  "non_claims": [
+    "The counterfactual is deliberately unsafe metadata removal, not a competing safety method.",
+    "The official profile is reused calibration data and does not measure AutoContract benefit.",
+    "A selected plan is not evidence that the cache executes correctly on Windows.",
+    "No end-to-end throughput, cost, model accuracy, or independent generalization result is produced."
+  ]
+}

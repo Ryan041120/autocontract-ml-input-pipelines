@@ -1,0 +1,269 @@
+{
+  "schema_version": "autocontract.evidence-inventory.v0",
+  "title": "AutoContract H6-H7H versioned evidence inventory",
+  "purpose": "Audit the historical analyzer evidence without pooling results produced by different Effect versions.",
+  "aggregation_policy": {
+    "cross_version_primary_accuracy": "forbidden",
+    "reason": "H6-H7H are sequential model-development stages with different analyzers, adapters, contexts, and decision granularities.",
+    "final_claim_requirement": "A separately preregistered benchmark evaluated once with one frozen analyzer and one fixed metric schema."
+  },
+  "entries": [
+    {
+      "id": "H6",
+      "order": 6,
+      "analyzer_version": "EffectV2",
+      "framework": "MONAI + MMDetection + DALI",
+      "domain": "medical imaging + detection + GPU pipelines",
+      "evidence_kind": "one_shot_blind_cross_project",
+      "prediction_granularity": "effect_cell",
+      "claim_role": "diagnostic_failure",
+      "summary_path": "outputs/autocontract_h6_blind_summary.csv",
+      "detail_path": "outputs/autocontract_h6_blind_effects.csv",
+      "protocol_path": "outputs/autocontract_h6_v2_freeze.json",
+      "freeze_path": "outputs/autocontract_h6_v2_freeze.json",
+      "metric_map": {
+        "evaluated_units": "units",
+        "primary_correct": "effect_cells_correct",
+        "primary_total": "effect_cells",
+        "primary_accuracy": "effect_cell_accuracy",
+        "critical_false_negatives": "critical_false_negatives",
+        "known_unsafe_false_accepts": "known_unsafe_false_accepts",
+        "gate_pass": "blind_gate_pass"
+      },
+      "gate_checks": [
+        {"metric": "primary_accuracy", "op": "ge", "value": 0.95},
+        {"metric": "critical_false_negatives", "op": "eq", "value": 0},
+        {"metric": "known_unsafe_false_accepts", "op": "eq", "value": 0}
+      ],
+      "limitation": "Cell accuracy is not comparable with the later operator-level admit/reject metric."
+    },
+    {
+      "id": "H7B",
+      "order": 7.2,
+      "analyzer_version": "EffectV3",
+      "framework": "MONAI + MMDetection + DALI",
+      "domain": "release-version transfer",
+      "evidence_kind": "release_version_holdout",
+      "prediction_granularity": "operator_decision",
+      "claim_role": "supporting_transfer_pass",
+      "summary_path": "outputs/autocontract_h7b_summary.csv",
+      "detail_path": "outputs/autocontract_h7b_decisions.csv",
+      "protocol_path": "outputs/autocontract_h7b_freeze.json",
+      "freeze_path": "outputs/autocontract_h7b_freeze.json",
+      "metric_map": {
+        "evaluated_units": "units",
+        "primary_correct": "decision_matches",
+        "primary_total": "units",
+        "primary_accuracy": "decision_accuracy",
+        "known_unsafe_false_accepts": "known_unsafe_false_accepts",
+        "safe_recall": "supported_safe_recall",
+        "reason_accuracy": "reason_category_accuracy",
+        "coverage": "unsupported_reason_coverage",
+        "gate_pass": "h7b_blind_gate_pass"
+      },
+      "gate_checks": [
+        {"metric": "known_unsafe_false_accepts", "op": "eq", "value": 0},
+        {"metric": "safe_recall", "op": "ge", "value": 0.70},
+        {"metric": "coverage", "op": "ge", "value": 1.0},
+        {"metric": "reason_accuracy", "op": "ge", "value": 0.90}
+      ],
+      "limitation": "Tests release and operator transfer within three adapter families already used in development."
+    },
+    {
+      "id": "H7C",
+      "order": 7.3,
+      "analyzer_version": "EffectV3",
+      "framework": "TorchIO",
+      "domain": "medical imaging",
+      "evidence_kind": "independent_framework_holdout",
+      "prediction_granularity": "operator_decision",
+      "claim_role": "diagnostic_failure",
+      "summary_path": "outputs/autocontract_h7c_holdout_summary.csv",
+      "detail_path": "outputs/autocontract_h7c_holdout.csv",
+      "protocol_path": "outputs/autocontract_h7c_protocol.json",
+      "freeze_path": "outputs/autocontract_h7c_freeze.json",
+      "metric_map": {
+        "evaluated_units": "units",
+        "primary_correct": {"multiply": ["decision_accuracy", "units"]},
+        "primary_total": "units",
+        "primary_accuracy": "decision_accuracy",
+        "known_unsafe_false_accepts": "known_unsafe_false_accepts",
+        "safe_recall": "supported_safe_recall",
+        "reason_accuracy": "reason_category_accuracy",
+        "coverage": "generic_reason_coverage",
+        "gate_pass": "h7c_transfer_gate_pass"
+      },
+      "gate_checks": [
+        {"metric": "known_unsafe_false_accepts", "op": "eq", "value": 0},
+        {"metric": "safe_recall", "op": "ge", "value": 0.70},
+        {"metric": "reason_accuracy", "op": "ge", "value": 0.90}
+      ],
+      "limitation": "Decision gate passed but the preregistered reason-category gate failed; the one-researcher cost pilot is non-publishable evidence."
+    },
+    {
+      "id": "H7D",
+      "order": 7.4,
+      "analyzer_version": "EffectV4",
+      "framework": "TorchGeo",
+      "domain": "geospatial imaging",
+      "evidence_kind": "zero_source_framework_holdout",
+      "prediction_granularity": "operator_decision",
+      "claim_role": "diagnostic_failure",
+      "summary_path": "outputs/autocontract_h7d_summary.csv",
+      "detail_path": "outputs/autocontract_h7d_torchgeo.csv",
+      "protocol_path": "outputs/autocontract_h7d_protocol.json",
+      "freeze_path": "outputs/autocontract_h7d_freeze.json",
+      "metric_map": {
+        "evaluated_units": "units",
+        "primary_correct": "decisions_correct",
+        "primary_total": "units",
+        "known_unsafe_false_accepts": "known_unsafe_false_accepts",
+        "safe_recall": "supported_safe_recall",
+        "reason_accuracy": "reason_category_accuracy",
+        "coverage": "resolved_coverage",
+        "gate_pass": "h7d_blind_gate_pass"
+      },
+      "gate_checks": [
+        {"metric": "known_unsafe_false_accepts", "op": "eq", "value": 0},
+        {"metric": "safe_recall", "op": "ge", "value": 0.75},
+        {"metric": "reason_accuracy", "op": "ge", "value": 0.90},
+        {"metric": "coverage", "op": "ge", "value": 0.80}
+      ],
+      "limitation": "One source binding was wrong and reason accuracy missed the gate, so this is a protocol failure even though unsafe false accepts were zero."
+    },
+    {
+      "id": "H7E",
+      "order": 7.5,
+      "analyzer_version": "EffectV4",
+      "framework": "audiomentations",
+      "domain": "audio waveform augmentation",
+      "evidence_kind": "zero_operator_body_framework_holdout",
+      "prediction_granularity": "operator_decision",
+      "claim_role": "supporting_transfer_pass",
+      "summary_path": "outputs/autocontract_h7e_summary.csv",
+      "detail_path": "outputs/autocontract_h7e_audiomentations.csv",
+      "protocol_path": "outputs/autocontract_h7e_protocol.json",
+      "freeze_path": "outputs/autocontract_h7e_freeze.json",
+      "metric_map": {
+        "evaluated_units": "units",
+        "primary_correct": "decisions_correct",
+        "primary_total": "units",
+        "binding_integrity": "binding_integrity",
+        "known_unsafe_false_accepts": "known_unsafe_false_accepts",
+        "safe_recall": "supported_safe_recall",
+        "reason_accuracy": "coarse_reason_accuracy",
+        "coverage": "classified_coverage",
+        "gate_pass": "h7e_blind_gate_pass"
+      },
+      "gate_checks": [
+        {"metric": "binding_integrity", "op": "ge", "value": 1.0},
+        {"metric": "known_unsafe_false_accepts", "op": "eq", "value": 0},
+        {"metric": "safe_recall", "op": "ge", "value": 0.75},
+        {"metric": "reason_accuracy", "op": "ge", "value": 0.90},
+        {"metric": "coverage", "op": "ge", "value": 0.85}
+      ],
+      "limitation": "The result is conditional on the default/unfrozen parameter context."
+    },
+    {
+      "id": "H7F",
+      "order": 7.6,
+      "analyzer_version": "EffectV5",
+      "framework": "imgaug",
+      "domain": "image augmentation",
+      "evidence_kind": "one_shot_framework_holdout",
+      "prediction_granularity": "operator_decision",
+      "claim_role": "supporting_transfer_pass",
+      "summary_path": "outputs/autocontract_h7f_summary.csv",
+      "detail_path": "outputs/autocontract_h7f_imgaug.csv",
+      "protocol_path": "outputs/autocontract_h7f_protocol.json",
+      "freeze_path": "outputs/autocontract_h7f_freeze.json",
+      "metric_map": {
+        "evaluated_units": "units",
+        "primary_correct": "decisions_correct",
+        "primary_total": "units",
+        "binding_integrity": "binding_integrity",
+        "known_unsafe_false_accepts": "known_unsafe_false_accepts",
+        "safe_recall": "supported_safe_recall",
+        "reason_accuracy": "coarse_reason_accuracy",
+        "coverage": "classified_coverage",
+        "gate_pass": "h7f_blind_gate_pass"
+      },
+      "gate_checks": [
+        {"metric": "binding_integrity", "op": "ge", "value": 1.0},
+        {"metric": "known_unsafe_false_accepts", "op": "eq", "value": 0},
+        {"metric": "safe_recall", "op": "ge", "value": 0.80},
+        {"metric": "reason_accuracy", "op": "ge", "value": 0.875},
+        {"metric": "coverage", "op": "ge", "value": 1.0}
+      ],
+      "limitation": "The pass is exactly on two thresholds and is conditional on imgaug deterministic mode."
+    },
+    {
+      "id": "H7G",
+      "order": 7.7,
+      "analyzer_version": "EffectV6",
+      "framework": "Albumentations",
+      "domain": "image augmentation",
+      "evidence_kind": "one_shot_framework_holdout",
+      "prediction_granularity": "operator_decision",
+      "claim_role": "diagnostic_failure",
+      "summary_path": "outputs/autocontract_h7g_summary.csv",
+      "detail_path": "outputs/autocontract_h7g_albumentations.csv",
+      "protocol_path": "outputs/autocontract_h7g_protocol.json",
+      "freeze_path": "outputs/autocontract_h7g_freeze.json",
+      "metric_map": {
+        "evaluated_units": "units",
+        "primary_correct": "decisions_correct",
+        "primary_total": "units",
+        "binding_integrity": "binding_integrity",
+        "known_unsafe_false_accepts": "known_unsafe_false_accepts",
+        "safe_recall": "supported_safe_recall",
+        "reason_accuracy": "coarse_reason_accuracy",
+        "coverage": "classified_coverage",
+        "gate_pass": "h7g_blind_gate_pass"
+      },
+      "gate_checks": [
+        {"metric": "binding_integrity", "op": "ge", "value": 1.0},
+        {"metric": "known_unsafe_false_accepts", "op": "eq", "value": 0},
+        {"metric": "safe_recall", "op": "ge", "value": 0.80},
+        {"metric": "reason_accuracy", "op": "ge", "value": 0.875},
+        {"metric": "coverage", "op": "ge", "value": 1.0}
+      ],
+      "limitation": "The preregistered replay-mode oracle included a default-path callable effect and produced one unsafe false accept."
+    },
+    {
+      "id": "H7H",
+      "order": 7.8,
+      "analyzer_version": "EffectV7",
+      "framework": "Kornia",
+      "domain": "differentiable image augmentation",
+      "evidence_kind": "mode_phase_one_shot_holdout",
+      "prediction_granularity": "operator_context_decision",
+      "claim_role": "supporting_phase_sensitive_pass",
+      "summary_path": "outputs/autocontract_h7h_summary.csv",
+      "detail_path": "outputs/autocontract_h7h_kornia.csv",
+      "protocol_path": "outputs/autocontract_h7h_protocol.json",
+      "freeze_path": "outputs/autocontract_h7h_freeze.json",
+      "metric_map": {
+        "evaluated_units": "units",
+        "primary_correct": "decisions_correct",
+        "primary_total": "units",
+        "binding_integrity": "binding_integrity",
+        "known_unsafe_false_accepts": "known_unsafe_false_accepts",
+        "safe_recall": "supported_safe_recall",
+        "reason_accuracy": "coarse_reason_accuracy",
+        "coverage": "classified_coverage",
+        "phase_contrast_accuracy": "phase_contrast_accuracy",
+        "gate_pass": "h7h_blind_gate_pass"
+      },
+      "gate_checks": [
+        {"metric": "binding_integrity", "op": "ge", "value": 1.0},
+        {"metric": "known_unsafe_false_accepts", "op": "eq", "value": 0},
+        {"metric": "safe_recall", "op": "ge", "value": 0.75},
+        {"metric": "reason_accuracy", "op": "ge", "value": 0.8888888888888888},
+        {"metric": "coverage", "op": "ge", "value": 1.0},
+        {"metric": "phase_contrast_accuracy", "op": "ge", "value": 1.0}
+      ],
+      "limitation": "Nine units support a narrow compatible-params phase claim, not broad framework-agnostic accuracy."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "autocontract.p5i-reorder-capability-v1-protocol.v0",
+  "status": "predeclared_mechanism_calibration",
+  "date": "2026-07-30",
+  "question": "Can strict ReorderCapabilityV1 close P5H's forged-receipt boundary while recovering optimization only for locally replayed, source-bound commutativity proofs?",
+  "hypotheses": {
+    "h1_security": "V0/manual/differential assertions and forged or tampered V1 artifacts never enlarge the candidate space.",
+    "h2_noncommuting": "The affine verifier refuses to issue Supported for x+1, 2x, x-3 and strict compilation remains fail-closed.",
+    "h3_nonzero_coverage": "The verifier proves all pairs among x+1, x+2, x+3, cedar recovers six reorderings, and output is invariant.",
+    "h4_binding": "Source drift, verifier-version/source changes, revocation, duplicate receipts, and unsupported syntax invalidate admission."
+  },
+  "verifier_scope": {
+    "accepted": "One-argument Python functions with a Supported SourceIndexV1 callable record and one return expression in an exact integer affine AST subset: variable, integer constant, unary plus/minus, addition, subtraction, and multiplication by a constant.",
+    "rejected_as_unknown": "Calls, branches, loops, division, nonlinear multiplication, exceptions, state, I/O, hidden dispatch, unsupported source, or a source-index mismatch.",
+    "decision_rule": "For f(x)=a_f*x+b_f and g(x)=a_g*x+b_g, replay exact rational composition IR and admit iff g(f(x)) and f(g(x)) have identical coefficient and intercept."
+  },
+  "trust_model": {
+    "trusted": ["local verifier closure (V1 verifier plus SourceIndexV1/V0 dependencies) identified by an exact composite SHA-256", "inspectable callable source, bytecode, constants, defaults, closure, globals, wrapper chain, and origin bound to the bundle SourceIndexV1 digest"],
+    "untrusted": ["receipt producer", "status string", "caller-supplied proof hash", "manual or finite differential evidence"],
+    "revocation": "A locally supplied revoked verifier-source digest invalidates receipts from that verifier build."
+  },
+  "required_cases": [
+    "fixed cedar commit and clean checkout",
+    "P5H forged V0 receipts rejected",
+    "noncommuting affine proof cannot be minted",
+    "commuting affine receipts locally replay and restore six cedar candidates",
+    "artifact, proof digest, verifier version, verifier source, source binding, and duplicate tampering fail closed",
+    "revoked verifier fails closed",
+    "unsupported call expression fails closed",
+    "no optimizer cost or placement fields are emitted"
+  ],
+  "pass_rule": "All required checks pass, negative cases retain one candidate, and the only admitted positive case preserves runtime output under cedar reordering.",
+  "claim_boundary": "Mechanism calibration for a deliberately narrow proof language, not a general commutativity prover and not evidence of coverage on real ML preprocessing operators."
+}

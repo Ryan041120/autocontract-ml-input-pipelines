@@ -1,0 +1,142 @@
+{
+  "schema_version": "autocontract.p5p-reorder-final-v3-handoff-selftest.v0",
+  "status": "pass",
+  "passed": 25,
+  "total": 25,
+  "protocol_sha256": "2683d3ec6b3e97387d21e4fa72cfe27d048a8afedf7cee3f5880d7ba8e0c547a",
+  "runner_sha256": "70f86f168da5b6d0c6bbee76af8901ea1be0d04362bc86ae3764926622d6447e",
+  "schema_sha256": {
+    "public": "f66775f4685dca5082a3aa2f37dab3f7dad982f5eb349a87e39c4d545bfc1956",
+    "private": "ab2ff964e658dbe9197ef37888823391177625343332a138b5a24c4d4a9d2fb0",
+    "prediction": "0b7a73f4b2bac683309fa92fd1e8e2ccf3d73376dae343cf70e45b1f212ca9fd"
+  },
+  "synthetic_fixture": {
+    "pairs": 8,
+    "contaminated": true,
+    "scientific_evidence": false
+  },
+  "checks": [
+    {
+      "name": "frozen predecessors exact",
+      "passed": true,
+      "observed": {
+        "experiments/autocontract_final_benchmark_admin_v2.py": "a0b9a57fed978fabc6b11168e10f09ca4249a2efc8d0d031aebfa2e62332434a",
+        "experiments/autocontract_p5o_domain_native_assurance.py": "dbbcea79e10386184a4f5322f535c25cdacb35d8e92d0504ca89e6f53e1497f8",
+        "outputs/autocontract_p5o_domain_native_assurance.json": "c46bcdcfca3901bce8145866eda0d1e9d7cd66cef236685bde968df3f578bf46",
+        "benchmark/final_v3/reorder_public_manifest.schema.json": "f66775f4685dca5082a3aa2f37dab3f7dad982f5eb349a87e39c4d545bfc1956",
+        "benchmark/final_v3/reorder_private_oracle.schema.json": "ab2ff964e658dbe9197ef37888823391177625343332a138b5a24c4d4a9d2fb0",
+        "benchmark/final_v3/reorder_prediction.schema.json": "0b7a73f4b2bac683309fa92fd1e8e2ccf3d73376dae343cf70e45b1f212ca9fd",
+        "benchmark/final_v3/P5O_WORKSHEET.zh-CN.md": "827528f70843e385f230ae967bd68657c9d9ba1bc7f6732ffd972db4b5af23d7"
+      }
+    },
+    {
+      "name": "public template validates",
+      "passed": true
+    },
+    {
+      "name": "private template validates",
+      "passed": true
+    },
+    {
+      "name": "prediction template validates",
+      "passed": true
+    },
+    {
+      "name": "dry-run public invariants accepted",
+      "passed": true
+    },
+    {
+      "name": "observation-explicit oracle accepted",
+      "passed": true
+    },
+    {
+      "name": "domain/native-aware prediction accepted",
+      "passed": true
+    },
+    {
+      "name": "oracle commitment created",
+      "passed": true
+    },
+    {
+      "name": "public freeze binds analyzer and excludes oracle",
+      "passed": true
+    },
+    {
+      "name": "prediction seal created",
+      "passed": true
+    },
+    {
+      "name": "reveal is safety-first and gate-complete",
+      "passed": true
+    },
+    {
+      "name": "contaminated dry-run never becomes scientific evidence",
+      "passed": true
+    },
+    {
+      "name": "family RNG Wilson and burden are reported",
+      "passed": true
+    },
+    {
+      "name": "public answer leak rejected",
+      "passed": true,
+      "reason": "ValidationError:Additional properties are not allowed ('oracle_label' was unexpected)\n\nFailed validating 'additionalProperties' in schema['properties']['pairs']['items']:\n    {'type': 'object',\n     'additionalProperties': False,\n     'required': ['pair_id',\n                  'framework_id',\n                  'pair_family',\n                  'left',\n                  'right',\n                  'input_domain',\n                  'operation_context',\n                  'source_anchors',\n                  'inclusion_reason',\n                  'contamination'],\n     'properties': {'pair_id': {'type': 'string',\n                                'pattern': '^[a-z0-9][a-z0-9._-]{4,99}$'},\n                    'framework_id': {'type': 'string'},\n                    'pair_family': {'enum': ['identity',\n                                             'pointwise_spatial',\n                                             'random_context',\n                                             'boundary_definedness',\n                                             'rounding_precision',\n                                             'stateful_external',\n                                             'other_nontrivial']},\n                    'left': {'$ref': '#/$defs/operator'},\n                    'right': {'$ref': '#/$defs/operator'},\n                    'input_domain': {'$ref': '#/$defs/input_domain'},\n                    'operation_context': {'$ref': '#/$defs/operation_context'},\n                    'source_anchors': {'type': 'array',\n                                       'minItems': 1,\n                                       'items': {'type': 'string',\n                                                 'minLength': 3}},\n                    'inclusion_reason': {'type': 'string', 'minLength': 15},\n                    'contamination': {'$ref': '#/$defs/contamination'}}}\n\nOn instance['pairs'][0]:\n    {'pair_id': 'p5o-dry-pair-00',\n     'framework_id': 'fixture-vision',\n     'pair_family': 'identity',\n     'left': {'operator_id': 'dry-left-00',\n              'type': 'fixture.Left0',\n              'configuration': {'index': 0},\n              'source_index_sha256': '6357027065860dad97ff27ed7f8c2358cf462dca0c6d70c059b3f8a67d3a0fe7',\n              'native_boundary': {'class': 'known_versioned_native',\n                                  'identity_sha256': '09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9',\n                                  'binding_scope': 'Synthetic '\n                                                   'version-bound native '\n                                                   'left fixture; not a '\n                                                   'real kernel '\n                                                   'attestation.',\n                                  'strict_policy': 'allow_versioned_relation_only'}},\n     'right': {'operator_id': 'dry-right-00',\n               'type': 'fixture.Right0',\n               'configuration': {'index': 0},\n               'source_index_sha256': 'a74c4477017c3affb7005d364b87fe9e1dc8a329322d66b7e69200e6254b7fd2',\n               'native_boundary': {'class': 'known_versioned_native',\n                                   'identity_sha256': '09a4ecffcca61cbf6196b507fc6850d267fc0b6e9572e6d9d12478ea17df64f9',\n                                   'binding_scope': 'Synthetic '\n                                                    'version-bound native '\n                                                    'right fixture; not a '\n                                                    'real kernel '\n                                                    'attestation.',\n                                   'strict_policy': 'allow_versioned_relation_only'}},\n     'input_domain': {'description': 'Contaminated P5O structural tensor '\n                                     'fixture; no independent semantic '\n                                     'evidence.',\n                      'artifact_path': 'benchmark/final_v1/p5o_domain_native_assurance_protocol.json',\n                      'sha256': '611f291297b2f73b6cdfc746ace96a48335100d9103fa91758f4586855202ec8',\n                      'premise_profile': {'required_runtime_premises': ['type',\n                                                                        'layout',\n                                                                        'channels',\n                                                                        'dtype',\n                                                                        'device',\n                                                                        'height_min',\n                                                                        'width_min'],\n                                          'declaration_only_fields': ['value_min',\n                                                                      'value_max',\n                                                                      'height_max',\n                                                                      'width_max',\n                                                                      'allow_nonfinite'],\n                                          'profile_sha256': '52d241da59345fc184eaa56281d10863229d435d944128510729ef687c662391'},\n                      'assurance_plan': {'mode': 'per_sample',\n                                         'guard_artifact': {'name': 'P5O '\n                                                                    'structural '\n                                                                    'guard',\n                                                            'path': 'experiments/autocontract_p5o_domain_native_assurance.py',\n                                                            'sha256': 'dbbcea79e10386184a4f5322f535c25cdacb35d8e92d0504ca89e6f53e1497f8'},\n                                         'value_scan': 'not_required_by_current_lemma'}},\n     'operation_context': {'scope': 'one_invocation_each_order',\n                           'rng_assignment': 'global_sequential',\n                           'state_reset': 'same_pre_pair_state',\n                           'observational_relation': {'output': 'exact_tensor',\n                                                      'tolerance_artifact': None,\n                                                      'definedness': 'same',\n                                                      'exception': 'exact_type_and_normalized_payload',\n                                                      'rng_post_state': 'exact_python_numpy_torch'},\n                           'optimizer_reorder_scope': 'adjacent_swap'},\n     'source_anchors': ['synthetic-contaminated:0'],\n     'inclusion_reason': 'Exercise one predeclared family/RNG/protocol '\n                         'branch without scientific scoring.',\n     'contamination': {'development_fixture': True, 'registry_match': True},\n     'oracle_label': 'commutes'}"
+    },
+    {
+      "name": "eight-pair fixture cannot masquerade as independent final",
+      "passed": true,
+      "reason": "P5PError:final_pair_or_framework_quota_missing"
+    },
+    {
+      "name": "Commutes with unresolved observation rejected",
+      "passed": true,
+      "reason": "P5PError:p5o-dry-pair-00:commutes_observation_unresolved"
+    },
+    {
+      "name": "Noncommutes without violated dimension rejected",
+      "passed": true,
+      "reason": "P5PError:p5o-dry-pair-01:bad_noncommutes_evidence"
+    },
+    {
+      "name": "post-commit oracle tampering rejected",
+      "passed": true,
+      "reason": "P5PError:oracle_commitment_mismatch"
+    },
+    {
+      "name": "post-seal prediction tampering rejected",
+      "passed": true,
+      "reason": "P5PError:prediction_seal_mismatch"
+    },
+    {
+      "name": "missing prediction rejected",
+      "passed": true,
+      "reason": "P5PError:prediction_pair_order_mismatch"
+    },
+    {
+      "name": "prediction order mismatch rejected",
+      "passed": true,
+      "reason": "P5PError:prediction_pair_order_mismatch"
+    },
+    {
+      "name": "burden arithmetic mismatch rejected",
+      "passed": true,
+      "reason": "P5PError:adapter_burden_total_mismatch"
+    },
+    {
+      "name": "opaque native Supported rejected",
+      "passed": true,
+      "reason": "P5PError:p5o-dry-pair-07:opaque_native_supported_without_attestation"
+    },
+    {
+      "name": "runtime premise violation Supported rejected",
+      "passed": true,
+      "reason": "P5PError:p5o-dry-pair-00:supported_without_runtime_domain_assurance"
+    },
+    {
+      "name": "analyzer artifact drift rejected at freeze",
+      "passed": true,
+      "reason": "P5PError:artifact_drift:experiments/autocontract_p5o_domain_native_assurance.py"
+    }
+  ],
+  "claim_boundary": "P5P establishes final-v3 administrative handoff and scoring readiness only. Its internal eight-pair fixture is contaminated and is not evidence of safety, coverage, novelty, or benefit."
+}

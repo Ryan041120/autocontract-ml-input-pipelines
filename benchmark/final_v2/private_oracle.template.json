@@ -1,0 +1,28 @@
+{
+  "schema_version": "autocontract.final-oracle.v2",
+  "artifact_type": "private_oracle",
+  "benchmark_id": "autocontract-final-v2-draft",
+  "public_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "commitment_salt_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+  "annotators": [
+    {"annotator_id": "primary-01", "role": "primary", "independent_of_analyzer": true, "conflict_disclosure": "REPLACE_WITH_DISCLOSURE"},
+    {"annotator_id": "reviewer-01", "role": "reviewer", "independent_of_analyzer": true, "conflict_disclosure": "REPLACE_WITH_DISCLOSURE"}
+  ],
+  "units": [
+    {
+      "unit_id": "replace-with-public-unit-id",
+      "expected_semantic_decision": "reject",
+      "known_unsafe": true,
+      "coarse_reason": "unsupported_or_ambiguous",
+      "expected_replay_capability_status": "unknown",
+      "replay_capability_reason": "REPLACE_WITH_EVIDENCE_BASED_REASON",
+      "effect_labels": {},
+      "semantic_oracle": {"output": "REPLACE", "rng": "REPLACE", "gradient": "REPLACE", "lineage": "REPLACE", "diversity": "REPLACE"},
+      "rationale": "REPLACE_WITH_SOURCE_GROUNDED_RATIONALE",
+      "confidence": "low",
+      "evidence_anchors": ["REPLACE_WITH_SOURCE_ANCHOR"],
+      "reviewed_by": ["reviewer-01"]
+    }
+  ],
+  "adjudication": {"status": "pending", "disagreement_count": 0, "record_path": "REPLACE_WITH_ADJUDICATION_RECORD"}
+}

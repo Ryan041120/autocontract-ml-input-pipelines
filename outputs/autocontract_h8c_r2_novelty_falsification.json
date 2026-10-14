@@ -1,0 +1,1692 @@
+{
+  "schema_version": "autocontract.h8c-r2-novelty-falsification.v0",
+  "artifact_role": "synthetic_internal_novelty_falsification_not_blind_evidence",
+  "protocol_sha256": "5b27b3e151afdc7defa9f84fae44a815ee88e3b8a0eefc35b416b20e905edba2",
+  "fixtures_sha256": "166a001bc0d1c2fdbe73ace6bbae4c7a69c19019714486a83dd0648695403285",
+  "environment": {
+    "python": "3.12.4",
+    "torch": "2.4.0",
+    "numpy": "1.26.4",
+    "cuda_available": false
+  },
+  "cases": [
+    {
+      "case_id": "safe_pure",
+      "family": "safe_control",
+      "source_sha256": "223c3a9bc2e013f8c67b45a8927ae13819e8b5347a9c12e0203f99435c9002f1",
+      "expected_source_sha256": "223c3a9bc2e013f8c67b45a8927ae13819e8b5347a9c12e0203f99435c9002f1",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "safe_mode_pure",
+      "family": "safe_control",
+      "source_sha256": "46d25ad6ecb0d1dfea6e174d749a8434305d1a5f1f22f723a9429f350f049d3c",
+      "expected_source_sha256": "46d25ad6ecb0d1dfea6e174d749a8434305d1a5f1f22f723a9429f350f049d3c",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "safe_keyed_deterministic",
+      "family": "safe_control",
+      "source_sha256": "64b4b71a369c467515872aa480a24f93f54da840a8cad60159673d806bfad0d5",
+      "expected_source_sha256": "64b4b71a369c467515872aa480a24f93f54da840a8cad60159673d806bfad0d5",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "safe_content_bound_file",
+      "family": "safe_control",
+      "source_sha256": "d8244aefa86942db8debe46d63d604c3bab3d44959bebd19f206a4c4b74e0253",
+      "expected_source_sha256": "d8244aefa86942db8debe46d63d604c3bab3d44959bebd19f206a4c4b74e0253",
+      "external_binding_declared": true,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "rare_rng_t224",
+      "family": "rare_input_rng",
+      "source_sha256": "d97eb1cd672b29cbf671d23ac6631f00eb62e901c6aa07b162d7aad2831984e9",
+      "expected_source_sha256": "d97eb1cd672b29cbf671d23ac6631f00eb62e901c6aa07b162d7aad2831984e9",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "rare_rng_t240",
+      "family": "rare_input_rng",
+      "source_sha256": "d97eb1cd672b29cbf671d23ac6631f00eb62e901c6aa07b162d7aad2831984e9",
+      "expected_source_sha256": "d97eb1cd672b29cbf671d23ac6631f00eb62e901c6aa07b162d7aad2831984e9",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "rare_rng_t248",
+      "family": "rare_input_rng",
+      "source_sha256": "d97eb1cd672b29cbf671d23ac6631f00eb62e901c6aa07b162d7aad2831984e9",
+      "expected_source_sha256": "d97eb1cd672b29cbf671d23ac6631f00eb62e901c6aa07b162d7aad2831984e9",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "rare_rng_t252",
+      "family": "rare_input_rng",
+      "source_sha256": "d97eb1cd672b29cbf671d23ac6631f00eb62e901c6aa07b162d7aad2831984e9",
+      "expected_source_sha256": "d97eb1cd672b29cbf671d23ac6631f00eb62e901c6aa07b162d7aad2831984e9",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "periodic_global_p4",
+      "family": "periodic_global_state",
+      "source_sha256": "295fadff9b968091ad2f9231eb3da1b6d10c7bb538879a57c41f0b3736d5783b",
+      "expected_source_sha256": "295fadff9b968091ad2f9231eb3da1b6d10c7bb538879a57c41f0b3736d5783b",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "periodic_global_p8",
+      "family": "periodic_global_state",
+      "source_sha256": "295fadff9b968091ad2f9231eb3da1b6d10c7bb538879a57c41f0b3736d5783b",
+      "expected_source_sha256": "295fadff9b968091ad2f9231eb3da1b6d10c7bb538879a57c41f0b3736d5783b",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "periodic_global_p16",
+      "family": "periodic_global_state",
+      "source_sha256": "295fadff9b968091ad2f9231eb3da1b6d10c7bb538879a57c41f0b3736d5783b",
+      "expected_source_sha256": "295fadff9b968091ad2f9231eb3da1b6d10c7bb538879a57c41f0b3736d5783b",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "periodic_global_p32",
+      "family": "periodic_global_state",
+      "source_sha256": "295fadff9b968091ad2f9231eb3da1b6d10c7bb538879a57c41f0b3736d5783b",
+      "expected_source_sha256": "295fadff9b968091ad2f9231eb3da1b6d10c7bb538879a57c41f0b3736d5783b",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "unbound_external_file",
+      "family": "unbound_external_file",
+      "source_sha256": "d8244aefa86942db8debe46d63d604c3bab3d44959bebd19f206a4c4b74e0253",
+      "expected_source_sha256": "d8244aefa86942db8debe46d63d604c3bab3d44959bebd19f206a4c4b74e0253",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "worker_mode_rng_w1",
+      "family": "worker_mode_rng",
+      "source_sha256": "6cda4f919bfd5588ecc26b99ddcffeb4d3a24a3b655cf34e4e649901bd3ef295",
+      "expected_source_sha256": "6cda4f919bfd5588ecc26b99ddcffeb4d3a24a3b655cf34e4e649901bd3ef295",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "worker_mode_rng_w4",
+      "family": "worker_mode_rng",
+      "source_sha256": "6cda4f919bfd5588ecc26b99ddcffeb4d3a24a3b655cf34e4e649901bd3ef295",
+      "expected_source_sha256": "6cda4f919bfd5588ecc26b99ddcffeb4d3a24a3b655cf34e4e649901bd3ef295",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "worker_mode_rng_w8",
+      "family": "worker_mode_rng",
+      "source_sha256": "6cda4f919bfd5588ecc26b99ddcffeb4d3a24a3b655cf34e4e649901bd3ef295",
+      "expected_source_sha256": "6cda4f919bfd5588ecc26b99ddcffeb4d3a24a3b655cf34e4e649901bd3ef295",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    },
+    {
+      "case_id": "gradient_detach",
+      "family": "gradient_detach",
+      "source_sha256": "9763139829bade183ecd0149dc5e86aabf770bb934249a927beb7c5f270e9393",
+      "expected_source_sha256": "9763139829bade183ecd0149dc5e86aabf770bb934249a927beb7c5f270e9393",
+      "external_binding_declared": false,
+      "gradient_applicable": true
+    },
+    {
+      "case_id": "source_drift",
+      "family": "source_drift",
+      "source_sha256": "223c3a9bc2e013f8c67b45a8927ae13819e8b5347a9c12e0203f99435c9002f1",
+      "expected_source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "external_binding_declared": false,
+      "gradient_applicable": false
+    }
+  ],
+  "summaries": [
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "tn": 14,
+      "safe_recall": 1.0,
+      "unsafe_detection_rate": 1.0,
+      "median_elapsed_ms_per_case": 6.47725,
+      "total_operator_calls": 0
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "tp": 4,
+      "fp": 12,
+      "fn": 0,
+      "tn": 2,
+      "safe_recall": 1.0,
+      "unsafe_detection_rate": 0.14285714285714285,
+      "median_elapsed_ms_per_case": 4.728,
+      "total_operator_calls": 18
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "tp": 4,
+      "fp": 11,
+      "fn": 0,
+      "tn": 3,
+      "safe_recall": 1.0,
+      "unsafe_detection_rate": 0.21428571428571427,
+      "median_elapsed_ms_per_case": 7.6013,
+      "total_operator_calls": 54
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "tp": 4,
+      "fp": 7,
+      "fn": 0,
+      "tn": 7,
+      "safe_recall": 1.0,
+      "unsafe_detection_rate": 0.5,
+      "median_elapsed_ms_per_case": 13.8235,
+      "total_operator_calls": 126
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "tp": 4,
+      "fp": 5,
+      "fn": 0,
+      "tn": 9,
+      "safe_recall": 1.0,
+      "unsafe_detection_rate": 0.6428571428571429,
+      "median_elapsed_ms_per_case": 21.7339,
+      "total_operator_calls": 270
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "tp": 4,
+      "fp": 3,
+      "fn": 0,
+      "tn": 11,
+      "safe_recall": 1.0,
+      "unsafe_detection_rate": 0.7857142857142857,
+      "median_elapsed_ms_per_case": 45.01155,
+      "total_operator_calls": 558
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "tp": 4,
+      "fp": 1,
+      "fn": 0,
+      "tn": 13,
+      "safe_recall": 1.0,
+      "unsafe_detection_rate": 0.9285714285714286,
+      "median_elapsed_ms_per_case": 88.5108,
+      "total_operator_calls": 1134
+    }
+  ],
+  "family_detection_by_budget": {
+    "1": {
+      "gradient_detach": 1.0,
+      "periodic_global_state": 0.0,
+      "rare_input_rng": 0.0,
+      "source_drift": 1.0,
+      "unbound_external_file": 0.0,
+      "worker_mode_rng": 0.0
+    },
+    "3": {
+      "gradient_detach": 1.0,
+      "periodic_global_state": 0.0,
+      "rare_input_rng": 0.0,
+      "source_drift": 1.0,
+      "unbound_external_file": 0.0,
+      "worker_mode_rng": 0.3333333333333333
+    },
+    "7": {
+      "gradient_detach": 1.0,
+      "periodic_global_state": 0.25,
+      "rare_input_rng": 0.25,
+      "source_drift": 1.0,
+      "unbound_external_file": 0.0,
+      "worker_mode_rng": 1.0
+    },
+    "15": {
+      "gradient_detach": 1.0,
+      "periodic_global_state": 0.5,
+      "rare_input_rng": 0.5,
+      "source_drift": 1.0,
+      "unbound_external_file": 0.0,
+      "worker_mode_rng": 1.0
+    },
+    "31": {
+      "gradient_detach": 1.0,
+      "periodic_global_state": 0.75,
+      "rare_input_rng": 0.75,
+      "source_drift": 1.0,
+      "unbound_external_file": 0.0,
+      "worker_mode_rng": 1.0
+    },
+    "63": {
+      "gradient_detach": 1.0,
+      "periodic_global_state": 1.0,
+      "rare_input_rng": 1.0,
+      "source_drift": 1.0,
+      "unbound_external_file": 0.0,
+      "worker_mode_rng": 1.0
+    }
+  },
+  "predictions": [
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "safe_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 0,
+      "elapsed_ms": 3.9411
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "safe_mode_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 0,
+      "elapsed_ms": 3.3954
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "safe_keyed_deterministic",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 0,
+      "elapsed_ms": 4.1729
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "safe_content_bound_file",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 0,
+      "elapsed_ms": 8.6587
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "rare_rng_t224",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 6.774
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "rare_rng_t240",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 9.922
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "rare_rng_t248",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 5.0618
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "rare_rng_t252",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 6.4645
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "periodic_global_p4",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "reachable_global_state_write",
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 9.8763
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "periodic_global_p8",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "reachable_global_state_write",
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 6.1446
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "periodic_global_p16",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "reachable_global_state_write",
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 7.6971
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "periodic_global_p32",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "reachable_global_state_write",
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 7.2671
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "unbound_external_file",
+      "family": "unbound_external_file",
+      "admitted": false,
+      "reasons": [
+        "reachable_external_read"
+      ],
+      "calls": 0,
+      "elapsed_ms": 6.3316
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "worker_mode_rng_w1",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 10.3761
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "worker_mode_rng_w4",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 7.9718
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "worker_mode_rng_w8",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "reachable_sampling_rng"
+      ],
+      "calls": 0,
+      "elapsed_ms": 6.2338
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "gradient_detach",
+      "family": "gradient_detach",
+      "admitted": false,
+      "reasons": [
+        "reachable_gradient_detach"
+      ],
+      "calls": 0,
+      "elapsed_ms": 6.49
+    },
+    {
+      "policy": "effect_v7_style_contract",
+      "budget": 0,
+      "case_id": "source_drift",
+      "family": "source_drift",
+      "admitted": false,
+      "reasons": [
+        "source_binding_mismatch"
+      ],
+      "calls": 0,
+      "elapsed_ms": 3.159
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "safe_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 3.3606
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "safe_mode_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 5.3739
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "safe_keyed_deterministic",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 3.7518
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "safe_content_bound_file",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 4.5526
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "rare_rng_t224",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 4.1398
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "rare_rng_t240",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 4.2841
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "rare_rng_t248",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 5.4629
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "rare_rng_t252",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 4.7285
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "periodic_global_p4",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 4.8248
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "periodic_global_p8",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 6.8287
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "periodic_global_p16",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 4.7275
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "periodic_global_p32",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 7.4083
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "unbound_external_file",
+      "family": "unbound_external_file",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 3.556
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "worker_mode_rng_w1",
+      "family": "worker_mode_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 4.5829
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "worker_mode_rng_w4",
+      "family": "worker_mode_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 5.4554
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "worker_mode_rng_w8",
+      "family": "worker_mode_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 1,
+      "elapsed_ms": 6.5078
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "gradient_detach",
+      "family": "gradient_detach",
+      "admitted": false,
+      "reasons": [
+        "gradient_connectivity_changed"
+      ],
+      "calls": 1,
+      "elapsed_ms": 5.0038
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 1,
+      "case_id": "source_drift",
+      "family": "source_drift",
+      "admitted": false,
+      "reasons": [
+        "source_binding_mismatch"
+      ],
+      "calls": 1,
+      "elapsed_ms": 4.2401
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "safe_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 7.1468
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "safe_mode_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 5.0611
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "safe_keyed_deterministic",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 6.1639
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "safe_content_bound_file",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 7.8765
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "rare_rng_t224",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 8.7266
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "rare_rng_t240",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 5.6138
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "rare_rng_t248",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 7.5058
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "rare_rng_t252",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 7.5954
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "periodic_global_p4",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 7.1996
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "periodic_global_p8",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 8.2313
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "periodic_global_p16",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 6.9025
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "periodic_global_p32",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 9.2023
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "unbound_external_file",
+      "family": "unbound_external_file",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 5.7553
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "worker_mode_rng_w1",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 3,
+      "elapsed_ms": 11.0332
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "worker_mode_rng_w4",
+      "family": "worker_mode_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 8.9009
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "worker_mode_rng_w8",
+      "family": "worker_mode_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 3,
+      "elapsed_ms": 14.242
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "gradient_detach",
+      "family": "gradient_detach",
+      "admitted": false,
+      "reasons": [
+        "gradient_connectivity_changed"
+      ],
+      "calls": 3,
+      "elapsed_ms": 7.6072
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 3,
+      "case_id": "source_drift",
+      "family": "source_drift",
+      "admitted": false,
+      "reasons": [
+        "source_binding_mismatch"
+      ],
+      "calls": 3,
+      "elapsed_ms": 12.5891
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "safe_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 17.1885
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "safe_mode_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 14.7644
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "safe_keyed_deterministic",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 9.9715
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "safe_content_bound_file",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 17.7208
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "rare_rng_t224",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 7,
+      "elapsed_ms": 18.6638
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "rare_rng_t240",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 10.173
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "rare_rng_t248",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 12.3887
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "rare_rng_t252",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 9.9388
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "periodic_global_p4",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 7,
+      "elapsed_ms": 10.5055
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "periodic_global_p8",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 12.8826
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "periodic_global_p16",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 11.4145
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "periodic_global_p32",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 9.8408
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "unbound_external_file",
+      "family": "unbound_external_file",
+      "admitted": true,
+      "reasons": [],
+      "calls": 7,
+      "elapsed_ms": 17.7174
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "worker_mode_rng_w1",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 7,
+      "elapsed_ms": 16.7011
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "worker_mode_rng_w4",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 7,
+      "elapsed_ms": 16.385
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "worker_mode_rng_w8",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 7,
+      "elapsed_ms": 10.8028
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "gradient_detach",
+      "family": "gradient_detach",
+      "admitted": false,
+      "reasons": [
+        "gradient_connectivity_changed"
+      ],
+      "calls": 7,
+      "elapsed_ms": 14.9165
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 7,
+      "case_id": "source_drift",
+      "family": "source_drift",
+      "admitted": false,
+      "reasons": [
+        "source_binding_mismatch"
+      ],
+      "calls": 7,
+      "elapsed_ms": 15.5214
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "safe_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 18.3184
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "safe_mode_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 20.721
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "safe_keyed_deterministic",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 17.5316
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "safe_content_bound_file",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 24.0272
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "rare_rng_t224",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 15,
+      "elapsed_ms": 20.1528
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "rare_rng_t240",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 15,
+      "elapsed_ms": 16.9088
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "rare_rng_t248",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 17.7994
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "rare_rng_t252",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 21.5275
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "periodic_global_p4",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 15,
+      "elapsed_ms": 29.8394
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "periodic_global_p8",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 15,
+      "elapsed_ms": 22.8071
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "periodic_global_p16",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 18.9763
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "periodic_global_p32",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 23.5895
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "unbound_external_file",
+      "family": "unbound_external_file",
+      "admitted": true,
+      "reasons": [],
+      "calls": 15,
+      "elapsed_ms": 27.7294
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "worker_mode_rng_w1",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 15,
+      "elapsed_ms": 24.8546
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "worker_mode_rng_w4",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 15,
+      "elapsed_ms": 21.9403
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "worker_mode_rng_w8",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 15,
+      "elapsed_ms": 20.7684
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "gradient_detach",
+      "family": "gradient_detach",
+      "admitted": false,
+      "reasons": [
+        "gradient_connectivity_changed"
+      ],
+      "calls": 15,
+      "elapsed_ms": 26.1013
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 15,
+      "case_id": "source_drift",
+      "family": "source_drift",
+      "admitted": false,
+      "reasons": [
+        "source_binding_mismatch"
+      ],
+      "calls": 15,
+      "elapsed_ms": 26.0206
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "safe_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 31,
+      "elapsed_ms": 49.7137
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "safe_mode_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 31,
+      "elapsed_ms": 36.7407
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "safe_keyed_deterministic",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 31,
+      "elapsed_ms": 36.5733
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "safe_content_bound_file",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 31,
+      "elapsed_ms": 50.9109
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "rare_rng_t224",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 40.3137
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "rare_rng_t240",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 48.4559
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "rare_rng_t248",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 43.2635
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "rare_rng_t252",
+      "family": "rare_input_rng",
+      "admitted": true,
+      "reasons": [],
+      "calls": 31,
+      "elapsed_ms": 39.8097
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "periodic_global_p4",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 41.0243
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "periodic_global_p8",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 33.055
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "periodic_global_p16",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 34.5232
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "periodic_global_p32",
+      "family": "periodic_global_state",
+      "admitted": true,
+      "reasons": [],
+      "calls": 31,
+      "elapsed_ms": 50.1941
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "unbound_external_file",
+      "family": "unbound_external_file",
+      "admitted": true,
+      "reasons": [],
+      "calls": 31,
+      "elapsed_ms": 64.417
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "worker_mode_rng_w1",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 46.2194
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "worker_mode_rng_w4",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 52.5863
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "worker_mode_rng_w8",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 70.2681
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "gradient_detach",
+      "family": "gradient_detach",
+      "admitted": false,
+      "reasons": [
+        "gradient_connectivity_changed"
+      ],
+      "calls": 31,
+      "elapsed_ms": 54.9582
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 31,
+      "case_id": "source_drift",
+      "family": "source_drift",
+      "admitted": false,
+      "reasons": [
+        "source_binding_mismatch"
+      ],
+      "calls": 31,
+      "elapsed_ms": 43.8037
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "safe_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 63,
+      "elapsed_ms": 75.461
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "safe_mode_pure",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 63,
+      "elapsed_ms": 107.6179
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "safe_keyed_deterministic",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 63,
+      "elapsed_ms": 90.0086
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "safe_content_bound_file",
+      "family": "safe_control",
+      "admitted": true,
+      "reasons": [],
+      "calls": 63,
+      "elapsed_ms": 224.9823
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "rare_rng_t224",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 85.5465
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "rare_rng_t240",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 78.3527
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "rare_rng_t248",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 89.736
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "rare_rng_t252",
+      "family": "rare_input_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 79.1455
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "periodic_global_p4",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 100.1244
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "periodic_global_p8",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 94.9252
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "periodic_global_p16",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 87.2704
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "periodic_global_p32",
+      "family": "periodic_global_state",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 97.0865
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "unbound_external_file",
+      "family": "unbound_external_file",
+      "admitted": true,
+      "reasons": [],
+      "calls": 63,
+      "elapsed_ms": 145.8606
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "worker_mode_rng_w1",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 120.6045
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "worker_mode_rng_w4",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 87.2856
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "worker_mode_rng_w8",
+      "family": "worker_mode_rng",
+      "admitted": false,
+      "reasons": [
+        "rng_state_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 77.122
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "gradient_detach",
+      "family": "gradient_detach",
+      "admitted": false,
+      "reasons": [
+        "gradient_connectivity_changed"
+      ],
+      "calls": 63,
+      "elapsed_ms": 85.7119
+    },
+    {
+      "policy": "dynamic_stateful_bound",
+      "budget": 63,
+      "case_id": "source_drift",
+      "family": "source_drift",
+      "admitted": false,
+      "reasons": [
+        "source_binding_mismatch"
+      ],
+      "calls": 63,
+      "elapsed_ms": 69.2327
+    }
+  ],
+  "checks": {
+    "protocol_budgets_preserved": true,
+    "four_safe_fourteen_unsafe_cases": true,
+    "predictions_cover_oracle_ids_exactly": true,
+    "contract_zero_false_accepts": true,
+    "contract_preserves_all_safe_controls": true,
+    "dynamic_detection_monotonic": true,
+    "budget_seven_does_not_match_contract": true,
+    "budget_sixty_three_exposes_unbound_external_limit": true,
+    "all_policies_preserve_safe_controls": true
+  },
+  "passed": 9,
+  "total": 9,
+  "status": "pass"
+}

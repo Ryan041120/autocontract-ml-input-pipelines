@@ -1,0 +1,206 @@
+{
+  "schema_version": "autocontract.p5a-constraint-compiler-selftest.v0",
+  "status": "pass",
+  "passed": 15,
+  "total": 15,
+  "protocol_sha256": "e40d40a0d788d2bdc6926dd10b3121c0bc2278177ac655d219347f0e478cc5cb",
+  "schema_sha256": "640ead1cef3085daf1000d70fdb9240ea2c63a2bb1890d235a754d3696ad910b",
+  "runner_sha256": "c96ed767f97ecd82d6ea7bc574d4a0211bb530464ec42c9960d9459598f5d0ab",
+  "checks": [
+    {
+      "name": "pure_three_step_pipeline_exposes_full_safe_prefix",
+      "passed": true
+    },
+    {
+      "name": "sampling_rng_marks_cedar_random_and_stops_cache_prefix",
+      "passed": true
+    },
+    {
+      "name": "replay_only_requires_parameter_key_and_does_not_become_plain_cacheable",
+      "passed": true
+    },
+    {
+      "name": "semantic_unknown_emits_fix_barrier",
+      "passed": true
+    },
+    {
+      "name": "source_unknown_emits_fix_barrier",
+      "passed": true
+    },
+    {
+      "name": "external_io_blocks_cache",
+      "passed": true
+    },
+    {
+      "name": "execution_state_write_blocks_cache",
+      "passed": true
+    },
+    {
+      "name": "explicit_dependencies_are_preserved",
+      "passed": true
+    },
+    {
+      "name": "operation_phase_contrast_changes_hints_without_changing_symbol_identity",
+      "passed": true
+    },
+    {
+      "name": "weakening_any_dimension_to_unknown_never_increases_cache_candidates",
+      "passed": true,
+      "observed": [
+        {
+          "dimension": "randomness",
+          "safe_prefix_count": 1
+        },
+        {
+          "dimension": "execution_state",
+          "safe_prefix_count": 1
+        },
+        {
+          "dimension": "external_io",
+          "safe_prefix_count": 1
+        },
+        {
+          "dimension": "cardinality",
+          "safe_prefix_count": 1
+        }
+      ]
+    },
+    {
+      "name": "output_contains_no_cost_or_placement_decision_fields",
+      "passed": true
+    },
+    {
+      "name": "frozen_inputs_unchanged",
+      "passed": true,
+      "observed": {
+        "experiments/autocontract_h7h_effect_v7.py": true,
+        "benchmark/final_v1/replay_capability_v1.schema.json": true,
+        "experiments/autocontract_r3_source_index_v1.py": true,
+        "benchmark/final_v2/public_manifest.schema.json": true,
+        ".research/semantics_safe_reconfiguration/p4_literature_and_github_pressure_test_2026-07-30.zh-CN.md": true
+      }
+    },
+    {
+      "name": "sampling_rng_taints_all_downstream_materialization_points",
+      "passed": true
+    },
+    {
+      "name": "replay_only_taints_all_downstream_plain_cache_points",
+      "passed": true
+    },
+    {
+      "name": "unknown_taints_all_downstream_materialization_points",
+      "passed": true
+    }
+  ],
+  "example_bundle": {
+    "schema_version": "autocontract.optimizer-constraint-bundle.v0",
+    "pipeline_id": "synthetic-interface-fixture",
+    "operation_context_sha256": "c0c427f14bf5b0b3649fe6391f1fe49b9519151b55d7b81e609fa2e27cc5a0ff",
+    "contract_bundle_sha256": "3e7ff9f3f5d271e954ffe718410222678dfb739bc895ca2934f6647a6c842d20",
+    "input_schema_sha256": "68d604cff2f8567b6e24faa9a0ba1416968e813eb5f9d04195ddd002f3ea73e0",
+    "operators": [
+      {
+        "operator_id": "decode",
+        "strict_cache_eligible": true,
+        "barrier": false,
+        "barrier_reasons": [],
+        "parameter_key_required": false,
+        "contract_sha256": "33251e827d126cc1ad46081d3201aa3e6c93280924e116835962303d56125e9f",
+        "source_index_sha256": "6e52c68427e90ffb1ce7796e4885c09860d235dfcbb8c4fb895f41e351afbd01"
+      },
+      {
+        "operator_id": "crop",
+        "strict_cache_eligible": false,
+        "barrier": false,
+        "barrier_reasons": [],
+        "parameter_key_required": false,
+        "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+        "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+      },
+      {
+        "operator_id": "normalize",
+        "strict_cache_eligible": false,
+        "barrier": false,
+        "barrier_reasons": [],
+        "parameter_key_required": false,
+        "contract_sha256": "cf213d1a354bd591c52de3fabd67faca3263ea64c67545d51d5f3286c7ed1e59",
+        "source_index_sha256": "e11057f2158d2fdb336a547b75082e019a582ab5893efda723549a7e46cc3d9c"
+      }
+    ],
+    "backends": {
+      "cedar": {
+        "interface": "random/fix/depends_on hints",
+        "operators": [
+          {
+            "operator_id": "decode",
+            "tag": "autocontract:decode",
+            "random": false,
+            "fix": false,
+            "depends_on": [],
+            "contract_sha256": "33251e827d126cc1ad46081d3201aa3e6c93280924e116835962303d56125e9f",
+            "source_index_sha256": "6e52c68427e90ffb1ce7796e4885c09860d235dfcbb8c4fb895f41e351afbd01"
+          },
+          {
+            "operator_id": "crop",
+            "tag": "autocontract:crop",
+            "random": true,
+            "fix": false,
+            "depends_on": [],
+            "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+            "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+          },
+          {
+            "operator_id": "normalize",
+            "tag": "autocontract:normalize",
+            "random": false,
+            "fix": false,
+            "depends_on": [],
+            "contract_sha256": "cf213d1a354bd591c52de3fabd67faca3263ea64c67545d51d5f3286c7ed1e59",
+            "source_index_sha256": "e11057f2158d2fdb336a547b75082e019a582ab5893efda723549a7e46cc3d9c"
+          }
+        ],
+        "constraint_only": true
+      },
+      "hycache": {
+        "interface": "online_only plus cache_steps boundary",
+        "steps": [
+          {
+            "operator_id": "decode",
+            "online_only": false,
+            "reason_codes": []
+          },
+          {
+            "operator_id": "crop",
+            "online_only": true,
+            "reason_codes": [
+              "sampling_rng"
+            ]
+          },
+          {
+            "operator_id": "normalize",
+            "online_only": true,
+            "reason_codes": [
+              "upstream_noncacheable:crop"
+            ]
+          }
+        ],
+        "safe_contiguous_prefix": [
+          "decode"
+        ],
+        "cache_steps_boundary_after": "decode",
+        "constraint_only": true
+      },
+      "cachew": {
+        "interface": "autocache boundary",
+        "safe_contiguous_prefix": [
+          "decode"
+        ],
+        "autocache_after": "decode",
+        "constraint_only": true
+      }
+    },
+    "claim_boundary": "Safety constraints only; the target optimizer retains all cost, placement, tier, capacity, and execution decisions."
+  },
+  "note": "Synthetic interface conformance only; target backends were not imported or executed."
+}

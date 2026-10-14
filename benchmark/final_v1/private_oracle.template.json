@@ -1,0 +1,51 @@
+{
+  "schema_version": "autocontract.final-oracle.v1",
+  "artifact_type": "private_oracle",
+  "benchmark_id": "autocontract-final-v1-draft",
+  "public_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "commitment_salt_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+  "annotators": [
+    {
+      "annotator_id": "primary-01",
+      "role": "primary",
+      "independent_of_analyzer": true,
+      "conflict_disclosure": "Replace with a factual disclosure."
+    },
+    {
+      "annotator_id": "reviewer-01",
+      "role": "reviewer",
+      "independent_of_analyzer": true,
+      "conflict_disclosure": "Replace with a factual disclosure."
+    }
+  ],
+  "units": [
+    {
+      "unit_id": "replace-with-real-unit-001",
+      "expected_decision": "reject",
+      "known_unsafe": true,
+      "coarse_reason": "unsupported_or_ambiguous",
+      "effect_labels": {
+        "randomness": "unknown",
+        "external_state": "unknown",
+        "mutation": "unknown",
+        "mode_dependence": "unknown"
+      },
+      "semantic_oracle": {
+        "output": "Replace with the observed equivalence condition.",
+        "rng": "Replace with the RNG-state observation.",
+        "gradient": "Replace with the autograd observation.",
+        "lineage": "Replace with the source-binding observation.",
+        "diversity": "Replace with the cross-epoch or cross-call observation."
+      },
+      "rationale": "Replace this placeholder with a source-grounded independent rationale.",
+      "confidence": "low",
+      "evidence_anchors": ["repository:path:line-or-test-id"],
+      "reviewed_by": ["reviewer-01"]
+    }
+  ],
+  "adjudication": {
+    "status": "pending",
+    "disagreement_count": 0,
+    "record_path": "private/adjudication.md"
+  }
+}

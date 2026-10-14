@@ -1,0 +1,266 @@
+{
+  "schema_version": "autocontract.replay-capability-v1-selftest.v0",
+  "status": "pass",
+  "passed": 14,
+  "total": 14,
+  "checks": [
+    {
+      "name": "valid_rng_receipt",
+      "passed": true,
+      "observed": {
+        "valid": true,
+        "framework": "FixtureFramework",
+        "mechanism": "rng_state_restoration",
+        "final_status": "admit",
+        "final_reason": "all_contract_layers_satisfied",
+        "lineage_operand_count": 1,
+        "required_checks": [
+          "public_callable",
+          "deterministic_mode",
+          "exact_replay",
+          "caller_rng_unchanged"
+        ]
+      }
+    },
+    {
+      "name": "valid_stored_record_receipt",
+      "passed": true,
+      "observed": {
+        "valid": true,
+        "framework": "FixtureFramework",
+        "mechanism": "stored_parameter_record",
+        "final_status": "admit",
+        "final_reason": "all_contract_layers_satisfied",
+        "lineage_operand_count": 3,
+        "required_checks": [
+          "record_generated",
+          "stored_params_present",
+          "public_restore_completed",
+          "exact_replay",
+          "caller_rng_unchanged"
+        ]
+      }
+    },
+    {
+      "name": "missing_primary_lineage",
+      "passed": true,
+      "observed": "missing_primary_input_lineage"
+    },
+    {
+      "name": "duplicate_operand_name",
+      "passed": true,
+      "observed": "duplicate_operand_name"
+    },
+    {
+      "name": "bad_digest",
+      "passed": true,
+      "observed": "bad_digest:configuration_sha256"
+    },
+    {
+      "name": "missing_required_check",
+      "passed": true,
+      "observed": "missing_mechanism_required_check"
+    },
+    {
+      "name": "supported_with_false_check",
+      "passed": true,
+      "observed": "supported_with_failed_required_check"
+    },
+    {
+      "name": "target_dependent_unbound",
+      "passed": true,
+      "observed": "target_dependent_operand_unbound"
+    },
+    {
+      "name": "missing_parameter_record",
+      "passed": true,
+      "observed": "missing_parameter_record_lineage"
+    },
+    {
+      "name": "none_mechanism_supported",
+      "passed": true,
+      "observed": "none_mechanism_cannot_be_supported"
+    },
+    {
+      "name": "strict_unknown_field",
+      "passed": true,
+      "observed": "unknown_or_extra_field"
+    },
+    {
+      "name": "composition_truth_table_8_of_8",
+      "passed": true,
+      "observed": [
+        {
+          "semantic": "reject",
+          "capability": "supported",
+          "source": "supported",
+          "expected": "reject",
+          "actual": "reject",
+          "reason": "semantic_reject",
+          "passed": true
+        },
+        {
+          "semantic": "unknown",
+          "capability": "supported",
+          "source": "supported",
+          "expected": "unknown",
+          "actual": "unknown",
+          "reason": "semantic_unknown",
+          "passed": true
+        },
+        {
+          "semantic": "admit",
+          "capability": "unsupported",
+          "source": "supported",
+          "expected": "unsupported",
+          "actual": "unsupported",
+          "reason": "capability_unsupported",
+          "passed": true
+        },
+        {
+          "semantic": "admit",
+          "capability": "unknown",
+          "source": "supported",
+          "expected": "unknown",
+          "actual": "unknown",
+          "reason": "capability_unknown",
+          "passed": true
+        },
+        {
+          "semantic": "admit",
+          "capability": "supported",
+          "source": "unknown",
+          "expected": "unknown",
+          "actual": "unknown",
+          "reason": "source_binding_unknown",
+          "passed": true
+        },
+        {
+          "semantic": "admit",
+          "capability": "supported",
+          "source": "supported",
+          "expected": "admit",
+          "actual": "admit",
+          "reason": "all_contract_layers_satisfied",
+          "passed": true
+        },
+        {
+          "semantic": "reject",
+          "capability": "unsupported",
+          "source": "unknown",
+          "expected": "reject",
+          "actual": "reject",
+          "reason": "semantic_reject",
+          "passed": true
+        },
+        {
+          "semantic": "unknown",
+          "capability": "unknown",
+          "source": "unknown",
+          "expected": "unknown",
+          "actual": "unknown",
+          "reason": "semantic_unknown",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "dependency_light_import",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "frozen_inputs_unchanged",
+      "passed": true,
+      "observed": {
+        "protocol": true,
+        "schema": true,
+        "p3d": true,
+        "p4a": true
+      }
+    }
+  ],
+  "truth_table": [
+    {
+      "semantic": "reject",
+      "capability": "supported",
+      "source": "supported",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "semantic_reject",
+      "passed": true
+    },
+    {
+      "semantic": "unknown",
+      "capability": "supported",
+      "source": "supported",
+      "expected": "unknown",
+      "actual": "unknown",
+      "reason": "semantic_unknown",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "unsupported",
+      "source": "supported",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "reason": "capability_unsupported",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "unknown",
+      "source": "supported",
+      "expected": "unknown",
+      "actual": "unknown",
+      "reason": "capability_unknown",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "supported",
+      "source": "unknown",
+      "expected": "unknown",
+      "actual": "unknown",
+      "reason": "source_binding_unknown",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "supported",
+      "source": "supported",
+      "expected": "admit",
+      "actual": "admit",
+      "reason": "all_contract_layers_satisfied",
+      "passed": true
+    },
+    {
+      "semantic": "reject",
+      "capability": "unsupported",
+      "source": "unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "semantic_reject",
+      "passed": true
+    },
+    {
+      "semantic": "unknown",
+      "capability": "unknown",
+      "source": "unknown",
+      "expected": "unknown",
+      "actual": "unknown",
+      "reason": "semantic_unknown",
+      "passed": true
+    }
+  ],
+  "freeze": {
+    "protocol": true,
+    "schema": true,
+    "p3d": true,
+    "p4a": true
+  },
+  "schema_sha256": "40cd2d57c266631f73a34efe535d584cbf316eb98c20f14b5479aca6a739e667",
+  "module_sha256": "e5d4d11a36f7b5cb9ad70ddc1f38f26c66ff0d624142d4e860e82b5e18353383",
+  "note": "Schema/administrative fixtures only; not empirical replay evidence."
+}

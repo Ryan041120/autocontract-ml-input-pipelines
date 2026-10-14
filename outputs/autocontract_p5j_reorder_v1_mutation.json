@@ -1,0 +1,434 @@
+{
+  "schema_version": "autocontract.p5j-reorder-v1-mutation-result.v0",
+  "status": "pass",
+  "passed": 6,
+  "total": 6,
+  "protocol_sha256": "982978a83a8ed42f1f22f3e76ada7e8159c128a2500afe73b3c30a53cd74fe03",
+  "runner_sha256": "e334fcbd257f568ec597ae46f12441ca66d0a101b0b0c3e99034af7cd6573b26",
+  "mutation_count": 55,
+  "checks": [
+    {
+      "name": "p5i_predecessor_is_frozen",
+      "passed": true,
+      "observed": {
+        "outputs/autocontract_p5i_reorder_capability_v1.json": "47aa8fd846f547c849f863e36684a3059e383263ebb1f72b1bc3b06ce3f91ca6",
+        "experiments/autocontract_reorder_capability_v1.py": "fdce8818dab5c763b08fa197aaa9c1d046991a8d1f4eaf348201a63d2d10fe44",
+        "benchmark/final_v1/p5i_reorder_capability_v1_protocol.json": "8751e6b0a72898d1ef45c08b17cfbf3e5939a78bf177e6d0faddbb2cdae6f91c"
+      }
+    },
+    {
+      "name": "unmutated_complete_cover_verifies",
+      "passed": true
+    },
+    {
+      "name": "all_isolated_receipt_mutations_fail_closed",
+      "passed": true,
+      "observed": {
+        "count": 55,
+        "failures": [],
+        "reason_counts": {
+          "bad_assurance_level": 1,
+          "bad_left_binding": 2,
+          "bad_proof_domain": 1,
+          "bad_proof_kind": 1,
+          "bad_right_binding": 2,
+          "bad_schema_version": 1,
+          "input_schema_mismatch": 1,
+          "left_binding_mismatch": 2,
+          "left_ir_coefficient_fraction_value": 1,
+          "left_ir_ir_shape": 1,
+          "malformed_pair": 4,
+          "operation_context_mismatch": 1,
+          "proof_artifact_keys_mismatch": 8,
+          "proof_artifact_replay_mismatch": 4,
+          "proof_digest_mismatch": 1,
+          "proof_scope_mismatch": 1,
+          "receipt_keys_mismatch": 11,
+          "right_binding_mismatch": 2,
+          "strict_v1_accepts_supported_only": 1,
+          "supported_proof_requires_true_equality": 1,
+          "unsupported_relation": 1,
+          "verifier_identity_mismatch": 2,
+          "verifier_keys_mismatch": 4,
+          "verifier_source_mismatch": 1
+        }
+      }
+    },
+    {
+      "name": "post_issue_callable_replacement_fails_sourceindex_replay",
+      "passed": true,
+      "observed": {
+        "schema_version": "autocontract.reorder-capability-verification.v1",
+        "assurance_level": "locally_replayed_restricted_static",
+        "verifier": {
+          "verifier_id": "autocontract.restricted-affine-commutativity",
+          "version": "1.0.0",
+          "source_sha256": "875ec81fd1df1d32c6b913f50b32adf5046f77385cad86488b4f861b96530110"
+        },
+        "receipt_audit": [
+          {
+            "pair": [
+              "decode",
+              "normalize"
+            ],
+            "decision": "reject",
+            "reason": "left_source_replay_mismatch",
+            "count": 1
+          }
+        ],
+        "verified_pairs": [],
+        "activated_pairs": [],
+        "policy": "strict_local_replay_full_base_segment_pairwise_complete"
+      }
+    },
+    {
+      "name": "receipt_subset_evidence_is_monotone",
+      "passed": true,
+      "observed": {
+        "comparisons": 19,
+        "failures": []
+      }
+    },
+    {
+      "name": "only_complete_pair_cover_opens_full_region",
+      "passed": true,
+      "observed": {
+        "full_region_masks": [
+          7
+        ],
+        "subsets": {
+          "0": {
+            "receipt_count": 0,
+            "verified_count": 0,
+            "unfixed": [],
+            "full_region": false
+          },
+          "1": {
+            "receipt_count": 1,
+            "verified_count": 1,
+            "unfixed": [],
+            "full_region": false
+          },
+          "2": {
+            "receipt_count": 1,
+            "verified_count": 1,
+            "unfixed": [],
+            "full_region": false
+          },
+          "3": {
+            "receipt_count": 2,
+            "verified_count": 2,
+            "unfixed": [],
+            "full_region": false
+          },
+          "4": {
+            "receipt_count": 1,
+            "verified_count": 1,
+            "unfixed": [],
+            "full_region": false
+          },
+          "5": {
+            "receipt_count": 2,
+            "verified_count": 2,
+            "unfixed": [],
+            "full_region": false
+          },
+          "6": {
+            "receipt_count": 2,
+            "verified_count": 2,
+            "unfixed": [],
+            "full_region": false
+          },
+          "7": {
+            "receipt_count": 3,
+            "verified_count": 3,
+            "unfixed": [
+              "crop",
+              "decode",
+              "normalize"
+            ],
+            "full_region": true
+          }
+        }
+      }
+    }
+  ],
+  "mutations": [
+    {
+      "label": "schema_version",
+      "passed": true,
+      "reason": "bad_schema_version"
+    },
+    {
+      "label": "operation_context",
+      "passed": true,
+      "reason": "operation_context_mismatch"
+    },
+    {
+      "label": "input_schema",
+      "passed": true,
+      "reason": "input_schema_mismatch"
+    },
+    {
+      "label": "left_contract",
+      "passed": true,
+      "reason": "left_binding_mismatch"
+    },
+    {
+      "label": "left_source",
+      "passed": true,
+      "reason": "left_binding_mismatch"
+    },
+    {
+      "label": "right_contract",
+      "passed": true,
+      "reason": "right_binding_mismatch"
+    },
+    {
+      "label": "right_source",
+      "passed": true,
+      "reason": "right_binding_mismatch"
+    },
+    {
+      "label": "relation",
+      "passed": true,
+      "reason": "unsupported_relation"
+    },
+    {
+      "label": "status",
+      "passed": true,
+      "reason": "strict_v1_accepts_supported_only"
+    },
+    {
+      "label": "assurance",
+      "passed": true,
+      "reason": "bad_assurance_level"
+    },
+    {
+      "label": "verifier_id",
+      "passed": true,
+      "reason": "verifier_identity_mismatch"
+    },
+    {
+      "label": "verifier_version",
+      "passed": true,
+      "reason": "verifier_identity_mismatch"
+    },
+    {
+      "label": "verifier_source",
+      "passed": true,
+      "reason": "verifier_source_mismatch"
+    },
+    {
+      "label": "proof_kind",
+      "passed": true,
+      "reason": "bad_proof_kind"
+    },
+    {
+      "label": "proof_domain",
+      "passed": true,
+      "reason": "bad_proof_domain"
+    },
+    {
+      "label": "proof_equality",
+      "passed": true,
+      "reason": "supported_proof_requires_true_equality"
+    },
+    {
+      "label": "proof_digest",
+      "passed": true,
+      "reason": "proof_digest_mismatch"
+    },
+    {
+      "label": "proof_scope",
+      "passed": true,
+      "reason": "proof_scope_mismatch"
+    },
+    {
+      "label": "extra_top_key",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "extra_verifier_key",
+      "passed": true,
+      "reason": "verifier_keys_mismatch"
+    },
+    {
+      "label": "extra_proof_key",
+      "passed": true,
+      "reason": "proof_artifact_keys_mismatch"
+    },
+    {
+      "label": "extra_ir_key",
+      "passed": true,
+      "reason": "left_ir_ir_shape"
+    },
+    {
+      "label": "zero_denominator",
+      "passed": true,
+      "reason": "left_ir_coefficient_fraction_value"
+    },
+    {
+      "label": "left_ir_rehashed",
+      "passed": true,
+      "reason": "proof_artifact_replay_mismatch"
+    },
+    {
+      "label": "right_ir_rehashed",
+      "passed": true,
+      "reason": "proof_artifact_replay_mismatch"
+    },
+    {
+      "label": "left_then_right_rehashed",
+      "passed": true,
+      "reason": "proof_artifact_replay_mismatch"
+    },
+    {
+      "label": "right_then_left_rehashed",
+      "passed": true,
+      "reason": "proof_artifact_replay_mismatch"
+    },
+    {
+      "label": "delete_top:assurance_level",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:input_schema_sha256",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:left",
+      "passed": true,
+      "reason": "malformed_pair"
+    },
+    {
+      "label": "delete_top:operation_context_sha256",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:proof_artifact",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:proof_scope",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:proof_sha256",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:relation",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:right",
+      "passed": true,
+      "reason": "malformed_pair"
+    },
+    {
+      "label": "delete_top:schema_version",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:status",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_top:verifier",
+      "passed": true,
+      "reason": "receipt_keys_mismatch"
+    },
+    {
+      "label": "delete_verifier:source_sha256",
+      "passed": true,
+      "reason": "verifier_keys_mismatch"
+    },
+    {
+      "label": "delete_verifier:verifier_id",
+      "passed": true,
+      "reason": "verifier_keys_mismatch"
+    },
+    {
+      "label": "delete_verifier:version",
+      "passed": true,
+      "reason": "verifier_keys_mismatch"
+    },
+    {
+      "label": "delete_proof:domain",
+      "passed": true,
+      "reason": "proof_artifact_keys_mismatch"
+    },
+    {
+      "label": "delete_proof:equality",
+      "passed": true,
+      "reason": "proof_artifact_keys_mismatch"
+    },
+    {
+      "label": "delete_proof:kind",
+      "passed": true,
+      "reason": "proof_artifact_keys_mismatch"
+    },
+    {
+      "label": "delete_proof:left_ir",
+      "passed": true,
+      "reason": "proof_artifact_keys_mismatch"
+    },
+    {
+      "label": "delete_proof:left_then_right_ir",
+      "passed": true,
+      "reason": "proof_artifact_keys_mismatch"
+    },
+    {
+      "label": "delete_proof:right_ir",
+      "passed": true,
+      "reason": "proof_artifact_keys_mismatch"
+    },
+    {
+      "label": "delete_proof:right_then_left_ir",
+      "passed": true,
+      "reason": "proof_artifact_keys_mismatch"
+    },
+    {
+      "label": "delete_left:contract_sha256",
+      "passed": true,
+      "reason": "bad_left_binding"
+    },
+    {
+      "label": "delete_left:operator_id",
+      "passed": true,
+      "reason": "malformed_pair"
+    },
+    {
+      "label": "delete_left:source_index_sha256",
+      "passed": true,
+      "reason": "bad_left_binding"
+    },
+    {
+      "label": "delete_right:contract_sha256",
+      "passed": true,
+      "reason": "bad_right_binding"
+    },
+    {
+      "label": "delete_right:operator_id",
+      "passed": true,
+      "reason": "malformed_pair"
+    },
+    {
+      "label": "delete_right:source_index_sha256",
+      "passed": true,
+      "reason": "bad_right_binding"
+    }
+  ],
+  "claim_boundary": "Adversarial mechanism calibration over generated mutations; not formal verification of the Python implementation and not real-operator coverage."
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autocontract.local/schema/reorder_capability_v2.schema.json",
+  "title": "AutoContract locally replayable relation-algebra ReorderCapabilityV2 receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "operation_context_sha256", "input_schema_sha256", "left", "right", "relation", "status", "assurance_level", "verifier", "proof_artifact", "proof_sha256", "proof_scope"],
+  "properties": {
+    "schema_version": {"const": "autocontract.reorder-capability.v2"},
+    "operation_context_sha256": {"$ref": "#/$defs/sha256"},
+    "input_schema_sha256": {"$ref": "#/$defs/sha256"},
+    "left": {"$ref": "#/$defs/binding"},
+    "right": {"$ref": "#/$defs/binding"},
+    "relation": {"const": "commutes"},
+    "status": {"const": "supported"},
+    "assurance_level": {"const": "locally_replayed_versioned_relation_algebra"},
+    "verifier": {
+      "type": "object", "additionalProperties": false,
+      "required": ["verifier_id", "version", "closure_sha256"],
+      "properties": {
+        "verifier_id": {"const": "autocontract.torchvision-relation-algebra"},
+        "version": {"const": "1.0.0"},
+        "closure_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "proof_artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "framework", "input_domain", "left_ir", "right_ir", "lemma", "equality"],
+      "properties": {
+        "kind": {"const": "torchvision_relation_algebra_v0"},
+        "framework": {"type": "object"},
+        "input_domain": {"type": "object"},
+        "left_ir": {"type": "object"},
+        "right_ir": {"type": "object"},
+        "lemma": {"type": "object"},
+        "equality": {"const": true}
+      }
+    },
+    "proof_sha256": {"$ref": "#/$defs/sha256"},
+    "proof_scope": {"const": "Exact bound torchvision 0.15.2 operator pair and structured tensor domain; only locally replayed identity or pointwise-channel/spatial-index lemmas."}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["operator_id", "contract_sha256", "source_index_sha256"],
+      "properties": {
+        "operator_id": {"type": "string", "minLength": 1},
+        "contract_sha256": {"$ref": "#/$defs/sha256"},
+        "source_index_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

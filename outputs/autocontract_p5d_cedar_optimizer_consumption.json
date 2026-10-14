@@ -1,0 +1,333 @@
+{
+  "schema_version": "autocontract.p5d-cedar-optimizer-consumption-result.v0",
+  "status": "pass",
+  "passed": 17,
+  "total": 17,
+  "protocol_sha256": "c8115cead8236450234d419f1d1a39af0c6c53e37049e3d6fb059e4549fc6c88",
+  "runner_sha256": "4b9aaae59eeb8848648c76b6a49c32a8b14215c98e3daadaea2cf05ea9597081",
+  "upstream_commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+  "checks": [
+    {
+      "name": "upstream_checkout_matches_commit",
+      "passed": true,
+      "observed": "f062305fcdab196e871c5d09b4c82ab788b4da79"
+    },
+    {
+      "name": "upstream_worktree_is_clean",
+      "passed": true,
+      "observed": "clean"
+    },
+    {
+      "name": "upstream_git_blobs_match",
+      "passed": true,
+      "observed": {
+        "cedar/compose/optimizer.py": "11c70d449ad1fbeccc6f19ca0bcac56fef919e7f464699d96814ae80506de09b",
+        "cedar/compose/feature.py": "6d450748bbea8ce53f9360e12c3d776a3805b4f9cccd0400d2d29e4271986aeb",
+        "tests/data/test_cache_optimizer_stats.yml": "d01369996e5a4c7cbc6d0dadacca8c99880ba3af9b134b2c363667f85051ac5d"
+      }
+    },
+    {
+      "name": "frozen_local_inputs_unchanged",
+      "passed": true,
+      "observed": {
+        "outputs/autocontract_p5a_constraint_compiler_selftest.json": "59d75486cc547277616ad99361a01d3aa66a1e9991091329ebcb4bf4b470ee7a",
+        "outputs/autocontract_p5c_cedar_runtime_smoke.json": "776f62f171d84d87d87e5fb56367cd00db8cb36d59494b3ecbff5b5dec881cdc",
+        "experiments/autocontract_p5c_cedar_runtime_smoke.py": "1d4ea01a1107df72238e2bf2e08f72904956be0eb5ffaaf46838f794dae4eaf4",
+        "benchmark/final_v1/p5c_cedar_runtime_smoke_protocol_v2.json": "7098c1bc91d44829f3f1d73615cc3a70a2637df3ee3c63d6e68808cf3ac3c8de"
+      }
+    },
+    {
+      "name": "p5a_recipe_is_constraint_only",
+      "passed": true
+    },
+    {
+      "name": "p5a_crop_hint_is_random",
+      "passed": true,
+      "observed": {
+        "operator_id": "crop",
+        "tag": "autocontract:crop",
+        "random": true,
+        "fix": false,
+        "depends_on": [],
+        "contract_sha256": "0db92348a383be8761ff7c86550cda36647eebfcc469cd26c06e27bc74941124",
+        "source_index_sha256": "947a8b7800ae66d30ca07f290af256198c3bbf6c6d37ff80bfeb95c7d19059e0"
+      }
+    },
+    {
+      "name": "autocontract_logical_path_matches_fixture",
+      "passed": true,
+      "observed": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "autocontract_first_random_matches",
+      "passed": true,
+      "observed": [
+        4,
+        1
+      ]
+    },
+    {
+      "name": "autocontract_one_cache_pipe_selected",
+      "passed": true,
+      "observed": [
+        7
+      ]
+    },
+    {
+      "name": "autocontract_cache_boundary_matches",
+      "passed": true,
+      "observed": [
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          4
+        ]
+      ]
+    },
+    {
+      "name": "single_hint_removed_counterfactual_logical_path_matches_fixture",
+      "passed": true,
+      "observed": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "single_hint_removed_counterfactual_first_random_matches",
+      "passed": true,
+      "observed": [
+        1
+      ]
+    },
+    {
+      "name": "single_hint_removed_counterfactual_one_cache_pipe_selected",
+      "passed": true,
+      "observed": [
+        7
+      ]
+    },
+    {
+      "name": "single_hint_removed_counterfactual_cache_boundary_matches",
+      "passed": true,
+      "observed": [
+        [
+          2,
+          7
+        ],
+        [
+          7,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "single_variable_changes_only_crop_randomness_boundary",
+      "passed": true,
+      "observed": {
+        "contract": [
+          4,
+          1
+        ],
+        "counterfactual": [
+          1
+        ]
+      }
+    },
+    {
+      "name": "cedar_plan_changes_when_hint_is_removed",
+      "passed": true,
+      "observed": {
+        "contract": [
+          6,
+          5,
+          7,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "counterfactual": [
+          6,
+          5,
+          4,
+          3,
+          2,
+          7,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "autocontract_cache_stays_before_declared_random_crop",
+      "passed": true,
+      "observed": [
+        6,
+        5,
+        7,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    }
+  ],
+  "arms": {
+    "autocontract": {
+      "logical_path": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "random_ids": [
+        4,
+        1
+      ],
+      "first_random_id": 4,
+      "optimized_path": [
+        6,
+        5,
+        7,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "cache_ids": [
+        7
+      ],
+      "cache_edges": [
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          4
+        ]
+      ],
+      "all_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          4
+        ]
+      ]
+    },
+    "single_hint_removed_counterfactual": {
+      "logical_path": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "random_ids": [
+        1
+      ],
+      "first_random_id": 1,
+      "optimized_path": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        7,
+        1,
+        0
+      ],
+      "cache_ids": [
+        7
+      ],
+      "cache_edges": [
+        [
+          2,
+          7
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "all_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          1
+        ]
+      ]
+    }
+  },
+  "note": "Actual cedar cache-plan consumption of is_random on an official synthetic profile; no executed cache or benefit claim."
+}

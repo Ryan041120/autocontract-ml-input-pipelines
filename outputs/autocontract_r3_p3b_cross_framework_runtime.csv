@@ -1,0 +1,12 @@
+framework,symbol,construction,replay,replay_equivalent,caller_rng_drift,portable_status,portable_coverage,same_process_portable_stable,cross_process_portable_stable,hot_status,hot_unchanged_decision,mutation_admit,mutation_reject,mutation_unknown,all_mutations_restored
+imgaug,imgaug.augmenters.arithmetic.Multiply,pass,pass,True,False,supported,complete_registered_components,True,True,supported,admit,0,2,1,True
+imgaug,imgaug.augmenters.blur.AverageBlur,pass,pass,True,False,supported,complete_registered_components,True,False,supported,admit,0,2,1,True
+imgaug,imgaug.augmenters.geometric.Affine,pass,pass,True,False,supported,complete_registered_components,True,True,supported,admit,0,2,1,True
+imgaug,imgaug.augmenters.size.CropToFixedSize,pass,pass,True,False,supported,complete_registered_components,True,True,supported,admit,0,2,1,True
+imgaug,imgaug.augmenters.contrast.LinearContrast,pass,pass,True,False,supported,complete_registered_components,True,False,supported,admit,0,2,1,True
+Albumentations,albumentations.augmentations.geometric.flip.VerticalFlip,pass,pass,True,False,supported,complete_registered_components,True,False,supported,admit,0,2,1,True
+Albumentations,albumentations.augmentations.pixel.transforms.RandomGamma,pass,pass,True,False,supported,complete_registered_components,True,False,supported,admit,0,2,1,True
+Albumentations,albumentations.augmentations.blur.transforms.GaussianBlur,pass,pass,True,False,supported,complete_registered_components,True,False,supported,admit,0,2,1,True
+Albumentations,albumentations.augmentations.geometric.transforms.Affine,pass,pass,True,False,supported,complete_registered_components,True,False,supported,admit,0,2,1,True
+Albumentations,albumentations.augmentations.crops.transforms.CenterCrop,pass,pass,True,False,supported,complete_registered_components,True,False,supported,admit,0,2,1,True
+Albumentations,albumentations.augmentations.mixing.domain_adaptation.HistogramMatching,pass,fail,False,False,supported,complete_registered_components,True,False,supported,admit,0,2,1,True

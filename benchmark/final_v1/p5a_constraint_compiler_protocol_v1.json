@@ -1,0 +1,24 @@
+{
+  "schema_version": "autocontract.p5a-constraint-compiler-protocol.v1",
+  "status": "posthoc_composition_bug_correction_before_rerun",
+  "date": "2026-07-30",
+  "inherits": {
+    "path": "benchmark/final_v1/p5a_constraint_compiler_protocol.json",
+    "sha256": "5643d71cf426915d2b44b39ff71741b1e51db52394b906f804dd667c25f7a3df",
+    "unchanged": "All v0 scope, non-claims, frozen inputs, backend boundaries, and twelve gates remain in force."
+  },
+  "observed_attempt": {
+    "path": "outputs/autocontract_p5a_constraint_compiler_selftest_attempt0_posthoc_invalid.json",
+    "sha256": "d000a028951bb7f30ac382d524e35dc9aa44c238515c8c23c3ce8dbfd7972ef7",
+    "nominal_result": "12/12 PASS",
+    "posthoc_verdict": "invalid_due_to_insufficient_compositional_assertion",
+    "problem": "The safe prefix stopped before a sampling RNG operator, but a pure downstream operator was still emitted as HyCache online_only=false. Caching that downstream output would also freeze the stochastic ancestor."
+  },
+  "only_semantic_correction": "Cache eligibility at a materialization point is prefix-compositional: every operator in its transitive execution prefix must be strictly cache eligible. Once an unsupported stochastic/stateful/external/unknown/replay-only operator is encountered, all downstream HyCache/Cachew materialization points remain disabled unless a future keyed-lineage backend protocol is explicitly defined.",
+  "additional_gates": [
+    "sampling_rng_taints_all_downstream_materialization_points",
+    "replay_only_taints_all_downstream_plain_cache_points",
+    "unknown_taints_all_downstream_materialization_points"
+  ],
+  "pass_rule": "All inherited 12 gates and all 3 new compositional gates must pass."
+}

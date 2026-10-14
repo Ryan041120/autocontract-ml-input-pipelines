@@ -1,0 +1,745 @@
+{
+  "schema_version": "autocontract.r3-p3d-replay-capability-result.v0",
+  "artifact_role": "posthoc_capability_composition_not_blind_evidence",
+  "protocol_sha256": "263c1a09a663623780a697160cc71dec1a6270c0ad4fafb71bd2b10bba6378c6",
+  "runner_sha256": "932d8acbaa3e062ccae202e9644cce9a32d39e93d25ad2b6298359344d9efc42",
+  "status": "pass",
+  "freeze_checks": {
+    "protocol": true,
+    "p3a": true,
+    "p3b": true,
+    "p3c_protocol": true,
+    "p3c": true,
+    "v1": true,
+    "manifest": true,
+    "lock": true,
+    "python_3_9_19": true
+  },
+  "counts": {
+    "capability": {
+      "supported": 10,
+      "unsupported": 1,
+      "unknown": 0
+    },
+    "final": {
+      "admit": 10,
+      "unsupported": 1,
+      "unknown": 0,
+      "reject": 0
+    }
+  },
+  "gates": {
+    "all_11_semantic_admit_unchanged": true,
+    "all_11_source_supported_and_stable": true,
+    "capability_exactly_10_supported_1_histogram_unsupported": true,
+    "final_exactly_10_admit_1_unsupported": true,
+    "all_10_admits_exact_rng_and_lineage": true,
+    "composition_truth_table_8_of_8": true,
+    "frozen_inputs_unchanged": true
+  },
+  "units": [
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.arithmetic.Multiply",
+      "semantic": {
+        "status": "admit",
+        "configuration": "imgaug.deterministic",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "rng_state_restoration",
+        "deterministic": true,
+        "public_callable": true,
+        "record_serialization": "not_applicable",
+        "exact_replay": true,
+        "caller_rng_drift": false,
+        "lineage": {
+          "image_0": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          },
+          "image_1": {
+            "digest": "90d7eb03aa43d3a1aa78d843875c898ebd10cfbe8bf314a54ca483c72312760b",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "7aa64bc143b1e15192dc6779dde759d7e7ce229e3addb685ae5f48fc5d0cf69c"
+            }
+          }
+        },
+        "error": null,
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "probe_ms": 4.2647,
+        "bytes": 827
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "e090f50afacd100b809c8553bd70ad1b7a1f64aca1a2f315cc0c1b2bdc250d35",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.blur.AverageBlur",
+      "semantic": {
+        "status": "admit",
+        "configuration": "imgaug.deterministic",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "rng_state_restoration",
+        "deterministic": true,
+        "public_callable": true,
+        "record_serialization": "not_applicable",
+        "exact_replay": true,
+        "caller_rng_drift": false,
+        "lineage": {
+          "image_0": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          },
+          "image_1": {
+            "digest": "90d7eb03aa43d3a1aa78d843875c898ebd10cfbe8bf314a54ca483c72312760b",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "7aa64bc143b1e15192dc6779dde759d7e7ce229e3addb685ae5f48fc5d0cf69c"
+            }
+          }
+        },
+        "error": null,
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "probe_ms": 3.9316,
+        "bytes": 827
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "a484ec685532d56686644e57b9435eb7d3c3f90dbd7aac551c7d810382b4469e",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.geometric.Affine",
+      "semantic": {
+        "status": "admit",
+        "configuration": "imgaug.deterministic",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "rng_state_restoration",
+        "deterministic": true,
+        "public_callable": true,
+        "record_serialization": "not_applicable",
+        "exact_replay": true,
+        "caller_rng_drift": false,
+        "lineage": {
+          "image_0": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          },
+          "image_1": {
+            "digest": "90d7eb03aa43d3a1aa78d843875c898ebd10cfbe8bf314a54ca483c72312760b",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "7aa64bc143b1e15192dc6779dde759d7e7ce229e3addb685ae5f48fc5d0cf69c"
+            }
+          }
+        },
+        "error": null,
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "probe_ms": 13.358,
+        "bytes": 827
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "2aced9036465acb86c5befe16e7442db5fcdb43ba930c1fbe94e442510efd86b",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.size.CropToFixedSize",
+      "semantic": {
+        "status": "admit",
+        "configuration": "imgaug.deterministic",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "rng_state_restoration",
+        "deterministic": true,
+        "public_callable": true,
+        "record_serialization": "not_applicable",
+        "exact_replay": true,
+        "caller_rng_drift": false,
+        "lineage": {
+          "image_0": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          },
+          "image_1": {
+            "digest": "90d7eb03aa43d3a1aa78d843875c898ebd10cfbe8bf314a54ca483c72312760b",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "7aa64bc143b1e15192dc6779dde759d7e7ce229e3addb685ae5f48fc5d0cf69c"
+            }
+          }
+        },
+        "error": null,
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "probe_ms": 4.5126,
+        "bytes": 827
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "f9d25082c9a4ee3276d45066d40020ba606f9df3fe79aa68d42c76028616f194",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "imgaug",
+      "symbol": "imgaug.augmenters.contrast.LinearContrast",
+      "semantic": {
+        "status": "admit",
+        "configuration": "imgaug.deterministic",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "rng_state_restoration",
+        "deterministic": true,
+        "public_callable": true,
+        "record_serialization": "not_applicable",
+        "exact_replay": true,
+        "caller_rng_drift": false,
+        "lineage": {
+          "image_0": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          },
+          "image_1": {
+            "digest": "90d7eb03aa43d3a1aa78d843875c898ebd10cfbe8bf314a54ca483c72312760b",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "7aa64bc143b1e15192dc6779dde759d7e7ce229e3addb685ae5f48fc5d0cf69c"
+            }
+          }
+        },
+        "error": null,
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "probe_ms": 4.793,
+        "bytes": 826
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "36b792a8301d4db1ab013ed067cc03b0b779c2558507445c429b4496ad2d46c7",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.geometric.flip.VerticalFlip",
+      "semantic": {
+        "status": "admit",
+        "configuration": "albumentations.replay",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "stored_parameter_record",
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "record_generated": true,
+        "stored_leaf_params": true,
+        "restore_completed": true,
+        "exact_replay": true,
+        "outputs_compared": 4,
+        "caller_rng_drift": false,
+        "target_names": [],
+        "all_target_operands_lineage_bound": true,
+        "lineage": {
+          "image": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          }
+        },
+        "record_digest": "e49942bde0ddd5d53b1bf467c6fd4cf6dd8724b7d516424c6624a5f3ec355e46",
+        "error": null,
+        "probe_ms": 6.4733,
+        "bytes": 746
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "8423ab82e0d6f85930a6b0bc00eaff30933f57ffbe1d42bfa6d17bffca32748e",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.pixel.transforms.RandomGamma",
+      "semantic": {
+        "status": "admit",
+        "configuration": "albumentations.replay",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "stored_parameter_record",
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "record_generated": true,
+        "stored_leaf_params": true,
+        "restore_completed": true,
+        "exact_replay": true,
+        "outputs_compared": 4,
+        "caller_rng_drift": false,
+        "target_names": [],
+        "all_target_operands_lineage_bound": true,
+        "lineage": {
+          "image": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          }
+        },
+        "record_digest": "e75e23b629a08607b57d88d9e97efd5eb87071d4b93099a481ca9085738d701f",
+        "error": null,
+        "probe_ms": 4.3052,
+        "bytes": 746
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "d8c6f5b88be729d6eab50c7921760e15d05f8c1844e8ecc1919264470a688da1",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.blur.transforms.GaussianBlur",
+      "semantic": {
+        "status": "admit",
+        "configuration": "albumentations.replay",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "stored_parameter_record",
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "record_generated": true,
+        "stored_leaf_params": true,
+        "restore_completed": true,
+        "exact_replay": true,
+        "outputs_compared": 4,
+        "caller_rng_drift": false,
+        "target_names": [],
+        "all_target_operands_lineage_bound": true,
+        "lineage": {
+          "image": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          }
+        },
+        "record_digest": "fe5152e5f7b55674e38cd883c737b19af08fc605f88bd58d22f65397f279a002",
+        "error": null,
+        "probe_ms": 11.2861,
+        "bytes": 747
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "724b41417be4d3a7c5f51a6f6ffabbc0f5773786b806c609dde9c6178b9b7ab5",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.geometric.transforms.Affine",
+      "semantic": {
+        "status": "admit",
+        "configuration": "albumentations.replay",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "stored_parameter_record",
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "record_generated": true,
+        "stored_leaf_params": true,
+        "restore_completed": true,
+        "exact_replay": true,
+        "outputs_compared": 4,
+        "caller_rng_drift": false,
+        "target_names": [],
+        "all_target_operands_lineage_bound": true,
+        "lineage": {
+          "image": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          }
+        },
+        "record_digest": "4f9d716aca0613bab95e96207b38a7a605d040ca767ebcd85c41ab93ffe1cc2a",
+        "error": null,
+        "probe_ms": 11.4358,
+        "bytes": 747
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "8e675f34ee0f9d8105ef5a523caf380dab7670b91da81d4c9e0a4183c8c87c19",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.crops.transforms.CenterCrop",
+      "semantic": {
+        "status": "admit",
+        "configuration": "albumentations.replay",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "stored_parameter_record",
+        "status": "supported",
+        "reason": "all_family_obligations_satisfied",
+        "record_generated": true,
+        "stored_leaf_params": true,
+        "restore_completed": true,
+        "exact_replay": true,
+        "outputs_compared": 4,
+        "caller_rng_drift": false,
+        "target_names": [],
+        "all_target_operands_lineage_bound": true,
+        "lineage": {
+          "image": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          }
+        },
+        "record_digest": "33fc818acf2eedd4a316b0f640be3a8976714fee247d3a51bb67fac563188ace",
+        "error": null,
+        "probe_ms": 14.5079,
+        "bytes": 747
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "54e0c8541063681b3f22668563143d7ff9faa40c9d139389d2c10dff8d968377",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "admit",
+        "reason": "all_contract_layers_satisfied"
+      }
+    },
+    {
+      "framework": "Albumentations",
+      "symbol": "albumentations.augmentations.mixing.domain_adaptation.HistogramMatching",
+      "semantic": {
+        "status": "admit",
+        "configuration": "albumentations.replay",
+        "phase": "replay_apply"
+      },
+      "capability": {
+        "schema": "autocontract.replay-capability.v1",
+        "mechanism": "stored_parameter_record",
+        "status": "unsupported",
+        "reason": "framework_public_replay_serialization_not_supported",
+        "record_generated": false,
+        "stored_leaf_params": false,
+        "restore_completed": false,
+        "exact_replay": false,
+        "outputs_compared": 0,
+        "caller_rng_drift": false,
+        "target_names": [
+          "hm_metadata"
+        ],
+        "all_target_operands_lineage_bound": true,
+        "lineage": {
+          "image": {
+            "digest": "51b8975f0308dee763a09ce46c8a17342e1aa91fe8982802fc2def0bb8ea24da",
+            "structure": {
+              "kind": "ndarray",
+              "dtype": "uint8",
+              "shape": [
+                32,
+                32,
+                3
+              ],
+              "sha256": "5f24b2f16026ec7d0450a5a08283d3cfd47302fe859f579ed79fe7d2663b73f9"
+            }
+          },
+          "hm_metadata": {
+            "digest": "150626a9515d81cbea7d441e7b6075744a099e585270bcfd46dde6fd4013d5e2",
+            "structure": {
+              "kind": "list",
+              "items": [
+                {
+                  "kind": "ndarray",
+                  "dtype": "uint8",
+                  "shape": [
+                    32,
+                    32,
+                    3
+                  ],
+                  "sha256": "fd07329872a36fabe98bbf8be3f564c8e52688302f0b2d345391a9e3dbe4d609"
+                }
+              ]
+            }
+          }
+        },
+        "record_digest": null,
+        "error": {
+          "type": "NotImplementedError",
+          "message": "HistogramMatching cannot be reliably serialized due to its dependency on external data via metadata."
+        },
+        "probe_ms": 3.378,
+        "bytes": 1139
+      },
+      "source": {
+        "status": "supported",
+        "sha256": "8c9011799fa8f5f15da7d6e2243127e2ba20f5db636509255cfcb7c4986d57ee",
+        "three_process_stable": true
+      },
+      "final": {
+        "status": "unsupported",
+        "reason": "framework_replay_capability_unsupported"
+      }
+    }
+  ],
+  "composition_truth_table": [
+    {
+      "semantic": "reject",
+      "capability": "supported",
+      "source": "supported",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "semantic_reject",
+      "passed": true
+    },
+    {
+      "semantic": "unknown",
+      "capability": "supported",
+      "source": "supported",
+      "expected": "unknown",
+      "actual": "unknown",
+      "reason": "semantic_unknown",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "unsupported",
+      "source": "supported",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "reason": "framework_replay_capability_unsupported",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "unknown",
+      "source": "supported",
+      "expected": "unknown",
+      "actual": "unknown",
+      "reason": "capability_unknown",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "supported",
+      "source": "unknown",
+      "expected": "unknown",
+      "actual": "unknown",
+      "reason": "source_binding_unknown",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "supported",
+      "source": "supported",
+      "expected": "admit",
+      "actual": "admit",
+      "reason": "all_contract_layers_satisfied",
+      "passed": true
+    },
+    {
+      "semantic": "admit",
+      "capability": "supported_target_dependent_unbound",
+      "source": "supported",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "reason": "target_dependent_operand_not_lineage_bound",
+      "passed": true
+    },
+    {
+      "semantic": "reject",
+      "capability": "unsupported",
+      "source": "unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "semantic_reject",
+      "passed": true
+    }
+  ]
+}

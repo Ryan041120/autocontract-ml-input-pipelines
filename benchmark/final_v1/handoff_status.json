@@ -1,0 +1,29 @@
+{
+  "schema_version": "autocontract.final-handoff-status.v1",
+  "date": "2026-07-29",
+  "ready_for_independent_annotation": true,
+  "ready_for_final_run": false,
+  "completed": [
+    "public/private artifact separation",
+    "label-leakage denylist",
+    "independent annotation and adjudication protocol",
+    "salted oracle commitment format",
+    "tamper and manifest-consistency self-test",
+    "one-shot sealing checklist"
+  ],
+  "blockers": [
+    "50-80 real source-bound units selected after analyzer freeze",
+    "at least two independent annotators and completed adjudication",
+    "frozen final runner and framework adapters",
+    "append-only per-repeat measurements, environment and launch ledger",
+    "pre-registered confidence intervals and coverage/failure taxonomy",
+    "pre-registered stateful dynamic baseline with fixed label-independent probe budget",
+    "novelty falsification against stateful dynamic on unseen branches and drift contexts",
+    "workload-manifest-derived horizon with decision-stability reporting",
+    "prospective adapter and manual-hint burden measurement",
+    "real end-to-end training workloads for the full-paper claim",
+    "signed prediction artifact produced before oracle disclosure"
+  ],
+  "next_owner": "independent corpus curator and annotators",
+  "claim_boundary": "The handoff protocol can be ready while the final benchmark result remains absent. H8C is calibration evidence, not a substitute for this blind run."
+}

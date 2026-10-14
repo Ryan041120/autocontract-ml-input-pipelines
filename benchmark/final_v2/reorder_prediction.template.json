@@ -1,0 +1,11 @@
+{
+  "schema_version": "autocontract.reorder-final-prediction.v0",
+  "artifact_type": "reorder_prediction",
+  "benchmark_id": "replace-with-benchmark-id",
+  "public_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "producer_bundle_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "created_at": "replace-with-ISO8601-time",
+  "status": "sealed",
+  "pairs": [{"pair_id": "replace-pair-id", "status": "unknown", "assurance_level": "none", "reason": "replace-reason", "receipt_sha256": null, "generation_ms": 0.0, "adapter_minutes": 0.0}],
+  "burden": {"total_adapter_minutes": 0.0, "all_pairs_timed": true}
+}

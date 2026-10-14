@@ -1,0 +1,49 @@
+{
+  "schema_version": "autocontract.p5p-reorder-final-v3-handoff-protocol.v0",
+  "status": "predeclared_administrative_readiness_only",
+  "date": "2026-08-01",
+  "question": "Can the premise/native-aware final-v3 artifacts be role-separated, committed, frozen, prediction-sealed, and scored with family/RNG/Wilson reporting while refusing to treat contaminated dry-run data as independent evidence?",
+  "frozen_predecessors": {
+    "experiments/autocontract_final_benchmark_admin_v2.py": "a0b9a57fed978fabc6b11168e10f09ca4249a2efc8d0d031aebfa2e62332434a",
+    "experiments/autocontract_p5o_domain_native_assurance.py": "dbbcea79e10386184a4f5322f535c25cdacb35d8e92d0504ca89e6f53e1497f8",
+    "outputs/autocontract_p5o_domain_native_assurance.json": "c46bcdcfca3901bce8145866eda0d1e9d7cd66cef236685bde968df3f578bf46",
+    "benchmark/final_v3/reorder_public_manifest.schema.json": "f66775f4685dca5082a3aa2f37dab3f7dad982f5eb349a87e39c4d545bfc1956",
+    "benchmark/final_v3/reorder_private_oracle.schema.json": "ab2ff964e658dbe9197ef37888823391177625343332a138b5a24c4d4a9d2fb0",
+    "benchmark/final_v3/reorder_prediction.schema.json": "0b7a73f4b2bac683309fa92fd1e8e2ccf3d73376dae343cf70e45b1f212ca9fd",
+    "benchmark/final_v3/P5O_WORKSHEET.zh-CN.md": "827528f70843e385f230ae967bd68657c9d9ba1bc7f6732ffd972db4b5af23d7"
+  },
+  "roles": {
+    "selector": "Creates and seals the label-free final-v3 public manifest without analyzer predictions, receipts, or private labels.",
+    "annotators": "Create an observation-explicit private oracle; primary/reviewer work before analyzer output and an adjudicator resolves disagreements.",
+    "oracle_custodian": "Keeps the salted oracle private and releases only its commitment before analyzer execution.",
+    "analyzer_operator": "Uses sealed public source and commitment only, records prospective domain/native/burden fields, and seals predictions before reveal.",
+    "evaluator": "Verifies both commitments, reports unsafe/unresolved Supported first, then family/RNG/Wilson coverage and burden."
+  },
+  "frozen_gates": {
+    "unsafe_supported_max": 0,
+    "unresolved_supported_max": 0,
+    "prediction_completion_min": 1.0,
+    "commutes_coverage_pilot_floor": 0.3
+  },
+  "independent_final_eligibility": {
+    "evaluation_mode": "independent_final",
+    "selection_independent_of_analyzer": true,
+    "minimum_pairs": 20,
+    "maximum_pairs": 40,
+    "minimum_frameworks": 3,
+    "minimum_domains": 2,
+    "minimum_pair_families": 4,
+    "all_pairs_uncontaminated": true,
+    "viability_threshold_status": "frozen_before_independent_selection"
+  },
+  "hypotheses": {
+    "h1_chain": "Public/private/prediction artifacts pass exact v1 schemas and semantic invariants, then commitments detect post-seal changes.",
+    "h2_fail_closed": "Opaque native Supported, runtime premise violations, local proof of declared-tolerance relations, and incomplete observation checks fail closed.",
+    "h3_reporting": "Reveal reports safety first, Wilson intervals by pair family and RNG stratum, non-identity Supported, supported frameworks, and burden.",
+    "h4_evidence_boundary": "The eight-pair contaminated fixture can exercise the entire chain but is always ineligible for independent scientific evidence.",
+    "h5_final_gate": "A manifest cannot enter independent_final mode unless all frozen selection, quota, contamination, and reporting conditions hold."
+  },
+  "pass_rule": "All 25 administrative checks pass and every frozen predecessor hash remains exact.",
+  "no_go_rule": "Any commitment mismatch, unsafe or unresolved Supported, domain/native policy bypass, or contaminated artifact labeled independent blocks the current final-v3 package.",
+  "claim_boundary": "P5P establishes final-v3 administrative handoff and scoring readiness only. Its internal eight-pair fixture is contaminated and is not evidence of safety, coverage, novelty, or benefit."
+}

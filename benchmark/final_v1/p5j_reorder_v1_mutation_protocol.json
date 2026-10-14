@@ -1,0 +1,26 @@
+{
+  "schema_version": "autocontract.p5j-reorder-v1-mutation-protocol.v1",
+  "status": "predeclared_attempt1_nonmonotonicity_repair_regression",
+  "date": "2026-07-30",
+  "question": "Does ReorderCapabilityV1 fail closed under systematic receipt mutation and preserve evidence monotonicity?",
+  "frozen_predecessor": {
+    "outputs/autocontract_p5i_reorder_capability_v1.json": "47aa8fd846f547c849f863e36684a3059e383263ebb1f72b1bc3b06ce3f91ca6",
+    "experiments/autocontract_reorder_capability_v1.py": "fdce8818dab5c763b08fa197aaa9c1d046991a8d1f4eaf348201a63d2d10fe44",
+    "benchmark/final_v1/p5i_reorder_capability_v1_protocol.json": "8751e6b0a72898d1ef45c08b17cfbf3e5939a78bf177e6d0faddbb2cdae6f91c"
+  },
+  "attempt0_failure": {
+    "result_sha256": "b6141f7b0f68bec047d39bf9ac667d5b5cf0fb45842c55f4291d26d7f4bec196",
+    "protocol_sha256": "cdf8899ae5bf0538f70521220e72e560472465a611d9d54189d6f79838a7e909",
+    "observed": "55/55 mutations rejected, but 1/19 evidence-monotonicity comparisons failed because V0 greedily switched between overlapping two-operator regions.",
+    "repair": "Strict V1 activates no proper subregion inside a maximal base-flexible segment; it opens the segment only when every unordered pair is locally verified."
+  },
+  "properties": {
+    "mutation_rejection": "Every isolated structural, binding, verifier, proof, digest, or scope mutation verifies zero pairs and leaves all operators fixed.",
+    "semantic_replay": "Artifact mutations are tested both with stale and attacker-recomputed proof digests.",
+    "runtime_binding": "Replacing a callable after receipt issuance invalidates its SourceIndexV1 binding.",
+    "evidence_monotonicity": "For every pair of receipt subsets A subset B, the set of operators unfixed under A is a subset of that under B.",
+    "complete_cover": "Only the complete three-pair cover opens the full three-operator region."
+  },
+  "pass_rule": "All mutations fail closed, callable replacement is rejected, all subset monotonicity comparisons hold, and full-region admission occurs exactly for complete pair coverage.",
+  "claim_boundary": "Adversarial mechanism calibration over generated mutations; not formal verification of the Python implementation and not real-operator coverage."
+}

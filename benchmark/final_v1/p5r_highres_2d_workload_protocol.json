@@ -1,0 +1,54 @@
+{
+  "schema_version": "autocontract.p5r-highres-2d-workload-protocol.v0",
+  "status": "predeclared_internal_proxy_workload",
+  "date": "2026-08-07",
+  "question": "Does receipt-authorized Crop(224)->Normalize remove full-resolution pointwise work in a real cedar/PyTorch workload while preserving exact preprocessing and MobileNetV3-small training semantics?",
+  "runtime": {
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "cedar_commit": "f062305fcdab196e871c5d09b4c82ab788b4da79"
+  },
+  "workload_specific_profile": "benchmark/final_v1/p5r_highres_2d_profile.yml",
+  "pipeline": {
+    "baseline": ["Normalize([0.45,0.4,0.35],[0.25,0.3,0.35])", "RandomCrop((224,224), padding=None, pad_if_needed=False)", "Identity()"],
+    "receipt_guarded": ["RandomCrop((224,224), padding=None, pad_if_needed=False)", "Normalize([0.45,0.4,0.35],[0.25,0.3,0.35])", "Identity()"],
+    "manual_safe_oracle": "A non-inplace per-pixel channel affine Normalize commutes with a no-padding RandomCrop that only selects spatial indices, provided H,W >= 224. RandomCrop consumes one RNG draw sequence in either order because Normalize consumes none. The trailing Identity is inert; it is retained because P5R freezes a workload-specific, cedar-compatible profile for this three-mapper pipeline. The manual arm is a semantic oracle, not a performance comparator."
+  },
+  "profile_phase": {
+    "cells": [
+      {"id": "S1", "height": 1024, "width": 1024, "samples": 4, "timing_pairs": 3},
+      {"id": "S2", "height": 1536, "width": 1536, "samples": 3, "timing_pairs": 3}
+    ],
+    "purpose": "Predeclared descriptive scaling profile. This phase must pass all semantic checks before S3 confirmation is run."
+  },
+  "confirm_phase": {
+    "cell": {"id": "S3", "height": 2048, "width": 2048, "samples": 2, "timing_pairs": 21, "paired_blocks_per_run": 21},
+    "purpose": "Confirmatory high-resolution cell, executed in a separate fresh Python process after the profile output is frozen."
+  },
+  "measurement": {
+    "execution_seed": 918273,
+    "training_seed": 424242,
+    "batch_size": 2,
+    "torch_threads": 1,
+    "model": "torchvision.models.mobilenet_v3_small(weights=None, num_classes=10)",
+    "optimizer": "SGD(lr=0.01, momentum=0.0)",
+    "warmups_per_arm": 3,
+    "paired_order": "AB/BA alternating by pair index; each block includes fresh cedar preprocessing and one deterministic MobileNetV3-small training pass",
+    "descriptive_ci": "Within-run paired delta bootstrap: 2000 resamples, fixed seed 20260807, 95% percentile interval. This is descriptive only.",
+    "confirmatory_gate_ci": "Across two S3 runs: 10000-resample paired-log-ratio bootstrap; its 95% upper endpoint must be below log(0.95)."
+  },
+  "semantic_endpoints": [
+    "candidate count and cedar path",
+    "manual safe oracle",
+    "exact output tensors, shapes, and exception behavior",
+    "Python/NumPy/torch RNG post-state",
+    "MobileNetV3-small loss sequence, logits, gradients, and final model state",
+    "domain/config/source-binding mutation rejection"
+  ],
+  "storage_endpoint": "For each output tensor report logical bytes and retained backing-storage bytes; a crop view retaining a full-resolution normalized backing tensor is not treated as a memory win.",
+  "benefit_go_rule": "For each independent S3 run, paired median guarded/baseline end-to-end ratio must be below 0.95. Across both independent runs, a 10000-resample paired bootstrap of mean log(guarded/baseline) must have 95% CI upper endpoint below log(0.95). All semantic checks must pass.",
+  "pass_rule": "Every semantic check must pass. Timing is descriptive and cannot compensate for a semantic failure.",
+  "claim_boundary": "Real JPEG content from cedar's test fixture is decoded and deterministically resized before timing, yielding a shape-faithful resident-tensor proxy; the known relation-algebra-supported pair remains internal. This is not independent evaluation, a benchmark claim, dataset-I/O measurement, or evidence of a general training-speed benefit.",
+  "scientific_evidence": false
+}

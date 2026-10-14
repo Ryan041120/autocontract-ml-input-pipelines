@@ -1,0 +1,44 @@
+{
+  "schema_version": "autocontract.p5s-acquire-selftest.v0",
+  "status": "pass",
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {
+      "name": "normal_nested_archive",
+      "passed": true
+    },
+    {
+      "name": "path_traversal",
+      "passed": true
+    },
+    {
+      "name": "corrupt_crc",
+      "passed": true
+    },
+    {
+      "name": "byte_size_mismatch",
+      "passed": true
+    },
+    {
+      "name": "missing_file",
+      "passed": true
+    },
+    {
+      "name": "wrong_rgb",
+      "passed": true
+    },
+    {
+      "name": "undersized",
+      "passed": true
+    },
+    {
+      "name": "extra_filename",
+      "passed": true
+    },
+    {
+      "name": "duplicate_member",
+      "passed": true
+    }
+  ]
+}

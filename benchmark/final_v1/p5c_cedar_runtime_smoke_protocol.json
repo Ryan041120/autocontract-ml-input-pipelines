@@ -1,0 +1,57 @@
+{
+  "schema_version": "autocontract.p5c-cedar-runtime-smoke-protocol.v0",
+  "status": "development_calibration_frozen_after_dependency_discovery",
+  "date": "2026-07-30",
+  "purpose": "Test whether the non-vacuous P5B public-API recipe imports, constructs, preserves hint state, and executes a synthetic in-process data path in the official cedar checkout.",
+  "claim_boundary": "Runtime public-API and optimizer-disabled data-path compatibility only. This protocol does not test cedar optimizer constraint consumption, plan quality, safety, or performance.",
+  "upstream": {
+    "repository": "https://github.com/stanford-mast/cedar",
+    "commit_sha": "f062305fcdab196e871c5d09b4c82ab788b4da79",
+    "source_sha256": {
+      "cedar/pipes/map.py": "dc99e3646996ab306071da3cab7f3fb8063486645f884c986a366277d8c572b2",
+      "cedar/pipes/pipe.py": "4ecac2a92e5100f6419a7a9f5247f9a2a058fbad5f76f5cb1df5ebac26b2710c"
+    }
+  },
+  "frozen_inputs": {
+    "outputs/autocontract_p5b_cedar_api_conformance.json": "217a4060fbe16326365102611968bf8ecbc9a4fa2697ebb5ea18c85b577766d9",
+    "benchmark/final_v1/p5b_cedar_api_conformance_protocol_v1.json": "c666b44548f935b64a30058aede7478eed0ea70c6f37477d1c15d2424ecaa84f",
+    "experiments/autocontract_p5b_cedar_api_conformance.py": "ff1d40fc788e1edc983b52412acdef818bfbfe61b12de86829b825b753f37570"
+  },
+  "core_runtime": {
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "tensorflow": "2.14.0",
+    "ray": "2.7.0",
+    "numpy": "1.26.0",
+    "torchvision": "0.15.2+cpu",
+    "torchdata": "0.6.1"
+  },
+  "fixture": {
+    "source": [0, 1, 2, 3, 4],
+    "functions": ["x + 1", "x * 2", "x - 3"],
+    "expected_output": [-1, 1, 3, 5, 7],
+    "optimizer_enabled": false
+  },
+  "required_checks": [
+    "upstream_checkout_matches_commit",
+    "upstream_source_hashes_match",
+    "frozen_local_inputs_unchanged",
+    "core_runtime_versions_match",
+    "p5b_recipe_is_non_vacuous",
+    "cedar_public_imports_succeed",
+    "three_mapper_objects_construct",
+    "constructor_tag_state_matches_recipe",
+    "constructor_random_state_matches_recipe",
+    "public_fix_state_matches_recipe",
+    "public_depends_on_state_matches_recipe",
+    "logical_chain_preserves_operator_order",
+    "optimizer_is_disabled",
+    "synthetic_data_path_matches_expected_output"
+  ],
+  "failure_history": [
+    "Main Python 3.12 environment lacked tensorflow, ray, and torchdata.",
+    "The first isolated import failed because Ray 2.7.0 still imports pkg_resources, which setuptools 83 removed; setuptools was pinned to 70.3.0.",
+    "The next import failed because cedar imports PIL and Pympler at module load; the compatible torchvision/torchdata stack and Pympler were then installed.",
+    "The first object-state probe incorrectly assumed a get_tag method; the official object exposes public tag data as the tag attribute. No cedar source was patched."
+  ]
+}

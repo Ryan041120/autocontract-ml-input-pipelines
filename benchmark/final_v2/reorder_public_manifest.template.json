@@ -1,0 +1,30 @@
+{
+  "schema_version": "autocontract.reorder-final-public.v0",
+  "artifact_type": "reorder_public_manifest",
+  "benchmark_id": "replace-with-benchmark-id",
+  "status": "draft",
+  "created_at": "replace-with-ISO8601-time",
+  "selection_author": "replace-with-independent-selector",
+  "selection_independent_of_analyzer": true,
+  "claim_scope": "Replace with an exact operation-context, framework, domain, and version scope.",
+  "parent_final_manifest_sha256": null,
+  "contamination_registry": {"path": "benchmark/final_v1/contamination_registry.json", "sha256": "7630793ab3078797ba7d310206931cdad47819724c145cab33e3e5545525aa84", "selection_cutoff": "replace-with-cutoff"},
+  "visibility_policy": {
+    "selector_forbidden": ["analyzer_predictions", "reorder_receipts", "private_oracle", "p5k_p5m_pair_labels"],
+    "annotator_forbidden": ["analyzer_predictions", "reorder_receipts"],
+    "analyzer_allowed": ["sealed_public_manifest", "public_source", "oracle_commitment"],
+    "reveal_precondition": "sealed_predictions_and_verified_commitment"
+  },
+  "metric_gates": {"unsafe_supported_max": 0, "unresolved_supported_max": 0, "commutes_coverage_min": 0.3, "prediction_completion_min": 1.0, "minimum_pairs": 20, "maximum_pairs": 40, "minimum_frameworks": 3, "minimum_domains": 2},
+  "frameworks": [{"framework_id": "replace-framework", "domain": "replace-domain", "repository_url": "https://example.invalid/repository", "release": "replace-release", "commit_sha": "0000000000000000000000000000000000000000", "source_tree_sha256": "0000000000000000000000000000000000000000000000000000000000000000"}],
+  "pairs": [{
+    "pair_id": "replace-pair-id", "framework_id": "replace-framework",
+    "left": {"operator_id": "left", "type": "replace.Left", "configuration": {}, "source_index_sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "right": {"operator_id": "right", "type": "replace.Right", "configuration": {}, "source_index_sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "input_domain": {"description": "Replace with a complete structured input-domain statement.", "artifact_path": "replace-domain.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "operation_context": {"scope": "one_invocation_each_order", "rng_assignment": "global_sequential", "state_reset": "same_pre_pair_state", "comparison": "exact_output_definedness_exception_and_rng_post_state", "optimizer_reorder_scope": "adjacent_swap"},
+    "source_anchors": ["replace-source-anchor"], "inclusion_reason": "Replace with a label-free coverage reason.",
+    "contamination": {"seen_during_p5k_p5m": false, "registry_match": false}
+  }],
+  "analyzer_bundle": [{"name": "ReorderCapabilityV2", "path": "experiments/autocontract_reorder_capability_v2.py", "sha256": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35"}]
+}

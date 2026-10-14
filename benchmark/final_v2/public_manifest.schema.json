@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/autocontract/final-public-v2.schema.json",
+  "title": "AutoContract final-blind public manifest v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "benchmark_id", "status", "created_at", "selection_author", "claim_scope", "analyzer_bundle", "contamination_policy", "metric_gates", "units"],
+  "properties": {
+    "schema_version": {"const": "autocontract.final-public.v2"},
+    "artifact_type": {"const": "public_manifest"},
+    "benchmark_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$"},
+    "status": {"enum": ["draft", "sealed"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "selection_author": {"type": "string", "minLength": 1},
+    "claim_scope": {"type": "string", "minLength": 20},
+    "analyzer_bundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["systems", "runner", "adapters", "schemas"],
+      "properties": {
+        "systems": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["effect", "replay_capability", "source_index"],
+          "properties": {
+            "effect": {"$ref": "#/$defs/named_artifact"},
+            "replay_capability": {"$ref": "#/$defs/named_artifact"},
+            "source_index": {"$ref": "#/$defs/named_artifact"}
+          }
+        },
+        "runner": {"$ref": "#/$defs/artifact"},
+        "adapters": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/artifact"}},
+        "schemas": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/artifact"}}
+      }
+    },
+    "contamination_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registry_path", "selection_cutoff", "minimum_novel_frameworks"],
+      "properties": {
+        "registry_path": {"type": "string", "minLength": 1},
+        "selection_cutoff": {"type": "string", "format": "date-time"},
+        "minimum_novel_frameworks": {"type": "integer", "minimum": 1}
+      }
+    },
+    "metric_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["known_unsafe_false_accepts_max", "semantic_safe_recall_min", "semantic_reason_accuracy_min", "semantic_resolution_min", "replay_capability_resolution_min", "source_resolution_min", "final_safe_admit_recall_min", "oracle_benefit_coverage_min"],
+      "properties": {
+        "known_unsafe_false_accepts_max": {"const": 0},
+        "semantic_safe_recall_min": {"const": 0.8},
+        "semantic_reason_accuracy_min": {"const": 0.9},
+        "semantic_resolution_min": {"const": 0.9},
+        "replay_capability_resolution_min": {"const": 0.9},
+        "source_resolution_min": {"const": 0.9},
+        "final_safe_admit_recall_min": {"const": 0.8},
+        "oracle_benefit_coverage_min": {"const": 0.9}
+      }
+    },
+    "units": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/unit"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "named_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "path", "sha256"],
+      "properties": {"name": {"type": "string", "minLength": 1}, "path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "lineage_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "role": {"enum": ["primary_input", "secondary_input", "metadata_target", "parameter_record"]}
+      }
+    },
+    "binding_component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "callable_slots"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "callable_slots": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit_id", "task_type", "split", "framework", "domain", "repository", "source_binding", "operation_context", "candidate", "contract_plan", "verification_plan"],
+      "properties": {
+        "unit_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,99}$"},
+        "task_type": {"enum": ["contract_inference", "rewrite_validation", "optimizer_workload"]},
+        "split": {"const": "final_blind"},
+        "framework": {"type": "string", "minLength": 1},
+        "domain": {"type": "string", "minLength": 1},
+        "repository": {
+          "type": "object", "additionalProperties": false, "required": ["url", "release", "commit_sha"],
+          "properties": {"url": {"type": "string", "format": "uri"}, "release": {"type": "string", "minLength": 1}, "commit_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"}}
+        },
+        "source_binding": {
+          "type": "object", "additionalProperties": false, "required": ["path", "public_symbol", "binding_sha256"],
+          "properties": {"path": {"type": "string", "minLength": 1}, "public_symbol": {"type": "string", "minLength": 1}, "binding_sha256": {"$ref": "#/$defs/sha256"}}
+        },
+        "operation_context": {
+          "type": "object", "additionalProperties": false, "required": ["configuration", "operation", "lifecycle_phase", "named_modes", "assumptions", "input_schema_sha256"],
+          "properties": {
+            "configuration": {"type": "object"},
+            "operation": {"enum": ["contract_inference", "sample_apply", "replay_apply", "cache_read", "cache_write", "adjacent_reorder", "training_step"]},
+            "lifecycle_phase": {"enum": ["construction", "iteration", "training", "evaluation", "serving"]},
+            "named_modes": {"type": "array", "items": {"type": "string"}},
+            "assumptions": {"type": "array", "items": {"type": "string"}},
+            "input_schema_sha256": {"$ref": "#/$defs/sha256"}
+          }
+        },
+        "candidate": {
+          "type": "object", "additionalProperties": false, "required": ["kind", "operators"],
+          "properties": {"kind": {"enum": ["none", "cache_prefix", "registered_parameter_replay", "adjacent_swap"]}, "operators": {"type": "array", "items": {"type": "string"}}, "cost_profile_id": {"type": "string"}}
+        },
+        "contract_plan": {
+          "type": "object", "additionalProperties": false, "required": ["semantic", "replay_capability", "source_index"],
+          "properties": {
+            "semantic": {
+              "type": "object", "additionalProperties": false, "required": ["analyzer_entrypoint", "required_effect_dimensions"],
+              "properties": {"analyzer_entrypoint": {"type": "string", "minLength": 1}, "required_effect_dimensions": {"type": "array", "minItems": 1, "items": {"enum": ["rng", "state", "external_io", "cardinality", "lineage", "targets", "gradient", "diversity", "callable_provenance", "child_effect"]}}}
+            },
+            "replay_capability": {
+              "type": "object", "additionalProperties": false, "required": ["mechanism", "required_checks", "lineage_operands", "target_dependent_operands"],
+              "properties": {
+                "mechanism": {"enum": ["rng_state_restoration", "stored_parameter_record", "none"]},
+                "required_checks": {"type": "array", "items": {"type": "string", "minLength": 1}},
+                "lineage_operands": {"type": "array", "items": {"$ref": "#/$defs/lineage_plan"}},
+                "target_dependent_operands": {"type": "array", "items": {"type": "string", "minLength": 1}}
+              }
+            },
+            "source_index": {
+              "type": "object", "additionalProperties": false, "required": ["schema_version", "binding_components", "unknown_policy"],
+              "properties": {"schema_version": {"const": "autocontract.executable-source-index.v1"}, "binding_components": {"type": "array", "items": {"$ref": "#/$defs/binding_component"}}, "unknown_policy": {"const": "fail_closed"}}
+            }
+          }
+        },
+        "verification_plan": {
+          "type": "object", "additionalProperties": false, "required": ["output_checks", "effect_checks", "replay_capability_checks", "source_checks", "performance_checks"],
+          "properties": {"output_checks": {"type": "array", "items": {"type": "string"}}, "effect_checks": {"type": "array", "items": {"type": "string"}}, "replay_capability_checks": {"type": "array", "items": {"type": "string"}}, "source_checks": {"type": "array", "items": {"type": "string"}}, "performance_checks": {"type": "array", "items": {"type": "string"}}}
+        }
+      }
+    }
+  }
+}

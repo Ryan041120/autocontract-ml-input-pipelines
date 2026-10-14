@@ -1,0 +1,40 @@
+{
+  "schema_version": "autocontract.p5t-m0-selftest.v0",
+  "phase": "selftest",
+  "status": "pass",
+  "scientific_evidence": false,
+  "protocol_sha256": "bcf38e2cf8e78250df9644b630e2c316877e941580095e99765b9927d832e18d",
+  "runner_sha256": "8beaf8b151bd12f02d7b33134e68d83a07d69b580d00a0d81cde62f1c31cb1de",
+  "split_manifest_sha256": "b6038b203664bb5cfd6486758ab98013b32e6b062d9a3192cda4b027f77d143b",
+  "checks": [
+    {
+      "name": "only_calibration_ids_resolve",
+      "passed": true
+    },
+    {
+      "name": "blind_and_reserved_ids_absent_from_accessible_split",
+      "passed": true
+    },
+    {
+      "name": "cells_and_symmetric_sequences_exact",
+      "passed": true
+    },
+    {
+      "name": "mapping_preserved_across_eight_synthetic_arms",
+      "passed": true
+    },
+    {
+      "name": "nonfinite_tamper_rejected",
+      "passed": true
+    },
+    {
+      "name": "candidate_and_schema_tamper_rejected",
+      "passed": true
+    },
+    {
+      "name": "result_envelope_schema",
+      "passed": true
+    }
+  ],
+  "claim_boundary": "Pure synthetic access/control validation; no DIV2K image bytes are opened."
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "autocontract.contamination-registry.v1",
+  "last_updated": "2026-07-29",
+  "definition": "A source is contaminated if its code, documentation, labels, failure modes, or derived examples were inspected while designing, implementing, debugging, tuning, or explaining AutoContract.",
+  "development_sources": [
+    {"name": "MONAI", "kind": "framework", "use": "early corpus and effect analysis"},
+    {"name": "MMDetection", "kind": "framework", "use": "early corpus and effect analysis"},
+    {"name": "NVIDIA DALI", "kind": "framework", "use": "early corpus and effect analysis"},
+    {"name": "TorchIO", "kind": "framework", "use": "H7C development holdout"},
+    {"name": "TorchGeo", "kind": "framework", "use": "H7D development holdout"},
+    {"name": "audiomentations", "kind": "framework", "use": "H7E development holdout"},
+    {"name": "imgaug", "kind": "framework", "use": "H7F development holdout"},
+    {"name": "Albumentations", "kind": "framework", "use": "H7G development holdout; version 2.0.8 source inspected"},
+    {"name": "Kornia", "kind": "framework", "use": "H7H-H8A implementation and replay; version 0.8.3 source inspected"},
+    {"name": "torchvision", "kind": "framework", "use": "cache and transform development examples"},
+    {"name": "H5 JPEG benchmark artifact", "kind": "local_artifact", "use": "H5 and H8B cache development"},
+    {"name": "H8C synthetic CV/audio workloads", "kind": "synthetic_corpus", "use": "registered internal calibration"}
+  ],
+  "exclusion_rule": "No exact symbol, source binding, example, or derived variant in this registry may count as a novel final-blind unit. A sealed final corpus must include at least one framework absent from this registry, and every included release and binding must have been selected after the analyzer freeze.",
+  "maintenance_rule": "Append every source inspected before the final prediction freeze. Never remove an entry to make a unit eligible."
+}

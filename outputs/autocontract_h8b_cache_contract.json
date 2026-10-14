@@ -1,0 +1,83 @@
+{
+  "schema_version": "autocontract.cache-prefix-contract.v1",
+  "claim_boundary": "retrospective binding of H5 artifact; not preregistered H8B performance",
+  "prefix_analysis": {
+    "resolved": true,
+    "calls": [
+      "F.gaussian_blur",
+      "F.resize"
+    ],
+    "reasons": [],
+    "deterministic": true,
+    "rng_sources": [],
+    "external_reads": [],
+    "state_writes": [],
+    "input_cardinality": "one",
+    "output_cardinality": "one",
+    "sample_identity": "preserve",
+    "source_sha256": "f38e8af362769254364f0d1f775fc3da3e710f5f45e773e5aafccabe54fd8410",
+    "contract_sha256": "3983b103e471689f7c88db6ca014081eaadefea29a5df0c1e137a3df7ac27f3c"
+  },
+  "suffix_contract": {
+    "rng_address": [
+      "base_seed",
+      "epoch",
+      "sample_id",
+      "stable_operator_id",
+      "draw_index"
+    ],
+    "stable_operator_ids": [
+      "random_hflip",
+      "random_crop",
+      "color_jitter"
+    ],
+    "source_sha256": "b68f46b9bc80d4712f0105651eec7ccb188bdf4815e4f5908b44e6e1150577ec",
+    "contract_sha256": "318ffc97d0da3dd023ee8bf3b4b8663b6eecffde6d8c186d50c97991ac94c37b"
+  },
+  "artifact_proof": {
+    "schema_version": "autocontract.cache-artifact.v1",
+    "dataset_manifest_sha256": "56571f2173e4f0c4d7397ed4ed782a6141ff7caa17bf55ac91e40198a31a5af2",
+    "prefix_contract_sha256": "3983b103e471689f7c88db6ca014081eaadefea29a5df0c1e137a3df7ac27f3c",
+    "suffix_contract_sha256": "318ffc97d0da3dd023ee8bf3b4b8663b6eecffde6d8c186d50c97991ac94c37b",
+    "cache_content_sha256": "4b7132f75127ba35315ced0e468e800393b6a6b4833ed922a3d8fe33b505dc95",
+    "cache_bytes": 17971200,
+    "entry_key": "dataset_manifest_sha256+sample_id",
+    "sample_count": 600,
+    "output_shape": [
+      3,
+      96,
+      104
+    ],
+    "output_dtype": "uint8",
+    "torch_version": "2.4.0",
+    "torchvision_version": "0.19.0",
+    "audit_samples": 24,
+    "audit_matches": 24,
+    "proof_sha256": "544402cea5bef85caba6cd8c01247225437e2510461ebe152d3d4e72099f7bc0"
+  },
+  "artifact_validation_reasons": [],
+  "contract_verdict": {
+    "policy": "cache_contract",
+    "admitted": true,
+    "reasons": [],
+    "contract_sha256": "f545cdbe367fc96307b8f5e561b7bf3e2ce1b4e324974e273e1435c352c30338",
+    "evidence_class": "source_registry_plus_content_addressed_cache_artifact"
+  },
+  "legacy_metadata_reasons": [
+    "missing:cache_content_sha256",
+    "missing:dataset_manifest_sha256",
+    "missing:entry_key",
+    "missing:prefix_contract_sha256",
+    "missing:proof_sha256",
+    "missing:suffix_contract_sha256",
+    "missing:torch_version",
+    "missing:torchvision_version"
+  ],
+  "source_files": {
+    "h5a_sha256": "a5997f15c120af4b2e32cfbb3e9ece7330696c6d711738cd64c91660bce6eb18",
+    "stateless_sha256": "2790dd9dea6e92a795890fe891b0ebb2600d674902527ea25b7f1f35851b57cd",
+    "h5a_profile_sha256": "97f48b35169eba99025a1e3841168c7a6704eade6c85ddb923c9644a3b8a4ccb",
+    "h5b_training_sha256": "b78cae7abe44d98d81cca1079f7dceaa9dfa109e802da04bca077be900b17227",
+    "h5b_decisions_sha256": "91f958630d813e975bc051c5f95b0be4bafa89042bb9a763747100690f0c2c46"
+  }
+}

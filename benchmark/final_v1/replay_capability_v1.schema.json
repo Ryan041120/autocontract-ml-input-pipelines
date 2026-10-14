@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/autocontract/replay-capability-v1.schema.json",
+  "title": "AutoContract ReplayCapabilityV1 receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "framework",
+    "framework_version",
+    "mechanism",
+    "configuration_sha256",
+    "runtime_manifest_sha256",
+    "source_index_sha256",
+    "source_index_status",
+    "semantic_status",
+    "capability_status",
+    "lineage_operands",
+    "checks",
+    "reasons",
+    "scope"
+  ],
+  "properties": {
+    "schema_version": {"const": "autocontract.replay-capability.v1"},
+    "artifact_type": {"const": "replay_capability_receipt"},
+    "framework": {"type": "string", "minLength": 1},
+    "framework_version": {"type": "string", "minLength": 1},
+    "mechanism": {"enum": ["rng_state_restoration", "stored_parameter_record", "none"]},
+    "configuration_sha256": {"$ref": "#/$defs/sha256"},
+    "runtime_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "source_index_sha256": {"$ref": "#/$defs/sha256"},
+    "source_index_status": {"enum": ["supported", "unknown"]},
+    "semantic_status": {"enum": ["admit", "reject", "unknown"]},
+    "capability_status": {"enum": ["supported", "unsupported", "unknown"]},
+    "lineage_operands": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/operand"}
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"}
+    },
+    "reasons": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "scope": {"$ref": "#/$defs/scope"}
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "operand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role", "digest_sha256", "structure_sha256"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "role": {"enum": ["primary_input", "secondary_input", "metadata_target", "parameter_record"]},
+        "digest_sha256": {"$ref": "#/$defs/sha256"},
+        "structure_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operation", "phase", "input_schema_sha256", "target_dependent_operands", "claim_boundary"],
+      "properties": {
+        "operation": {"type": "string", "minLength": 1},
+        "phase": {"type": "string", "minLength": 1},
+        "input_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "target_dependent_operands": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "claim_boundary": {"type": "string", "minLength": 20}
+      }
+    }
+  }
+}

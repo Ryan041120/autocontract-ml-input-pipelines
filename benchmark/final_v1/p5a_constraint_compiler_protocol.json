@@ -1,0 +1,48 @@
+{
+  "schema_version": "autocontract.p5a-constraint-compiler-protocol.v0",
+  "status": "preregistered_before_runner_implementation",
+  "date": "2026-07-30",
+  "research_question": "Can a frozen operation-context contract be translated into fail-closed, backend-shaped safety hints for cedar, HyCache, and Cachew without making cost or placement decisions?",
+  "scope": {
+    "evidence_role": "synthetic interface-conformance and claim-scope test only",
+    "backends": ["cedar", "hycache", "cachew"],
+    "non_claims": [
+      "No backend source code is imported or modified.",
+      "No optimizer cost, tier, placement, worker, or ILP decision is made.",
+      "No empirical backend compatibility, speedup, or final-blind accuracy is claimed.",
+      "ReplayCapabilityV1 is not generalized into cache or reorder capability."
+    ]
+  },
+  "frozen_inputs": {
+    "experiments/autocontract_h7h_effect_v7.py": "3aa49f7d40e1b4f09d61ed42364a338a0892f25f2b0f1006749159ac82e84b84",
+    "benchmark/final_v1/replay_capability_v1.schema.json": "40cd2d57c266631f73a34efe535d584cbf316eb98c20f14b5479aca6a739e667",
+    "experiments/autocontract_r3_source_index_v1.py": "7e6251c0388fce23c115919258ac43fb9d620ea38f8902082fe6da7cfbb5238c",
+    "benchmark/final_v2/public_manifest.schema.json": "3fadc4bf051cbc96bd20009580a309ab8df6831f2d72eb8dc5508987392704a6",
+    ".research/semantics_safe_reconfiguration/p4_literature_and_github_pressure_test_2026-07-30.zh-CN.md": "8b92b235b3b6853aa0355422e1e4a40c549bdbcbece0cbfe76db3d0116c86777"
+  },
+  "frozen_translation_rules": {
+    "strict_cache_eligible": "semantic=admit AND source=supported AND randomness=none AND execution_state=none AND external_io=none AND cardinality=one_to_one",
+    "parameter_replay": "replay_only randomness never becomes ordinary backend cacheable; emit a parameter-record cache-key obligation and keep HyCache/Cachew caching disabled unless a future backend-specific keyed-cache protocol exists",
+    "unknown": "Any unknown semantic/source/effect dimension disables cache and reorder across that operator and emits a fail-closed barrier.",
+    "reject": "Semantic reject disables candidate generation and emits a barrier with the semantic reason.",
+    "cedar": "Emit random, fix, depends_on, and contract provenance hints only.",
+    "hycache": "Emit online_only per step and the largest safe contiguous prefix boundary; no ILP/tier/count decision.",
+    "cachew": "Emit the largest safe contiguous prefix autocache boundary; no worker/storage policy.",
+    "invalidation": "Every emitted hint bundle binds operation context, contract digest, source-index digest, and input-schema digest."
+  },
+  "preregistered_gates": [
+    "pure_three_step_pipeline_exposes_full_safe_prefix",
+    "sampling_rng_marks_cedar_random_and_stops_cache_prefix",
+    "replay_only_requires_parameter_key_and_does_not_become_plain_cacheable",
+    "semantic_unknown_emits_fix_barrier",
+    "source_unknown_emits_fix_barrier",
+    "external_io_blocks_cache",
+    "execution_state_write_blocks_cache",
+    "explicit_dependencies_are_preserved",
+    "operation_phase_contrast_changes_hints_without_changing_symbol_identity",
+    "weakening_any_dimension_to_unknown_never_increases_cache_candidates",
+    "output_contains_no_cost_or_placement_decision_fields",
+    "frozen_inputs_unchanged"
+  ],
+  "pass_rule": "12/12 gates must pass; otherwise preserve FAIL and do not claim optimizer integration readiness."
+}

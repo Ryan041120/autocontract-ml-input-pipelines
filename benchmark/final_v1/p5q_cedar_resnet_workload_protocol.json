@@ -1,0 +1,60 @@
+{
+  "schema_version": "autocontract.p5q-cedar-resnet-workload-protocol.v0",
+  "status": "predeclared_contaminated_workload_calibration",
+  "date": "2026-08-01",
+  "question": "Can a receipt-guarded cedar reorder plan change the real optimizer path while preserving exact preprocessing output/RNG and a deterministic ResNet18 training trace, and can benefit/cost be measured without turning a contaminated calibration into final evidence?",
+  "frozen_inputs": {
+    "experiments/autocontract_p5p_reorder_final_v3_handoff.py": "70f86f168da5b6d0c6bbee76af8901ea1be0d04362bc86ae3764926622d6447e",
+    "benchmark/final_v3/p5p_reorder_final_v3_handoff_protocol.json": "2683d3ec6b3e97387d21e4fa72cfe27d048a8afedf7cee3f5880d7ba8e0c547a",
+    "outputs/autocontract_p5p_reorder_final_v3_handoff_selftest.json": "a100a54395fc1281a817003603c6cd3d4c01770e7413b1ac828a9372e0e8a4a8",
+    "experiments/autocontract_p5m_relation_boundary_falsification.py": "42ac1f44c01e027467d87216f76e78fb89a0cdc610cf544130687ca7c71e52ec",
+    "outputs/autocontract_p5m_relation_boundary_falsification.json": "f244a33287d66902ff569d6fe94c2f7489120c1d0974f6468036954823edbec8",
+    "experiments/autocontract_reorder_capability_v2.py": "26d5e37606c6098b2009832706c04fd0ff99dde377d91ffdaf80041b1b3b4e35",
+    "experiments/autocontract_p5o_domain_native_assurance.py": "dbbcea79e10386184a4f5322f535c25cdacb35d8e92d0504ca89e6f53e1497f8"
+  },
+  "runtime": {
+    "python": "3.11.9",
+    "torch": "2.0.1+cpu",
+    "torchvision": "0.15.2+cpu",
+    "cedar_commit": "f062305fcdab196e871c5d09b4c82ab788b4da79"
+  },
+  "workload": {
+    "samples": 24,
+    "preprocess_repetitions": 3,
+    "training_repetitions": 3,
+    "execution_seed": 918273,
+    "training_seed": 424242,
+    "batch_size": 8,
+    "torch_threads": 1,
+    "model": "torchvision.models.resnet18(weights=None, num_classes=10)",
+    "optimizer": "SGD(lr=0.01, momentum=0.0)",
+    "pipeline": ["Normalize([0.45,0.4,0.35],[0.25,0.3,0.35])", "RandomCrop((23,25))", "Identity()"]
+  },
+  "arms": {
+    "fail_closed_baseline": "No receipts; the full region remains fixed and cedar optimizer execution is disabled.",
+    "receipt_guarded_cedar": "All three V2 pair receipts locally replay; cedar may select among six permutations using its fixed official profile."
+  },
+  "semantic_endpoints": [
+    "candidate count and selected path",
+    "exact output tensors and shapes",
+    "Python/NumPy/torch RNG post-state",
+    "per-batch ResNet18 loss sequence",
+    "logit, gradient, and final model-state digests"
+  ],
+  "performance_endpoints": [
+    "cedar planning time",
+    "preprocessing execution median/p95 and samples per second",
+    "training time",
+    "cold and warm end-to-end time"
+  ],
+  "hypotheses": {
+    "h1_plan": "Fail-closed exposes one candidate; complete V2 receipts expose six and cedar selects a different path.",
+    "h2_preprocess": "For the fixed seed, both arms produce exact tensors, exception behavior, and RNG post-state.",
+    "h3_model": "With identical labels, model initialization, optimizer, and thread count, both arms produce exact loss/logit/gradient/model-state traces.",
+    "h4_measurement": "After one untimed warm-up, planning, preprocessing, paired/alternating training medians, cold/warm totals, and throughput are reported descriptively with no posthoc 5% gate.",
+    "h5_boundary": "Synthetic probe images and P5K-P5M operators remain contaminated; the result is workload-harness calibration, not final benefit evidence."
+  },
+  "pass_rule": "All frozen/runtime/cedar checks pass, the plan changes, semantic/model endpoints are exact, and all performance fields are finite and positive; the performance direction itself is not a pass condition.",
+  "no_go_rule": "Any output/RNG/model-trace mismatch revokes the current workload authorization; a speedup cannot compensate for semantic failure.",
+  "claim_boundary": "Real cedar optimizer and ResNet18 execution on synthetic contaminated inputs. This calibrates workload measurement and semantic propagation only; it is not an independent dataset, final pair evaluation, or general training-speed claim."
+}
